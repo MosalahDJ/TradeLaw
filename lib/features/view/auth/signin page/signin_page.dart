@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project/core/Utils/constants.dart';
-import 'package:project/features/controller/Auth%20controller/signncontroller.dart';
-
-import 'package:project/features/view/auth/login%20page/loginpage.dart';
-import 'package:project/features/view/auth/signin%20page/widgets/signin_body.dart';
+import 'package:tradelaw/core/Utils/constants.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/logincontroller.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
+import 'package:tradelaw/features/view/auth/login%20page/loginpage.dart';
+import 'package:tradelaw/features/view/auth/signin%20page/widgets/signin_body.dart';
 
 class SigninPage extends StatelessWidget {
   SigninPage({super.key});
-
-  final SignInController signinctrl = Get.put<SignInController>(
-    SignInController(),
-  );
-
+  final LogInController loginctrl = Get.find();
   @override
   Widget build(BuildContext context) {
     return PopScope(
@@ -51,7 +47,7 @@ class SigninPage extends StatelessWidget {
           backgroundColor: Get.isDarkMode ? kmaincolor3dark : kmaincolor,
           leading: IconButton(
             onPressed: () {
-              signinctrl.unfocuskeyboardsignin();
+              loginctrl.unfocusKeyboard();
               Get.offAll(
                 () => LoginPage(),
                 duration: const Duration(milliseconds: 500),

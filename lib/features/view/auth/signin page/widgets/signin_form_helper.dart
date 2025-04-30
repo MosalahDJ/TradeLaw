@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:project/core/Utils/constants.dart';
-
-import 'package:project/core/widgets/information_form.dart';
-import 'package:project/features/controller/Auth%20controller/signncontroller.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/logincontroller.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
 
 // Helper class for sign-in form widgets
 class SignInFormHelpers {
-  final SignInController signinctrl = Get.put<SignInController>(
-    SignInController(),
+  final LogInController loginctrl = Get.find();
+  final Txtvalcontroller txtvalctrl = Get.put<Txtvalcontroller>(
+    Txtvalcontroller(),
   );
 
   // Creates a standard form field with validation

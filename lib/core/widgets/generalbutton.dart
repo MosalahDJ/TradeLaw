@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project/core/Utils/constants.dart';
+import 'package:tradelaw/core/Utils/constants.dart';
 
 class GeneralButton extends StatelessWidget {
   const GeneralButton({
