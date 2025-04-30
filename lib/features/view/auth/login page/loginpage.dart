@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:tradelaw/core/Utils/constants.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/logincontroller.dart';
-// import 'package:project/core/Utils/constants.dart';
-// import 'package:project/features/controller/Auth%20controller/logincontroller.dart';
-// import 'package:project/features/controller/Auth%20controller/passwordresset.dart';
-// import 'package:project/features/controller/Auth%20controller/textvalidatecontroller.dart';
-// import 'package:project/features/view/auth/login%20page/widgets/login_body.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
+import 'package:tradelaw/features/view/auth/login%20page/widgets/login_body.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
   final LogInController loginctrl = Get.find();
   final Txtvalcontroller txtvalctrl = Get.put<Txtvalcontroller>(
     Txtvalcontroller(),
-  );
-
-  final PasswordresetController passreset = Get.put<PasswordresetController>(
-    PasswordresetController(),
   );
 
   @override

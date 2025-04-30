@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
@@ -8,6 +7,7 @@ import 'package:tradelaw/core/localization/translations.dart';
 import 'package:tradelaw/core/theme/thems.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/language_controller.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
+import 'package:tradelaw/features/view/auth/login%20page/loginpage.dart';
 import 'package:tradelaw/myrouts.dart';
 
 // messaging background handler
@@ -52,7 +52,7 @@ class TradeLaw extends StatelessWidget {
               : ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       initialBinding: Mybinding(),
-      home: const SplashView(),
+      home: LoginPage(),
       getPages: Myrouts.getpages,
       translations: Messages(),
       locale: Locale(languageController.language.value), // Use stored language
