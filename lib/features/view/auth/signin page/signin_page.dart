@@ -7,7 +7,7 @@ import 'package:tradelaw/features/view/auth/signin%20page/widgets/signin_body.da
 
 class SigninPage extends StatelessWidget {
   SigninPage({super.key});
-  final Signincontroller signinctrl = Get.find();
+  final SignInController signinctrl = Get.find();
   @override
   Widget build(BuildContext context) {
     return PopScope(

@@ -7,7 +7,7 @@ import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecon
 
 // Helper class for sign-in form widgets
 class SignInFormHelpers {
-  final Signincontroller signinnctrl = Get.find();
+  final SignInController signinnctrl = Get.find();
   final Txtvalcontroller txtvalctrl = Get.put<Txtvalcontroller>(
     Txtvalcontroller(),
   );
