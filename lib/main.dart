@@ -13,6 +13,7 @@ import 'package:tradelaw/myrouts.dart';
 // messaging background handler
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
 
   // Force portrait
