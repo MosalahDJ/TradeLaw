@@ -18,50 +18,15 @@ import 'package:flutter/services.dart';
 
 // messaging background handler
 
-Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {}
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  final prefs = await SharedPreferences.getInstance();
-
-  // Force portrait
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
-
-  await Future.wait([
-    Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),
-    dotenv.load(fileName: ".env"),
-  ]);
-
-  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
-  if (kReleaseMode) {
-    await SentryFlutter.init((options) {
-      options.dsn =
-          'https://ffbe2284578ddb220992bfafac17ac6c@o4508945405313024.ingest.de.sentry.io/4508945417371728';
-    }, appRunner: () => runApp(SentryWidget(child: QuranLifeApp(prefs: prefs))));
-  } else {
-    runApp(QuranLifeApp(prefs: prefs));
-  }
+void main() {
+  runApp(TradeLaw());
 }
 
-class QuranLifeApp extends StatelessWidget {
-  final SharedPreferences prefs;
-  const QuranLifeApp({super.key, required this.prefs});
+class TradeLaw extends StatelessWidget {
+  const TradeLaw({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final themeController = Get.put<ThemeController>(
-      ThemeController(),
-      permanent: true,
-    );
-    final languageController = Get.put<LanguageController>(
-      LanguageController(prefs),
-      permanent: true,
-    );
-
     return GetMaterialApp(
       title: 'QuranLife',
 
