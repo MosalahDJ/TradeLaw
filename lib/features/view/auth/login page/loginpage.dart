@@ -8,7 +8,7 @@ import 'package:tradelaw/features/view/auth/login%20page/widgets/login_body.dart
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
-  final LogInController loginctrl = Get.find();
+  final LogInController loginctrl = Get.put<LogInController>(LogInController());
   final Txtvalcontroller txtvalctrl = Get.put<Txtvalcontroller>(
     Txtvalcontroller(),
   );
