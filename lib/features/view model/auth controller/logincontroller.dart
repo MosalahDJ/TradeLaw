@@ -1,3 +1,3 @@
 import 'package:get/get.dart';
 
-class Logincontroller extends GetxController {}
+class LogInController extends GetxController {}

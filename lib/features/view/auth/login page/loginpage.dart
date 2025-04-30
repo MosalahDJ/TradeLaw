@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/logincontroller.dart';
 // import 'package:project/core/Utils/constants.dart';
 // import 'package:project/features/controller/Auth%20controller/logincontroller.dart';
 // import 'package:project/features/controller/Auth%20controller/passwordresset.dart';
