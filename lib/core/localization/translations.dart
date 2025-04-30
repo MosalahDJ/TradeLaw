@@ -1,13 +1,16 @@
-// import 'package:get/get.dart';
+import 'package:get/get.dart';
 
-// class Messages extends Translations {
-//   @override
-//   Map<String, Map<String, String>> get keys => {
-//     'en': {
-//       },
-//     'ar': {
-//       },
-//     'fr': {
-//       },
-//   };
-// }
+class Messages extends Translations {
+  @override
+  Map<String, Map<String, String>> get keys => {
+    'en': {
+      //eng translations
+    },
+    'ar': {
+      //ara translations
+    },
+    'fr': {
+      //fra translations
+    },
+  };
+}
