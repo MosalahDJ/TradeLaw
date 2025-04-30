@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/logincontroller.dart';
+import 'package:tradelaw/core/Utils/constants.dart';
+import 'package:tradelaw/core/widgets/information_form.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/signincontroller.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
 
 // Helper class for sign-in form widgets
 class SignInFormHelpers {
-  final LogInController loginctrl = Get.find();
+  final Signincontroller signinnctrl = Get.find();
   final Txtvalcontroller txtvalctrl = Get.put<Txtvalcontroller>(
     Txtvalcontroller(),
   );
@@ -51,10 +53,10 @@ class SignInFormHelpers {
   Widget buildGenderDropdown() {
     return Form(
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      key: signinctrl.txtvalctrl.signingendrestate,
+      key: txtvalctrl.signingendrestate,
       child: InformationsForm(
-        textctrl: signinctrl.gendre,
-        focusnode: signinctrl.gendrefnode,
+        textctrl: signinnctrl.gendre,
+        focusnode: signinnctrl.gendrefnode,
         isrequired: true,
         formtitle: "gender".tr,
         hint: "select_gender".tr,
@@ -72,9 +74,9 @@ class SignInFormHelpers {
             ),
             child: DropdownButton<String>(
               value:
-                  signinctrl.gendre.text.isEmpty
+                  signinnctrl.gendre.text.isEmpty
                       ? null
-                      : signinctrl.gendre.text,
+                      : signinnctrl.gendre.text,
               hint: Text(
                 "select_gender".tr,
                 style: TextStyle(
@@ -113,7 +115,7 @@ class SignInFormHelpers {
                 ),
               ],
               onChanged: (value) {
-                signinctrl.gendre.text = value ?? '';
+                signinnctrl.gendre.text = value ?? '';
               },
             ),
           ),
@@ -144,8 +146,8 @@ class SignInFormHelpers {
       child: InformationsForm(
         focusnode:
             isConfirmation
-                ? signinctrl.passwordfnodesign2
-                : signinctrl.passwordfnodesign,
+                ? signinnctrl.passwordfnodesign2
+                : signinnctrl.passwordfnodesign,
         lines: 1,
         validator: (val) {
           if (val == null || val.isEmpty) {
@@ -156,7 +158,7 @@ class SignInFormHelpers {
           if (!isConfirmation && val.length < 6) {
             return 'Password must be at least 6 characters';
           }
-          if (isConfirmation && val != signinctrl.password.text) {
+          if (isConfirmation && val != signinnctrl.password.text) {
             return 'Passwords do not match';
           }
           return null;
@@ -164,14 +166,14 @@ class SignInFormHelpers {
         suffixbutton: IconButton(
           onPressed:
               isConfirmation
-                  ? signinctrl.visibilityfunc2
-                  : signinctrl.visibilityfunc,
+                  ? signinnctrl.visibilityfunc2
+                  : signinnctrl.visibilityfunc,
           icon: Icon(
             isConfirmation
-                ? (signinctrl.visibility2
+                ? (signinnctrl.visibility2
                     ? Icons.visibility_off
                     : Icons.visibility)
-                : (signinctrl.visibility
+                : (signinnctrl.visibility
                     ? Icons.visibility_off
                     : Icons.visibility),
             color: Get.isDarkMode ? Colors.white : const Color(0xFF3D3825),
