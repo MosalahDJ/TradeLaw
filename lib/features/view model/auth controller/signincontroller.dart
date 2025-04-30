@@ -44,7 +44,7 @@ class SignInController extends GetxController {
   }
 
   // User login function
-  Future<void> login(BuildContext context) async {
+  Future<void> signin(BuildContext context) async {
     try {
       if (emailcontroller.text.isNotEmpty &&
           password.text.isNotEmpty &&
