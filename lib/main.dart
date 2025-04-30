@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:tradelaw/core/Utils/binding.dart';
+import 'package:tradelaw/core/localization/translations.dart';
 import 'package:tradelaw/core/theme/thems.dart';
+import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
+import 'package:tradelaw/myrouts.dart';
 
 // messaging background handler
 
