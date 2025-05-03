@@ -40,7 +40,7 @@ class TradeLaw extends StatelessWidget {
     );
 
     return GetMaterialApp(
-      title: 'QuranLife',
+      title: 'TradeLaw',
 
       theme: Themes().lightmode,
       darkTheme: Themes().darkmode,

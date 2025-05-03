@@ -17,7 +17,7 @@ class Messages extends Translations {
       'sign_in': 'Create Account',
       'please_enter_email': 'Please enter your email address and password',
       'leave_login': 'Do you want to exit the sign-in process?',
-      'leave_app': 'Do you want to exit QuranLife?',
+      'leave_app': 'Do you want to exit TradeLaw?',
       'log_out': 'Log Out',
       'verify_internet': 'Verify your internet connection',
       'google_signin_error': 'Error signing in with Google',
@@ -88,7 +88,7 @@ class Messages extends Translations {
     },
     'ar': {
       // Authentication
-      'quran_life': 'قرآن لايف',
+      'quran_life': 'TradeLaw',
       'email': 'البريد الإلكتروني',
       'enter_email': 'أدخل عنوان بريدك الإلكتروني',
       'password': 'كلمة المرور',
@@ -100,7 +100,7 @@ class Messages extends Translations {
       'sign_in': 'إنشاء حساب جديد',
       'please_enter_email': ' الرجاء إدخال البريد الإلكتروني و كلمة السر',
       'leave_login': 'هل تريد الخروج من عملية تسجيل الدخول؟',
-      'leave_app': 'هل تريد الخروج من تطبيق قرآن لايف؟',
+      'leave_app': 'هل تريد الخروج من تطبيق TradeLaw؟',
       'log_out': 'تسجيل الخروج',
       'verify_internet': 'تحقق من اتصالك بالإنترنت',
       'google_signin_error': 'خطأ في تسجيل الدخول باستخدام جوجل',
