@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tradelaw/core/Utils/binding.dart';
+import 'package:tradelaw/core/Utils/size_config.dart';
 import 'package:tradelaw/core/localization/translations.dart';
 import 'package:tradelaw/core/theme/thems.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/language_controller.dart';
@@ -57,6 +58,11 @@ class TradeLaw extends StatelessWidget {
       translations: Messages(),
       locale: Locale(languageController.language.value), // Use stored language
       fallbackLocale: const Locale('en', 'US'),
+      builder: (context, child) {
+        // Initialize Sizeconfig here
+        Sizeconfig().init(context);
+        return child!;
+      },
     );
   }
 }
