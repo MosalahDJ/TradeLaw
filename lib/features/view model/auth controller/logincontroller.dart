@@ -39,8 +39,8 @@ class LogInController extends GetxController {
       } else {
         _showDialog(
           context,
-          'verify_email_title'.tr,
-          'verify_email_desc'.tr,
+          'please_enter_email'.tr,
+          'please_enter_email'.tr,
           DialogType.info,
         );
       }

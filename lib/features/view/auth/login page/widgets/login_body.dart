@@ -362,7 +362,14 @@ void _showGuestLoginDialog(BuildContext context) {
         ),
         ElevatedButton(
           onPressed: () {
-            loginctrl.isLoading.value ? null : loginctrl.login(context);
+            loginctrl.isLoading.value
+                ? null
+                : Future.delayed(
+                  Duration(seconds: 3),
+                  () => Get.offAllNamed("home"),
+                );
+
+            ;
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: Get.isDarkMode ? kmaincolor4 : kmaincolor,
