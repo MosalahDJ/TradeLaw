@@ -52,8 +52,8 @@ flutter_launcher_icons:
 
 #adding Native Splash Screen
 flutter_native_splash:
-  color: "#E7D37F"
-  color_dark: "#005B41"
+  color: "#690B22"
+  color_dark: "#690B22"
   image: lib/core/assets/images/app_logo/pnglogo1.png
   image_dark: lib/core/assets/images/app_logo/pnglogo1.png
   branding_bottom_padding: 24
@@ -62,9 +62,9 @@ flutter_native_splash:
   ios: true
   android_12:
     image: lib/core/assets/images/app_logo/pnglogo1.png
-    color: "#E7D37F"
-    icon_background_color: "#E7D37F"
-    icon_background_color_dark: "#005B41"
+    color: "#690B22"
+    icon_background_color: "#690B22"
+    icon_background_color_dark: "#690B22"
 
 
 # For information on the generic Dart part of this file, see the
