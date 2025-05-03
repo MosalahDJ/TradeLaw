@@ -38,7 +38,7 @@ class LoginBody extends StatelessWidget {
 
                 // Welcome Text
                 Text(
-                  "Welcome back! Glad",
+                  "Welcome back! Glad".tr,
                   style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
@@ -47,7 +47,7 @@ class LoginBody extends StatelessWidget {
                 ),
                 SizedBox(height: 8),
                 Text(
-                  "to see you, Again!",
+                  "to see you, Again!".tr,
                   style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
@@ -62,7 +62,7 @@ class LoginBody extends StatelessWidget {
                   key: txtvalctrl.loginemailstate,
                   child: _buildTextField(
                     controller: loginctrl.emailController,
-                    hintText: "Enter your email",
+                    hintText: "Enter your email".tr,
                     focusNode: loginctrl.emailFocusNode,
                     keyboardType: TextInputType.emailAddress,
                     validator:
@@ -79,7 +79,7 @@ class LoginBody extends StatelessWidget {
                     builder:
                         (controller) => _buildTextField(
                           controller: loginctrl.passwordController,
-                          hintText: "Enter your password",
+                          hintText: "Enter your password".tr,
                           focusNode: loginctrl.passwordFocusNode,
                           obscureText: loginctrl.isPasswordVisible,
                           validator:
@@ -109,7 +109,7 @@ class LoginBody extends StatelessWidget {
                       // Forgot password function
                     },
                     child: Text(
-                      "Forgot Password?",
+                      "Forgot Password?".tr,
                       style: TextStyle(
                         color: Get.isDarkMode ? kmaincolor4 : kmaincolor,
                       ),
@@ -180,7 +180,7 @@ class LoginBody extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Text(
-                        "Or Login with",
+                        "Or Login with".tr,
                         style: TextStyle(
                           color:
                               Get.isDarkMode
@@ -233,7 +233,7 @@ class LoginBody extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Don't have an account?",
+                      "Don't have an account?".tr,
                       style: TextStyle(
                         color: Get.isDarkMode ? Colors.white70 : Colors.black54,
                       ),
@@ -248,7 +248,7 @@ class LoginBody extends StatelessWidget {
                         );
                       },
                       child: Text(
-                        "Register Now",
+                        "Register Now".tr,
                         style: TextStyle(
                           color: Get.isDarkMode ? kmaincolor4 : kmaincolor,
                           fontWeight: FontWeight.bold,

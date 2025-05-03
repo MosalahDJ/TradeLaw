@@ -60,7 +60,7 @@ class SigneinPageBody extends StatelessWidget {
 
                 // Welcome Text
                 Text(
-                  "Hello! Register to get",
+                  "Hello! Register to get".tr,
                   style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
@@ -69,7 +69,7 @@ class SigneinPageBody extends StatelessWidget {
                 ),
                 SizedBox(height: 8),
                 Text(
-                  "started",
+                  "started".tr,
                   style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
@@ -84,7 +84,7 @@ class SigneinPageBody extends StatelessWidget {
                   key: txtvalctrl.signinnamestate,
                   child: _buildTextField(
                     controller: signinctrl.name,
-                    hintText: "Username",
+                    hintText: "Username".tr,
                     focusNode: signinctrl.namefnode,
                     validator:
                         (val) => val!.isEmpty ? "please_enter_name".tr : null,
