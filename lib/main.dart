@@ -9,7 +9,6 @@ import 'package:tradelaw/features/view%20model/settings%20controllers/language_c
 import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
 import 'package:tradelaw/features/view/auth/login%20page/loginpage.dart';
 import 'package:tradelaw/myrouts.dart';
-
 // messaging background handler
 
 void main() async {
