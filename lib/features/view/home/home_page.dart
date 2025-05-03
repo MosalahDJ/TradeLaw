@@ -22,7 +22,13 @@ class HomePage extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.notifications_outlined, color: Colors.white),
+            icon: Icon(Icons.light_mode, color: Colors.white),
+            onPressed: () {
+              // Handle notifications
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.language_rounded, color: Colors.white),
             onPressed: () {
               // Handle notifications
             },

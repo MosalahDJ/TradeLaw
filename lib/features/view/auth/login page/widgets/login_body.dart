@@ -213,7 +213,7 @@ class LoginBody extends StatelessWidget {
                     SizedBox(width: 20),
                     _buildSocialLoginButton(
                       icon: "lib/core/assets/images/login_images/Guest.png",
-                      onTap: () => _showGuestLoginDialog(context),
+                      onTap: () => loginctrl.login(context),
                     ),
                     SizedBox(width: 20),
                     _buildSocialLoginButton(
@@ -325,74 +325,4 @@ class LoginBody extends StatelessWidget {
       ),
     );
   }
-}
-
-// Guest login dialog
-void _showGuestLoginDialog(BuildContext context) {
-  final LogInController loginctrl = Get.find();
-
-  Get.dialog(
-    AlertDialog(
-      title: Text(
-        'guest_login_warning'.tr,
-        style: TextStyle(
-          color: Get.isDarkMode ? kmaincolor4 : kmaincolor,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      content: Text(
-        'guest_login_message'.tr,
-        style: TextStyle(
-          color: Get.isDarkMode ? Colors.white70 : Colors.black87,
-        ),
-      ),
-      backgroundColor: Get.isDarkMode ? Colors.grey[900] : Colors.white,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      actions: [
-        TextButton(
-          onPressed: () => Get.back(),
-          child: Text(
-            'cancel'.tr,
-            style: TextStyle(
-              color: Get.isDarkMode ? Colors.white70 : Colors.grey[600],
-            ),
-          ),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            loginctrl.isLoading.value
-                ? null
-                : Future.delayed(
-                  Duration(seconds: 3),
-                  () => Get.offAllNamed("home"),
-                );
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Get.isDarkMode ? kmaincolor4 : kmaincolor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
-          ),
-          child: Obx(
-            () =>
-                loginctrl.isLoading.value
-                    ? CircularProgressIndicator(
-                      strokeWidth: 3,
-                      strokeAlign: -4,
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        Get.isDarkMode ? kmaincolor : kmaincolor4,
-                      ),
-                    )
-                    : Text(
-                      'continue_guest'.tr,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-          ),
-        ),
-      ],
-    ),
-  );
 }

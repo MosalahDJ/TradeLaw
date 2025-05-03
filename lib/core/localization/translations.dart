@@ -69,7 +69,8 @@ class Messages extends Translations {
 
       // Registration
       'create_account': 'Create Your Account',
-      'fill_form': 'Please complete the form below',
+      'fill_form_title': 'Fill the form',
+      'fill_form': 'Please complete the form',
       'first_name': 'First Name',
       'last_name': 'Last Name',
       'enter_first_name': 'Enter your first name',
@@ -153,7 +154,8 @@ class Messages extends Translations {
 
       // Sign Up Page
       'create_account': 'إنشاء حسابك',
-      'fill_form': 'يرجى ملء النموذج أدناه',
+      'fill_form_title': 'ملء النموذج',
+      'fill_form': 'يرجى ملء النموذج ',
       'first_name': 'الاسم الأول',
       'last_name': 'اسم العائلة',
       'enter_first_name': 'أدخل اسمك الأول',
@@ -239,7 +241,8 @@ class Messages extends Translations {
 
       // Sign Up Page
       'create_account': 'Créez votre compte',
-      'fill_form': 'Veuillez remplir le formulaire ci-dessous',
+      'fill_form_title': 'remplir le formulaire',
+      'fill_form': 'Veuillez remplir le formulaire',
       'first_name': 'Prénom',
       'last_name': 'Nom',
       'enter_first_name': 'Entrez votre prénom',

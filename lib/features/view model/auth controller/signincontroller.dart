@@ -49,22 +49,18 @@ class SignInController extends GetxController {
       if (emailcontroller.text.isNotEmpty &&
           password.text.isNotEmpty &&
           password2.text.isNotEmpty &&
-          gendre.text.isNotEmpty &&
-          name.text.isNotEmpty &&
-          lastname.text.isNotEmpty) {
+          name.text.isNotEmpty) {
         isLoading.value = true;
         emailcontroller.clear();
         password.clear();
         password2.clear();
         name.clear();
-        lastname.clear();
-        gendre.clear();
-        Future.delayed(Duration(seconds: 3), () => Get.offAllNamed("home"));
+        Get.offAllNamed("home");
       } else {
         _showDialog(
           context,
-          'verify_email_title'.tr,
-          'verify_email_desc'.tr,
+          'fill_form_title'.tr,
+          'fill_form'.tr,
           DialogType.info,
         );
       }
