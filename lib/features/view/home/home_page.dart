@@ -1,1 +1,171 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:tradelaw/core/Utils/constants.dart';
+import 'package:tradelaw/core/Utils/size_config.dart';
 
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // Initialize Sizeconfig to avoid null errors
+    Sizeconfig().init(context);
+
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Get.isDarkMode ? kmaincolor3dark : kmaincolor,
+        title: Text(
+          'Dashboard'.tr,
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.notifications_outlined, color: Colors.white),
+            onPressed: () {
+              // Handle notifications
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.person_outline, color: Colors.white),
+            onPressed: () {
+              // Handle profile
+            },
+          ),
+        ],
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Welcome'.tr,
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Get.isDarkMode ? Colors.white : Colors.black87,
+                ),
+              ),
+              SizedBox(height: 8),
+              Text(
+                'Explore our services'.tr,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Get.isDarkMode ? Colors.white70 : Colors.black54,
+                ),
+              ),
+              SizedBox(height: 24),
+              Expanded(
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
+                  children: [
+                    _buildGridItem(
+                      icon: Icons.gavel,
+                      title: 'Legal Advice'.tr,
+                      color: Colors.blue.shade700,
+                      onTap: () {
+                        // Navigate to legal advice screen
+                      },
+                    ),
+                    _buildGridItem(
+                      icon: Icons.description_outlined,
+                      title: 'Documents'.tr,
+                      color: Colors.green.shade700,
+                      onTap: () {
+                        // Navigate to documents screen
+                      },
+                    ),
+                    _buildGridItem(
+                      icon: Icons.people_outline,
+                      title: 'Consultants'.tr,
+                      color: Colors.orange.shade700,
+                      onTap: () {
+                        // Navigate to consultants screen
+                      },
+                    ),
+                    _buildGridItem(
+                      icon: Icons.calendar_today,
+                      title: 'Appointments'.tr,
+                      color: Colors.purple.shade700,
+                      onTap: () {
+                        // Navigate to appointments screen
+                      },
+                    ),
+                    _buildGridItem(
+                      icon: Icons.article_outlined,
+                      title: 'Articles'.tr,
+                      color: Colors.red.shade700,
+                      onTap: () {
+                        // Navigate to articles screen
+                      },
+                    ),
+                    _buildGridItem(
+                      icon: Icons.settings_outlined,
+                      title: 'Settings'.tr,
+                      color: Colors.grey.shade700,
+                      onTap: () {
+                        // Navigate to settings screen
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildGridItem({
+    required IconData icon,
+    required String title,
+    required Color color,
+    required VoidCallback onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(16),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Get.isDarkMode ? Colors.grey.shade800 : Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 10,
+              offset: Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: color.withOpacity(0.1),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(icon, size: 40, color: color),
+            ),
+            SizedBox(height: 12),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Get.isDarkMode ? Colors.white : Colors.black87,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
