@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:tradelaw/core/Utils/constants.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/logincontroller.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
 import 'package:tradelaw/features/view/auth/login%20page/widgets/login_body.dart';
@@ -45,15 +44,6 @@ class LoginPage extends StatelessWidget {
         }
       },
       child: Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          scrolledUnderElevation: 0,
-          title: Text(
-            "login".tr,
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-          backgroundColor: Get.isDarkMode ? kmaincolor3dark : kmaincolor,
-        ),
         body: LoginBody(),
       ),
     );

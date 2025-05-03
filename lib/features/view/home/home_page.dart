@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/core/Utils/constants.dart';
 import 'package:tradelaw/core/Utils/size_config.dart';
+import 'package:tradelaw/features/view/auth/login%20page/loginpage.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -27,9 +28,14 @@ class HomePage extends StatelessWidget {
             },
           ),
           IconButton(
-            icon: Icon(Icons.person_outline, color: Colors.white),
+            icon: Icon(Icons.logout_rounded, color: Colors.white),
             onPressed: () {
               // Handle profile
+              Get.offAll(
+                () => LoginPage(),
+                duration: Duration(milliseconds: 500),
+                transition: Transition.leftToRight,
+              );
             },
           ),
         ],

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tradelaw/core/Utils/constants.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/signincontroller.dart';
-import 'package:tradelaw/features/view/auth/login%20page/loginpage.dart';
 import 'package:tradelaw/features/view/auth/signin%20page/widgets/signin_body.dart';
 
 class SigninPage extends StatelessWidget {
@@ -42,28 +40,7 @@ class SigninPage extends StatelessWidget {
           }
         }
       },
-      child: Scaffold(
-        appBar: AppBar(
-          scrolledUnderElevation: 0,
-          backgroundColor: Get.isDarkMode ? kmaincolor3dark : kmaincolor,
-          leading: IconButton(
-            onPressed: () {
-              signinctrl.unfocuskeyboardsignin();
-              Get.offAll(
-                () => LoginPage(),
-                duration: const Duration(milliseconds: 500),
-                transition: Transition.leftToRight,
-              );
-            },
-            icon: const Icon(Icons.arrow_back_outlined, color: Colors.white),
-          ),
-          title: Text(
-            "registration".tr,
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-        ),
-        body: SigneinPageBody(),
-      ),
+      child: Scaffold(body: SigneinPageBody()),
     );
   }
 }

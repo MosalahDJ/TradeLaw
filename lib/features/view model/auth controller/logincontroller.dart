@@ -33,9 +33,9 @@ class LogInController extends GetxController {
       if (emailController.text.isNotEmpty &&
           passwordController.text.isNotEmpty) {
         isLoading.value = true;
+        Get.offAllNamed("home");
         emailController.clear();
         passwordController.clear();
-        Future.delayed(Duration(seconds: 3), () => Get.offAllNamed("home"));
       } else {
         _showDialog(
           context,

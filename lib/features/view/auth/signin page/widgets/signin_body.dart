@@ -4,185 +4,373 @@ import 'package:tradelaw/core/Utils/constants.dart';
 import 'package:tradelaw/core/Utils/size_config.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/signincontroller.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
-import 'package:tradelaw/features/view/auth/signin%20page/widgets/handle_submit.dart';
-import 'package:tradelaw/features/view/auth/signin%20page/widgets/signin_form_helper.dart';
+import 'package:tradelaw/features/view/auth/login%20page/loginpage.dart';
 
 class SigneinPageBody extends StatelessWidget {
   SigneinPageBody({super.key});
 
   final SignInController signinctrl = Get.find();
   final Txtvalcontroller txtvalctrl = Get.find();
-  final SignInSubmitHandler _submitHandler = SignInSubmitHandler();
-  final SignInFormHelpers signInFormHelpers = SignInFormHelpers();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: Sizeconfig.screenwidth! * 0.05,
-        vertical: Sizeconfig.screenheight! * 0.02,
-      ),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Branding section with improved spacing
-            Container(
-              margin: EdgeInsets.only(
-                top: Sizeconfig.screenheight! * 0.02,
-                bottom: Sizeconfig.screenheight! * 0.04,
-              ),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: Sizeconfig.screenheight! * 0.15,
-                    child: Image.asset(
-                      "lib/core/assets/images/app_logo/pnglogo.png",
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    "create_account".tr,
-                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.bold,
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: Sizeconfig.screenwidth! * 0.06,
+              vertical: Sizeconfig.screenheight! * 0.02,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Back Button
+                Container(
+                  margin: EdgeInsets.only(top: 16),
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
                       color:
                           Get.isDarkMode
-                              ? const Color(0xFFE5AB57)
-                              : const Color(0xFF3D3825),
+                              ? Colors.grey[700]!
+                              : Colors.grey[300]!,
+                      width: 1,
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  Text(
-                    "fill_form".tr,
-                    style: Theme.of(
-                      context,
-                    ).textTheme.bodyMedium?.copyWith(color: Colors.grey[600]),
-                  ),
-                ],
-              ),
-            ),
-
-            Card(
-              elevation: 2, // Added subtle elevation
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              color: Get.isDarkMode ? kmaincolor3dark : Colors.white,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Get.isDarkMode ? Colors.grey[900] : Colors.white,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      // Name Fields Row
-                      Row(
-                        children: [
-                          Expanded(
-                            child: signInFormHelpers.buildFormField(
-                              context,
-                              title: "first_name".tr,
-                              hint: "enter_first_name".tr,
-                              controller: signinctrl.name,
-                              focusNode: signinctrl.namefnode,
-                              formKey: txtvalctrl.signinnamestate,
-                            ),
-                          ),
-                          const SizedBox(width: 16),
-                          Expanded(
-                            child: signInFormHelpers.buildFormField(
-                              context,
-                              title: "last_name".tr,
-                              hint: "enter_last_name".tr,
-                              controller: signinctrl.lastname,
-                              focusNode: signinctrl.lastnamefnode,
-                              formKey: txtvalctrl.signinlastnamestate,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
-
-                      // Gender Dropdown
-                      signInFormHelpers.buildGenderDropdown(),
-                      const SizedBox(height: 20),
-
-                      // Email field
-                      signInFormHelpers.buildFormField(
-                        context,
-                        title: "email".tr,
-                        hint: "enter_email".tr,
-                        controller: signinctrl.emailcontroller,
-                        focusNode: signinctrl.emailfnodesign,
-                        formKey: txtvalctrl.signinemailstate,
-                        keyboardType: TextInputType.emailAddress,
-                      ),
-                      const SizedBox(height: 20),
-
-                      // Password fields
-                      GetBuilder<SignInController>(
-                        builder:
-                            (c) => signInFormHelpers.buildPasswordField(
-                              context,
-                              title: "password".tr,
-                              hint: "enter_password".tr,
-                              obsecure: signinctrl.visibility,
-                              controller: signinctrl.password,
-                              formKey: txtvalctrl.signinpasswordstate,
-                              isConfirmation: false,
-                            ),
-                      ),
-                      const SizedBox(height: 20),
-                      GetBuilder<SignInController>(
-                        builder:
-                            (c) => signInFormHelpers.buildPasswordField(
-                              context,
-                              title: "confirm_password".tr,
-                              hint: "enter_password".tr,
-                              obsecure: signinctrl.visibility2,
-                              controller: signinctrl.password2,
-                              formKey: txtvalctrl.signinpasswordstate2,
-                              isConfirmation: true,
-                            ),
-                      ),
-                    ],
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.arrow_back_ios_new,
+                      color: Get.isDarkMode ? Colors.white : Colors.black87,
+                      size: 20,
+                    ),
+                    onPressed: () {
+                      signinctrl.unfocuskeyboardsignin();
+                      Get.offAll(
+                        () => LoginPage(),
+                        duration: const Duration(milliseconds: 500),
+                        transition: Transition.leftToRight,
+                      );
+                    },
                   ),
                 ),
-              ),
-            ),
 
-            GetBuilder<SignInController>(
-              builder:
-                  (controller) => ElevatedButton(
-                    onPressed:
-                        controller.isLoading.value
-                            ? null
-                            : () => _submitHandler.handleSubmit(context),
+                SizedBox(height: Sizeconfig.screenheight! * 0.04),
+
+                // Welcome Text
+                Text(
+                  "Hello! Register to get",
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: Get.isDarkMode ? Colors.white : Colors.black87,
+                  ),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  "started",
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: Get.isDarkMode ? Colors.white : Colors.black87,
+                  ),
+                ),
+
+                SizedBox(height: Sizeconfig.screenheight! * 0.05),
+
+                // Username Field
+                Form(
+                  key: txtvalctrl.signinnamestate,
+                  child: _buildTextField(
+                    controller: signinctrl.name,
+                    hintText: "Username",
+                    focusNode: signinctrl.namefnode,
+                    validator:
+                        (val) => val!.isEmpty ? "please_enter_name".tr : null,
+                  ),
+                ),
+
+                SizedBox(height: 16),
+
+                // Email Field
+                Form(
+                  key: txtvalctrl.signinemailstate,
+                  child: _buildTextField(
+                    controller: signinctrl.emailcontroller,
+                    hintText: "Email",
+                    focusNode: signinctrl.emailfnodesign,
+                    keyboardType: TextInputType.emailAddress,
+                    validator:
+                        (val) => val!.isEmpty ? "please_enter_email".tr : null,
+                  ),
+                ),
+
+                SizedBox(height: 16),
+
+                // Password Field
+                Form(
+                  key: txtvalctrl.signinpasswordstate,
+                  child: GetBuilder<SignInController>(
+                    builder:
+                        (controller) => _buildTextField(
+                          controller: signinctrl.password,
+                          hintText: "Password",
+                          focusNode: signinctrl.passwordfnodesign,
+                          obscureText: signinctrl.visibility,
+                          validator:
+                              (val) =>
+                                  val!.isEmpty
+                                      ? "please_enter_password".tr
+                                      : null,
+                          suffixIcon: IconButton(
+                            onPressed: signinctrl.visibilityfunc,
+                            icon: Icon(
+                              signinctrl.visibility
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                              color: Get.isDarkMode ? kmaincolor4 : kmaincolor,
+                            ),
+                          ),
+                        ),
+                  ),
+                ),
+
+                SizedBox(height: 16),
+
+                // Confirm Password Field
+                Form(
+                  key: txtvalctrl.signinpasswordstate2,
+                  child: GetBuilder<SignInController>(
+                    builder:
+                        (controller) => _buildTextField(
+                          controller: signinctrl.password2,
+                          hintText: "Confirm password",
+                          focusNode: signinctrl.passwordfnodesign2,
+                          obscureText: signinctrl.visibility2,
+                          validator:
+                              (val) =>
+                                  val!.isEmpty
+                                      ? "please_confirm_password".tr
+                                      : null,
+                          suffixIcon: IconButton(
+                            onPressed: signinctrl.visibilityfunc2,
+                            icon: Icon(
+                              signinctrl.visibility2
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                              color: Get.isDarkMode ? kmaincolor4 : kmaincolor,
+                            ),
+                          ),
+                        ),
+                  ),
+                ),
+
+                SizedBox(height: Sizeconfig.screenheight! * 0.03),
+
+                // Register Button
+                SizedBox(
+                  width: double.infinity,
+                  height: 55,
+                  child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor:
-                          Get.isDarkMode ? kmaincolor4 : kmaincolor3dark,
+                          Get.isDarkMode ? kmaincolor4 : kmaincolor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
+                      elevation: 0,
                     ),
-                    child:
-                        controller.isLoading.value
-                            ? const CircularProgressIndicator()
-                            : Text(
-                              "create_account_button".tr,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                    onPressed: () {
+                      signinctrl.unfocuskeyboardsignin();
+                      if (validateForms()) {
+                        signinctrl.isLoading.value
+                            ? null
+                            : signinctrl.signin(context);
+                      }
+                    },
+                    child: Obx(
+                      () =>
+                          signinctrl.isLoading.value
+                              ? CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  Get.isDarkMode ? kmaincolor : kmaincolor4,
+                                ),
+                              )
+                              : Text(
+                                "Register",
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
-                            ),
+                    ),
                   ),
+                ),
+
+                SizedBox(height: Sizeconfig.screenheight! * 0.03),
+
+                // Or Register with
+                Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        color:
+                            Get.isDarkMode
+                                ? Colors.grey[700]!
+                                : Colors.grey[300]!,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Text(
+                        "Or Register with",
+                        style: TextStyle(
+                          color:
+                              Get.isDarkMode
+                                  ? Colors.grey[400]!
+                                  : Colors.grey[600]!,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        color:
+                            Get.isDarkMode
+                                ? Colors.grey[700]!
+                                : Colors.grey[300]!,
+                      ),
+                    ),
+                  ],
+                ),
+
+                SizedBox(height: Sizeconfig.screenheight! * 0.03),
+
+                // Social Login Buttons
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _buildSocialLoginButton(
+                      icon: "lib/core/assets/images/login_images/google.png",
+                      onTap: () {},
+                    ),
+                    SizedBox(width: 20),
+                    _buildSocialLoginButton(
+                      icon: "lib/core/assets/images/login_images/Guest.png",
+                      onTap: () {},
+                    ),
+                    SizedBox(width: 20),
+                    _buildSocialLoginButton(
+                      icon: "lib/core/assets/images/login_images/apple.png",
+                      onTap: () {},
+                    ),
+                  ],
+                ),
+
+                SizedBox(height: Sizeconfig.screenheight! * 0.04),
+
+                // Already have an account
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Already have an account?",
+                      style: TextStyle(
+                        color: Get.isDarkMode ? Colors.white70 : Colors.black54,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        signinctrl.unfocuskeyboardsignin();
+                        Get.offAll(
+                          () => LoginPage(),
+                          duration: const Duration(milliseconds: 500),
+                          transition: Transition.leftToRight,
+                        );
+                      },
+                      child: Text(
+                        "Login Now",
+                        style: TextStyle(
+                          color: Get.isDarkMode ? kmaincolor4 : kmaincolor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
-          ],
+          ),
         ),
+      ),
+    );
+  }
+
+  bool validateForms() {
+    return txtvalctrl.signinnamestate.currentState!.validate() &&
+        txtvalctrl.signinemailstate.currentState!.validate() &&
+        txtvalctrl.signinpasswordstate.currentState!.validate() &&
+        txtvalctrl.signinpasswordstate2.currentState!.validate();
+  }
+
+  // Text field widget
+  Widget _buildTextField({
+    required TextEditingController controller,
+    required String hintText,
+    required FocusNode focusNode,
+    TextInputType keyboardType = TextInputType.text,
+    bool obscureText = false,
+    String? Function(String?)? validator,
+    Widget? suffixIcon,
+  }) {
+    return TextFormField(
+      controller: controller,
+      focusNode: focusNode,
+      keyboardType: keyboardType,
+      obscureText: obscureText,
+      validator: validator,
+      style: TextStyle(color: Get.isDarkMode ? Colors.white : Colors.black87),
+      decoration: InputDecoration(
+        hintText: hintText,
+        hintStyle: TextStyle(
+          color: Get.isDarkMode ? Colors.grey[400] : Colors.grey[500],
+        ),
+        filled: true,
+        fillColor:
+            Get.isDarkMode
+                ? Colors.grey[800]!.withOpacity(0.5)
+                : Colors.grey[100]!,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide.none,
+        ),
+        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+        suffixIcon: suffixIcon,
+      ),
+    );
+  }
+
+  // Social login button widget
+  Widget _buildSocialLoginButton({
+    required String icon,
+    required VoidCallback onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
+        width: 60,
+        height: 60,
+        decoration: BoxDecoration(
+          color: Get.isDarkMode ? Colors.grey[800] : Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: Get.isDarkMode ? Colors.grey[700]! : Colors.grey[300]!,
+            width: 1,
+          ),
+        ),
+        child: Center(child: Image.asset(icon, height: 30, width: 30)),
       ),
     );
   }
