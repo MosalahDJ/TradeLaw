@@ -9,7 +9,7 @@ class LanguageController extends GetxController {
   ThemeController themeController = Get.find();
 
   LanguageController(this.prefs) {
-    language.value = prefs.getString('language') ?? 'ar';
+    language.value = prefs.getString('language') ?? 'en';
   }
 
   void changeLanguage(String lng) async {
