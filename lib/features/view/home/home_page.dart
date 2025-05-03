@@ -2,29 +2,43 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/core/Utils/constants.dart';
 import 'package:tradelaw/core/Utils/size_config.dart';
+import 'package:tradelaw/features/view%20model/settings%20controllers/language_controller.dart';
+import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
 import 'package:tradelaw/features/view/auth/login%20page/loginpage.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+
+  final ThemeController themectrl = Get.find();
+  final LanguageController langctrl = Get.find();
 
   @override
   Widget build(BuildContext context) {
     // Initialize Sizeconfig to avoid null errors
     Sizeconfig().init(context);
 
-    return Scaffold(
+    return Obx(() => Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Get.isDarkMode ? kmaincolor3dark : kmaincolor,
+        backgroundColor: themectrl.selectedTheme.value == AppTheme.dark ? kmaincolor3dark : kmaincolor,
         title: Text(
           'Dashboard'.tr,
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.light_mode, color: Colors.white),
+            icon: Icon(
+              themectrl.selectedTheme.value == AppTheme.light
+                  ? Icons.light_mode
+                  : Icons.dark_mode,
+              color: Colors.white,
+            ),
             onPressed: () {
-              // Handle notifications
+              themectrl.changeTheme(
+                themectrl.selectedTheme.value == AppTheme.light
+                    ? AppTheme.dark
+                    : AppTheme.light,
+              );
             },
           ),
           IconButton(
@@ -57,7 +71,7 @@ class HomePage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: Get.isDarkMode ? Colors.white : Colors.black87,
+                  color: themectrl.selectedTheme.value == AppTheme.dark ? Colors.white : Colors.black87,
                 ),
               ),
               SizedBox(height: 8),
@@ -65,7 +79,7 @@ class HomePage extends StatelessWidget {
                 'Explore our services'.tr,
                 style: TextStyle(
                   fontSize: 16,
-                  color: Get.isDarkMode ? Colors.white70 : Colors.black54,
+                  color: themectrl.selectedTheme.value == AppTheme.dark ? Colors.white70 : Colors.black54,
                 ),
               ),
               SizedBox(height: 24),
@@ -130,7 +144,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-    );
+    ));
   }
 
   Widget _buildGridItem({
@@ -139,12 +153,12 @@ class HomePage extends StatelessWidget {
     required Color color,
     required VoidCallback onTap,
   }) {
-    return InkWell(
+    return Obx(() => InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(16),
       child: Container(
         decoration: BoxDecoration(
-          color: Get.isDarkMode ? Colors.grey.shade800 : Colors.white,
+          color: themectrl.selectedTheme.value == AppTheme.dark ? Colors.grey.shade800 : Colors.white,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
@@ -171,13 +185,13 @@ class HomePage extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: Get.isDarkMode ? Colors.white : Colors.black87,
+                color: themectrl.selectedTheme.value == AppTheme.dark ? Colors.white : Colors.black87,
               ),
               textAlign: TextAlign.center,
             ),
           ],
         ),
       ),
-    );
+    ));
   }
 }
