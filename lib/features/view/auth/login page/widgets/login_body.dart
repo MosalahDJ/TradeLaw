@@ -35,7 +35,7 @@ class LoginBody extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        "quran_life".tr,
+                        "trade_law".tr,
                         style: TextStyle(
                           color:
                               Get.isDarkMode

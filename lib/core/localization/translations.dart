@@ -5,7 +5,7 @@ class Messages extends Translations {
   Map<String, Map<String, String>> get keys => {
     'en': {
       // Authentication
-      'quran_life': 'Quran Life',
+      'trade_law': 'TradeLaw',
       'email': 'Email Address',
       'enter_email': 'Enter your email address',
       'password': 'Password',
@@ -88,7 +88,7 @@ class Messages extends Translations {
     },
     'ar': {
       // Authentication
-      'quran_life': 'TradeLaw',
+      'trade_law': 'TradeLaw',
       'email': 'البريد الإلكتروني',
       'enter_email': 'أدخل عنوان بريدك الإلكتروني',
       'password': 'كلمة المرور',
@@ -172,7 +172,7 @@ class Messages extends Translations {
     },
     'fr': {
       // Authentication
-      'quran_life': 'Quran Life',
+      'trade_law': 'TradeLaw',
       'email': 'Adresse e-mail',
       'enter_email': 'Saisissez votre adresse e-mail',
       'password': 'Mot de passe',
@@ -185,7 +185,7 @@ class Messages extends Translations {
       'please_enter_email':
           'Veuillez saisir votre adresse e-mail et votre mot de passe',
       'leave_login': 'Voulez-vous quitter le processus de connexion ?',
-      'leave_app': 'Voulez-vous quitter l\'application Quran Life ?',
+      'leave_app': 'Voulez-vous quitter l\'application TradeLaw ?',
       'log_out': 'Déconnexion',
       'verify_internet': 'Vérifiez votre connexion Internet',
       'google_signin_error': 'Erreur de connexion avec Google',
