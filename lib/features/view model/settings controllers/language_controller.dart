@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
 
 class LanguageController extends GetxController {
-  final language = 'ar'.obs;
+  final language = 'en'.obs;
   final SharedPreferences prefs;
   ThemeController themeController = Get.find();
 
