@@ -41,11 +41,43 @@ class HomePage extends StatelessWidget {
               );
             },
           ),
-          IconButton(
+          PopupMenuButton<String>(
             icon: Icon(Icons.language_rounded, color: Colors.white),
-            onPressed: () {
-              // Handle notifications
+            onSelected: (String value) {
+              langctrl.changeLanguage(value);
             },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+              PopupMenuItem<String>(
+                value: 'en',
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.check,
+                      color: langctrl.language.value == 'en' 
+                          ? (themectrl.selectedTheme.value == AppTheme.dark ? kmaincolor4dark : kmaincolor) 
+                          : Colors.transparent,
+                    ),
+                    SizedBox(width: 8),
+                    Text('English'),
+                  ],
+                ),
+              ),
+              PopupMenuItem<String>(
+                value: 'ar',
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.check,
+                      color: langctrl.language.value == 'ar' 
+                          ? (themectrl.selectedTheme.value == AppTheme.dark ? kmaincolor4dark : kmaincolor) 
+                          : Colors.transparent,
+                    ),
+                    SizedBox(width: 8),
+                    Text('العربية'),
+                  ],
+                ),
+              ),
+            ],
           ),
           IconButton(
             icon: Icon(Icons.logout_rounded, color: Colors.white),
