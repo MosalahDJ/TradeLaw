@@ -90,6 +90,25 @@ class HomePage extends StatelessWidget {
                         ],
                       ),
                     ),
+                    PopupMenuItem<String>(
+                      value: 'fr',
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.check,
+                            color:
+                                langctrl.language.value == 'fr'
+                                    ? (themectrl.selectedTheme.value ==
+                                            AppTheme.dark
+                                        ? kmaincolor4dark
+                                        : kmaincolor)
+                                    : Colors.transparent,
+                          ),
+                          SizedBox(width: 8),
+                          Text('french'.tr),
+                        ],
+                      ),
+                    ),
                   ],
             ),
             IconButton(

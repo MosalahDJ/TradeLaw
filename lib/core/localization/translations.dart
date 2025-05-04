@@ -65,6 +65,7 @@ class Messages extends Translations {
       'Settings': 'Settings',
       'english': 'English',
       'arabic': 'Arabic',
+      'french': 'French',
     },
     'ar': {
       // Authentication - Old Words
@@ -128,6 +129,7 @@ class Messages extends Translations {
       'Settings': 'الإعدادات',
       'english': 'الإنجليزية',
       'arabic': 'العربية',
+      'french': 'الفرنسية',
     },
     'fr': {
       // Authentication - Old Words
@@ -191,6 +193,7 @@ class Messages extends Translations {
       'Settings': 'Paramètres',
       'english': 'Anglais',
       'arabic': 'Arabe',
+      'french': 'Francais',
     },
   };
 }
