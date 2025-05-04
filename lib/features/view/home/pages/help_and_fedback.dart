@@ -7,7 +7,10 @@ class Helpandfedback extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
+        backgroundColor: Colors.white,
+
         title: Text(
             'help&feedback'.tr,
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),

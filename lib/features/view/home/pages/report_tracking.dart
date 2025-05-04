@@ -8,6 +8,8 @@ class ReportTracking extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
+
         title: Text(
             'report_tracking'.tr,
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),

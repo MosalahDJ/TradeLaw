@@ -7,6 +7,8 @@ class Reporting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: AppBar(
+        backgroundColor: Colors.white,
+
       title: Text(
             'reporting'.tr,
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),

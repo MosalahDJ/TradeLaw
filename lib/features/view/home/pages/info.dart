@@ -7,6 +7,8 @@ class Info extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: AppBar(
+        backgroundColor: Colors.white,
+
       title: Text(
             'info'.tr,
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
