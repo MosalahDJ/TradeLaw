@@ -202,7 +202,7 @@ class HomePage extends StatelessWidget {
                       _buildGridItem(
                         icon: Icons.settings_outlined,
                         title: 'help&feedback'.tr,
-                        color: Colors.grey.shade700,
+                        color: const Color(0xFF616161),
                         onTap: () {
                           // Navigate to settings screen
                         },
