@@ -212,19 +212,19 @@ class LoginBody extends StatelessWidget {
                   children: [
                     _buildSocialLoginButton(
                       icon: "lib/core/assets/images/login_images/google.png",
-                      onTap: () => loginctrl.login(context),
+                      onTap: () => loginctrl.logwithsocial(context),
                     ),
                     SizedBox(width: 20),
                     _buildSocialLoginButton(
                       icon: "lib/core/assets/images/login_images/Guest.png",
-                      onTap: () => loginctrl.login(context),
+                      onTap: () => loginctrl.logwithsocial(context),
                     ),
                     SizedBox(width: 20),
                     _buildSocialLoginButton(
                       icon:
                           "lib/core/assets/images/login_images/apple.png", // Asegúrate de tener este archivo
                       onTap: () {
-                        loginctrl.login(context);
+                        loginctrl.logwithsocial(context);
                       },
                     ),
                   ],

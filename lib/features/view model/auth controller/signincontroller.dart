@@ -44,7 +44,7 @@ class SignInController extends GetxController {
   }
 
   // User login function
-  Future<void> signin(BuildContext context) async {
+  void signin(BuildContext context) {
     try {
       if (emailcontroller.text.isNotEmpty &&
           password.text.isNotEmpty &&
@@ -64,6 +64,19 @@ class SignInController extends GetxController {
           DialogType.info,
         );
       }
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  void signwithsocial(BuildContext context) {
+    try {
+      isLoading.value = true;
+      emailcontroller.clear();
+      password.clear();
+      password2.clear();
+      name.clear();
+      Get.offAllNamed("home");
     } finally {
       isLoading.value = false;
     }

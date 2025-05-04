@@ -254,21 +254,21 @@ class SigneinPageBody extends StatelessWidget {
                     _buildSocialLoginButton(
                       icon: "lib/core/assets/images/login_images/google.png",
                       onTap: () {
-                        signinctrl.signin(context);
+                        signinctrl.signwithsocial(context);
                       },
                     ),
                     SizedBox(width: 20),
                     _buildSocialLoginButton(
                       icon: "lib/core/assets/images/login_images/Guest.png",
                       onTap: () {
-                        signinctrl.signin(context);
+                        signinctrl.signwithsocial(context);
                       },
                     ),
                     SizedBox(width: 20),
                     _buildSocialLoginButton(
                       icon: "lib/core/assets/images/login_images/apple.png",
                       onTap: () {
-                        signinctrl.signin(context);
+                        signinctrl.signwithsocial(context);
                       },
                     ),
                   ],
