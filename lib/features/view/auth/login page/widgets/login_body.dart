@@ -39,7 +39,7 @@ class LoginBody extends StatelessWidget {
                 // Welcome Text
                 Center(
                   child: Text(
-                    "Welcome back! Glad".tr,
+                    "welcome_back".tr,
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
@@ -50,7 +50,7 @@ class LoginBody extends StatelessWidget {
                 SizedBox(height: 8),
                 Center(
                   child: Text(
-                    "to see you, Again!".tr,
+                    "see_you_again".tr,
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
@@ -66,11 +66,12 @@ class LoginBody extends StatelessWidget {
                   key: txtvalctrl.loginemailstate,
                   child: _buildTextField(
                     controller: loginctrl.emailController,
-                    hintText: "Enter your email".tr,
+                    hintText: "enter_email".tr,
                     focusNode: loginctrl.emailFocusNode,
                     keyboardType: TextInputType.emailAddress,
                     validator:
-                        (val) => val!.isEmpty ? "please_enter_email".tr : null,
+                        (val) =>
+                            val!.isEmpty ? "Please ${"enter_email".tr}" : null,
                   ),
                 ),
 
@@ -83,13 +84,13 @@ class LoginBody extends StatelessWidget {
                     builder:
                         (controller) => _buildTextField(
                           controller: loginctrl.passwordController,
-                          hintText: "Enter your password".tr,
+                          hintText: "enter_password".tr,
                           focusNode: loginctrl.passwordFocusNode,
                           obscureText: loginctrl.isPasswordVisible,
                           validator:
                               (val) =>
                                   val!.isEmpty
-                                      ? "please_enter_password".tr
+                                      ? "Please ${"enter_password".tr}"
                                       : null,
                           suffixIcon: IconButton(
                             onPressed: loginctrl.togglePasswordVisibility,
@@ -113,7 +114,7 @@ class LoginBody extends StatelessWidget {
                       // Forgot password function
                     },
                     child: Text(
-                      "Forgot Password?".tr,
+                      "forgot_password".tr,
                       style: TextStyle(
                         color: Get.isDarkMode ? kmaincolor4 : kmaincolor,
                       ),
@@ -184,7 +185,7 @@ class LoginBody extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Text(
-                        "Or Login with".tr,
+                        "or_login_with".tr,
                         style: TextStyle(
                           color:
                               Get.isDarkMode

@@ -20,7 +20,6 @@ class Messages extends Translations {
       'leave_app': 'Do you want to exit TradeLaw?',
       'log_out': 'Log Out',
       'error': 'Error',
-      // 'email_verification': 'Email Verification',
       "unknown_error": "An unknown error occurred",
       "success": "Success",
       'create_account': 'Create Your Account',
@@ -109,3 +108,20 @@ class Messages extends Translations {
     },
   };
 }
+
+
+
+/*
+are_you_sure,
+yes,
+no,
+welcome_back:"Welcome back! Glad",
+see_you_again:"to see you, Again!",
+
+
+
+
+
+
+
+*/
