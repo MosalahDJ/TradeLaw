@@ -37,21 +37,25 @@ class LoginBody extends StatelessWidget {
                 SizedBox(height: Sizeconfig.screenheight! * 0.04),
 
                 // Welcome Text
-                Text(
-                  "Welcome back! Glad".tr,
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Get.isDarkMode ? Colors.white : Colors.black87,
+                Center(
+                  child: Text(
+                    "Welcome back! Glad".tr,
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      color: Get.isDarkMode ? Colors.white : Colors.black87,
+                    ),
                   ),
                 ),
                 SizedBox(height: 8),
-                Text(
-                  "to see you, Again!".tr,
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Get.isDarkMode ? Colors.white : Colors.black87,
+                Center(
+                  child: Text(
+                    "to see you, Again!".tr,
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      color: Get.isDarkMode ? Colors.white : Colors.black87,
+                    ),
                   ),
                 ),
 
