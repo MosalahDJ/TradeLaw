@@ -8,6 +8,7 @@ class Lawinfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        
         title: Text(
             'law_info'.tr,
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
