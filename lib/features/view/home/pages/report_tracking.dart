@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tradelaw/core/Utils/constants.dart';
 
 class ReportTracking extends StatelessWidget {
   const ReportTracking({super.key});
@@ -8,7 +9,8 @@ class ReportTracking extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        foregroundColor: Colors.white,
+        backgroundColor: kmaincolor,
 
         title: Text(
             'report_tracking'.tr,

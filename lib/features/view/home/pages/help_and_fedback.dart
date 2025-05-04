@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tradelaw/core/Utils/constants.dart';
 
 class Helpandfedback extends StatelessWidget {
   const Helpandfedback({super.key});
@@ -9,7 +10,8 @@ class Helpandfedback extends StatelessWidget {
     return Scaffold(
 
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        foregroundColor: Colors.white,
+        backgroundColor: kmaincolor,
 
         title: Text(
             'help&feedback'.tr,

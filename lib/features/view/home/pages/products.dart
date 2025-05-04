@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tradelaw/core/Utils/constants.dart';
 
 class Products extends StatefulWidget {
   const Products({super.key});
@@ -8,13 +9,14 @@ class Products extends StatefulWidget {
   State<Products> createState() => _ProductsState();
 }
 
-class _ProductsState extends State<Products> with SingleTickerProviderStateMixin {
+class _ProductsState extends State<Products>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
-  
+
   // Selected product for detail view
   Map<String, dynamic>? selectedProduct;
-  
+
   // Product categories with their respective products
   final List<Map<String, dynamic>> productCategories = [
     {
@@ -27,23 +29,27 @@ class _ProductsState extends State<Products> with SingleTickerProviderStateMixin
           'price': '60 DZD/kg',
           'subsidized': true,
           'description': 'Government subsidized wheat flour for bread making',
-          'image': 'https://images.unsplash.com/photo-1603046891726-36bfd957e0bf'
+          'image':
+              'https://images.unsplash.com/photo-1603046891726-36bfd957e0bf',
         },
         {
           'name': 'Semolina',
           'price': '70 DZD/kg',
           'subsidized': true,
-          'description': 'Essential for couscous and traditional Algerian dishes',
-          'image': 'https://images.unsplash.com/photo-1586444248879-bc604bc77f90'
+          'description':
+              'Essential for couscous and traditional Algerian dishes',
+          'image':
+              'https://images.unsplash.com/photo-1586444248879-bc604bc77f90',
         },
         {
           'name': 'Rice',
           'price': '120 DZD/kg',
           'subsidized': true,
           'description': 'Imported rice with government price controls',
-          'image': 'https://images.unsplash.com/photo-1586201375761-83865001e8ac'
+          'image':
+              'https://images.unsplash.com/photo-1586201375761-83865001e8ac',
         },
-      ]
+      ],
     },
     {
       'name': 'Dairy Products',
@@ -55,16 +61,17 @@ class _ProductsState extends State<Products> with SingleTickerProviderStateMixin
           'price': '25 DZD/L',
           'subsidized': true,
           'description': 'Pasteurized milk with government price controls',
-          'image': 'https://images.unsplash.com/photo-1563636619-e9143da7973b'
+          'image': 'https://images.unsplash.com/photo-1563636619-e9143da7973b',
         },
         {
           'name': 'Yogurt',
           'price': '30 DZD/unit',
           'subsidized': false,
           'description': 'Local yogurt production with partial subsidies',
-          'image': 'https://images.unsplash.com/photo-1571212515416-fef01fc43637'
+          'image':
+              'https://images.unsplash.com/photo-1571212515416-fef01fc43637',
         },
-      ]
+      ],
     },
     {
       'name': 'Oils & Fats',
@@ -76,16 +83,19 @@ class _ProductsState extends State<Products> with SingleTickerProviderStateMixin
           'price': '600 DZD/5L',
           'subsidized': true,
           'description': 'Cooking oil with strict price controls',
-          'image': 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5'
+          'image':
+              'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5',
         },
         {
           'name': 'Olive Oil',
           'price': '900 DZD/L',
           'subsidized': false,
-          'description': 'Premium Algerian olive oil with partial price support',
-          'image': 'https://images.unsplash.com/photo-1474979087453-7a86214f001a'
+          'description':
+              'Premium Algerian olive oil with partial price support',
+          'image':
+              'https://images.unsplash.com/photo-1474979087453-7a86214f001a',
         },
-      ]
+      ],
     },
     {
       'name': 'Sugar & Sweeteners',
@@ -97,9 +107,10 @@ class _ProductsState extends State<Products> with SingleTickerProviderStateMixin
           'price': '90 DZD/kg',
           'subsidized': true,
           'description': 'Refined sugar with government price controls',
-          'image': 'https://images.unsplash.com/photo-1581000197348-5a65b9ab8a32'
+          'image':
+              'https://images.unsplash.com/photo-1581000197348-5a65b9ab8a32',
         },
-      ]
+      ],
     },
     {
       'name': 'Legumes',
@@ -111,16 +122,18 @@ class _ProductsState extends State<Products> with SingleTickerProviderStateMixin
           'price': '180 DZD/kg',
           'subsidized': true,
           'description': 'Imported lentils with price controls',
-          'image': 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5'
+          'image':
+              'https://images.unsplash.com/photo-1615485290382-441e4d049cb5',
         },
         {
           'name': 'Chickpeas',
           'price': '200 DZD/kg',
           'subsidized': true,
           'description': 'Essential legume for Algerian cuisine',
-          'image': 'https://images.unsplash.com/photo-1515543904379-3d757afe72e1'
+          'image':
+              'https://images.unsplash.com/photo-1515543904379-3d757afe72e1',
         },
-      ]
+      ],
     },
   ];
 
@@ -131,10 +144,7 @@ class _ProductsState extends State<Products> with SingleTickerProviderStateMixin
       vsync: this,
       duration: const Duration(milliseconds: 300),
     );
-    _animation = CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeInOut,
-    );
+    _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
   }
 
   @override
@@ -162,9 +172,14 @@ class _ProductsState extends State<Products> with SingleTickerProviderStateMixin
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        foregroundColor: Colors.white,
+        backgroundColor: kmaincolor,
         title: Text(
           'products'.tr,
-          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
       body: Stack(
@@ -183,7 +198,7 @@ class _ProductsState extends State<Products> with SingleTickerProviderStateMixin
               },
             ),
           ),
-          
+
           // Product Detail Sliding Panel
           if (selectedProduct != null)
             AnimatedBuilder(
@@ -193,7 +208,10 @@ class _ProductsState extends State<Products> with SingleTickerProviderStateMixin
                   bottom: 0,
                   left: 0,
                   right: 0,
-                  height: MediaQuery.of(context).size.height * 0.7 * _animation.value,
+                  height:
+                      MediaQuery.of(context).size.height *
+                      0.7 *
+                      _animation.value,
                   child: GestureDetector(
                     onVerticalDragEnd: (details) {
                       if (details.primaryVelocity! > 300) {
@@ -260,7 +278,9 @@ class _ProductsState extends State<Products> with SingleTickerProviderStateMixin
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(10),
+                  ),
                   image: DecorationImage(
                     image: NetworkImage(product['image']),
                     fit: BoxFit.cover,
@@ -268,20 +288,27 @@ class _ProductsState extends State<Products> with SingleTickerProviderStateMixin
                 ),
                 child: Align(
                   alignment: Alignment.topRight,
-                  child: product['subsidized']
-                      ? Container(
-                          margin: const EdgeInsets.all(8),
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                          decoration: BoxDecoration(
-                            color: Colors.green,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: const Text(
-                            'Subsidized',
-                            style: TextStyle(color: Colors.white, fontSize: 10),
-                          ),
-                        )
-                      : const SizedBox(),
+                  child:
+                      product['subsidized']
+                          ? Container(
+                            margin: const EdgeInsets.all(8),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 4,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.green,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: const Text(
+                              'Subsidized',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 10,
+                              ),
+                            ),
+                          )
+                          : const SizedBox(),
                 ),
               ),
             ),
@@ -301,7 +328,8 @@ class _ProductsState extends State<Products> with SingleTickerProviderStateMixin
                   Text(
                     product['price'],
                     style: TextStyle(
-                      color: product['subsidized'] ? Colors.green : Colors.black87,
+                      color:
+                          product['subsidized'] ? Colors.green : Colors.black87,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -372,16 +400,27 @@ class _ProductsState extends State<Products> with SingleTickerProviderStateMixin
                   children: [
                     Text(
                       selectedProduct!['name'],
-                      style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
                       decoration: BoxDecoration(
-                        color: selectedProduct!['subsidized'] ? Colors.green : Colors.orange,
+                        color:
+                            selectedProduct!['subsidized']
+                                ? Colors.green
+                                : Colors.orange,
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(
-                        selectedProduct!['subsidized'] ? 'Subsidized' : 'Partial Support',
+                        selectedProduct!['subsidized']
+                            ? 'Subsidized'
+                            : 'Partial Support',
                         style: const TextStyle(color: Colors.white),
                       ),
                     ),
@@ -393,7 +432,10 @@ class _ProductsState extends State<Products> with SingleTickerProviderStateMixin
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w500,
-                    color: selectedProduct!['subsidized'] ? Colors.green.shade700 : Colors.black87,
+                    color:
+                        selectedProduct!['subsidized']
+                            ? Colors.green.shade700
+                            : Colors.black87,
                   ),
                 ),
                 const SizedBox(height: 16),

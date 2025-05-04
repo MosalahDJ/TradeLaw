@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tradelaw/core/Utils/constants.dart';
 
 class Lawinfo extends StatelessWidget {
   const Lawinfo({super.key});
@@ -8,7 +9,8 @@ class Lawinfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        foregroundColor: Colors.white,
+        backgroundColor: kmaincolor,
         
         title: Text(
             'law_info'.tr,
