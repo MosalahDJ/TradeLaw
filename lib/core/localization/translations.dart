@@ -57,15 +57,17 @@ class Messages extends Translations {
       'Dashboard': 'Dashboard',
       'Welcome': 'Welcome',
       'Explore our services': 'Explore our services',
-      'Legal Advice': 'Legal Advice',
-      'Documents': 'Documents',
-      'Consultants': 'Consultants',
-      'Appointments': 'Appointments',
-      'Articles': 'Articles',
-      'Settings': 'Settings',
       'english': 'English',
       'arabic': 'Arabic',
       'french': 'French',
+
+      //pages
+      'products': 'Supported Products List',
+      'reporting': 'Reporting',
+      'report_tracking': 'Track My Reports',
+      'law_info': 'Trade Laws',
+      'info': 'Information Page',
+      'help&fedback': 'Help & Feedback',
     },
     'ar': {
       // Authentication - Old Words
@@ -121,15 +123,17 @@ class Messages extends Translations {
       'Dashboard': 'لوحة التحكم',
       'Welcome': 'مرحباً',
       'Explore our services': 'استكشف خدماتنا',
-      'Legal Advice': 'استشارة قانونية',
-      'Documents': 'المستندات',
-      'Consultants': 'المستشارون',
-      'Appointments': 'المواعيد',
-      'Articles': 'المقالات',
-      'Settings': 'الإعدادات',
       'english': 'الإنجليزية',
       'arabic': 'العربية',
       'french': 'الفرنسية',
+
+      //pages
+      'products': 'قائمة السلع المدعمة',
+      'reporting': 'التبليغ',
+      'report_tracking': 'تتبع تبليغاتي',
+      'law_info': 'القوانين التجارية',
+      'info': 'صفحة المعلومات',
+      'help&fedback': 'المساعدة و التقييمات',
     },
     'fr': {
       // Authentication - Old Words
@@ -185,15 +189,17 @@ class Messages extends Translations {
       'Dashboard': 'Tableau de bord',
       'Welcome': 'Bienvenue',
       'Explore our services': 'Explorez nos services',
-      'Legal Advice': 'Conseil juridique',
-      'Documents': 'Documents',
-      'Consultants': 'Consultants',
-      'Appointments': 'Rendez-vous',
-      'Articles': 'Articles',
-      'Settings': 'Paramètres',
       'english': 'Anglais',
       'arabic': 'Arabe',
       'french': 'Francais',
+
+      //pages
+      'products': 'Liste des produits pris en charge',
+      'reporting': 'Signalement',
+      'report_tracking': 'Suivre mes signalements',
+      'law_info': 'Lois commerciales',
+      'info': 'Page d\'information',
+      'help&fedback': 'Aide et commentaires',
     },
   };
 }
