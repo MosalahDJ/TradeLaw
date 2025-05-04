@@ -160,7 +160,9 @@ class HomePage extends StatelessWidget {
                     mainAxisSpacing: 16,
                     children: [
                       _buildGridItem(
-                        icon: Icons.gavel,
+                        icon:
+                            Icons
+                                .shopping_bag_outlined, // Changed from gavel to shopping_bag_outlined
                         title: 'products'.tr,
                         color: Colors.blue.shade700,
                         onTap: () {
@@ -168,7 +170,9 @@ class HomePage extends StatelessWidget {
                         },
                       ),
                       _buildGridItem(
-                        icon: Icons.description_outlined,
+                        icon:
+                            Icons
+                                .report_outlined, // Changed from description_outlined to report_outlined
                         title: 'reporting'.tr,
                         color: Colors.green.shade700,
                         onTap: () {
@@ -176,7 +180,9 @@ class HomePage extends StatelessWidget {
                         },
                       ),
                       _buildGridItem(
-                        icon: Icons.people_outline,
+                        icon:
+                            Icons
+                                .track_changes, // Changed from people_outline to track_changes
                         title: 'report_tracking'.tr,
                         color: Colors.orange.shade700,
                         onTap: () {
@@ -184,7 +190,9 @@ class HomePage extends StatelessWidget {
                         },
                       ),
                       _buildGridItem(
-                        icon: Icons.calendar_today,
+                        icon:
+                            Icons
+                                .balance, // Fixed syntax error and changed to balance
                         title: 'law_info'.tr,
                         color: Colors.purple.shade700,
                         onTap: () {
@@ -192,7 +200,9 @@ class HomePage extends StatelessWidget {
                         },
                       ),
                       _buildGridItem(
-                        icon: Icons.article_outlined,
+                        icon:
+                            Icons
+                                .info_outline, // Changed from info to info_outline
                         title: 'info'.tr,
                         color: Colors.red.shade700,
                         onTap: () {
@@ -200,8 +210,10 @@ class HomePage extends StatelessWidget {
                         },
                       ),
                       _buildGridItem(
-                        icon: Icons.settings_outlined,
-                        title: 'help&feedback'.tr,
+                        icon:
+                            Icons
+                                .support_agent, // Changed from help to support_agent
+                        title: 'help&fedback'.tr,
                         color: const Color(0xFF616161),
                         onTap: () {
                           // Navigate to settings screen

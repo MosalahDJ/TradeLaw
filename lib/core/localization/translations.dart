@@ -62,12 +62,12 @@ class Messages extends Translations {
       'french': 'French',
 
       //pages
-      'products': 'Supported Products List',
-      'reporting': 'Reporting',
-      'report_tracking': 'Track My Reports',
-      'law_info': 'Trade Laws',
-      'info': 'Information Page',
-      'help&feedback': 'Help & Feedback',
+      'products': 'Products',
+      'reporting': 'Reports',
+      'report_tracking': 'My Reports',
+      'law_info': 'Laws',
+      'info': 'Info',
+      'help&feedback': 'Help',
     },
     'ar': {
       // Authentication - Old Words
@@ -128,12 +128,12 @@ class Messages extends Translations {
       'french': 'الفرنسية',
 
       //pages
-      'products': 'قائمة السلع المدعمة',
-      'reporting': 'التبليغ',
-      'report_tracking': 'تتبع تبليغاتي',
-      'law_info': 'القوانين التجارية',
-      'info': 'صفحة المعلومات',
-      'help&fedback': 'المساعدة و التقييمات',
+      'products': 'المنتجات',
+      'reporting': 'البلاغات',
+      'report_tracking': 'بلاغاتي',
+      'law_info': 'القوانين',
+      'info': 'معلومات',
+      'help&fedback': 'المساعدة',
     },
     'fr': {
       // Authentication - Old Words
@@ -194,12 +194,12 @@ class Messages extends Translations {
       'french': 'Francais',
 
       //pages
-      'products': 'Liste des produits pris en charge',
-      'reporting': 'Signalement',
-      'report_tracking': 'Suivre mes signalements',
-      'law_info': 'Lois commerciales',
-      'info': 'Page d\'information',
-      'help&fedback': 'Aide et commentaires',
+      'products': 'Produits',
+      'reporting': 'Rapports',
+      'report_tracking': 'Mes Rapports',
+      'law_info': 'Lois',
+      'info': 'Info',
+      'help&fedback': 'Aide',
     },
   };
 }
