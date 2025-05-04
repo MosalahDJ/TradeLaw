@@ -166,7 +166,7 @@ class HomePage extends StatelessWidget {
                         title: 'products'.tr,
                         color: Colors.blue.shade700,
                         onTap: () {
-                          // Navigate to legal advice screen
+                          Get.toNamed("products");
                         },
                       ),
                       _buildGridItem(
@@ -177,6 +177,7 @@ class HomePage extends StatelessWidget {
                         color: Colors.green.shade700,
                         onTap: () {
                           // Navigate to documents screen
+                          Get.toNamed("reporting");
                         },
                       ),
                       _buildGridItem(
@@ -187,6 +188,7 @@ class HomePage extends StatelessWidget {
                         color: Colors.orange.shade700,
                         onTap: () {
                           // Navigate to consultants screen
+                          Get.toNamed("tracking");
                         },
                       ),
                       _buildGridItem(
@@ -197,6 +199,7 @@ class HomePage extends StatelessWidget {
                         color: Colors.purple.shade700,
                         onTap: () {
                           // Navigate to appointments screen
+                          Get.toNamed("law_info");
                         },
                       ),
                       _buildGridItem(
@@ -207,6 +210,7 @@ class HomePage extends StatelessWidget {
                         color: Colors.red.shade700,
                         onTap: () {
                           // Navigate to articles screen
+                          Get.toNamed("info");
                         },
                       ),
                       _buildGridItem(
@@ -217,6 +221,7 @@ class HomePage extends StatelessWidget {
                         color: const Color(0xFF616161),
                         onTap: () {
                           // Navigate to settings screen
+                          Get.toNamed("help");
                         },
                       ),
                     ],
