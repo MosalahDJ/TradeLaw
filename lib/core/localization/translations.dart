@@ -114,7 +114,7 @@ class Messages extends Translations {
       'password_length': 'يجب أن تكون كلمة المرور 6 أحرف على الأقل',
       'not_match': 'كلمات المرور غير متطابقة',
       'hello_register': 'مرحبًا! سجل للحصول',
-      'started': 'على البداية',
+      'started': 'على حسابك الجديد',
       'register': 'تسجيل',
       'have_account': 'لديك حساب بالفعل؟',
       'log_in': 'تسجيل الدخول',
