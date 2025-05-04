@@ -4,7 +4,7 @@ class Messages extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
     'en': {
-      // Authentication
+      // Authentication - Old Words
       'trade_law': 'TradeLaw',
       'email': 'Email Address',
       'enter_email': 'Enter your email address',
@@ -36,9 +36,25 @@ class Messages extends Translations {
       'registration': 'Registration',
       'anonymous_user': 'Anonymous User',
       'no_email': 'No Email',
+      
+      // New Words
+      'are_you_sure': 'Are you sure?',
+      'yes': 'Yes',
+      'no': 'No',
+      'welcome_back': 'Welcome back! Glad',
+      'see_you_again': 'to see you, Again!',
+      'field_required': 'This field is required',
+      'valid_email': 'Please enter a valid email',
+      'password_length': 'Password must be at least 6 characters',
+      'not_match': 'Passwords do not match',
+      'hello_register': 'Hello! Register to get',
+      'started': 'Started',
+      'register': 'Register',
+      'have_account': 'Already have an account?',
+      'log_in': 'Log In',
     },
     'ar': {
-      // Authentication
+      // Authentication - Old Words
       'trade_law': 'TradeLaw',
       'email': 'البريد الإلكتروني',
       'enter_email': 'أدخل عنوان بريدك الإلكتروني',
@@ -70,9 +86,25 @@ class Messages extends Translations {
       'registration': 'التسجيل',
       'anonymous_user': 'مستخدم مجهول',
       'no_email': 'لا يوجد بريد إلكتروني',
+      
+      // New Words
+      'are_you_sure': 'هل أنت متأكد؟',
+      'yes': 'نعم',
+      'no': 'لا',
+      'welcome_back': 'مرحبًا بعودتك!',
+      'see_you_again': 'سعداء برؤيتك مجددًا!',
+      'field_required': 'هذا الحقل مطلوب',
+      'valid_email': 'الرجاء إدخال بريد إلكتروني صحيح',
+      'password_length': 'يجب أن تكون كلمة المرور 6 أحرف على الأقل',
+      'not_match': 'كلمات المرور غير متطابقة',
+      'hello_register': 'مرحبًا! سجل للحصول',
+      'started': 'على البداية',
+      'register': 'تسجيل',
+      'have_account': 'لديك حساب بالفعل؟',
+      'log_in': 'تسجيل الدخول',
     },
     'fr': {
-      // Authentication
+      // Authentication - Old Words
       'trade_law': 'TradeLaw',
       'email': 'Adresse e-mail',
       'enter_email': 'Saisissez votre adresse e-mail',
@@ -105,26 +137,22 @@ class Messages extends Translations {
       'registration': 'Inscription',
       'anonymous_user': 'Utilisateur anonyme',
       'no_email': 'Pas d\'email',
+      
+      // New Words
+      'are_you_sure': 'Êtes-vous sûr?',
+      'yes': 'Oui',
+      'no': 'Non',
+      'welcome_back': 'Bon retour! Heureux',
+      'see_you_again': 'de vous revoir!',
+      'field_required': 'Ce champ est obligatoire',
+      'valid_email': 'Veuillez entrer un email valide',
+      'password_length': 'Le mot de passe doit comporter au moins 6 caractères',
+      'not_match': 'Les mots de passe ne correspondent pas',
+      'hello_register': 'Bonjour! Inscrivez-vous pour',
+      'started': 'commencer',
+      'register': 'S\'inscrire',
+      'have_account': 'Vous avez déjà un compte?',
+      'log_in': 'Se connecter',
     },
   };
 }
-
-
-
-/*
-are_you_sure,
-yes,
-no,
-welcome_back:"Welcome back! Glad",
-see_you_again:"to see you, Again!",
-field_required,
-valid_email,
-password_length,
-field_required,
-not_match,
-"hello_register":"Hello! Register to get",
-"started":"Started",
-register,
-'have_account': 'Already have an account?',
-"log_in":"Log In",
-*/
