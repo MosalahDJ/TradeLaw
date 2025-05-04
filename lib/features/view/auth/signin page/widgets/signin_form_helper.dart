@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tradelaw/core/Utils/constants.dart';
 import 'package:tradelaw/core/widgets/information_form.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/signincontroller.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
@@ -48,88 +47,6 @@ class SignInFormHelpers {
       ),
     );
   }
-
-  // Creates a gender selection dropdown with theme-aware styling
-  Widget buildGenderDropdown() {
-    return Form(
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-      key: txtvalctrl.signingendrestate,
-      child: InformationsForm(
-        textctrl: signinnctrl.gendre,
-        focusnode: signinnctrl.gendrefnode,
-        isrequired: true,
-        formtitle: "gender".tr,
-        hint: "select_gender".tr,
-        keyboardtype: TextInputType.none,
-        obsecure: false,
-        suffixbutton: DropdownButtonHideUnderline(
-          child: Theme(
-            data: Theme.of(Get.context!).copyWith(
-              dropdownMenuTheme: DropdownMenuThemeData(
-                textStyle: TextStyle(
-                  color:
-                      Get.isDarkMode ? Colors.white : const Color(0xFF3D3825),
-                ),
-              ),
-            ),
-            child: DropdownButton<String>(
-              value:
-                  signinnctrl.gendre.text.isEmpty
-                      ? null
-                      : signinnctrl.gendre.text,
-              hint: Text(
-                "select_gender".tr,
-                style: TextStyle(
-                  color: Get.isDarkMode ? Colors.white70 : Colors.grey[600],
-                ),
-              ),
-              icon: Icon(
-                Icons.arrow_drop_down,
-                color: Get.isDarkMode ? kmaincolor4 : kmaincolor3dark,
-              ),
-              dropdownColor: Get.isDarkMode ? kmaincolor3dark : Colors.white,
-              items: [
-                DropdownMenuItem(
-                  value: "Male",
-                  child: Text(
-                    "male".tr,
-                    style: TextStyle(
-                      color:
-                          Get.isDarkMode
-                              ? Colors.white
-                              : const Color(0xFF3D3825),
-                    ),
-                  ),
-                ),
-                DropdownMenuItem(
-                  value: "Female",
-                  child: Text(
-                    "female".tr,
-                    style: TextStyle(
-                      color:
-                          Get.isDarkMode
-                              ? Colors.white
-                              : const Color(0xFF3D3825),
-                    ),
-                  ),
-                ),
-              ],
-              onChanged: (value) {
-                signinnctrl.gendre.text = value ?? '';
-              },
-            ),
-          ),
-        ),
-        validator: (val) {
-          if (val == null || val.isEmpty) {
-            return 'field_required'.tr;
-          }
-          return null;
-        },
-      ),
-    );
-  }
-
   // Creates a password field with visibility toggle and validation
   Widget buildPasswordField(
     BuildContext context, {
@@ -152,14 +69,14 @@ class SignInFormHelpers {
         validator: (val) {
           if (val == null || val.isEmpty) {
             return isConfirmation
-                ? 'Please confirm your password'
-                : 'Password is required';
+                ? 'Please ${"confirm_password".tr}'
+                : 'field_required'.tr;
           }
-          if (!isConfirmation && val.length < 6) {
-            return 'Password must be at least 6 characters';
-          }
+          // if (!isConfirmation && val.length < 6) {
+          //   return 'Password must be at least 6 characters';
+          // }
           if (isConfirmation && val != signinnctrl.password.text) {
-            return 'Passwords do not match';
+            return 'not_match'.tr;
           }
           return null;
         },

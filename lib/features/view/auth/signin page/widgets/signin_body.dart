@@ -60,7 +60,7 @@ class SigneinPageBody extends StatelessWidget {
 
                 // Welcome Text
                 Text(
-                  "Hello! Register to get".tr,
+                  "hello_register".tr,
                   style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
@@ -84,10 +84,10 @@ class SigneinPageBody extends StatelessWidget {
                   key: txtvalctrl.signinnamestate,
                   child: _buildTextField(
                     controller: signinctrl.name,
-                    hintText: "Username".tr,
+                    hintText: "first_name".tr,
                     focusNode: signinctrl.namefnode,
                     validator:
-                        (val) => val!.isEmpty ? "please_enter_name".tr : null,
+                        (val) => val!.isEmpty ? "enter_first_name".tr : null,
                   ),
                 ),
 
@@ -98,11 +98,11 @@ class SigneinPageBody extends StatelessWidget {
                   key: txtvalctrl.signinemailstate,
                   child: _buildTextField(
                     controller: signinctrl.emailcontroller,
-                    hintText: "Email",
+                    hintText: "email".tr,
                     focusNode: signinctrl.emailfnodesign,
                     keyboardType: TextInputType.emailAddress,
                     validator:
-                        (val) => val!.isEmpty ? "please_enter_email".tr : null,
+                        (val) => val!.isEmpty ? "enter_email".tr : null,
                   ),
                 ),
 
@@ -115,13 +115,13 @@ class SigneinPageBody extends StatelessWidget {
                     builder:
                         (controller) => _buildTextField(
                           controller: signinctrl.password,
-                          hintText: "Password",
+                          hintText: "password".tr,
                           focusNode: signinctrl.passwordfnodesign,
                           obscureText: signinctrl.visibility,
                           validator:
                               (val) =>
                                   val!.isEmpty
-                                      ? "please_enter_password".tr
+                                      ? "enter_password".tr
                                       : null,
                           suffixIcon: IconButton(
                             onPressed: signinctrl.visibilityfunc,
@@ -145,13 +145,13 @@ class SigneinPageBody extends StatelessWidget {
                     builder:
                         (controller) => _buildTextField(
                           controller: signinctrl.password2,
-                          hintText: "Confirm password",
+                          hintText: "confirm_password".tr,
                           focusNode: signinctrl.passwordfnodesign2,
                           obscureText: signinctrl.visibility2,
                           validator:
                               (val) =>
                                   val!.isEmpty
-                                      ? "please_confirm_password".tr
+                                      ? "enter_confirm_password".tr
                                       : null,
                           suffixIcon: IconButton(
                             onPressed: signinctrl.visibilityfunc2,
@@ -198,7 +198,7 @@ class SigneinPageBody extends StatelessWidget {
                                 ),
                               )
                               : Text(
-                                "Register",
+                                "register".tr,
                                 style: const TextStyle(
                                   fontSize: 16,
                                   color: Colors.white,
@@ -225,7 +225,7 @@ class SigneinPageBody extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Text(
-                        "Or Register with",
+                        "or_login_with".tr,
                         style: TextStyle(
                           color:
                               Get.isDarkMode
@@ -281,7 +281,7 @@ class SigneinPageBody extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Already have an account?",
+                      "have_account".tr,
                       style: TextStyle(
                         color: Get.isDarkMode ? Colors.white70 : Colors.black54,
                       ),
@@ -296,7 +296,7 @@ class SigneinPageBody extends StatelessWidget {
                         );
                       },
                       child: Text(
-                        "Login Now",
+                        "log_in".tr,
                         style: TextStyle(
                           color: Get.isDarkMode ? kmaincolor4 : kmaincolor,
                           fontWeight: FontWeight.bold,
@@ -345,7 +345,7 @@ class SigneinPageBody extends StatelessWidget {
         filled: true,
         fillColor:
             Get.isDarkMode
-                ? Colors.grey[800]!.withOpacity(0.5)
+                ? Colors.grey[800]!.withValues(alpha: 0.5)
                 : Colors.grey[100]!,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),

@@ -117,6 +117,17 @@ yes,
 no,
 welcome_back:"Welcome back! Glad",
 see_you_again:"to see you, Again!",
+field_required,
+valid_email,
+password_length,
+field_required,
+not_match,
+"hello_register":"Hello! Register to get",
+"started":"Started",
+register,
+'have_account': 'Already have an account?',
+"log_in":"Log In",
+
 
 
 
