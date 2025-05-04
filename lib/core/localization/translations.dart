@@ -14,7 +14,7 @@ class Messages extends Translations {
       'login': 'Sign In',
       'or_login_with': 'Or Sign In With',
       'no_account': 'Don\'t have an account?',
-      'sign_in': 'Create Account',
+      'sign_in': 'Register Now',
       'please_enter_email': 'Please enter your email address and password',
       'leave_login': 'Do you want to exit the sign-in process?',
       'leave_app': 'Do you want to exit TradeLaw?',

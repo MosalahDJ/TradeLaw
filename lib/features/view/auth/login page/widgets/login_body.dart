@@ -238,7 +238,7 @@ class LoginBody extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Don't have an account?".tr,
+                      "no_account".tr,
                       style: TextStyle(
                         color: Get.isDarkMode ? Colors.white70 : Colors.black54,
                       ),
@@ -253,7 +253,7 @@ class LoginBody extends StatelessWidget {
                         );
                       },
                       child: Text(
-                        "Register Now".tr,
+                        "sign_in".tr,
                         style: TextStyle(
                           color: Get.isDarkMode ? kmaincolor4 : kmaincolor,
                           fontWeight: FontWeight.bold,
@@ -295,7 +295,7 @@ class LoginBody extends StatelessWidget {
         filled: true,
         fillColor:
             Get.isDarkMode
-                ? Colors.grey[800]!.withOpacity(0.5)
+                ? Colors.grey[800]!.withValues(alpha: 0.5)
                 : Colors.grey[100]!,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
