@@ -127,12 +127,4 @@ not_match,
 register,
 'have_account': 'Already have an account?',
 "log_in":"Log In",
-
-
-
-
-
-
-
-
 */
