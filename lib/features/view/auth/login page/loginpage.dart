@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/logincontroller.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
+import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
 import 'package:tradelaw/features/view/auth/login%20page/widgets/login_body.dart';
 
 class LoginPage extends StatelessWidget {
@@ -44,7 +45,7 @@ class LoginPage extends StatelessWidget {
         }
       },
       child: Scaffold(
-        body: LoginBody(),
+        body: GetBuilder<ThemeController>(builder: (controller) => LoginBody()),
       ),
     );
   }
