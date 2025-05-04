@@ -4,14 +4,20 @@ import 'package:tradelaw/core/Utils/constants.dart';
 import 'package:tradelaw/core/Utils/size_config.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/logincontroller.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
+import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
 import 'package:tradelaw/features/view/auth/signin%20page/signin_page.dart';
 
 class LoginBody extends StatelessWidget {
-  LoginBody({super.key});
+  final ThemeController themeController;
+  LoginBody({super.key, required this.themeController});
   final LogInController loginctrl = Get.find();
   final Txtvalcontroller txtvalctrl = Get.find();
+
   @override
   Widget build(BuildContext context) {
+    // استخدم themeController.isDarkMode بدلاً من Get.isDarkMode
+    bool isDark = themeController.isDarkMode;
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -43,7 +49,7 @@ class LoginBody extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
-                      color: Get.isDarkMode ? Colors.white : Colors.black87,
+                      color: isDark ? Colors.white : Colors.black87,
                     ),
                   ),
                 ),
@@ -54,7 +60,7 @@ class LoginBody extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
-                      color: Get.isDarkMode ? Colors.white : Colors.black87,
+                      color: isDark ? Colors.white : Colors.black87,
                     ),
                   ),
                 ),
@@ -98,7 +104,7 @@ class LoginBody extends StatelessWidget {
                               loginctrl.isPasswordVisible
                                   ? Icons.visibility_off
                                   : Icons.visibility,
-                              color: Get.isDarkMode ? kmaincolor4 : kmaincolor,
+                              color: isDark ? kmaincolor4 : kmaincolor,
                             ),
                           ),
                         ),
@@ -116,7 +122,7 @@ class LoginBody extends StatelessWidget {
                     child: Text(
                       "forgot_password".tr,
                       style: TextStyle(
-                        color: Get.isDarkMode ? kmaincolor4 : kmaincolor,
+                        color: isDark ? kmaincolor4 : kmaincolor,
                       ),
                     ),
                   ),
@@ -130,8 +136,7 @@ class LoginBody extends StatelessWidget {
                   height: 55,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          Get.isDarkMode ? kmaincolor4 : kmaincolor,
+                      backgroundColor: isDark ? kmaincolor4 : kmaincolor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -154,7 +159,7 @@ class LoginBody extends StatelessWidget {
                           loginctrl.isLoading.value
                               ? CircularProgressIndicator(
                                 valueColor: AlwaysStoppedAnimation<Color>(
-                                  Get.isDarkMode ? kmaincolor : kmaincolor4,
+                                  isDark ? kmaincolor : kmaincolor4,
                                 ),
                               )
                               : Text(
@@ -176,10 +181,7 @@ class LoginBody extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Divider(
-                        color:
-                            Get.isDarkMode
-                                ? Colors.grey[700]!
-                                : Colors.grey[300]!,
+                        color: isDark ? Colors.grey[700]! : Colors.grey[300]!,
                       ),
                     ),
                     Padding(
@@ -187,19 +189,13 @@ class LoginBody extends StatelessWidget {
                       child: Text(
                         "or_login_with".tr,
                         style: TextStyle(
-                          color:
-                              Get.isDarkMode
-                                  ? Colors.grey[400]!
-                                  : Colors.grey[600]!,
+                          color: isDark ? Colors.grey[400]! : Colors.grey[600]!,
                         ),
                       ),
                     ),
                     Expanded(
                       child: Divider(
-                        color:
-                            Get.isDarkMode
-                                ? Colors.grey[700]!
-                                : Colors.grey[300]!,
+                        color: isDark ? Colors.grey[700]! : Colors.grey[300]!,
                       ),
                     ),
                   ],
@@ -218,12 +214,14 @@ class LoginBody extends StatelessWidget {
                     SizedBox(width: 20),
                     _buildSocialLoginButton(
                       icon: "lib/core/assets/images/login_images/Guest.png",
+                      iconcolor: isDark ? Colors.white : Colors.black,
                       onTap: () => loginctrl.logwithsocial(context),
                     ),
                     SizedBox(width: 20),
                     _buildSocialLoginButton(
                       icon:
                           "lib/core/assets/images/login_images/apple.png", // Asegúrate de tener este archivo
+                      iconcolor: isDark ? Colors.white : Colors.black,
                       onTap: () {
                         loginctrl.logwithsocial(context);
                       },
@@ -240,7 +238,7 @@ class LoginBody extends StatelessWidget {
                     Text(
                       "no_account".tr,
                       style: TextStyle(
-                        color: Get.isDarkMode ? Colors.white70 : Colors.black54,
+                        color: isDark ? Colors.white70 : Colors.black54,
                       ),
                     ),
                     TextButton(
@@ -255,7 +253,7 @@ class LoginBody extends StatelessWidget {
                       child: Text(
                         "sign_in".tr,
                         style: TextStyle(
-                          color: Get.isDarkMode ? kmaincolor4 : kmaincolor,
+                          color: isDark ? kmaincolor4 : kmaincolor,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -280,21 +278,23 @@ class LoginBody extends StatelessWidget {
     String? Function(String?)? validator,
     Widget? suffixIcon,
   }) {
+    final ThemeController themctrl = Get.find();
+    bool isDark = themctrl.isDarkMode;
     return TextFormField(
       controller: controller,
       focusNode: focusNode,
       keyboardType: keyboardType,
       obscureText: obscureText,
       validator: validator,
-      style: TextStyle(color: Get.isDarkMode ? Colors.white : Colors.black87),
+      style: TextStyle(color: isDark ? Colors.white : Colors.black87),
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(
-          color: Get.isDarkMode ? Colors.grey[400] : Colors.grey[500],
+          color: isDark ? Colors.grey[400] : Colors.grey[500],
         ),
         filled: true,
         fillColor:
-            Get.isDarkMode
+            isDark
                 ? Colors.grey[800]!.withValues(alpha: 0.5)
                 : Colors.grey[100]!,
         border: OutlineInputBorder(
@@ -310,8 +310,11 @@ class LoginBody extends StatelessWidget {
   // New method for social login buttons
   Widget _buildSocialLoginButton({
     required String icon,
+    Color? iconcolor,
     required VoidCallback onTap,
   }) {
+    final ThemeController themctrl = Get.find();
+    bool isDark = themctrl.isDarkMode;
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(12),
@@ -319,14 +322,16 @@ class LoginBody extends StatelessWidget {
         width: 60,
         height: 60,
         decoration: BoxDecoration(
-          color: Get.isDarkMode ? Colors.grey[800] : Colors.white,
+          color: isDark ? Colors.grey[800] : Colors.white,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: Get.isDarkMode ? Colors.grey[700]! : Colors.grey[300]!,
+            color: isDark ? Colors.grey[700]! : Colors.grey[300]!,
             width: 1,
           ),
         ),
-        child: Center(child: Image.asset(icon, height: 30, width: 30)),
+        child: Center(
+          child: Image.asset(icon, height: 30, width: 30, color: iconcolor),
+        ),
       ),
     );
   }

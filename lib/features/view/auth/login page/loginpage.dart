@@ -45,7 +45,9 @@ class LoginPage extends StatelessWidget {
         }
       },
       child: Scaffold(
-        body: GetBuilder<ThemeController>(builder: (controller) => LoginBody()),
+        body: GetBuilder<ThemeController>(
+          builder: (themeController) => LoginBody(themeController: themeController),
+        ),
       ),
     );
   }
