@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Helpandfedback extends StatelessWidget {
   const Helpandfedback({super.key});
@@ -6,7 +7,12 @@ class Helpandfedback extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(
+            'help&feedback'.tr,
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+      ),
       body: Container());
   }
 }
