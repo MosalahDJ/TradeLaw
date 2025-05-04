@@ -5,6 +5,9 @@ class Products extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Container());
+    return Scaffold(
+      appBar: AppBar(),
+      
+      body: Container());
   }
 }
