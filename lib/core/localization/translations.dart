@@ -36,7 +36,7 @@ class Messages extends Translations {
       'registration': 'Registration',
       'anonymous_user': 'Anonymous User',
       'no_email': 'No Email',
-      
+
       // New Words
       'are_you_sure': 'Are you sure?',
       'yes': 'Yes',
@@ -52,6 +52,19 @@ class Messages extends Translations {
       'register': 'Register',
       'have_account': 'Already have an account?',
       'log_in': 'Log In',
+
+      // Home Page
+      'Dashboard': 'Dashboard',
+      'Welcome': 'Welcome',
+      'Explore our services': 'Explore our services',
+      'Legal Advice': 'Legal Advice',
+      'Documents': 'Documents',
+      'Consultants': 'Consultants',
+      'Appointments': 'Appointments',
+      'Articles': 'Articles',
+      'Settings': 'Settings',
+      'english': 'English',
+      'arabic': 'Arabic',
     },
     'ar': {
       // Authentication - Old Words
@@ -86,7 +99,7 @@ class Messages extends Translations {
       'registration': 'التسجيل',
       'anonymous_user': 'مستخدم مجهول',
       'no_email': 'لا يوجد بريد إلكتروني',
-      
+
       // New Words
       'are_you_sure': 'هل أنت متأكد؟',
       'yes': 'نعم',
@@ -102,6 +115,19 @@ class Messages extends Translations {
       'register': 'تسجيل',
       'have_account': 'لديك حساب بالفعل؟',
       'log_in': 'تسجيل الدخول',
+
+      // Home Page
+      'Dashboard': 'لوحة التحكم',
+      'Welcome': 'مرحباً',
+      'Explore our services': 'استكشف خدماتنا',
+      'Legal Advice': 'استشارة قانونية',
+      'Documents': 'المستندات',
+      'Consultants': 'المستشارون',
+      'Appointments': 'المواعيد',
+      'Articles': 'المقالات',
+      'Settings': 'الإعدادات',
+      'english': 'الإنجليزية',
+      'arabic': 'العربية',
     },
     'fr': {
       // Authentication - Old Words
@@ -137,7 +163,7 @@ class Messages extends Translations {
       'registration': 'Inscription',
       'anonymous_user': 'Utilisateur anonyme',
       'no_email': 'Pas d\'email',
-      
+
       // New Words
       'are_you_sure': 'Êtes-vous sûr?',
       'yes': 'Oui',
@@ -153,6 +179,18 @@ class Messages extends Translations {
       'register': 'S\'inscrire',
       'have_account': 'Vous avez déjà un compte?',
       'log_in': 'Se connecter',
+      // Home Page
+      'Dashboard': 'Tableau de bord',
+      'Welcome': 'Bienvenue',
+      'Explore our services': 'Explorez nos services',
+      'Legal Advice': 'Conseil juridique',
+      'Documents': 'Documents',
+      'Consultants': 'Consultants',
+      'Appointments': 'Rendez-vous',
+      'Articles': 'Articles',
+      'Settings': 'Paramètres',
+      'english': 'Anglais',
+      'arabic': 'Arabe',
     },
   };
 }
