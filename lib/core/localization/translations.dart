@@ -20,44 +20,9 @@ class Messages extends Translations {
       'leave_app': 'Do you want to exit TradeLaw?',
       'log_out': 'Log Out',
       'error': 'Error',
-      'reset_link_sent': 'We sent a reset password link to your email',
-      'email_verification': 'Email Verification',
-      'verification_sent':
-          'We sent an Email verification to your email. Please verify your email first then click \'Email verified\'',
-      'email_verified': 'Email verified? Please sign in.',
-      'verify_email': 'Verify your email',
-      'verify_email_message':
-          'Please verify your email first to access your account',
-      'weak_password': 'The password provided is too weak.',
-      'email_exists':
-          'An account already exists for this email. Please login instead.',
-      'registration_error': 'Registration error',
-      'no_internet': 'No Internet Connection',
-      'internet_required_for_signout':
-          'Internet connection is required to sign out',
-      "profile_updated_successfully": "Profile updated successfully",
-      "please_login_again": "Please login again to update your email",
-      "email_already_exists": "This email is already in use",
+      // 'email_verification': 'Email Verification',
       "unknown_error": "An unknown error occurred",
-      "check_internet_connection": "Please check your internet connection",
-      "verify_new_email_sent": "Verification link sent to new email",
       "success": "Success",
-      "location_service_disabled_title": "Location Service Disabled",
-      "location_service_disabled_message":
-          "Please enable location services to use this feature.",
-      "location_permission_denied_title": "Location Permission Denied",
-      "location_permission_denied_message":
-          "Please grant location permission to use this feature.",
-      "location_permission_denied_forever_title":
-          "Location Permission Denied Forever",
-      "location_permission_denied_forever_message":
-          "Location permissions are permanently denied. Please enable them from app settings.",
-      "location_service_error_title": "Location Service Error",
-      "location_service_error_message":
-          "An error occurred while accessing location services.",
-      "get_location": "Get Location",
-
-      // Registration
       'create_account': 'Create Your Account',
       'fill_form_title': 'Fill the form',
       'fill_form': 'Please complete the form',
@@ -65,10 +30,6 @@ class Messages extends Translations {
       'last_name': 'Last Name',
       'enter_first_name': 'Enter your first name',
       'enter_last_name': 'Enter your last name',
-      'gender': 'Gender',
-      'select_gender': 'Select your gender',
-      'male': 'Male',
-      'female': 'Female',
       'confirm_password': 'Confirm Password',
       'enter_confirm_password': 'Re-enter your password',
       'create_account_button': 'Create Account',
@@ -93,56 +54,9 @@ class Messages extends Translations {
       'leave_login': 'هل تريد الخروج من عملية تسجيل الدخول؟',
       'leave_app': 'هل تريد الخروج من تطبيق TradeLaw؟',
       'log_out': 'تسجيل الخروج',
-      'verify_internet': 'تحقق من اتصالك بالإنترنت',
-      'google_signin_error': 'خطأ في تسجيل الدخول باستخدام جوجل',
       'error': 'خطأ',
-      'verify_email_title': 'تحقق من بريدك الإلكتروني',
-      'verify_email_desc': 'تحتاج إلى تأكيد بريدك الإلكتروني أولاً!',
-      'wrong_credentials': 'كلمة المرور أو البريد الإلكتروني غير صحيح',
-      'signout_error': 'خطأ في تسجيل الخروج',
-      'general_error': 'حدث خطأ أثناء تسجيل الخروج',
-      'invalid_email_title': 'بريد إلكتروني غير صالح',
-      'enter_email_first': 'الرجاء إضافة بريدك الإلكتروني أولاً',
-      'password_reset': 'إعادة تعيين كلمة المرور',
-      'reset_link_sent': 'لقد أرسلنا رابط إعادة التعيين إلى بريدك الإلكتروني',
-
-      'email_verification': 'التحقق من البريد الإلكتروني',
-      'verification_sent':
-          'لقد أرسلنا رسالة تحقق إلى بريدك الإلكتروني. يرجى التحقق من بريدك الإلكتروني أولاً ثم انقر على \'تم التحقق من البريد\'',
-      'email_verified': '.تم التحقق من البريد؟ يرجى تسجيل الدخول',
-      'verify_email': 'تحقق من بريدك الإلكتروني',
-      'verify_email_message':
-          'يرجى التحقق من بريدك الإلكتروني أولاً للوصول إلى حسابك',
-      'weak_password': 'كلمة المرور المقدمة ضعيفة جداً.',
-      'email_exists':
-          'يوجد حساب مسجل بهذا البريد الإلكتروني. يرجى تسجيل الدخول بدلاً من ذلك.',
-      'registration_error': 'خطأ في التسجيل',
-      'no_internet': 'لا يوجد اتصال بالإنترنت',
-      'internet_required_for_signout': 'يجب توفر اتصال بالإنترنت لتسجيل الخروج',
-      "profile_updated_successfully": "تم تحديث الملف الشخصي بنجاح",
-      "please_login_again":
-          "الرجاء تسجيل الدخول مرة أخرى لتحديث البريد الإلكتروني",
-      "email_already_exists": "هذا البريد الإلكتروني مستخدم بالفعل",
       "unknown_error": "حدث خطأ غير معروف",
-      "check_internet_connection": "يرجى التحقق من اتصال الإنترنت",
-      "verify_new_email_sent":
-          "تم إرسال رابط التحقق إلى البريد الإلكتروني الجديد",
       "success": "نجاح",
-      "location_service_disabled_title": "خدمة الموقع معطلة",
-      "location_service_disabled_message":
-          "يرجى تمكين خدمات الموقع لاستخدام هذه الميزة.",
-      "location_permission_denied_title": "تم رفض إذن الموقع",
-      "location_permission_denied_message":
-          "يرجى منح إذن الموقع لاستخدام هذه الميزة.",
-      "location_permission_denied_forever_title": "تم رفض إذن الموقع بشكل دائم",
-      "location_permission_denied_forever_message":
-          "تم رفض إذن الموقع بشكل دائم. يرجى تمكينه من إعدادات التطبيق.",
-      "location_service_error_title": "خطأ في خدمة الموقع",
-      "location_service_error_message":
-          "حدث خطأ أثناء الوصول إلى خدمات الموقع.",
-      "get_location": "الحصول على الموقع",
-
-      // Sign Up Page
       'create_account': 'إنشاء حسابك',
       'fill_form_title': 'ملء النموذج',
       'fill_form': 'يرجى ملء النموذج ',
@@ -150,10 +64,6 @@ class Messages extends Translations {
       'last_name': 'اسم العائلة',
       'enter_first_name': 'أدخل اسمك الأول',
       'enter_last_name': 'أدخل اسم عائلتك',
-      'gender': 'الجنس',
-      'select_gender': 'اختر جنسك',
-      'male': 'ذكر',
-      'female': 'أنثى',
       'confirm_password': 'تأكيد كلمة المرور',
       'enter_confirm_password': 'أدخل كلمة المرور مرة أخرى',
       'create_account_button': 'إنشاء حساب',
@@ -179,57 +89,9 @@ class Messages extends Translations {
       'leave_login': 'Voulez-vous quitter le processus de connexion ?',
       'leave_app': 'Voulez-vous quitter l\'application TradeLaw ?',
       'log_out': 'Déconnexion',
-      'verify_internet': 'Vérifiez votre connexion Internet',
-      'google_signin_error': 'Erreur de connexion avec Google',
       'error': 'Erreur',
-      'verify_email_title': 'Vérifiez votre email',
-      'verify_email_desc': 'Vous devez d\'abord vérifier votre email !',
-      'wrong_credentials': 'Mot de passe ou email incorrect',
-      'signout_error': 'Erreur lors de la déconnexion',
-      'general_error': 'Une erreur s\'est produite lors de la déconnexion',
-      'invalid_email_title': 'Email invalide',
-      'enter_email_first': 'Veuillez d\'abord ajouter votre email',
-      'password_reset': 'Réinitialisation du mot de passe',
-      'reset_link_sent':
-          'Nous avons envoyé un lien de réinitialisation à votre adresse e-mail',
-      'email_verification': 'Vérification de l\'email',
-      'verification_sent':
-          'Nous avons envoyé un email de vérification à votre adresse. Veuillez vérifier votre email puis cliquez sur \'Email vérifié\'',
-      'email_verified': 'Email vérifié? Veuillez vous connecter.',
-      'verify_email': 'Vérifiez votre email',
-      'verify_email_message':
-          'Veuillez vérifier votre email pour accéder à votre compte',
-      'weak_password': 'Le mot de passe fourni est trop faible.',
-      'email_exists':
-          'Un compte existe déjà pour cet email. Veuillez vous connecter.',
-      'registration_error': 'Erreur d\'inscription: {}',
-      'no_internet': 'Pas de Connexion Internet',
-      'internet_required_for_signout':
-          'Une connexion Internet est requise pour se déconnecter',
-      "profile_updated_successfully": "Profil mis à jour avec succès",
-      "please_login_again":
-          "Veuillez vous reconnecter pour mettre à jour votre email",
-      "email_already_exists": "Cet email est déjà utilisé",
       "unknown_error": "Une erreur inconnue s'est produite",
-      "check_internet_connection": "Veuillez vérifier votre connexion Internet",
-      "verify_new_email_sent": "Lien de vérification envoyé au nouvel email",
       "success": "Succès",
-      "location_service_disabled_title": "Service de localisation désactivé",
-      "location_service_disabled_message":
-          "Veuillez activer les services de localisation pour utiliser cette fonctionnalité.",
-      "location_permission_denied_title": "Permission de localisation refusée",
-      "location_permission_denied_message":
-          "Veuillez accorder la permission de localisation pour utiliser cette fonctionnalité.",
-      "location_permission_denied_forever_title":
-          "Permission de localisation refusée définitivement",
-      "location_permission_denied_forever_message":
-          "Les permissions de localisation sont refusées définitivement. Veuillez les activer depuis les paramètres de l'application.",
-      "location_service_error_title": "Erreur du service de localisation",
-      "location_service_error_message":
-          "Une erreur s'est produite lors de l'accès aux services de localisation.",
-      "get_location": "Obtenir la localisation",
-
-      // Sign Up Page
       'create_account': 'Créez votre compte',
       'fill_form_title': 'remplir le formulaire',
       'fill_form': 'Veuillez remplir le formulaire',
@@ -237,10 +99,6 @@ class Messages extends Translations {
       'last_name': 'Nom',
       'enter_first_name': 'Entrez votre prénom',
       'enter_last_name': 'Entrez votre nom',
-      'gender': 'Genre',
-      'select_gender': 'Sélectionnez votre genre',
-      'male': 'Homme',
-      'female': 'Femme',
       'confirm_password': 'Confirmer le mot de passe',
       'enter_confirm_password': 'Entrez à nouveau votre mot de passe',
       'create_account_button': 'Créer un compte',
