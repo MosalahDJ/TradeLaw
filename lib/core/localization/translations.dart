@@ -67,7 +67,7 @@ class Messages extends Translations {
       'report_tracking': 'Track My Reports',
       'law_info': 'Trade Laws',
       'info': 'Information Page',
-      'help&fedback': 'Help & Feedback',
+      'help&feedback': 'Help & Feedback',
     },
     'ar': {
       // Authentication - Old Words

@@ -161,7 +161,7 @@ class HomePage extends StatelessWidget {
                     children: [
                       _buildGridItem(
                         icon: Icons.gavel,
-                        title: 'Legal Advice'.tr,
+                        title: 'products'.tr,
                         color: Colors.blue.shade700,
                         onTap: () {
                           // Navigate to legal advice screen
@@ -169,7 +169,7 @@ class HomePage extends StatelessWidget {
                       ),
                       _buildGridItem(
                         icon: Icons.description_outlined,
-                        title: 'Documents'.tr,
+                        title: 'reporting'.tr,
                         color: Colors.green.shade700,
                         onTap: () {
                           // Navigate to documents screen
@@ -177,7 +177,7 @@ class HomePage extends StatelessWidget {
                       ),
                       _buildGridItem(
                         icon: Icons.people_outline,
-                        title: 'Consultants'.tr,
+                        title: 'report_tracking'.tr,
                         color: Colors.orange.shade700,
                         onTap: () {
                           // Navigate to consultants screen
@@ -185,7 +185,7 @@ class HomePage extends StatelessWidget {
                       ),
                       _buildGridItem(
                         icon: Icons.calendar_today,
-                        title: 'Appointments'.tr,
+                        title: 'law_info'.tr,
                         color: Colors.purple.shade700,
                         onTap: () {
                           // Navigate to appointments screen
@@ -193,7 +193,7 @@ class HomePage extends StatelessWidget {
                       ),
                       _buildGridItem(
                         icon: Icons.article_outlined,
-                        title: 'Articles'.tr,
+                        title: 'info'.tr,
                         color: Colors.red.shade700,
                         onTap: () {
                           // Navigate to articles screen
@@ -201,7 +201,7 @@ class HomePage extends StatelessWidget {
                       ),
                       _buildGridItem(
                         icon: Icons.settings_outlined,
-                        title: 'Settings'.tr,
+                        title: 'help&feedback'.tr,
                         color: Colors.grey.shade700,
                         onTap: () {
                           // Navigate to settings screen
