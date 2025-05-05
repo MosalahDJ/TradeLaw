@@ -131,7 +131,7 @@ class Products extends StatelessWidget {
                     top: Radius.circular(10),
                   ),
                   image: DecorationImage(
-                    image: NetworkImage(product['image']),
+                    image: AssetImage(product['image']),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -238,7 +238,7 @@ class Products extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage(product['image']),
+                image: AssetImage(product['image']),
                 fit: BoxFit.cover,
               ),
             ),

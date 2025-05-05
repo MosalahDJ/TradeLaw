@@ -22,8 +22,7 @@ class ProductsController extends GetxController
           'price': '60 DZD/kg',
           'subsidized': true,
           'description': 'Government subsidized wheat flour for bread making',
-          'image':
-              'https://images.unsplash.com/photo-1603046891726-36bfd957e0bf',
+          'image': 'lib/core/assets/images/homeimages/masjid3d.png',
         },
         {
           'name': 'Semolina',
@@ -31,16 +30,14 @@ class ProductsController extends GetxController
           'subsidized': true,
           'description':
               'Essential for couscous and traditional Algerian dishes',
-          'image':
-              'https://images.unsplash.com/photo-1586444248879-bc604bc77f90',
+          'image': 'lib/core/assets/images/homeimages/masjid3d.png',
         },
         {
           'name': 'Rice',
           'price': '120 DZD/kg',
           'subsidized': true,
           'description': 'Imported rice with government price controls',
-          'image':
-              'https://images.unsplash.com/photo-1586201375761-83865001e8ac',
+          'image': 'lib/core/assets/images/homeimages/masjid3d.png',
         },
       ],
     },
@@ -54,15 +51,14 @@ class ProductsController extends GetxController
           'price': '25 DZD/L',
           'subsidized': true,
           'description': 'Pasteurized milk with government price controls',
-          'image': 'https://images.unsplash.com/photo-1563636619-e9143da7973b',
+          'image': 'lib/core/assets/images/homeimages/masjid3d.png',
         },
         {
           'name': 'Yogurt',
           'price': '30 DZD/unit',
           'subsidized': false,
           'description': 'Local yogurt production with partial subsidies',
-          'image':
-              'https://images.unsplash.com/photo-1571212515416-fef01fc43637',
+          'image': 'lib/core/assets/images/homeimages/masjid3d.png',
         },
       ],
     },
@@ -76,8 +72,7 @@ class ProductsController extends GetxController
           'price': '600 DZD/5L',
           'subsidized': true,
           'description': 'Cooking oil with strict price controls',
-          'image':
-              'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5',
+          'image': 'lib/core/assets/images/homeimages/masjid3d.png',
         },
         {
           'name': 'Olive Oil',
@@ -85,8 +80,7 @@ class ProductsController extends GetxController
           'subsidized': false,
           'description':
               'Premium Algerian olive oil with partial price support',
-          'image':
-              'https://images.unsplash.com/photo-1474979087453-7a86214f001a',
+          'image': 'lib/core/assets/images/homeimages/masjid3d.png',
         },
       ],
     },
@@ -100,8 +94,7 @@ class ProductsController extends GetxController
           'price': '90 DZD/kg',
           'subsidized': true,
           'description': 'Refined sugar with government price controls',
-          'image':
-              'https://images.unsplash.com/photo-1581000197348-5a65b9ab8a32',
+          'image': 'lib/core/assets/images/homeimages/masjid3d.png',
         },
       ],
     },
@@ -115,16 +108,14 @@ class ProductsController extends GetxController
           'price': '180 DZD/kg',
           'subsidized': true,
           'description': 'Imported lentils with price controls',
-          'image':
-              'https://images.unsplash.com/photo-1615485290382-441e4d049cb5',
+          'image': 'lib/core/assets/images/homeimages/masjid3d.png',
         },
         {
           'name': 'Chickpeas',
           'price': '200 DZD/kg',
           'subsidized': true,
           'description': 'Essential legume for Algerian cuisine',
-          'image':
-              'https://images.unsplash.com/photo-1515543904379-3d757afe72e1',
+          'image': 'lib/core/assets/images/homeimages/masjid3d.png',
         },
       ],
     },
