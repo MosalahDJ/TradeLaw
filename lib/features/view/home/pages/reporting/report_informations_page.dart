@@ -4,15 +4,24 @@ import 'package:tradelaw/core/Utils/constants.dart';
 import 'package:tradelaw/features/view model/home controller/reports_controller.dart';
 
 class ReportInformationsPage extends StatelessWidget {
-  final Map<String, dynamic> reportType;
+  final int reportId;
 
-  const ReportInformationsPage({super.key, required this.reportType});
+  const ReportInformationsPage({super.key, required this.reportId});
 
   @override
   Widget build(BuildContext context) {
     // Get the controller
     final ReportsController controller = Get.find<ReportsController>();
     final formKey = GlobalKey<FormState>();
+
+    // Find the report type in the controller's list by ID
+    final reportType = controller.reportTypes.firstWhere(
+      (type) => type['id'] == reportId,
+      orElse:
+          () =>
+              controller
+                  .reportTypes[0], // Fallback to first report type if not found
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -92,13 +101,13 @@ class ReportInformationsPage extends StatelessWidget {
                   ],
                 ),
               ),
-              
+
               const SizedBox(height: 24),
-              
+
               // Location section
               _buildSectionHeader('Location Information', Icons.location_on),
               const SizedBox(height: 16),
-              
+
               // City field
               TextFormField(
                 controller: controller.cityController,
@@ -125,9 +134,9 @@ class ReportInformationsPage extends StatelessWidget {
                   return null;
                 },
               ),
-              
+
               const SizedBox(height: 16),
-              
+
               // Town field
               TextFormField(
                 controller: controller.townController,
@@ -148,9 +157,9 @@ class ReportInformationsPage extends StatelessWidget {
                   ),
                 ),
               ),
-              
+
               const SizedBox(height: 16),
-              
+
               // Village field
               TextFormField(
                 controller: controller.villageController,
@@ -171,13 +180,13 @@ class ReportInformationsPage extends StatelessWidget {
                   ),
                 ),
               ),
-              
+
               const SizedBox(height: 24),
-              
+
               // Market Information section
               _buildSectionHeader('Market Information', Icons.store),
               const SizedBox(height: 16),
-              
+
               // Market name field
               TextFormField(
                 controller: controller.marketNameController,
@@ -204,9 +213,9 @@ class ReportInformationsPage extends StatelessWidget {
                   return null;
                 },
               ),
-              
+
               const SizedBox(height: 16),
-              
+
               // Market number field
               TextFormField(
                 controller: controller.marketNumberController,
@@ -228,13 +237,13 @@ class ReportInformationsPage extends StatelessWidget {
                 ),
                 keyboardType: TextInputType.number,
               ),
-              
+
               const SizedBox(height: 24),
-              
+
               // Violation Description section
               _buildSectionHeader('Violation Details', Icons.description),
               const SizedBox(height: 16),
-              
+
               // Description field
               TextFormField(
                 controller: controller.descriptionController,
@@ -262,63 +271,67 @@ class ReportInformationsPage extends StatelessWidget {
                   return null;
                 },
               ),
-              
+
               const SizedBox(height: 32),
-              
+
               // Submit button
               SizedBox(
                 height: 50,
-                child: Obx(() => ElevatedButton(
-                  onPressed: controller.isSubmitting.value 
-                      ? null 
-                      : () => controller.submitReport(formKey, context),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: reportType['color'],
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                child: Obx(
+                  () => ElevatedButton(
+                    onPressed:
+                        controller.isSubmitting.value
+                            ? null
+                            : () => controller.submitReport(formKey, context),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: reportType['color'],
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      elevation: 2,
                     ),
-                    elevation: 2,
+                    child:
+                        controller.isSubmitting.value
+                            ? Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: CircularProgressIndicator(
+                                    color: Colors.white,
+                                    strokeWidth: 3,
+                                  ),
+                                ),
+                                const SizedBox(width: 12),
+                                const Text(
+                                  'Submitting...',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            )
+                            : Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.send),
+                                const SizedBox(width: 8),
+                                const Text(
+                                  'Submit Report',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
                   ),
-                  child: controller.isSubmitting.value
-                      ? Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: CircularProgressIndicator(
-                                color: Colors.white,
-                                strokeWidth: 3,
-                              ),
-                            ),
-                            const SizedBox(width: 12),
-                            const Text(
-                              'Submitting...',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        )
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.send),
-                            const SizedBox(width: 8),
-                            const Text(
-                              'Submit Report',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                )),
+                ),
               ),
-              
+
               const SizedBox(height: 24),
             ],
           ),

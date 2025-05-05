@@ -7,6 +7,7 @@ import 'package:tradelaw/features/view/home/pages/info.dart';
 import 'package:tradelaw/features/view/home/pages/lawinfo.dart';
 import 'package:tradelaw/features/view/home/pages/products.dart';
 import 'package:tradelaw/features/view/home/pages/report_tracking.dart';
+import 'package:tradelaw/features/view/home/pages/reporting/report_informations_page.dart';
 import 'package:tradelaw/features/view/home/pages/reporting/reporting.dart';
 
 class Myrouts {
@@ -21,8 +22,11 @@ class Myrouts {
       GetPage(name: "/law_info", page: () => Lawinfo()),
       GetPage(name: "/info", page: () => Info()),
       GetPage(name: "/help", page: () => Helpandfedback()),
-
-      
+      // Add this new route
+      GetPage(
+        name: "/report_information", 
+        page: () => ReportInformationsPage(reportId: Get.arguments),
+      ),
     ];
   }
 }
