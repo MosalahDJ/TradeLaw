@@ -10,48 +10,42 @@ class ReportsController extends GetxController {
       'title': 'Price Manipulation',
       'icon': Icons.attach_money,
       'color': kmaincolor,
-      'description':
-          'Report businesses that artificially increase prices or engage in unfair pricing practices.',
+      'description': 'd1',
     },
     {
       'id': 2,
       'title': 'Monopoly & Speculation',
       'icon': Icons.business_center,
       'color': kmaincolor4,
-      'description':
-          'Report businesses hoarding products to create artificial scarcity or monopolistic practices.',
+      'description': 'd2',
     },
     {
       'id': 3,
       'title': 'Expired Products',
       'icon': Icons.no_food,
       'color': kmaincolor2,
-      'description':
-          'Report businesses selling products past their expiration date or with altered expiry information.',
+      'description': 'd3',
     },
     {
       'id': 4,
       'title': 'Illegal Products',
       'icon': Icons.warning_amber,
       'color': Colors.red.shade800,
-      'description':
-          'Report the sale of prohibited, counterfeit, or unlicensed products.',
+      'description': 'd4',
     },
     {
       'id': 5,
       'title': 'Hygiene Violations',
       'icon': Icons.cleaning_services,
       'color': Colors.teal.shade700,
-      'description':
-          'Report businesses with poor sanitation, unhygienic food handling, or unsanitary conditions.',
+      'description': 'd5',
     },
     {
       'id': 6,
       'title': 'Other Violations',
       'icon': Icons.report_problem,
       'color': Colors.amber.shade800,
-      'description':
-          'Report other trade law violations not covered by the categories above.',
+      'description': 'd6',
     },
   ];
 
@@ -175,4 +169,13 @@ class ReportsController extends GetxController {
     marketNumberController.clear();
     descriptionController.clear();
   }
+}
+
+// Add these translation methods to the ReportsController class
+Map<String, dynamic> getTranslatedReportType(Map<String, dynamic> reportType) {
+  // Create a copy of the report type to avoid modifying the original
+  final translatedType = Map<String, dynamic>.from(reportType);
+
+  // The title and description will be translated in the UI using .tr
+  return translatedType;
 }
