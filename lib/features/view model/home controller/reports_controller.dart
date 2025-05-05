@@ -90,7 +90,11 @@ class ReportsController extends GetxController {
     BuildContext context,
   ) {
     selectedReportType.value = reportType;
-    Navigator.pushNamed(context, '/report_information', arguments: reportid);
+    Navigator.pushNamed(
+      context,
+      '/report_information',
+      arguments: reportid,
+    );
     // OR use Get navigation instead:
     // Get.toNamed('/report_information', arguments: reportType);
   }
