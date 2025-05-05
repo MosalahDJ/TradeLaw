@@ -21,6 +21,8 @@ class Myrouts {
       GetPage(name: "/law_info", page: () => Lawinfo()),
       GetPage(name: "/info", page: () => Info()),
       GetPage(name: "/help", page: () => Helpandfedback()),
+
+      
     ];
   }
 }
