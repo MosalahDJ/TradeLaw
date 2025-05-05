@@ -78,7 +78,7 @@ class ReportsController extends GetxController {
   // Navigate to report details page
   void navigateToReportDetails(Map<String, dynamic> reportType, BuildContext context) {
     selectedReportType.value = reportType;
-    Navigator.pushNamed(context, '/report_information', arguments: reportType);
+    Navigator.pushNamed(context, 'report_information', arguments: reportType);
   }
 
   // Submit report logic
