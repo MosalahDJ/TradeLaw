@@ -73,8 +73,6 @@ class Products extends StatelessWidget {
     );
   }
 
-  //text
-
   Widget _buildCategoryCard(
     ProductCategory category,
     ProductsController controller,
