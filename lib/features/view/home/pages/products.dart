@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/features/view%20model/home%20controller/products_controller.dart';
+import 'package:tradelaw/features/model/product_list.dart';
 
 class Products extends StatelessWidget {
   const Products({super.key});
@@ -73,7 +74,7 @@ class Products extends StatelessWidget {
   }
 
   Widget _buildCategoryCard(
-    Map<String, dynamic> category,
+    ProductCategory category,
     ProductsController controller,
   ) {
     return Card(
@@ -82,11 +83,11 @@ class Products extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ExpansionTile(
         leading: CircleAvatar(
-          backgroundColor: category['color'],
-          child: Icon(category['icon'], color: Colors.white),
+          backgroundColor: category.color,
+          child: Icon(category.icon, color: Colors.white),
         ),
         title: Text(
-          category['name'],
+          category.name,
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
         children: [
@@ -100,9 +101,9 @@ class Products extends StatelessWidget {
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
             ),
-            itemCount: category['products'].length,
+            itemCount: category.products.length,
             itemBuilder: (context, index) {
-              final product = category['products'][index];
+              final product = category.products[index];
               return _buildProductCard(product, controller);
             },
           ),
@@ -112,7 +113,7 @@ class Products extends StatelessWidget {
   }
 
   Widget _buildProductCard(
-    Map<String, dynamic> product,
+    Product product,
     ProductsController controller,
   ) {
     return GestureDetector(
@@ -131,14 +132,14 @@ class Products extends StatelessWidget {
                     top: Radius.circular(10),
                   ),
                   image: DecorationImage(
-                    image: AssetImage(product['image']),
+                    image: AssetImage(product.image),
                     fit: BoxFit.cover,
                   ),
                 ),
                 child: Align(
                   alignment: Alignment.topRight,
                   child:
-                      product['subsidized']
+                      product.subsidized
                           ? Container(
                             margin: const EdgeInsets.all(8),
                             padding: const EdgeInsets.symmetric(
@@ -168,17 +169,17 @@ class Products extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    product['name'],
+                    product.name,
                     style: const TextStyle(fontWeight: FontWeight.bold),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    product['price'],
+                    product.price,
                     style: TextStyle(
                       color:
-                          product['subsidized'] ? Colors.green : Colors.black87,
+                          product.subsidized ? Colors.green : Colors.black87,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -238,7 +239,7 @@ class Products extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(product['image']),
+                image: AssetImage(product.image),
                 fit: BoxFit.cover,
               ),
             ),
@@ -253,7 +254,7 @@ class Products extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      product['name'],
+                      product.name,
                       style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -266,13 +267,13 @@ class Products extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         color:
-                            product['subsidized']
+                            product.subsidized
                                 ? Colors.green
                                 : Colors.orange,
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(
-                        product['subsidized']
+                        product.subsidized
                             ? 'Subsidized'
                             : 'Partial Support',
                         style: const TextStyle(color: Colors.white),
@@ -282,12 +283,12 @@ class Products extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  product['price'],
+                  product.price,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w500,
                     color:
-                        product['subsidized']
+                        product.subsidized
                             ? Colors.green.shade700
                             : Colors.black87,
                   ),
@@ -299,7 +300,7 @@ class Products extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  product['description'],
+                  product.description,
                   style: const TextStyle(fontSize: 16),
                 ),
                 const SizedBox(height: 24),
@@ -315,7 +316,7 @@ class Products extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
-                    product['subsidized']
+                    product.subsidized
                         ? 'This product is fully subsidized by the Algerian government to ensure affordability and accessibility for all citizens.'
                         : 'This product receives partial price support from the government to stabilize market prices.',
                     style: const TextStyle(fontSize: 14),
