@@ -43,7 +43,8 @@ class Reporting extends StatelessWidget {
           itemCount: controller.reportTypes.length,
           itemBuilder: (context, index) {
             final reportType = controller.reportTypes[index];
-            return _buildReportCard(reportType, index, context, controller);
+            // Use reportType['id'] instead of index
+            return _buildReportCard(reportType, context, controller);
           },
         ),
       ),
@@ -52,7 +53,6 @@ class Reporting extends StatelessWidget {
 
   Widget _buildReportCard(
     Map<String, dynamic> reportType,
-    int reportid, // Add this parameter for the reportId inpu
     BuildContext context,
     ReportsController controller,
   ) {
@@ -62,8 +62,12 @@ class Reporting extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
         onTap: () {
-          // Use controller to navigate
-          controller.navigateToReportDetails(reportid, reportType, context);
+          // Extract ID from reportType
+          controller.navigateToReportDetails(
+            reportType['id'],
+            reportType,
+            context,
+          );
         },
         borderRadius: BorderRadius.circular(12),
         child: Padding(
