@@ -7,7 +7,7 @@ import 'package:tradelaw/features/view/home/pages/info.dart';
 import 'package:tradelaw/features/view/home/pages/lawinfo.dart';
 import 'package:tradelaw/features/view/home/pages/products.dart';
 import 'package:tradelaw/features/view/home/pages/report_tracking.dart';
-import 'package:tradelaw/features/view/home/pages/reporting.dart';
+import 'package:tradelaw/features/view/home/pages/reporting/reporting.dart';
 
 class Myrouts {
   static List<GetPage<dynamic>> get getpages {
