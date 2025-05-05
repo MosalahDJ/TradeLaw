@@ -115,6 +115,8 @@ class ReportInformationsPage extends StatelessWidget {
                   labelText: 'City',
                   hintText: 'Enter city name',
                   prefixIcon: Icon(Icons.location_city, color: kmaincolor),
+                  filled: true,
+                  fillColor: reportType['color'].withOpacity(0.05),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -144,6 +146,8 @@ class ReportInformationsPage extends StatelessWidget {
                   labelText: 'Town/District',
                   hintText: 'Enter town or district name',
                   prefixIcon: Icon(Icons.apartment, color: kmaincolor),
+                  filled: true,
+                  fillColor: reportType['color'].withOpacity(0.05),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -167,6 +171,8 @@ class ReportInformationsPage extends StatelessWidget {
                   labelText: 'Village/Neighborhood',
                   hintText: 'Enter village or neighborhood name',
                   prefixIcon: Icon(Icons.home, color: kmaincolor),
+                  filled: true,
+                  fillColor: reportType['color'].withOpacity(0.05),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -194,6 +200,8 @@ class ReportInformationsPage extends StatelessWidget {
                   labelText: 'Market/Store Name',
                   hintText: 'Enter the name of the market or store',
                   prefixIcon: Icon(Icons.storefront, color: kmaincolor),
+                  filled: true,
+                  fillColor: reportType['color'].withOpacity(0.05),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -223,6 +231,8 @@ class ReportInformationsPage extends StatelessWidget {
                   labelText: 'Market/Store Number',
                   hintText: 'Enter the number or identifier of the market',
                   prefixIcon: Icon(Icons.tag, color: kmaincolor),
+                  filled: true,
+                  fillColor: reportType['color'].withOpacity(0.05),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -251,6 +261,8 @@ class ReportInformationsPage extends StatelessWidget {
                   labelText: 'Description',
                   hintText: 'Provide details about the violation',
                   alignLabelWithHint: true,
+                  filled: true,
+                  fillColor: reportType['color'].withOpacity(0.05),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
