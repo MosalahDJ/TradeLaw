@@ -28,7 +28,7 @@ class ReportInformationsPage extends StatelessWidget {
         foregroundColor: Colors.white,
         backgroundColor: reportType['color'],
         title: Text(
-          'Report ${reportType['title']}',
+          'report_title'.trParams({'title': reportType['title'].tr}),
           style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -80,7 +80,7 @@ class ReportInformationsPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            reportType['title'],
+                            reportType['title'].tr,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
@@ -89,7 +89,7 @@ class ReportInformationsPage extends StatelessWidget {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            reportType['description'],
+                            reportType['description'].tr,
                             style: TextStyle(
                               color: Colors.grey.shade700,
                               fontSize: 14,
@@ -105,15 +105,15 @@ class ReportInformationsPage extends StatelessWidget {
               const SizedBox(height: 24),
 
               // Location section
-              _buildSectionHeader('Location Information', Icons.location_on),
+              _buildSectionHeader('location_information'.tr, Icons.location_on),
               const SizedBox(height: 16),
 
               // City field
               TextFormField(
                 controller: controller.cityController,
                 decoration: InputDecoration(
-                  labelText: 'City',
-                  hintText: 'Enter city name',
+                  labelText: 'city'.tr,
+                  hintText: 'enter_city_name'.tr,
                   prefixIcon: Icon(Icons.location_city, color: kmaincolor),
                   filled: true,
                   fillColor: reportType['color'].withOpacity(0.05),
@@ -131,7 +131,7 @@ class ReportInformationsPage extends StatelessWidget {
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter city name';
+                    return 'please_enter_city_name'.tr;
                   }
                   return null;
                 },
@@ -143,8 +143,8 @@ class ReportInformationsPage extends StatelessWidget {
               TextFormField(
                 controller: controller.townController,
                 decoration: InputDecoration(
-                  labelText: 'Town/District',
-                  hintText: 'Enter town or district name',
+                  labelText: 'town_district'.tr,
+                  hintText: 'enter_town_district_name'.tr,
                   prefixIcon: Icon(Icons.apartment, color: kmaincolor),
                   filled: true,
                   fillColor: reportType['color'].withOpacity(0.05),
@@ -168,8 +168,8 @@ class ReportInformationsPage extends StatelessWidget {
               TextFormField(
                 controller: controller.villageController,
                 decoration: InputDecoration(
-                  labelText: 'Village/Neighborhood',
-                  hintText: 'Enter village or neighborhood name',
+                  labelText: 'village_neighborhood'.tr,
+                  hintText: 'enter_village_neighborhood_name'.tr,
                   prefixIcon: Icon(Icons.home, color: kmaincolor),
                   filled: true,
                   fillColor: reportType['color'].withOpacity(0.05),
@@ -190,15 +190,15 @@ class ReportInformationsPage extends StatelessWidget {
               const SizedBox(height: 24),
 
               // Market Information section
-              _buildSectionHeader('Market Information', Icons.store),
+              _buildSectionHeader('market_information'.tr, Icons.store),
               const SizedBox(height: 16),
 
               // Market name field
               TextFormField(
                 controller: controller.marketNameController,
                 decoration: InputDecoration(
-                  labelText: 'Market/Store Name',
-                  hintText: 'Enter the name of the market or store',
+                  labelText: 'market_store_name'.tr,
+                  hintText: 'enter_market_store_name'.tr,
                   prefixIcon: Icon(Icons.storefront, color: kmaincolor),
                   filled: true,
                   fillColor: reportType['color'].withOpacity(0.05),
@@ -216,7 +216,7 @@ class ReportInformationsPage extends StatelessWidget {
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter market name';
+                    return 'please_enter_market_name'.tr;
                   }
                   return null;
                 },
@@ -228,8 +228,8 @@ class ReportInformationsPage extends StatelessWidget {
               TextFormField(
                 controller: controller.marketNumberController,
                 decoration: InputDecoration(
-                  labelText: 'Market/Store Number',
-                  hintText: 'Enter the number or identifier of the market',
+                  labelText: 'market_store_number'.tr,
+                  hintText: 'enter_market_store_number'.tr,
                   prefixIcon: Icon(Icons.tag, color: kmaincolor),
                   filled: true,
                   fillColor: reportType['color'].withOpacity(0.05),
@@ -251,15 +251,15 @@ class ReportInformationsPage extends StatelessWidget {
               const SizedBox(height: 24),
 
               // Violation Description section
-              _buildSectionHeader('Violation Details', Icons.description),
+              _buildSectionHeader('violation_details'.tr, Icons.description),
               const SizedBox(height: 16),
 
               // Description field
               TextFormField(
                 controller: controller.descriptionController,
                 decoration: InputDecoration(
-                  labelText: 'Description',
-                  hintText: 'Provide details about the violation',
+                  labelText: 'description'.tr,
+                  hintText: 'provide_violation_details'.tr,
                   alignLabelWithHint: true,
                   filled: true,
                   fillColor: reportType['color'].withOpacity(0.05),
@@ -278,7 +278,7 @@ class ReportInformationsPage extends StatelessWidget {
                 maxLines: 5,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please provide details about the violation';
+                    return 'please_provide_violation_details'.tr;
                   }
                   return null;
                 },
@@ -317,9 +317,9 @@ class ReportInformationsPage extends StatelessWidget {
                                   ),
                                 ),
                                 const SizedBox(width: 12),
-                                const Text(
-                                  'Submitting...',
-                                  style: TextStyle(
+                                Text(
+                                  'submitting'.tr,
+                                  style: const TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -331,9 +331,9 @@ class ReportInformationsPage extends StatelessWidget {
                               children: [
                                 Icon(Icons.send),
                                 const SizedBox(width: 8),
-                                const Text(
-                                  'Submit Report',
-                                  style: TextStyle(
+                                Text(
+                                  'submit_report'.tr,
+                                  style: const TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                   ),
