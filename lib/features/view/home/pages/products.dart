@@ -173,7 +173,6 @@ class _ProductsState extends State<Products>
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.white,
-        backgroundColor: kmaincolor,
         title: Text(
           'products'.tr,
           style: const TextStyle(
