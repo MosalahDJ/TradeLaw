@@ -41,12 +41,12 @@ class ReportInformationsPage extends StatelessWidget {
           color: Theme.of(context).scaffoldBackgroundColor,
           image: DecorationImage(
             image: const AssetImage(
-              'lib/core/assets/images/homeimages/masjid3d.png',
+              'lib/core/assets/images/app_logo/pnglogo1.png',
             ),
-            fit: BoxFit.cover,
-            opacity: 0.05,
+            fit: BoxFit.fitWidth,
+            opacity: 0.5,
             colorFilter: ColorFilter.mode(
-              reportType['color'].withOpacity(0.1),
+              reportType['color'].withOpacity(0.01),
               BlendMode.srcOver,
             ),
           ),
