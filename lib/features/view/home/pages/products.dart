@@ -82,6 +82,7 @@ class Products extends StatelessWidget {
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ExpansionTile(
+        shape: Border.all(color: Colors.transparent, width: 1),
         leading: CircleAvatar(
           backgroundColor: category.color,
           child: Icon(category.icon, color: Colors.white),
@@ -112,10 +113,7 @@ class Products extends StatelessWidget {
     );
   }
 
-  Widget _buildProductCard(
-    Product product,
-    ProductsController controller,
-  ) {
+  Widget _buildProductCard(Product product, ProductsController controller) {
     return GestureDetector(
       onTap: () => controller.showProductDetails(product),
       child: Card(
@@ -178,8 +176,7 @@ class Products extends StatelessWidget {
                   Text(
                     product.price,
                     style: TextStyle(
-                      color:
-                          product.subsidized ? Colors.green : Colors.black87,
+                      color: product.subsidized ? Colors.green : Colors.black87,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -267,15 +264,11 @@ class Products extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         color:
-                            product.subsidized
-                                ? Colors.green
-                                : Colors.orange,
+                            product.subsidized ? Colors.green : Colors.orange,
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(
-                        product.subsidized
-                            ? 'Subsidized'
-                            : 'Partial Support',
+                        product.subsidized ? 'Subsidized' : 'Partial Support',
                         style: const TextStyle(color: Colors.white),
                       ),
                     ),
@@ -299,10 +292,7 @@ class Products extends StatelessWidget {
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),
-                Text(
-                  product.description,
-                  style: const TextStyle(fontSize: 16),
-                ),
+                Text(product.description, style: const TextStyle(fontSize: 16)),
                 const SizedBox(height: 24),
                 const Text(
                   'Government Support Information',
