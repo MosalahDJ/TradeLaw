@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ProductsController extends GetxController with GetSingleTickerProviderStateMixin {
+class ProductsController extends GetxController
+    with GetSingleTickerProviderStateMixin {
   // Animation controller
   late AnimationController animationController;
   late Animation<double> animation;
-  
+
   // Selected product for detail view
   Rx<Map<String, dynamic>?> selectedProduct = Rx<Map<String, dynamic>?>(null);
-  
+
   // Product categories with their respective products
   final List<Map<String, dynamic>> productCategories = [
     {

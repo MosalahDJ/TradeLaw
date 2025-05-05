@@ -9,7 +9,7 @@ class Products extends StatelessWidget {
   Widget build(BuildContext context) {
     // Initialize the controller
     final ProductsController controller = Get.put(ProductsController());
-    
+
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.white,
@@ -39,38 +39,43 @@ class Products extends StatelessWidget {
           ),
 
           // Product Detail Sliding Panel
-          Obx(() => controller.selectedProduct.value != null
-            ? AnimatedBuilder(
-                animation: controller.animation,
-                builder: (context, child) {
-                  return Positioned(
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    height:
-                        MediaQuery.of(context).size.height *
-                        0.7 *
-                        controller.animation.value,
-                    child: GestureDetector(
-                      onVerticalDragEnd: (details) {
-                        if (details.primaryVelocity! > 300) {
-                          controller.hideProductDetails();
-                        }
+          Obx(
+            () =>
+                controller.selectedProduct.value != null
+                    ? AnimatedBuilder(
+                      animation: controller.animation,
+                      builder: (context, child) {
+                        return Positioned(
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          height:
+                              MediaQuery.of(context).size.height *
+                              0.7 *
+                              controller.animation.value,
+                          child: GestureDetector(
+                            onVerticalDragEnd: (details) {
+                              if (details.primaryVelocity! > 300) {
+                                controller.hideProductDetails();
+                              }
+                            },
+                            child: child!,
+                          ),
+                        );
                       },
-                      child: child!,
-                    ),
-                  );
-                },
-                child: _buildProductDetailPanel(controller, context),
-              )
-            : const SizedBox(),
+                      child: _buildProductDetailPanel(controller, context),
+                    )
+                    : const SizedBox(),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildCategoryCard(Map<String, dynamic> category, ProductsController controller) {
+  Widget _buildCategoryCard(
+    Map<String, dynamic> category,
+    ProductsController controller,
+  ) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       elevation: 4,
@@ -106,7 +111,10 @@ class Products extends StatelessWidget {
     );
   }
 
-  Widget _buildProductCard(Map<String, dynamic> product, ProductsController controller) {
+  Widget _buildProductCard(
+    Map<String, dynamic> product,
+    ProductsController controller,
+  ) {
     return GestureDetector(
       onTap: () => controller.showProductDetails(product),
       child: Card(
@@ -183,9 +191,12 @@ class Products extends StatelessWidget {
     );
   }
 
-  Widget _buildProductDetailPanel(ProductsController controller, BuildContext context) {
+  Widget _buildProductDetailPanel(
+    ProductsController controller,
+    BuildContext context,
+  ) {
     final product = controller.selectedProduct.value!;
-    
+
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
