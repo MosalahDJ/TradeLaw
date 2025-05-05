@@ -28,12 +28,12 @@ class Reporting extends StatelessWidget {
           color: Theme.of(context).scaffoldBackgroundColor,
           image: DecorationImage(
             image: const AssetImage(
-              'lib/core/assets/images/homeimages/masjid3d.png',
+              'lib/core/assets/images/homeimages/grocery.png',
             ),
-            fit: BoxFit.cover,
-            opacity: 0.05,
+            fit: BoxFit.fitWidth,
+            opacity: 0.2,
             colorFilter: ColorFilter.mode(
-              kmaincolor.withValues(alpha: 0.1),
+              kmaincolor.withValues(alpha: 0.0),
               BlendMode.srcOver,
             ),
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/features/model/product_list.dart';
+import 'package:tradelaw/features/view%20model/settings%20controllers/language_controller.dart';
 
 class ProductsController extends GetxController
     with GetSingleTickerProviderStateMixin {
@@ -10,13 +11,22 @@ class ProductsController extends GetxController
 
   // Selected product for detail view
   Rx<Product?> selectedProduct = Rx<Product?>(null);
-  
-  // Get product categories from the model
-  final List<ProductCategory> productCategories = ProductList.productCategories;
+
+  // Observable list for product categories that will update with language changes
+  final Rx<List<ProductCategory>> _productCategories =
+      Rx<List<ProductCategory>>([]);
+
+  // Getter for the translated product categories
+  List<ProductCategory> get productCategories => _productCategories.value;
+
+  // Language controller reference
+  late LanguageController _languageController;
 
   @override
   void onInit() {
     super.onInit();
+
+    // Initialize animation controller
     animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 300),
@@ -24,6 +34,23 @@ class ProductsController extends GetxController
     animation = CurvedAnimation(
       parent: animationController,
       curve: Curves.easeInOut,
+    );
+
+    // Get language controller
+    _languageController = Get.find<LanguageController>();
+
+    // Update products when language changes
+    ever(_languageController.language, (_) => _updateProductsWithLanguage());
+
+    // Initial load of products with current language
+    _updateProductsWithLanguage();
+  }
+
+  // Update products based on current language
+  void _updateProductsWithLanguage() {
+    final currentLanguage = _languageController.language.value;
+    _productCategories.value = ProductList.getTranslatedCategories(
+      currentLanguage,
     );
   }
 
