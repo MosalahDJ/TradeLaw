@@ -6,6 +6,7 @@ class ReportsController extends GetxController {
   // Report types data
   final List<Map<String, dynamic>> reportTypes = [
     {
+      'id': 1,
       'title': 'Price Manipulation',
       'icon': Icons.attach_money,
       'color': kmaincolor,
@@ -13,6 +14,7 @@ class ReportsController extends GetxController {
           'Report businesses that artificially increase prices or engage in unfair pricing practices.',
     },
     {
+      'id': 2,
       'title': 'Monopoly & Speculation',
       'icon': Icons.business_center,
       'color': kmaincolor4,
@@ -20,6 +22,7 @@ class ReportsController extends GetxController {
           'Report businesses hoarding products to create artificial scarcity or monopolistic practices.',
     },
     {
+      'id': 3,
       'title': 'Expired Products',
       'icon': Icons.no_food,
       'color': kmaincolor2,
@@ -27,6 +30,7 @@ class ReportsController extends GetxController {
           'Report businesses selling products past their expiration date or with altered expiry information.',
     },
     {
+      'id': 4,
       'title': 'Illegal Products',
       'icon': Icons.warning_amber,
       'color': Colors.red.shade800,
@@ -34,6 +38,7 @@ class ReportsController extends GetxController {
           'Report the sale of prohibited, counterfeit, or unlicensed products.',
     },
     {
+      'id': 5,
       'title': 'Hygiene Violations',
       'icon': Icons.cleaning_services,
       'color': Colors.teal.shade700,
@@ -41,6 +46,7 @@ class ReportsController extends GetxController {
           'Report businesses with poor sanitation, unhygienic food handling, or unsanitary conditions.',
     },
     {
+      'id': 6,
       'title': 'Other Violations',
       'icon': Icons.report_problem,
       'color': Colors.amber.shade800,
@@ -56,12 +62,14 @@ class ReportsController extends GetxController {
   final TextEditingController marketNameController = TextEditingController();
   final TextEditingController marketNumberController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
-  
+
   // Form state
   final RxBool isSubmitting = false.obs;
-  
+
   // Selected report type
-  Rx<Map<String, dynamic>?> selectedReportType = Rx<Map<String, dynamic>?>(null);
+  Rx<Map<String, dynamic>?> selectedReportType = Rx<Map<String, dynamic>?>(
+    null,
+  );
 
   @override
   void onClose() {
@@ -76,21 +84,27 @@ class ReportsController extends GetxController {
   }
 
   // Navigate to report details page
-  void navigateToReportDetails(Map<String, dynamic> reportType, BuildContext context) {
+  void navigateToReportDetails(
+    Map<String, dynamic> reportType,
+    BuildContext context,
+  ) {
     selectedReportType.value = reportType;
     Navigator.pushNamed(context, 'report_information', arguments: reportType);
   }
 
   // Submit report logic
-  Future<void> submitReport(GlobalKey<FormState> formKey, BuildContext context) async {
+  Future<void> submitReport(
+    GlobalKey<FormState> formKey,
+    BuildContext context,
+  ) async {
     if (formKey.currentState!.validate()) {
       isSubmitting.value = true;
-      
+
       try {
         // Here you would typically make an API call to submit the report
         // For now, we'll simulate a delay
         await Future.delayed(const Duration(seconds: 2));
-        
+
         // Show success dialog
         // ignore: use_build_context_synchronously
         showSuccessDialog(context);
