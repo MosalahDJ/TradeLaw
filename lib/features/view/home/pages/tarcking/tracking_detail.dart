@@ -56,7 +56,7 @@ class TrackingDetail extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(0.2),
+                    color: Colors.grey.withValues(alpha: 0.2),
                     spreadRadius: 1,
                     blurRadius: 6,
                     offset: const Offset(0, 3),
@@ -73,7 +73,7 @@ class TrackingDetail extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                            color: kmaincolor.withOpacity(0.1),
+                            color: kmaincolor.withValues(alpha: 0.1),
                             shape: BoxShape.circle,
                           ),
                           child: Icon(Icons.assignment, color: kmaincolor),
@@ -104,7 +104,7 @@ class TrackingDetail extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                           decoration: BoxDecoration(
-                            color: _getStatusColor(report['status']).withOpacity(0.1),
+                            color: _getStatusColor(report['status']).withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
                               color: _getStatusColor(report['status']),
@@ -161,7 +161,7 @@ class TrackingDetail extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(0.2),
+                    color: Colors.grey.withValues(alpha: 0.2),
                     spreadRadius: 1,
                     blurRadius: 6,
                     offset: const Offset(0, 3),
