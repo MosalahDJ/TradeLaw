@@ -91,7 +91,7 @@ class Messages extends Translations {
       'd6':
           'Report other trade law violations not covered by the categories above.',
       // Report Information Page
-      'report_title': 'Report %{title}',
+      'report': 'Report',
       'location_information': 'Location Information',
       'city': 'City',
       'enter_city_name': 'Enter city name',
@@ -202,7 +202,7 @@ class Messages extends Translations {
       'd6':
           'الإبلاغ عن انتهاكات أخرى لقانون التجارة غير مشمولة بالفئات المذكورة أعلاه.',
       // Report Information Page
-      'report_title': 'الإبلاغ عن %{title}',
+      'report': 'الإبلاغ عن',
       'location_information': 'معلومات الموقع',
       'city': 'المدينة',
       'enter_city_name': 'أدخل اسم المدينة',
@@ -312,7 +312,7 @@ class Messages extends Translations {
       'd6':
           'Signalez d\'autres violations de la loi commerciale non couvertes par les catégories ci-dessus.',
       // Report Information Page
-      'report_title': 'Signaler %{title}',
+      'report': 'Signaler',
       'location_information': 'Informations sur l\'emplacement',
       'city': 'Ville',
       'enter_city_name': 'Entrez le nom de la ville',

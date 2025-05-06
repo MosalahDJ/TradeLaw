@@ -32,10 +32,16 @@ class LoginBody extends StatelessWidget {
                 SizedBox(height: Sizeconfig.screenheight! * 0.04),
 
                 Center(
-                  child: Image.asset(
-                    "lib/core/assets/images/app_logo/newlogo.jpg",
+                  child: Container(
                     alignment: Alignment.center,
-                    fit: BoxFit.contain,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(
+                          "lib/core/assets/images/app_logo/newlogo.jpg",
+                        ),
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                    ),
                     height: 100,
                     width: 100,
                   ),

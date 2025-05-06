@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tradelaw/core/Utils/constants.dart';
 import 'package:tradelaw/features/view model/home controller/reports_controller.dart';
 
 class ReportInformationsPage extends StatelessWidget {
@@ -28,7 +27,7 @@ class ReportInformationsPage extends StatelessWidget {
         foregroundColor: Colors.white,
         backgroundColor: reportType['color'],
         title: Text(
-          'report_title'.trParams({'title': reportType['title'].tr}),
+          "${'report'.tr} ${"${reportType['title']}".tr}",
           style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -80,7 +79,7 @@ class ReportInformationsPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            reportType['title'].tr,
+                            reportType['title'],
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
@@ -89,7 +88,7 @@ class ReportInformationsPage extends StatelessWidget {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            reportType['description'].tr,
+                            reportType['description'],
                             style: TextStyle(
                               color: Colors.grey.shade700,
                               fontSize: 14,
@@ -114,7 +113,10 @@ class ReportInformationsPage extends StatelessWidget {
                 decoration: InputDecoration(
                   labelText: 'city'.tr,
                   hintText: 'enter_city_name'.tr,
-                  prefixIcon: Icon(Icons.location_city, color: kmaincolor),
+                  prefixIcon: Icon(
+                    Icons.location_city,
+                    color: reportType['color'],
+                  ),
                   filled: true,
                   fillColor: reportType['color'].withOpacity(0.05),
                   border: OutlineInputBorder(
@@ -126,7 +128,7 @@ class ReportInformationsPage extends StatelessWidget {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: kmaincolor),
+                    borderSide: BorderSide(color: reportType['color']),
                   ),
                 ),
                 validator: (value) {
@@ -145,7 +147,7 @@ class ReportInformationsPage extends StatelessWidget {
                 decoration: InputDecoration(
                   labelText: 'town_district'.tr,
                   hintText: 'enter_town_district_name'.tr,
-                  prefixIcon: Icon(Icons.apartment, color: kmaincolor),
+                  prefixIcon: Icon(Icons.apartment, color: reportType['color']),
                   filled: true,
                   fillColor: reportType['color'].withOpacity(0.05),
                   border: OutlineInputBorder(
@@ -157,7 +159,7 @@ class ReportInformationsPage extends StatelessWidget {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: kmaincolor),
+                    borderSide: BorderSide(color: reportType['color']),
                   ),
                 ),
               ),
@@ -170,7 +172,7 @@ class ReportInformationsPage extends StatelessWidget {
                 decoration: InputDecoration(
                   labelText: 'village_neighborhood'.tr,
                   hintText: 'enter_village_neighborhood_name'.tr,
-                  prefixIcon: Icon(Icons.home, color: kmaincolor),
+                  prefixIcon: Icon(Icons.home, color: reportType['color']),
                   filled: true,
                   fillColor: reportType['color'].withOpacity(0.05),
                   border: OutlineInputBorder(
@@ -182,7 +184,7 @@ class ReportInformationsPage extends StatelessWidget {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: kmaincolor),
+                    borderSide: BorderSide(color: reportType['color']),
                   ),
                 ),
               ),
@@ -199,7 +201,10 @@ class ReportInformationsPage extends StatelessWidget {
                 decoration: InputDecoration(
                   labelText: 'market_store_name'.tr,
                   hintText: 'enter_market_store_name'.tr,
-                  prefixIcon: Icon(Icons.storefront, color: kmaincolor),
+                  prefixIcon: Icon(
+                    Icons.storefront,
+                    color: reportType['color'],
+                  ),
                   filled: true,
                   fillColor: reportType['color'].withOpacity(0.05),
                   border: OutlineInputBorder(
@@ -211,7 +216,7 @@ class ReportInformationsPage extends StatelessWidget {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: kmaincolor),
+                    borderSide: BorderSide(color: reportType['color']),
                   ),
                 ),
                 validator: (value) {
@@ -230,7 +235,7 @@ class ReportInformationsPage extends StatelessWidget {
                 decoration: InputDecoration(
                   labelText: 'market_store_number'.tr,
                   hintText: 'enter_market_store_number'.tr,
-                  prefixIcon: Icon(Icons.tag, color: kmaincolor),
+                  prefixIcon: Icon(Icons.tag, color: reportType['color']),
                   filled: true,
                   fillColor: reportType['color'].withOpacity(0.05),
                   border: OutlineInputBorder(
@@ -242,7 +247,7 @@ class ReportInformationsPage extends StatelessWidget {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: kmaincolor),
+                    borderSide: BorderSide(color: reportType['color']),
                   ),
                 ),
                 keyboardType: TextInputType.number,
@@ -272,7 +277,7 @@ class ReportInformationsPage extends StatelessWidget {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(color: kmaincolor),
+                    borderSide: BorderSide(color: reportType['color']),
                   ),
                 ),
                 maxLines: 5,
@@ -353,16 +358,24 @@ class ReportInformationsPage extends StatelessWidget {
   }
 
   Widget _buildSectionHeader(String title, IconData icon) {
+    final ReportsController controller = Get.find<ReportsController>();
+    final reportType = controller.reportTypes.firstWhere(
+      (type) => type['id'] == reportId,
+      orElse:
+          () =>
+              controller
+                  .reportTypes[0], // Fallback to first report type if not found
+    );
     return Row(
       children: [
-        Icon(icon, color: kmaincolor),
+        Icon(icon, color: reportType['color']),
         const SizedBox(width: 8),
         Text(
           title,
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
-            color: kmaincolor,
+            color: reportType['color'],
           ),
         ),
       ],
