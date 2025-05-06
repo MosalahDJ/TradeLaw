@@ -2,11 +2,11 @@ import 'package:get/get.dart';
 import 'package:tradelaw/features/view/auth/login%20page/loginpage.dart';
 import 'package:tradelaw/features/view/auth/signin%20page/signin_page.dart';
 import 'package:tradelaw/features/view/home/home_page.dart';
-import 'package:tradelaw/features/view/home/pages/help_and_fedback.dart';
-import 'package:tradelaw/features/view/home/pages/info.dart';
-import 'package:tradelaw/features/view/home/pages/lawinfo.dart';
-import 'package:tradelaw/features/view/home/pages/products.dart';
-import 'package:tradelaw/features/view/home/pages/report_tracking.dart';
+import 'package:tradelaw/features/view/home/pages/help%20and%20fedback/help_and_fedback.dart';
+import 'package:tradelaw/features/view/home/pages/info/info.dart';
+import 'package:tradelaw/features/view/home/pages/law%20info/lawinfo.dart';
+import 'package:tradelaw/features/view/home/pages/products/products.dart';
+import 'package:tradelaw/features/view/home/pages/tarcking/report_tracking.dart';
 import 'package:tradelaw/features/view/home/pages/reporting/report_informations_page.dart';
 import 'package:tradelaw/features/view/home/pages/reporting/reporting.dart';
 
