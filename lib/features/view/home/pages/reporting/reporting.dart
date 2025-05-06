@@ -33,7 +33,7 @@ class Reporting extends StatelessWidget {
             fit: BoxFit.fitWidth,
             opacity: 0.2,
             colorFilter: ColorFilter.mode(
-              kmaincolor.withOpacity(0.0),
+              kmaincolor.withValues(alpha: 0.0),
               BlendMode.srcOver,
             ),
           ),
@@ -95,7 +95,7 @@ class Reporting extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      reportType['title'].tr,
+                      reportType['title'],
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
@@ -103,7 +103,7 @@ class Reporting extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      reportType['description'].tr,
+                      reportType['description'],
                       style: TextStyle(
                         color: Colors.grey.shade700,
                         fontSize: 14,

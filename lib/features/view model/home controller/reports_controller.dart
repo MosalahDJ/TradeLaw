@@ -10,7 +10,7 @@ class ReportsController extends GetxController {
       'title': 'Price Manipulation',
       'icon': Icons.attach_money,
       'color': kmaincolor,
-      'description': 'd1',
+      'description': 'd1'.tr,
     },
     {
       'id': 2,
