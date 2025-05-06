@@ -1,85 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/core/Utils/constants.dart';
-import 'package:intl/intl.dart'; // Add this import for date formatting
+import 'package:intl/intl.dart';
+import 'package:tradelaw/features/model/reports_list.dart'; // Import the reports list model
 
 class TrackingDetail extends StatelessWidget {
-  TrackingDetail({super.key,required int reportId});
-    final reportId = Get.arguments as int;
-
+  final int reportId;
+  
+  const TrackingDetail({super.key, required this.reportId});
 
   @override
   Widget build(BuildContext context) {
-    // Get the report ID from arguments
+    // Get the report from the model using the ID
+    final Map<String, dynamic>? report = ReportsList.getReportById(reportId);
     
-    // Sample report data - in a real app, this would come from a controller or API
-    final Map<String, dynamic> report = {
-      'id': reportId,
-      'title': 'Price Manipulation Report',
-      'description': 'Report about a store increasing prices artificially',
-      'timestamp': DateTime.now().subtract(const Duration(days: 5)),
-      'status': 'Under Investigation',
-      'location': 'Downtown Market, Main Street',
-      'reporter': 'Anonymous',
-      'tracking': [
-        {
-          'step': 1,
-          'title': 'Report Submitted',
-          'description': 'Your report has been successfully submitted to our system.',
-          'timestamp': DateTime.now().subtract(const Duration(days: 5)),
-          'completed': true,
-          'icon': Icons.assignment_turned_in,
-        },
-        {
-          'step': 2,
-          'title': 'Initial Review',
-          'description': 'Our team has reviewed your report and determined it requires further investigation.',
-          'timestamp': DateTime.now().subtract(const Duration(days: 4)),
-          'completed': true,
-          'icon': Icons.find_in_page,
-        },
-        {
-          'step': 3,
-          'title': 'Under Investigation',
-          'description': 'Field agents have been assigned to investigate the reported issue.',
-          'timestamp': DateTime.now().subtract(const Duration(days: 2)),
-          'completed': true,
-          'icon': Icons.search,
-        },
-        {
-          'step': 4,
-          'title': 'Evidence Collection',
-          'description': 'Our team is collecting evidence and documenting findings.',
-          'timestamp': DateTime.now().subtract(const Duration(days: 1)),
-          'completed': true,
-          'icon': Icons.photo_camera,
-        },
-        {
-          'step': 5,
-          'title': 'Legal Assessment',
-          'description': 'Legal team is reviewing the evidence and determining appropriate actions.',
-          'timestamp': DateTime.now(),
-          'completed': false,
-          'icon': Icons.gavel,
-        },
-        {
-          'step': 6,
-          'title': 'Action Taken',
-          'description': 'Enforcement actions will be taken based on investigation findings.',
-          'timestamp': null,
-          'completed': false,
-          'icon': Icons.policy,
-        },
-        {
-          'step': 7,
-          'title': 'Case Closed',
-          'description': 'The case has been resolved and appropriate measures have been implemented.',
-          'timestamp': null,
-          'completed': false,
-          'icon': Icons.task_alt,
-        },
-      ],
-    };
+    // If report not found, show error
+    if (report == null) {
+      return Scaffold(
+        appBar: AppBar(
+          foregroundColor: Colors.white,
+          backgroundColor: kmaincolor,
+          title: Text(
+            'tracking_detail'.tr,
+            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+        ),
+        body: Center(
+          child: Text(
+            'report_not_found'.tr,
+            style: const TextStyle(fontSize: 18),
+          ),
+        ),
+      );
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -103,7 +56,7 @@ class TrackingDetail extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withValues(alpha: 0.2),
+                    color: Colors.grey.withOpacity(0.2),
                     spreadRadius: 1,
                     blurRadius: 6,
                     offset: const Offset(0, 3),
@@ -120,7 +73,7 @@ class TrackingDetail extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                            color: kmaincolor.withValues(alpha: 0.1),
+                            color: kmaincolor.withOpacity(0.1),
                             shape: BoxShape.circle,
                           ),
                           child: Icon(Icons.assignment, color: kmaincolor),
@@ -151,7 +104,7 @@ class TrackingDetail extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                           decoration: BoxDecoration(
-                            color: _getStatusColor(report['status']).withValues(alpha: 0.1),
+                            color: _getStatusColor(report['status']).withOpacity(0.1),
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
                               color: _getStatusColor(report['status']),
@@ -208,7 +161,7 @@ class TrackingDetail extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withValues(alpha: 0.2),
+                    color: Colors.grey.withOpacity(0.2),
                     spreadRadius: 1,
                     blurRadius: 6,
                     offset: const Offset(0, 3),
@@ -354,8 +307,12 @@ class TrackingDetail extends StatelessWidget {
         return Colors.orange;
       case 'Under Investigation':
         return Colors.purple;
+      case 'Investigating':
+        return Colors.blue;
       case 'Resolved':
         return Colors.green;
+      case 'Closed':
+        return Colors.red;
       case 'Rejected':
         return Colors.red;
       default:

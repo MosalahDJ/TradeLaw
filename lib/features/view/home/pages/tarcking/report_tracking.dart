@@ -1,50 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/core/Utils/constants.dart';
-import 'package:intl/intl.dart'; // Add this import for date formatting
+import 'package:intl/intl.dart';
+import 'package:tradelaw/features/model/reports_list.dart'; // Import the reports list model
 
 class ReportTracking extends StatelessWidget {
   const ReportTracking({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Sample report data - in a real app, this would come from a controller or API
-    final List<Map<String, dynamic>> reports = [
-      {
-        'id': 1,
-        'title': 'Price Manipulation Report',
-        'description': 'Report about a store increasing prices artificially',
-        'timestamp': DateTime.now().subtract(const Duration(hours: 2)),
-        'status': 'Under Review',
-      },
-      {
-        'id': 2,
-        'title': 'Expired Products',
-        'description': 'Found expired products being sold at the supermarket',
-        'timestamp': DateTime.now().subtract(const Duration(days: 1)),
-        'status': 'Investigating',
-      },
-      {
-        'id': 3,
-        'title': 'Illegal Products',
-        'description': 'Report of counterfeit products being sold',
-        'timestamp': DateTime.now().subtract(const Duration(days: 3)),
-        'status': 'Resolved',
-      },
-      {
-        'id': 4,
-        'title': 'Hygiene Violation',
-        'description': 'Restaurant with poor sanitation conditions',
-        'timestamp': DateTime.now().subtract(const Duration(days: 5)),
-        'status': 'Closed',
-      },
-    ];
-
-    // Sort reports from newest to oldest
-    reports.sort(
-      (a, b) =>
-          (b['timestamp'] as DateTime).compareTo(a['timestamp'] as DateTime),
-    );
+    // Get reports from the model
+    final List<Map<String, dynamic>> reports = ReportsList.getAllReportsSorted();
 
     return Scaffold(
       appBar: AppBar(
@@ -174,7 +140,7 @@ class ReportTracking extends StatelessWidget {
                               ),
                               TextButton(
                                 onPressed: () {
-                                  // Navigate to report details
+                                  // Navigate to report details with the report ID
                                   Get.toNamed(
                                     '/report_details',
                                     arguments: report['id'],
