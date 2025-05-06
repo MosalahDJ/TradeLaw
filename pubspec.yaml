@@ -56,6 +56,7 @@ flutter_native_splash:
   color_dark: "#690B22"
   image: lib/core/assets/images/app_logo/pnglogo1.png
   image_dark: lib/core/assets/images/app_logo/pnglogo1.png
+  branding: "designed and developed by Djehel Mohamed Salah"
   branding_bottom_padding: 24
   android_gravity: center
   android: true
