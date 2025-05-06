@@ -175,7 +175,10 @@ class ReportTracking extends StatelessWidget {
                               TextButton(
                                 onPressed: () {
                                   // Navigate to report details
-                                  // Get.toNamed('/report_details', arguments: report['id']);
+                                  Get.toNamed(
+                                    '/report_details',
+                                    arguments: report['id'],
+                                  );
                                 },
                                 child: Text(
                                   'view_details'.tr,
