@@ -114,6 +114,25 @@ class Messages extends Translations {
           'Please provide details about the violation',
       'submitting': 'Submitting...',
       'submit_report': 'Submit Report',
+
+      // Report Tracking
+      'tracking_detail': 'Report Details',
+      'report_not_found': 'Report not found',
+      'location': 'Location',
+      'submitted_on': 'Submitted on',
+      'reported_by': 'Reported by',
+      'tracking_progress': 'Tracking Progress',
+      'view_details': 'View Details',
+      'no_reports': 'No reports found',
+      
+      // Report Status
+      'Under Review': 'Under Review',
+      'Investigating': 'Investigating',
+      'Resolved': 'Resolved',
+      'Closed': 'Closed',
+      'Submitted': 'Submitted',
+      'Under Investigation': 'Under Investigation',
+      'Rejected': 'Rejected',
     },
     'ar': {
       // Authentication - Old Words
@@ -223,6 +242,25 @@ class Messages extends Translations {
       'please_provide_violation_details': 'الرجاء تقديم تفاصيل عن المخالفة',
       'submitting': 'جاري الإرسال...',
       'submit_report': 'إرسال البلاغ',
+
+      // Report Tracking
+      'tracking_detail': 'تفاصيل البلاغ',
+      'report_not_found': 'لم يتم العثور على البلاغ',
+      'location': 'الموقع',
+      'submitted_on': 'تم التقديم في',
+      'reported_by': 'تم الإبلاغ بواسطة',
+      'tracking_progress': 'تتبع التقدم',
+      'view_details': 'عرض التفاصيل',
+      'no_reports': 'لا توجد بلاغات',
+      
+      // Report Status
+      'Under Review': 'قيد المراجعة',
+      'Investigating': 'قيد التحقيق',
+      'Resolved': 'تم الحل',
+      'Closed': 'مغلق',
+      'Submitted': 'تم التقديم',
+      'Under Investigation': 'قيد التحقيق',
+      'Rejected': 'مرفوض',
     },
     'fr': {
       // Authentication - Old Words
@@ -336,6 +374,25 @@ class Messages extends Translations {
           'Veuillez fournir des détails sur la violation',
       'submitting': 'Soumission en cours...',
       'submit_report': 'Soumettre le rapport',
+
+      // Report Tracking
+      'tracking_detail': 'Détails du rapport',
+      'report_not_found': 'Rapport non trouvé',
+      'location': 'Emplacement',
+      'submitted_on': 'Soumis le',
+      'reported_by': 'Signalé par',
+      'tracking_progress': 'Suivi de progression',
+      'view_details': 'Voir les détails',
+      'no_reports': 'Aucun rapport trouvé',
+      
+      // Report Status
+      'Under Review': 'En cours de révision',
+      'Investigating': 'En cours d\'enquête',
+      'Resolved': 'Résolu',
+      'Closed': 'Fermé',
+      'Submitted': 'Soumis',
+      'Under Investigation': 'Sous enquête',
+      'Rejected': 'Rejeté',
     },
   };
 }
