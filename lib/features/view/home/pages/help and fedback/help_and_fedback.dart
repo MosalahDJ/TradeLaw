@@ -20,7 +20,7 @@ class _HelpandfedbackState extends State<Helpandfedback>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: /*3*/ 1, vsync: this);
   }
 
   @override
@@ -51,15 +51,19 @@ class _HelpandfedbackState extends State<Helpandfedback>
           labelColor: Colors.white,
           unselectedLabelColor: Colors.white70,
           tabs: [
-            Tab(text: 'FAQs'.tr),
+            // Tab(text: 'FAQs'.tr),
             Tab(text: 'Contact'.tr),
-            Tab(text: 'Feedback'.tr),
+            // Tab(text: 'Feedback'.tr),
           ],
         ),
       ),
       body: TabBarView(
         controller: _tabController,
-        children: [_buildFAQsTab(), _buildContactTab(), _buildFeedbackTab()],
+        children: [
+          // _buildFAQsTab(),
+          _buildContactTab(),
+          // _buildFeedbackTab()
+        ],
       ),
     );
   }
