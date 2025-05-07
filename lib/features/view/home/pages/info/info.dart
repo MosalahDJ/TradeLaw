@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/core/Utils/constants.dart';
+import 'package:intl/intl.dart';
 
 class Info extends StatelessWidget {
   const Info({super.key});
@@ -11,13 +12,238 @@ class Info extends StatelessWidget {
       appBar: AppBar(
         foregroundColor: Colors.white,
         backgroundColor: kmaincolor,
-
         title: Text(
           'info'.tr,
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
-      body: Container(),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          _buildHeader(context, 'Latest Trade Law News'),
+          const SizedBox(height: 16),
+          _buildNewsArticle(
+            title: 'New Data Privacy Law in Effect',
+            date: '10 August 2023',
+            source: 'Trade.gov',
+            content:
+                'Algeria has established a legal framework for data privacy through Law No. 18-07, enacted on June 10, 2018, which officially came into force on August 10, 2023. This law aims to protect personal data in digital transactions and services.',
+            // imageUrl: 'https://example.com/data_privacy.jpg',
+          ),
+          const SizedBox(height: 12),
+          _buildNewsArticle(
+            title: 'New Legislation on Counterfeiting and IP',
+            date: '15 March 2023',
+            source: 'U.S. Department of State',
+            content:
+                'The Algerian government is drafting new legislation on counterfeiting and intellectual property to improve enforcement and interagency coordination. Since March 2023, the government has also worked with WIPO to draft a national IP Strategy, expected to be completed by the end of 2024.',
+            // imageUrl: 'https://example.com/ip_law.jpg',
+          ),
+          const SizedBox(height: 12),
+          _buildNewsArticle(
+            title: 'New Digital Strategy Through 2029',
+            date: '20 January 2024',
+            source: 'Trade.gov',
+            content:
+                'Algeria has prepared a new digital strategy extending through 2029, built on improvement of the forthcoming digitalization law and enhanced cybersecurity. This strategy is expected to create a conducive environment for innovation and economic growth. Algeria\'s High Commission of Digitization (HCD) oversees the implementation of digital policies.',
+            // imageUrl: 'https://example.com/digital_strategy.jpg',
+          ),
+          const SizedBox(height: 24),
+          // // _buildHeader(context, 'Economic Reports & Magazines'),
+          // const SizedBox(height: 16),
+          // _buildMagazineReport(
+          //   title: 'Investment Climate Statement 2024',
+          //   publisher: 'U.S. Department of State',
+          //   date: 'January 2024',
+          //   summary:
+          //       'The report highlights that Algeria permits the inclusion of international arbitration clauses in contracts. Investment disputes can be settled informally through negotiations between the parties or via the domestic court system. For disputes with foreign investors, cases can also be decided through international arbitration. In 2023, the government created an inter-ministerial committee to audit companies\' financial records and impose fines for illegal activities.',
+          //   coverImageUrl: 'https://example.com/investment_report.jpg',
+          // ),
+          // const SizedBox(height: 12),
+          // _buildMagazineReport(
+          //   title: 'Algeria: A Stable Rent Economy',
+          //   publisher: 'Allianz Trade',
+          //   date: 'April 2024',
+          //   summary:
+          //       'Algeria\'s GDP growth is expected to slow to +2.7% in 2025 from +3.0% in 2024. The downward trend in global natural gas prices is causing a gradual decline of Algerian growth from the +4% averaged between 2021-2023. Inflation is projected to slightly pick up in 2025 to 5.5% following a downward shift in the first half of 2024 from the 9% recorded in late 2023.',
+          //   coverImageUrl: 'https://example.com/allianz_report.jpg',
+          // ),
+          // const SizedBox(height: 12),
+          // _buildMagazineReport(
+          //   title: 'World Bank Economic Report',
+          //   publisher: 'World Bank',
+          //   date: 'December 2023',
+          //   summary:
+          //       'The World Bank\'s report on the Algerian economy calls for the acceleration of institutional and micro-economic reforms. The report notes that the promulgation in 2022 of the new investment law and the publication of its implementing regulations, the abolition in 2020 of the 51/49 rule for non-strategic sectors, and the publication of the new hydrocarbons law in 2019 are positive steps, but must tackle the ecosystem, including paralyzing bureaucracy.',
+          //   coverImageUrl: 'https://example.com/world_bank_report.jpg',
+          // ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildHeader(BuildContext context, String title) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Text(
+        title,
+        style: TextStyle(
+          fontSize: 22,
+          fontWeight: FontWeight.bold,
+          color: kmaincolor,
+        ),
+        textAlign: TextAlign.center,
+      ),
+    );
+  }
+
+  Widget _buildNewsArticle({
+    required String title,
+    required String date,
+    required String source,
+    required String content,
+    String? imageUrl,
+  }) {
+    return Card(
+      elevation: 2,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: ExpansionTile(
+        title: Text(
+          title,
+          style: TextStyle(fontWeight: FontWeight.bold, color: kmaincolor),
+        ),
+        subtitle: Text('$source • $date'),
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // if (imageUrl != null) ...[
+                //   ClipRRect(
+                //     borderRadius: BorderRadius.circular(8),
+                //     child: Image.network(
+                //       imageUrl,
+                //       height: 180,
+                //       width: double.infinity,
+                //       fit: BoxFit.cover,
+                //       errorBuilder: (context, error, stackTrace) {
+                //         return Container(
+                //           height: 180,
+                //           width: double.infinity,
+                //           color: Colors.grey[300],
+                //           child: const Icon(
+                //             Icons.image_not_supported,
+                //             size: 50,
+                //           ),
+                //         );
+                //       },
+                //     ),
+                //   ),
+                //   const SizedBox(height: 16),
+                // ],
+                Text(content, style: const TextStyle(fontSize: 14)),
+                const SizedBox(height: 8),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    onPressed: () {
+                      // TODO: Implement read more functionality
+                    },
+                    child: Text(
+                      'Read More',
+                      style: TextStyle(color: kmaincolor),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMagazineReport({
+    required String title,
+    required String publisher,
+    required String date,
+    required String summary,
+    String? coverImageUrl,
+  }) {
+    return Card(
+      elevation: 2,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (coverImageUrl != null) ...[
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.network(
+                  coverImageUrl,
+                  height: 120,
+                  width: 80,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      height: 120,
+                      width: 80,
+                      color: Colors.grey[300],
+                      child: const Icon(Icons.book, size: 30),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(width: 16),
+            ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: kmaincolor,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    '$publisher • $date',
+                    style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    summary,
+                    style: const TextStyle(fontSize: 14),
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: () {
+                        // TODO: Implement view report functionality
+                      },
+                      child: Text(
+                        'View Report',
+                        style: TextStyle(color: kmaincolor),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
