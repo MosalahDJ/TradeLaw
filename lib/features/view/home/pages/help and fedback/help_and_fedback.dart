@@ -51,128 +51,6 @@ class _HelpandfedbackState extends State<Helpandfedback>
   }
 }
 
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-// import 'package:tradelaw/core/Utils/constants.dart';
-
-// class Helpandfedback extends StatefulWidget {
-//   const Helpandfedback({super.key});
-
-//   @override
-//   State<Helpandfedback> createState() => _HelpandfedbackState();
-// }
-
-// class _HelpandfedbackState extends State<Helpandfedback>
-//     with SingleTickerProviderStateMixin {
-//   late TabController _tabController;
-//   final _formKey = GlobalKey<FormState>();
-//   final TextEditingController _nameController = TextEditingController();
-//   final TextEditingController _emailController = TextEditingController();
-//   final TextEditingController _messageController = TextEditingController();
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     _tabController = TabController(length: 3, vsync: this);
-//   }
-
-//   @override
-//   void dispose() {
-//     _tabController.dispose();
-//     _nameController.dispose();
-//     _emailController.dispose();
-//     _messageController.dispose();
-//     super.dispose();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         foregroundColor: Colors.white,
-//         backgroundColor: kmaincolor,
-//         title: Text(
-//           'help&feedback'.tr,
-//           style: const TextStyle(
-//             color: Colors.white,
-//             fontWeight: FontWeight.bold,
-//           ),
-//         ),
-//         bottom: TabBar(
-//           controller: _tabController,
-//           indicatorColor: Colors.white,
-//           labelColor: Colors.white,
-//           unselectedLabelColor: Colors.white70,
-//           tabs: [
-//             Tab(text: 'FAQs'.tr),
-//             Tab(text: 'Contact'.tr),
-//             Tab(text: 'Feedback'.tr),
-//           ],
-//         ),
-//       ),
-//       body: TabBarView(
-//         controller: _tabController,
-//         children: [_buildFAQsTab(), _buildContactTab(), _buildFeedbackTab()],
-//       ),
-//     );
-//   }
-
-//   Widget _buildFAQsTab() {
-//     return ListView(
-//       padding: const EdgeInsets.all(16),
-//       children: [
-//         _buildFAQItem(
-//           'What is TradeLaw app?',
-//           'TradeLaw is an application designed to help users understand and navigate Algerian trade laws, regulations, and procedures. It provides information about consumer rights, business regulations, and legal resources.',
-//         ),
-//         _buildFAQItem(
-//           'How do I report a trade law violation?',
-//           'You can report violations through the "Report" section in the app. Fill out the required information including the type of violation, location, and any evidence you may have. Your report will be submitted to the relevant authorities.',
-//         ),
-//         _buildFAQItem(
-//           'How can I track my submitted reports?',
-//           'Go to the "My Reports" section where you can view all your submitted reports and their current status. Each report has a unique tracking number that you can use to follow up on its progress.',
-//         ),
-//         _buildFAQItem(
-//           'What types of trade violations can I report?',
-//           'You can report various violations including price manipulation, counterfeit products, misleading advertising, consumer rights violations, and unfair business practices.',
-//         ),
-//         _buildFAQItem(
-//           'Is my personal information secure?',
-//           'Yes, we take data privacy seriously. Your personal information is protected according to Algerian Law No. 18-07 on personal data protection. We only share necessary information with relevant authorities for investigation purposes.',
-//         ),
-//         _buildFAQItem(
-//           'How do I update my account information?',
-//           'Go to the "Profile" section in the app where you can edit your personal information, change your password, and manage your notification preferences.',
-//         ),
-//         _buildFAQItem(
-//           'Can I use the app offline?',
-//           'Some features of the app are available offline, such as viewing previously loaded laws and regulations. However, submitting reports and accessing real-time updates requires an internet connection.',
-//         ),
-//       ],
-//     );
-//   }
-
-//   Widget _buildFAQItem(String question, String answer) {
-//     return Card(
-//       margin: const EdgeInsets.only(bottom: 16),
-//       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-//       elevation: 2,
-//       child: ExpansionTile(
-//         title: Text(
-//           question,
-//           style: TextStyle(fontWeight: FontWeight.bold, color: kmaincolor),
-//         ),
-//         children: [
-//           Padding(
-//             padding: const EdgeInsets.all(16),
-//             child: Text(answer, style: const TextStyle(fontSize: 14)),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-
 Widget _buildContactTab() {
   return ListView(
     padding: const EdgeInsets.all(16),
@@ -186,7 +64,7 @@ Widget _buildContactTab() {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Contact Information'.tr,
+                'contact_information'.tr,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -194,19 +72,19 @@ Widget _buildContactTab() {
                 ),
               ),
               const SizedBox(height: 16),
-              _buildContactItem(Icons.email, 'Email', 'support@tradelaw.dz'),
+              _buildContactItem(Icons.email, 'email'.tr, 'support@tradelaw.dz'),
               const Divider(),
-              _buildContactItem(Icons.phone, 'Phone', '+213 123 456 789'),
+              _buildContactItem(Icons.phone, 'phone'.tr, '+213 123 456 789'),
               const Divider(),
               _buildContactItem(
                 Icons.location_on,
-                'Address',
+                'address'.tr,
                 'Ministry of Trade, Algiers, Algeria',
               ),
               const Divider(),
               _buildContactItem(
                 Icons.access_time,
-                'Working Hours',
+                'working_hours'.tr,
                 'Sunday - Thursday: 8:00 AM - 4:00 PM',
               ),
             ],
@@ -223,7 +101,7 @@ Widget _buildContactTab() {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Emergency Contacts'.tr,
+                'emergency_contacts'.tr,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -233,13 +111,13 @@ Widget _buildContactTab() {
               const SizedBox(height: 16),
               _buildContactItem(
                 Icons.emergency,
-                'Consumer Protection Hotline',
+                'consumer_protection_hotline'.tr,
                 '1020',
               ),
               const Divider(),
               _buildContactItem(
                 Icons.security,
-                'Trade Fraud Reporting',
+                'trade_fraud_reporting'.tr,
                 '1055',
               ),
             ],
@@ -256,7 +134,7 @@ Widget _buildContactTab() {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Social Media'.tr,
+                'social_media'.tr,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -266,17 +144,17 @@ Widget _buildContactTab() {
               const SizedBox(height: 16),
               _buildSocialMediaItem(
                 Icons.facebook,
-                'Facebook',
+                'facebook'.tr,
                 '@TradeLawAlgeria',
               ),
               const Divider(),
               _buildSocialMediaItem(
                 Icons.telegram,
-                'Telegram',
+                'telegram'.tr,
                 '@TradeLawAlgeria',
               ),
               const Divider(),
-              _buildSocialMediaItem(Icons.web, 'Website', 'www.tradelaw.dz'),
+              _buildSocialMediaItem(Icons.web, 'website'.tr, 'www.tradelaw.dz'),
             ],
           ),
         ),
@@ -291,7 +169,7 @@ Widget _buildContactTab() {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Developer Social'.tr,
+                'developer_social'.tr,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -301,19 +179,19 @@ Widget _buildContactTab() {
               const SizedBox(height: 16),
               _buildSocialMediaItem(
                 Icons.facebook,
-                'Facebook',
+                'facebook'.tr,
                 'Djehel Mohamed Salah',
               ),
               const Divider(),
               _buildSocialMediaItem(
                 Icons.telegram,
-                'Telegram',
+                'telegram'.tr,
                 'https://t.me/Mohamed_Salah_Djehel',
               ),
               const Divider(),
               _buildSocialMediaItem(
                 Icons.camera_alt,
-                'Instagram',
+                'instagram'.tr,
                 'moh.medsalah',
               ),
             ],
@@ -335,7 +213,7 @@ Widget _buildContactItem(IconData icon, String title, String value) {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              title.tr,
+              title,
               style: const TextStyle(fontSize: 14, color: Colors.grey),
             ),
             Text(value, style: const TextStyle(fontSize: 16)),
@@ -361,7 +239,7 @@ Widget _buildSocialMediaItem(IconData icon, String platform, String handle) {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                platform.tr,
+                platform,
                 style: const TextStyle(fontSize: 14, color: Colors.grey),
               ),
               Text(
@@ -373,6 +251,33 @@ Widget _buildSocialMediaItem(IconData icon, String platform, String handle) {
         ],
       ),
     ),
+  );
+}
+
+Widget _buildTextField({
+  required TextEditingController controller,
+  required String label,
+  required String hint,
+  required IconData icon,
+  int maxLines = 1,
+  TextInputType keyboardType = TextInputType.text,
+  String? Function(String?)? validator,
+}) {
+  return TextFormField(
+    controller: controller,
+    decoration: InputDecoration(
+      labelText: label,
+      hintText: hint,
+      prefixIcon: Icon(icon, color: kmaincolor),
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(color: kmaincolor, width: 2),
+      ),
+    ),
+    maxLines: maxLines,
+    keyboardType: keyboardType,
+    validator: validator,
   );
 }
 
@@ -471,32 +376,32 @@ Widget _buildSocialMediaItem(IconData icon, String platform, String handle) {
 //     );
 //   }
 
-Widget _buildTextField({
-  required TextEditingController controller,
-  required String label,
-  required String hint,
-  required IconData icon,
-  int maxLines = 1,
-  TextInputType keyboardType = TextInputType.text,
-  String? Function(String?)? validator,
-}) {
-  return TextFormField(
-    controller: controller,
-    decoration: InputDecoration(
-      labelText: label,
-      hintText: hint,
-      prefixIcon: Icon(icon, color: kmaincolor),
-      border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide(color: kmaincolor, width: 2),
-      ),
-    ),
-    maxLines: maxLines,
-    keyboardType: keyboardType,
-    validator: validator,
-  );
-}
+// Widget _buildTextField({
+//   required TextEditingController controller,
+//   required String label,
+//   required String hint,
+//   required IconData icon,
+//   int maxLines = 1,
+//   TextInputType keyboardType = TextInputType.text,
+//   String? Function(String?)? validator,
+// }) {
+//   return TextFormField(
+//     controller: controller,
+//     decoration: InputDecoration(
+//       labelText: label,
+//       hintText: hint,
+//       prefixIcon: Icon(icon, color: kmaincolor),
+//       border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+//       focusedBorder: OutlineInputBorder(
+//         borderRadius: BorderRadius.circular(8),
+//         borderSide: BorderSide(color: kmaincolor, width: 2),
+//       ),
+//     ),
+//     maxLines: maxLines,
+//     keyboardType: keyboardType,
+//     validator: validator,
+//   );
+// }
 
 //   Widget _buildDropdown() {
 //     return DropdownButtonFormField<String>(

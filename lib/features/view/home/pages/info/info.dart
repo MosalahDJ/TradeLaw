@@ -23,32 +23,29 @@ class Info extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          _buildHeader(context, 'Latest Trade Law News'),
+          _buildHeader(context, 'latest_trade_law_news'.tr),
           const SizedBox(height: 16),
           _buildNewsArticle(
-            title: 'New Data Privacy Law in Effect',
+            title: 'new_data_privacy_law'.tr,
             date: '10 August 2023',
             source: 'Trade.gov',
-            content:
-                'Algeria has established a legal framework for data privacy through Law No. 18-07, enacted on June 10, 2018, which officially came into force on August 10, 2023. This law aims to protect personal data in digital transactions and services.',
+            content: 'data_privacy_content'.tr,
             // imageUrl: 'https://example.com/data_privacy.jpg',
           ),
           const SizedBox(height: 12),
           _buildNewsArticle(
-            title: 'New Legislation on Counterfeiting and IP',
+            title: 'new_legislation_ip'.tr,
             date: '15 March 2023',
             source: 'U.S. Department of State',
-            content:
-                'The Algerian government is drafting new legislation on counterfeiting and intellectual property to improve enforcement and interagency coordination. Since March 2023, the government has also worked with WIPO to draft a national IP Strategy, expected to be completed by the end of 2024.',
+            content: 'ip_legislation_content'.tr,
             // imageUrl: 'https://example.com/ip_law.jpg',
           ),
           const SizedBox(height: 12),
           _buildNewsArticle(
-            title: 'New Digital Strategy Through 2029',
+            title: 'new_digital_strategy'.tr,
             date: '20 January 2024',
             source: 'Trade.gov',
-            content:
-                'Algeria has prepared a new digital strategy extending through 2029, built on improvement of the forthcoming digitalization law and enhanced cybersecurity. This strategy is expected to create a conducive environment for innovation and economic growth. Algeria\'s High Commission of Digitization (HCD) oversees the implementation of digital policies.',
+            content: 'digital_strategy_content'.tr,
             // imageUrl: 'https://example.com/digital_strategy.jpg',
           ),
           const SizedBox(height: 24),
@@ -154,7 +151,7 @@ class Info extends StatelessWidget {
                       // TODO: Implement read more functionality
                     },
                     child: Text(
-                      'Read More',
+                      'read_more'.tr,
                       style: TextStyle(color: kmaincolor),
                     ),
                   ),
@@ -233,7 +230,7 @@ class Info extends StatelessWidget {
                         // TODO: Implement view report functionality
                       },
                       child: Text(
-                        'View Report',
+                        'view_report'.tr,
                         style: TextStyle(color: kmaincolor),
                       ),
                     ),

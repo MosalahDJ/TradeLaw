@@ -124,7 +124,7 @@ class Messages extends Translations {
       'tracking_progress': 'Tracking Progress',
       'view_details': 'View Details',
       'no_reports': 'No reports found',
-      
+
       // Report Status
       'Under Review': 'Under Review',
       'Investigating': 'Investigating',
@@ -133,6 +133,100 @@ class Messages extends Translations {
       'Submitted': 'Submitted',
       'Under Investigation': 'Under Investigation',
       'Rejected': 'Rejected',
+
+      // Info Page
+      'latest_trade_law_news': 'Latest Trade Law News',
+      'read_more': 'Read More',
+      'view_report': 'View Report',
+      'new_data_privacy_law': 'New Data Privacy Law in Effect',
+      'new_legislation_ip': 'New Legislation on Counterfeiting and IP',
+      'new_digital_strategy': 'New Digital Strategy Through 2029',
+      'data_privacy_content':
+          'Algeria has established a legal framework for data privacy through Law No. 18-07, enacted on June 10, 2018, which officially came into force on August 10, 2023. This law aims to protect personal data in digital transactions and services.',
+      'ip_legislation_content':
+          'The Algerian government is drafting new legislation on counterfeiting and intellectual property to improve enforcement and interagency coordination. Since March 2023, the government has also worked with WIPO to draft a national IP Strategy, expected to be completed by the end of 2024.',
+      'digital_strategy_content':
+          'Algeria has prepared a new digital strategy extending through 2029, built on improvement of the forthcoming digitalization law and enhanced cybersecurity. This strategy is expected to create a conducive environment for innovation and economic growth. Algeria\'s High Commission of Digitization (HCD) oversees the implementation of digital policies.',
+
+      // Help and Feedback Page
+      'contact_information': 'Contact Information',
+      'phone': 'Phone',
+      'address': 'Address',
+      'working_hours': 'Working Hours',
+      'emergency_contacts': 'Emergency Contacts',
+      'consumer_protection_hotline': 'Consumer Protection Hotline',
+      'trade_fraud_reporting': 'Trade Fraud Reporting',
+      'social_media': 'Social Media',
+      'facebook': 'Facebook',
+      'telegram': 'Telegram',
+      'website': 'Website',
+      'developer_social': 'Developer Social',
+      'instagram': 'Instagram',
+
+      // Law Info Page
+      'algerian_trade_laws': 'Algerian Trade Laws',
+      'consumer_protection_law': 'Consumer Protection Law 09-03',
+      'price_regulation_law': 'Price Regulation Law 10-06',
+      'ecommerce_law': 'E-Commerce Law 18-05',
+      'intellectual_property_protection': 'Intellectual Property Protection',
+      'import_regulations': 'Import Regulations',
+      'article_1': 'Article 1',
+      'article_2': 'Article 2',
+      'article_3': 'Article 3',
+      'article_4': 'Article 4',
+      'article_5': 'Article 5',
+      'article_6': 'Article 6',
+      'article_7': 'Article 7',
+      'article_8': 'Article 8',
+      'article_10': 'Article 10',
+      'article_11': 'Article 11',
+      'article_12': 'Article 12',
+      'article_17': 'Article 17',
+      'article_18': 'Article 18',
+      'article_1_ipr': 'Article 1 (IPR Framework)',
+      'article_1_import': 'Article 1 (Import Control)',
+      'consumer_protection_article_1_desc':
+          'Establishes general rules for consumer protection and fraud suppression in goods and services.',
+      'consumer_protection_article_2_desc':
+          'Defines a consumer as any natural or legal person who acquires or uses goods or services for non-professional purposes.',
+      'consumer_protection_article_3_desc':
+          'Requires that all products must be safe for consumer health and safety under normal or reasonably foreseeable conditions of use.',
+      'consumer_protection_article_17_desc':
+          'Prohibits the sale of counterfeit goods and services that violate commercial norms and rules of fairness.',
+      'consumer_protection_article_18_desc':
+          'Mandates that products must conform to the standards defined in the Codex Alimentarius for food products.',
+      'price_regulation_article_1_desc':
+          'Allows the government to set price controls on consumer goods and services to curb inflation and protect purchasing power.',
+      'price_regulation_article_2_desc':
+          'Establishes mechanisms for monitoring and regulating market prices of essential goods.',
+      'price_regulation_article_5_desc':
+          'Provides for subsidies on several consumer items including sugar, milk, water, petrol, diesel, and flour.',
+      'price_regulation_article_8_desc':
+          'Prohibits unjustified price increases and speculative practices that affect consumer purchasing power.',
+      'ecommerce_article_1_desc':
+          'Organizes e-commerce activity with a focus on protecting consumers in electronic transactions.',
+      'ecommerce_article_6_desc':
+          'Requires e-suppliers to send consumers an electronic copy of the contract and invoice in accordance with Algerian law.',
+      'ecommerce_article_10_desc':
+          'Mandates obtaining consumer consent before collecting personal data and guaranteeing system security and data confidentiality.',
+      'ecommerce_article_12_desc':
+          'Regulates electronic advertising and prohibits commercial prospection by email without prior consent.',
+      'ipr_article_1_desc':
+          'Establishes the legal framework for intellectual property rights protection in Algeria.',
+      'ipr_article_4_desc':
+          'Requires IP rights holders to register and seek enforcement of their rights under local laws, as foreign registrations are not automatically recognized.',
+      'ipr_article_7_desc':
+          'Prohibits counterfeiting of products, especially in cosmetics, clothing, shoes, electrical appliances, and consumer and food products.',
+      'ipr_article_11_desc':
+          'Provides for coordination between customs authorities and law enforcement to combat counterfeit merchandise.',
+      'import_article_1_desc':
+          'Bans the import of firearms, explosives, narcotics, certain pharmaceutical products, used equipment, GMO seeds, and pork products.',
+      'import_article_3_desc':
+          'Requires that imported food products must have at least 80% of their remaining shelf life upon arrival in Algeria.',
+      'import_article_5_desc':
+          'Establishes temporary duties between 30% and 200% applicable to certain import operations.',
+      'import_article_8_desc':
+          'Implements phyto-sanitary and sanitary control regulations for imported products.',
     },
     'ar': {
       // Authentication - Old Words
@@ -252,7 +346,7 @@ class Messages extends Translations {
       'tracking_progress': 'تتبع التقدم',
       'view_details': 'عرض التفاصيل',
       'no_reports': 'لا توجد بلاغات',
-      
+
       // Report Status
       'Under Review': 'قيد المراجعة',
       'Investigating': 'قيد التحقيق',
@@ -261,6 +355,100 @@ class Messages extends Translations {
       'Submitted': 'تم التقديم',
       'Under Investigation': 'قيد التحقيق',
       'Rejected': 'مرفوض',
+
+      // Info Page
+      'latest_trade_law_news': 'أحدث أخبار قانون التجارة',
+      'read_more': 'قراءة المزيد',
+      'view_report': 'عرض التقرير',
+      'new_data_privacy_law': 'قانون جديد لحماية البيانات ساري المفعول',
+      'new_legislation_ip': 'تشريع جديد بشأن التزوير والملكية الفكرية',
+      'new_digital_strategy': 'استراتيجية رقمية جديدة حتى عام 2029',
+      'data_privacy_content':
+          'وضعت الجزائر إطارًا قانونيًا لحماية البيانات من خلال القانون رقم 18-07، الذي تم سنه في 10 يونيو 2018، والذي دخل رسميًا حيز التنفيذ في 10 أغسطس 2023. يهدف هذا القانون إلى حماية البيانات الشخصية في المعاملات والخدمات الرقمية.',
+      'ip_legislation_content':
+          'تعمل الحكومة الجزائرية على صياغة تشريع جديد بشأن التزوير والملكية الفكرية لتحسين التنفيذ والتنسيق بين الوكالات. منذ مارس 2023، عملت الحكومة أيضًا مع المنظمة العالمية للملكية الفكرية لصياغة استراتيجية وطنية للملكية الفكرية، من المتوقع أن تكتمل بحلول نهاية عام 2024.',
+      'digital_strategy_content':
+          'أعدت الجزائر استراتيجية رقمية جديدة تمتد حتى عام 2029، مبنية على تحسين قانون الرقمنة المرتقب وتعزيز الأمن السيبراني. من المتوقع أن تخلق هذه الاستراتيجية بيئة مواتية للابتكار والنمو الاقتصادي. تشرف المفوضية العليا للرقمنة في الجزائر على تنفيذ السياسات الرقمية.',
+
+      // Help and Feedback Page
+      'contact_information': 'معلومات الاتصال',
+      'phone': 'الهاتف',
+      'address': 'العنوان',
+      'working_hours': 'ساعات العمل',
+      'emergency_contacts': 'جهات اتصال للطوارئ',
+      'consumer_protection_hotline': 'الخط الساخن لحماية المستهلك',
+      'trade_fraud_reporting': 'الإبلاغ عن الاحتيال التجاري',
+      'social_media': 'وسائل التواصل الاجتماعي',
+      'facebook': 'فيسبوك',
+      'telegram': 'تيليجرام',
+      'website': 'الموقع الإلكتروني',
+      'developer_social': 'وسائل التواصل للمطور',
+      'instagram': 'إنستغرام',
+
+      // Law Info Page
+      'algerian_trade_laws': 'قوانين التجارة الجزائرية',
+      'consumer_protection_law': 'قانون حماية المستهلك 09-03',
+      'price_regulation_law': 'قانون تنظيم الأسعار 10-06',
+      'ecommerce_law': 'قانون التجارة الإلكترونية 18-05',
+      'intellectual_property_protection': 'حماية الملكية الفكرية',
+      'import_regulations': 'لوائح الاستيراد',
+      'article_1': 'المادة 1',
+      'article_2': 'المادة 2',
+      'article_3': 'المادة 3',
+      'article_4': 'المادة 4',
+      'article_5': 'المادة 5',
+      'article_6': 'المادة 6',
+      'article_7': 'المادة 7',
+      'article_8': 'المادة 8',
+      'article_10': 'المادة 10',
+      'article_11': 'المادة 11',
+      'article_12': 'المادة 12',
+      'article_17': 'المادة 17',
+      'article_18': 'المادة 18',
+      'article_1_ipr': 'المادة 1 (إطار حقوق الملكية الفكرية)',
+      'article_1_import': 'المادة 1 (مراقبة الاستيراد)',
+      'consumer_protection_article_1_desc':
+          'يضع قواعد عامة لحماية المستهلك وقمع الغش في السلع والخدمات.',
+      'consumer_protection_article_2_desc':
+          'يعرّف المستهلك بأنه أي شخص طبيعي أو اعتباري يقتني أو يستخدم سلعًا أو خدمات لأغراض غير مهنية.',
+      'consumer_protection_article_3_desc':
+          'يشترط أن تكون جميع المنتجات آمنة لصحة وسلامة المستهلك في ظل ظروف الاستخدام العادية أو المتوقعة بشكل معقول.',
+      'consumer_protection_article_17_desc':
+          'يحظر بيع السلع والخدمات المقلدة التي تنتهك المعايير التجارية وقواعد النزاهة.',
+      'consumer_protection_article_18_desc':
+          'يلزم بأن تتوافق المنتجات مع المعايير المحددة في دستور الأغذية للمنتجات الغذائية.',
+      'price_regulation_article_1_desc':
+          'يسمح للحكومة بوضع ضوابط للأسعار على السلع والخدمات الاستهلاكية للحد من التضخم وحماية القوة الشرائية.',
+      'price_regulation_article_2_desc':
+          'يضع آليات لمراقبة وتنظيم أسعار السوق للسلع الأساسية.',
+      'price_regulation_article_5_desc':
+          'ينص على تقديم إعانات على العديد من السلع الاستهلاكية بما في ذلك السكر والحليب والماء والبنزين والديزل والدقيق.',
+      'price_regulation_article_8_desc':
+          'يحظر الزيادات غير المبررة في الأسعار والممارسات المضاربة التي تؤثر على القوة الشرائية للمستهلك.',
+      'ecommerce_article_1_desc':
+          'ينظم نشاط التجارة الإلكترونية مع التركيز على حماية المستهلكين في المعاملات الإلكترونية.',
+      'ecommerce_article_6_desc':
+          'يتطلب من موردي الخدمات الإلكترونية إرسال نسخة إلكترونية من العقد والفاتورة للمستهلكين وفقًا للقانون الجزائري.',
+      'ecommerce_article_10_desc':
+          'يلزم بالحصول على موافقة المستهلك قبل جمع البيانات الشخصية وضمان أمن النظام وسرية البيانات.',
+      'ecommerce_article_12_desc':
+          'ينظم الإعلانات الإلكترونية ويحظر الاستكشاف التجاري عبر البريد الإلكتروني دون موافقة مسبقة.',
+      'ipr_article_1_desc':
+          'يضع الإطار القانوني لحماية حقوق الملكية الفكرية في الجزائر.',
+      'ipr_article_4_desc':
+          'يتطلب من أصحاب حقوق الملكية الفكرية تسجيل وطلب إنفاذ حقوقهم بموجب القوانين المحلية، حيث لا يتم الاعتراف تلقائيًا بالتسجيلات الأجنبية.',
+      'ipr_article_7_desc':
+          'يحظر تزوير المنتجات، خاصة في مستحضرات التجميل والملابس والأحذية والأجهزة الكهربائية والمنتجات الاستهلاكية والغذائية.',
+      'ipr_article_11_desc':
+          'ينص على التنسيق بين سلطات الجمارك وإنفاذ القانون لمكافحة البضائع المقلدة.',
+      'import_article_1_desc':
+          'يحظر استيراد الأسلحة النارية والمتفجرات والمخدرات وبعض المنتجات الصيدلانية والمعدات المستعملة وبذور الكائنات المعدلة وراثيًا ومنتجات لحم الخنزير.',
+      'import_article_3_desc':
+          'يشترط أن يكون لدى المنتجات الغذائية المستوردة ما لا يقل عن 80٪ من مدة صلاحيتها المتبقية عند وصولها إلى الجزائر.',
+      'import_article_5_desc':
+          'يضع رسومًا مؤقتة بين 30٪ و 200٪ تنطبق على عمليات استيراد معينة.',
+      'import_article_8_desc':
+          'ينفذ لوائح الرقابة الصحية النباتية والصحية للمنتجات المستوردة.',
     },
     'fr': {
       // Authentication - Old Words
@@ -384,7 +572,7 @@ class Messages extends Translations {
       'tracking_progress': 'Suivi de progression',
       'view_details': 'Voir les détails',
       'no_reports': 'Aucun rapport trouvé',
-      
+
       // Report Status
       'Under Review': 'En cours de révision',
       'Investigating': 'En cours d\'enquête',
@@ -393,6 +581,103 @@ class Messages extends Translations {
       'Submitted': 'Soumis',
       'Under Investigation': 'Sous enquête',
       'Rejected': 'Rejeté',
+
+      // Info Page
+      'latest_trade_law_news': 'Dernières Actualités du Droit Commercial',
+      'read_more': 'Lire Plus',
+      'view_report': 'Voir le Rapport',
+      'new_data_privacy_law':
+          'Nouvelle Loi sur la Protection des Données en Vigueur',
+      'new_legislation_ip': 'Nouvelle Législation sur la Contrefaçon et la PI',
+      'new_digital_strategy': 'Nouvelle Stratégie Numérique Jusqu\'en 2029',
+      'data_privacy_content':
+          'L\'Algérie a établi un cadre juridique pour la protection des données à travers la Loi n° 18-07, promulguée le 10 juin 2018, qui est officiellement entrée en vigueur le 10 août 2023. Cette loi vise à protéger les données personnelles dans les transactions et services numériques.',
+      'ip_legislation_content':
+          'Le gouvernement algérien élabore une nouvelle législation sur la contrefaçon et la propriété intellectuelle pour améliorer l\'application et la coordination interagences. Depuis mars 2023, le gouvernement a également travaillé avec l\'OMPI pour élaborer une stratégie nationale de PI, qui devrait être achevée d\'ici fin 2024.',
+      'digital_strategy_content':
+          'L\'Algérie a préparé une nouvelle stratégie numérique s\'étendant jusqu\'en 2029, basée sur l\'amélioration de la future loi sur la numérisation et le renforcement de la cybersécurité. Cette stratégie devrait créer un environnement propice à l\'innovation et à la croissance économique. La Haute Commission de la Numérisation de l\'Algérie supervise la mise en œuvre des politiques numériques.',
+
+      // Help and Feedback Page
+      'contact_information': 'Informations de Contact',
+      'phone': 'Téléphone',
+      'address': 'Adresse',
+      'working_hours': 'Heures d\'Ouverture',
+      'emergency_contacts': 'Contacts d\'Urgence',
+      'consumer_protection_hotline':
+          'Ligne d\'Assistance Protection des Consommateurs',
+      'trade_fraud_reporting': 'Signalement de Fraude Commerciale',
+      'social_media': 'Réseaux Sociaux',
+      'facebook': 'Facebook',
+      'telegram': 'Telegram',
+      'website': 'Site Web',
+      'developer_social': 'Réseaux Sociaux du Développeur',
+      'instagram': 'Instagram',
+
+      // Law Info Page
+      'algerian_trade_laws': 'Lois Commerciales Algériennes',
+      'consumer_protection_law': 'Loi de Protection du Consommateur 09-03',
+      'price_regulation_law': 'Loi de Régulation des Prix 10-06',
+      'ecommerce_law': 'Loi sur le Commerce Électronique 18-05',
+      'intellectual_property_protection':
+          'Protection de la Propriété Intellectuelle',
+      'import_regulations': 'Réglementations d\'Importation',
+      'article_1': 'Article 1',
+      'article_2': 'Article 2',
+      'article_3': 'Article 3',
+      'article_4': 'Article 4',
+      'article_5': 'Article 5',
+      'article_6': 'Article 6',
+      'article_7': 'Article 7',
+      'article_8': 'Article 8',
+      'article_10': 'Article 10',
+      'article_11': 'Article 11',
+      'article_12': 'Article 12',
+      'article_17': 'Article 17',
+      'article_18': 'Article 18',
+      'article_1_ipr': 'Article 1 (Cadre de la PI)',
+      'article_1_import': 'Article 1 (Contrôle des Importations)',
+      'consumer_protection_article_1_desc':
+          'Établit des règles générales pour la protection des consommateurs et la répression des fraudes dans les biens et services.',
+      'consumer_protection_article_2_desc':
+          'Définit un consommateur comme toute personne physique ou morale qui acquiert ou utilise des biens ou services à des fins non professionnelles.',
+      'consumer_protection_article_3_desc':
+          'Exige que tous les produits soient sûrs pour la santé et la sécurité des consommateurs dans des conditions normales ou raisonnablement prévisibles d\'utilisation.',
+      'consumer_protection_article_17_desc':
+          'Interdit la vente de biens et services contrefaits qui violent les normes commerciales et les règles d\'équité.',
+      'consumer_protection_article_18_desc':
+          'Exige que les produits soient conformes aux normes définies dans le Codex Alimentarius pour les produits alimentaires.',
+      'price_regulation_article_1_desc':
+          'Permet au gouvernement de fixer des contrôles de prix sur les biens et services de consommation pour freiner l\'inflation et protéger le pouvoir d\'achat.',
+      'price_regulation_article_2_desc':
+          'Établit des mécanismes de surveillance et de régulation des prix du marché des biens essentiels.',
+      'price_regulation_article_5_desc':
+          'Prévoit des subventions sur plusieurs articles de consommation, notamment le sucre, le lait, l\'eau, l\'essence, le diesel et la farine.',
+      'price_regulation_article_8_desc':
+          'Interdit les augmentations de prix injustifiées et les pratiques spéculatives qui affectent le pouvoir d\'achat des consommateurs.',
+      'ecommerce_article_1_desc':
+          'Organise l\'activité du commerce électronique en mettant l\'accent sur la protection des consommateurs dans les transactions électroniques.',
+      'ecommerce_article_6_desc':
+          'Exige que les fournisseurs électroniques envoient aux consommateurs une copie électronique du contrat et de la facture conformément à la loi algérienne.',
+      'ecommerce_article_10_desc':
+          'Exige l\'obtention du consentement du consommateur avant de collecter des données personnelles et garantit la sécurité du système et la confidentialité des données.',
+      'ecommerce_article_12_desc':
+          'Réglemente la publicité électronique et interdit la prospection commerciale par e-mail sans consentement préalable.',
+      'ipr_article_1_desc':
+          'Établit le cadre juridique de la protection des droits de propriété intellectuelle en Algérie.',
+      'ipr_article_4_desc':
+          'Exige que les titulaires de droits de PI enregistrent et demandent l\'application de leurs droits en vertu des lois locales, car les enregistrements étrangers ne sont pas automatiquement reconnus.',
+      'ipr_article_7_desc':
+          'Interdit la contrefaçon de produits, notamment dans les cosmétiques, les vêtements, les chaussures, les appareils électriques, et les produits de consommation et alimentaires.',
+      'ipr_article_11_desc':
+          'Prévoit une coordination entre les autorités douanières et les forces de l\'ordre pour lutter contre les marchandises contrefaites.',
+      'import_article_1_desc':
+          'Interdit l\'importation d\'armes à feu, d\'explosifs, de stupéfiants, de certains produits pharmaceutiques, d\'équipements usagés, de semences OGM et de produits à base de porc.',
+      'import_article_3_desc':
+          'Exige que les produits alimentaires importés aient au moins 80% de leur durée de conservation restante à leur arrivée en Algérie.',
+      'import_article_5_desc':
+          'Établit des droits temporaires entre 30% et 200% applicables à certaines opérations d\'importation.',
+      'import_article_8_desc':
+          'Met en œuvre des réglementations de contrôle phytosanitaire et sanitaire pour les produits importés.',
     },
   };
 }
