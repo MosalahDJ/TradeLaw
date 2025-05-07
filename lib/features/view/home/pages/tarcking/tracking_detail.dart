@@ -6,14 +6,14 @@ import 'package:tradelaw/features/model/reports_list.dart'; // Import the report
 
 class TrackingDetail extends StatelessWidget {
   final int reportId;
-  
+
   const TrackingDetail({super.key, required this.reportId});
 
   @override
   Widget build(BuildContext context) {
     // Get the report from the model using the ID
     final Map<String, dynamic>? report = ReportsList.getReportById(reportId);
-    
+
     // If report not found, show error
     if (report == null) {
       return Scaffold(
@@ -22,7 +22,10 @@ class TrackingDetail extends StatelessWidget {
           backgroundColor: kmaincolor,
           title: Text(
             'tracking_detail'.tr,
-            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         body: Center(
@@ -40,7 +43,10 @@ class TrackingDetail extends StatelessWidget {
         backgroundColor: kmaincolor,
         title: Text(
           'tracking_detail'.tr,
-          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -102,9 +108,14 @@ class TrackingDetail extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 6,
+                          ),
                           decoration: BoxDecoration(
-                            color: _getStatusColor(report['status']).withValues(alpha: 0.1),
+                            color: _getStatusColor(
+                              report['status'],
+                            ).withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
                               color: _getStatusColor(report['status']),
@@ -125,17 +136,31 @@ class TrackingDetail extends StatelessWidget {
                     const SizedBox(height: 16),
                     const Divider(),
                     const SizedBox(height: 8),
-                    _buildInfoRow(Icons.description, 'description'.tr, report['description']),
+                    _buildInfoRow(
+                      Icons.description,
+                      'description'.tr,
+                      report['description'],
+                    ),
                     const SizedBox(height: 8),
-                    _buildInfoRow(Icons.location_on, 'location'.tr, report['location']),
+                    _buildInfoRow(
+                      Icons.location_on,
+                      'location'.tr,
+                      report['location'],
+                    ),
                     const SizedBox(height: 8),
                     _buildInfoRow(
                       Icons.calendar_today,
                       'submitted_on'.tr,
-                      DateFormat('MMMM dd, yyyy - HH:mm').format(report['timestamp']),
+                      DateFormat(
+                        'MMMM dd, yyyy - HH:mm',
+                      ).format(report['timestamp']),
                     ),
                     const SizedBox(height: 8),
-                    _buildInfoRow(Icons.person, 'reported_by'.tr, report['reporter']),
+                    _buildInfoRow(
+                      Icons.person,
+                      'reported_by'.tr,
+                      report['reporter'],
+                    ),
                   ],
                 ),
               ),
@@ -201,12 +226,7 @@ class TrackingDetail extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 2),
-              Text(
-                value,
-                style: const TextStyle(
-                  fontSize: 14,
-                ),
-              ),
+              Text(value, style: const TextStyle(fontSize: 14)),
             ],
           ),
         ),
@@ -236,11 +256,7 @@ class TrackingDetail extends StatelessWidget {
                     color: step['completed'] ? kmaincolor : Colors.grey[300],
                     shape: BoxShape.circle,
                   ),
-                  child: Icon(
-                    step['icon'],
-                    color: Colors.white,
-                    size: 16,
-                  ),
+                  child: Icon(step['icon'], color: Colors.white, size: 16),
                 ),
                 if (!isLast)
                   Container(
@@ -265,7 +281,10 @@ class TrackingDetail extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: step['completed'] ? Colors.black : Colors.grey[600],
+                          color:
+                              step['completed']
+                                  ? Colors.black
+                                  : Colors.grey[600],
                         ),
                       ),
                       if (step['timestamp'] != null)
@@ -283,7 +302,8 @@ class TrackingDetail extends StatelessWidget {
                     step['description'],
                     style: TextStyle(
                       fontSize: 14,
-                      color: step['completed'] ? Colors.black87 : Colors.grey[500],
+                      color:
+                          step['completed'] ? Colors.black87 : Colors.grey[500],
                     ),
                   ),
                   const SizedBox(height: 16),
