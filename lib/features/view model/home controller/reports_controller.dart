@@ -26,27 +26,27 @@ class ReportsController extends GetxController {
       'color': kmaincolor2,
       'description': 'd3'.tr,
     },
-    {
-      'id': 4,
-      'title': 'Illegal Products'.tr,
-      'icon': Icons.warning_amber,
-      'color': Colors.red.shade800,
-      'description': 'd4'.tr,
-    },
-    {
-      'id': 5,
-      'title': 'Hygiene Violations'.tr,
-      'icon': Icons.cleaning_services,
-      'color': Colors.teal.shade700,
-      'description': 'd5'.tr,
-    },
-    {
-      'id': 6,
-      'title': 'Other Violations'.tr,
-      'icon': Icons.report_problem,
-      'color': Colors.amber.shade800,
-      'description': 'd6'.tr,
-    },
+    // {
+    //   'id': 4,
+    //   'title': 'Illegal Products'.tr,
+    //   'icon': Icons.warning_amber,
+    //   'color': Colors.red.shade800,
+    //   'description': 'd4'.tr,
+    // },
+    // {
+    //   'id': 5,
+    //   'title': 'Hygiene Violations'.tr,
+    //   'icon': Icons.cleaning_services,
+    //   'color': Colors.teal.shade700,
+    //   'description': 'd5'.tr,
+    // },
+    // {
+    //   'id': 6,
+    //   'title': 'Other Violations'.tr,
+    //   'icon': Icons.report_problem,
+    //   'color': Colors.amber.shade800,
+    //   'description': 'd6'.tr,
+    // },
   ];
 
   // Form controllers
