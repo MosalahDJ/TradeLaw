@@ -10,7 +10,8 @@ class ReportTracking extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Get reports from the model
-    final List<Map<String, dynamic>> reports = ReportsList.getAllReportsSorted();
+    final List<Map<String, dynamic>> reports =
+        ReportsList.getAllReportsSorted();
 
     return Scaffold(
       appBar: AppBar(
@@ -141,10 +142,10 @@ class ReportTracking extends StatelessWidget {
                               TextButton(
                                 onPressed: () {
                                   // Navigate to report details with the report ID
-                                  Get.toNamed(
-                                    '/report_details',
-                                    arguments: report['id'],
-                                  );
+                                  // Get.toNamed(
+                                  //   '/report_details',
+                                  //   arguments: report['id'],
+                                  // );
                                 },
                                 child: Text(
                                   'view_details'.tr,
