@@ -63,11 +63,11 @@ class Reporting extends StatelessWidget {
       child: InkWell(
         onTap: () {
           // Extract ID from reportType
-          // controller.navigateToReportDetails(
-          //   reportType['id'],
-          //   reportType,
-          //   context,
-          // );
+          controller.navigateToReportDetails(
+            reportType['id'],
+            reportType,
+            context,
+          );
         },
         borderRadius: BorderRadius.circular(12),
         child: Padding(
