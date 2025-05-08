@@ -119,7 +119,7 @@ class Info extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // if (imageUrl != null) ...[
+                // if (imageUrl != null) ...[                
                 //   ClipRRect(
                 //     borderRadius: BorderRadius.circular(8),
                 //     child: Image.network(
@@ -179,7 +179,7 @@ class Info extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (coverImageUrl != null) ...[
+            if (coverImageUrl != null) ...[              
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.network(
