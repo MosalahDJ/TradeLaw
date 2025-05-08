@@ -7,6 +7,9 @@ class Lawinfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final ThemeData theme = Theme.of(context);
+    // final bool isDark = Get.isDarkMode;
+
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.white,
