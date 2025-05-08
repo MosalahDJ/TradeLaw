@@ -30,7 +30,7 @@ class Info extends StatelessWidget {
             date: '10 August 2023',
             source: 'Trade.gov',
             content: 'data_privacy_content'.tr,
-            // imageUrl: 'https://example.com/data_privacy.jpg',
+            imageUrl: 'https://example.com/data_privacy.jpg',
           ),
           const SizedBox(height: 12),
           _buildNewsArticle(
@@ -38,7 +38,7 @@ class Info extends StatelessWidget {
             date: '15 March 2023',
             source: 'U.S. Department of State',
             content: 'ip_legislation_content'.tr,
-            // imageUrl: 'https://example.com/ip_law.jpg',
+            imageUrl: 'https://example.com/ip_law.jpg',
           ),
           const SizedBox(height: 12),
           _buildNewsArticle(
@@ -49,34 +49,34 @@ class Info extends StatelessWidget {
             // imageUrl: 'https://example.com/digital_strategy.jpg',
           ),
           const SizedBox(height: 24),
-          // // _buildHeader(context, 'Economic Reports & Magazines'),
-          // const SizedBox(height: 16),
-          // _buildMagazineReport(
-          //   title: 'Investment Climate Statement 2024',
-          //   publisher: 'U.S. Department of State',
-          //   date: 'January 2024',
-          //   summary:
-          //       'The report highlights that Algeria permits the inclusion of international arbitration clauses in contracts. Investment disputes can be settled informally through negotiations between the parties or via the domestic court system. For disputes with foreign investors, cases can also be decided through international arbitration. In 2023, the government created an inter-ministerial committee to audit companies\' financial records and impose fines for illegal activities.',
-          //   coverImageUrl: 'https://example.com/investment_report.jpg',
-          // ),
-          // const SizedBox(height: 12),
-          // _buildMagazineReport(
-          //   title: 'Algeria: A Stable Rent Economy',
-          //   publisher: 'Allianz Trade',
-          //   date: 'April 2024',
-          //   summary:
-          //       'Algeria\'s GDP growth is expected to slow to +2.7% in 2025 from +3.0% in 2024. The downward trend in global natural gas prices is causing a gradual decline of Algerian growth from the +4% averaged between 2021-2023. Inflation is projected to slightly pick up in 2025 to 5.5% following a downward shift in the first half of 2024 from the 9% recorded in late 2023.',
-          //   coverImageUrl: 'https://example.com/allianz_report.jpg',
-          // ),
-          // const SizedBox(height: 12),
-          // _buildMagazineReport(
-          //   title: 'World Bank Economic Report',
-          //   publisher: 'World Bank',
-          //   date: 'December 2023',
-          //   summary:
-          //       'The World Bank\'s report on the Algerian economy calls for the acceleration of institutional and micro-economic reforms. The report notes that the promulgation in 2022 of the new investment law and the publication of its implementing regulations, the abolition in 2020 of the 51/49 rule for non-strategic sectors, and the publication of the new hydrocarbons law in 2019 are positive steps, but must tackle the ecosystem, including paralyzing bureaucracy.',
-          //   coverImageUrl: 'https://example.com/world_bank_report.jpg',
-          // ),
+          // _buildHeader(context, 'Economic Reports & Magazines'),
+          const SizedBox(height: 16),
+          _buildMagazineReport(
+            title: 'Investment Climate Statement 2024',
+            publisher: 'U.S. Department of State',
+            date: 'January 2024',
+            summary:
+                'The report highlights that Algeria permits the inclusion of international arbitration clauses in contracts. Investment disputes can be settled informally through negotiations between the parties or via the domestic court system. For disputes with foreign investors, cases can also be decided through international arbitration. In 2023, the government created an inter-ministerial committee to audit companies\' financial records and impose fines for illegal activities.',
+            coverImageUrl: 'https://example.com/investment_report.jpg',
+          ),
+          const SizedBox(height: 12),
+          _buildMagazineReport(
+            title: 'Algeria: A Stable Rent Economy',
+            publisher: 'Allianz Trade',
+            date: 'April 2024',
+            summary:
+                'Algeria\'s GDP growth is expected to slow to +2.7% in 2025 from +3.0% in 2024. The downward trend in global natural gas prices is causing a gradual decline of Algerian growth from the +4% averaged between 2021-2023. Inflation is projected to slightly pick up in 2025 to 5.5% following a downward shift in the first half of 2024 from the 9% recorded in late 2023.',
+            coverImageUrl: 'https://example.com/allianz_report.jpg',
+          ),
+          const SizedBox(height: 12),
+          _buildMagazineReport(
+            title: 'World Bank Economic Report',
+            publisher: 'World Bank',
+            date: 'December 2023',
+            summary:
+                'The World Bank\'s report on the Algerian economy calls for the acceleration of institutional and micro-economic reforms. The report notes that the promulgation in 2022 of the new investment law and the publication of its implementing regulations, the abolition in 2020 of the 51/49 rule for non-strategic sectors, and the publication of the new hydrocarbons law in 2019 are positive steps, but must tackle the ecosystem, including paralyzing bureaucracy.',
+            coverImageUrl: 'https://example.com/world_bank_report.jpg',
+          ),
         ],
       ),
     );
@@ -119,29 +119,29 @@ class Info extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // if (imageUrl != null) ...[                
-                //   ClipRRect(
-                //     borderRadius: BorderRadius.circular(8),
-                //     child: Image.network(
-                //       imageUrl,
-                //       height: 180,
-                //       width: double.infinity,
-                //       fit: BoxFit.cover,
-                //       errorBuilder: (context, error, stackTrace) {
-                //         return Container(
-                //           height: 180,
-                //           width: double.infinity,
-                //           color: Colors.grey[300],
-                //           child: const Icon(
-                //             Icons.image_not_supported,
-                //             size: 50,
-                //           ),
-                //         );
-                //       },
-                //     ),
-                //   ),
-                //   const SizedBox(height: 16),
-                // ],
+                if (imageUrl != null) ...[                
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.network(
+                      imageUrl,
+                      height: 180,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          height: 180,
+                          width: double.infinity,
+                          color: Colors.grey[300],
+                          child: const Icon(
+                            Icons.image_not_supported,
+                            size: 50,
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                ],
                 Text(content, style: const TextStyle(fontSize: 14)),
                 const SizedBox(height: 8),
                 Align(
