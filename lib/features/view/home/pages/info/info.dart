@@ -46,10 +46,10 @@ class Info extends StatelessWidget {
             date: '20 January 2024',
             source: 'Trade.gov',
             content: 'digital_strategy_content'.tr,
-            // imageUrl: 'https://example.com/digital_strategy.jpg',
+            imageUrl: 'https://example.com/digital_strategy.jpg',
           ),
           const SizedBox(height: 24),
-          // _buildHeader(context, 'Economic Reports & Magazines'),
+          _buildHeader(context, 'Economic Reports & Magazines'),
           const SizedBox(height: 16),
           _buildMagazineReport(
             title: 'Investment Climate Statement 2024',
@@ -119,7 +119,7 @@ class Info extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (imageUrl != null) ...[                
+                if (imageUrl != null) ...[
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.network(
@@ -179,7 +179,7 @@ class Info extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (coverImageUrl != null) ...[              
+            if (coverImageUrl != null) ...[
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.network(
