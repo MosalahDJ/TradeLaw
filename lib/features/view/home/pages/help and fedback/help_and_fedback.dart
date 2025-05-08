@@ -9,13 +9,14 @@ class Helpandfedback extends StatefulWidget {
   State<Helpandfedback> createState() => _HelpandfedbackState();
 }
 
-class _HelpandfedbackState extends State<Helpandfedback> with SingleTickerProviderStateMixin {
+class _HelpandfedbackState extends State<Helpandfedback>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _messageController = TextEditingController();
-  
+
   @override
   void initState() {
     super.initState();
@@ -39,7 +40,10 @@ class _HelpandfedbackState extends State<Helpandfedback> with SingleTickerProvid
         backgroundColor: kmaincolor,
         title: Text(
           'help&feedback'.tr,
-          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         bottom: TabBar(
           controller: _tabController,
@@ -55,11 +59,7 @@ class _HelpandfedbackState extends State<Helpandfedback> with SingleTickerProvid
       ),
       body: TabBarView(
         controller: _tabController,
-        children: [
-          _buildFAQsTab(),
-          _buildContactTab(),
-          _buildFeedbackTab(),
-        ],
+        children: [_buildFAQsTab(), _buildContactTab(), _buildFeedbackTab()],
       ),
     );
   }
@@ -108,18 +108,12 @@ class _HelpandfedbackState extends State<Helpandfedback> with SingleTickerProvid
       child: ExpansionTile(
         title: Text(
           question,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: kmaincolor,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, color: kmaincolor),
         ),
         children: [
           Padding(
             padding: const EdgeInsets.all(16),
-            child: Text(
-              answer,
-              style: const TextStyle(fontSize: 14),
-            ),
+            child: Text(answer, style: const TextStyle(fontSize: 14)),
           ),
         ],
       ),
@@ -131,7 +125,9 @@ class _HelpandfedbackState extends State<Helpandfedback> with SingleTickerProvid
       padding: const EdgeInsets.all(16),
       children: [
         Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
           elevation: 2,
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -139,7 +135,7 @@ class _HelpandfedbackState extends State<Helpandfedback> with SingleTickerProvid
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Contact Information'.tr,
+                  'contact_information'.tr,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -147,20 +143,34 @@ class _HelpandfedbackState extends State<Helpandfedback> with SingleTickerProvid
                   ),
                 ),
                 const SizedBox(height: 16),
-                _buildContactItem(Icons.email, 'Email', 'support@tradelaw.dz'),
+                _buildContactItem(
+                  Icons.email,
+                  'email'.tr,
+                  'support@tradelaw.dz',
+                ),
                 const Divider(),
-                _buildContactItem(Icons.phone, 'Phone', '+213 123 456 789'),
+                _buildContactItem(Icons.phone, 'phone'.tr, '+213 123 456 789'),
                 const Divider(),
-                _buildContactItem(Icons.location_on, 'Address', 'Ministry of Trade, Algiers, Algeria'),
+                _buildContactItem(
+                  Icons.location_on,
+                  'address'.tr,
+                  'Ministry of Trade, Algiers, Algeria',
+                ),
                 const Divider(),
-                _buildContactItem(Icons.access_time, 'Working Hours', 'Sunday - Thursday: 8:00 AM - 4:00 PM'),
+                _buildContactItem(
+                  Icons.access_time,
+                  'working_hours'.tr,
+                  'Sunday - Thursday: 8:00 AM - 4:00 PM',
+                ),
               ],
             ),
           ),
         ),
         const SizedBox(height: 20),
         Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
           elevation: 2,
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -168,7 +178,7 @@ class _HelpandfedbackState extends State<Helpandfedback> with SingleTickerProvid
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Emergency Contacts'.tr,
+                  'emergency_contacts'.tr,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -176,16 +186,26 @@ class _HelpandfedbackState extends State<Helpandfedback> with SingleTickerProvid
                   ),
                 ),
                 const SizedBox(height: 16),
-                _buildContactItem(Icons.emergency, 'Consumer Protection Hotline', '1020'),
+                _buildContactItem(
+                  Icons.emergency,
+                  'consumer_protection_hotline'.tr,
+                  '1020',
+                ),
                 const Divider(),
-                _buildContactItem(Icons.security, 'Trade Fraud Reporting', '1055'),
+                _buildContactItem(
+                  Icons.security,
+                  'trade_fraud_reporting'.tr,
+                  '1055',
+                ),
               ],
             ),
           ),
         ),
         const SizedBox(height: 20),
         Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
           elevation: 2,
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -193,7 +213,7 @@ class _HelpandfedbackState extends State<Helpandfedback> with SingleTickerProvid
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Social Media'.tr,
+                  'social_media'.tr,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -201,11 +221,64 @@ class _HelpandfedbackState extends State<Helpandfedback> with SingleTickerProvid
                   ),
                 ),
                 const SizedBox(height: 16),
-                _buildSocialMediaItem(Icons.facebook, 'Facebook', '@TradeLawAlgeria'),
+                _buildSocialMediaItem(
+                  Icons.facebook,
+                  'facebook'.tr,
+                  '@TradeLawAlgeria',
+                ),
                 const Divider(),
-                _buildSocialMediaItem(Icons.telegram, 'Telegram', '@TradeLawAlgeria'),
+                _buildSocialMediaItem(
+                  Icons.telegram,
+                  'telegram'.tr,
+                  '@TradeLawAlgeria',
+                ),
                 const Divider(),
-                _buildSocialMediaItem(Icons.web, 'Website', 'www.tradelaw.dz'),
+                _buildSocialMediaItem(
+                  Icons.web,
+                  'website'.tr,
+                  'www.tradelaw.dz',
+                ),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: 20),
+        Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          elevation: 2,
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'developer_social'.tr,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: kmaincolor,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                _buildSocialMediaItem(
+                  Icons.facebook,
+                  'facebook'.tr,
+                  'Djehel Mohamed Salah',
+                ),
+                const Divider(),
+                _buildSocialMediaItem(
+                  Icons.telegram,
+                  'telegram'.tr,
+                  'https://t.me/Mohamed_Salah_Djehel',
+                ),
+                const Divider(),
+                _buildSocialMediaItem(
+                  Icons.camera_alt,
+                  'instagram'.tr,
+                  'moh.medsalah',
+                ),
               ],
             ),
           ),
@@ -225,13 +298,10 @@ class _HelpandfedbackState extends State<Helpandfedback> with SingleTickerProvid
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                title.tr,
+                title,
                 style: const TextStyle(fontSize: 14, color: Colors.grey),
               ),
-              Text(
-                value,
-                style: const TextStyle(fontSize: 16),
-              ),
+              Text(value, style: const TextStyle(fontSize: 16)),
             ],
           ),
         ],
@@ -254,7 +324,7 @@ class _HelpandfedbackState extends State<Helpandfedback> with SingleTickerProvid
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  platform.tr,
+                  platform,
                   style: const TextStyle(fontSize: 14, color: Colors.grey),
                 ),
                 Text(
@@ -266,6 +336,33 @@ class _HelpandfedbackState extends State<Helpandfedback> with SingleTickerProvid
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildTextField({
+    required TextEditingController controller,
+    required String label,
+    required String hint,
+    required IconData icon,
+    int maxLines = 1,
+    TextInputType keyboardType = TextInputType.text,
+    String? Function(String?)? validator,
+  }) {
+    return TextFormField(
+      controller: controller,
+      decoration: InputDecoration(
+        labelText: label,
+        hintText: hint,
+        prefixIcon: Icon(icon, color: kmaincolor),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: kmaincolor, width: 2),
+        ),
+      ),
+      maxLines: maxLines,
+      keyboardType: keyboardType,
+      validator: validator,
     );
   }
 
@@ -287,7 +384,8 @@ class _HelpandfedbackState extends State<Helpandfedback> with SingleTickerProvid
             ),
             const SizedBox(height: 8),
             Text(
-              'Please share your thoughts, suggestions, or report any issues you encountered while using our app.'.tr,
+              'Please share your thoughts, suggestions, or report any issues you encountered while using our app.'
+                  .tr,
               style: const TextStyle(fontSize: 14, color: Colors.grey),
             ),
             const SizedBox(height: 24),
@@ -314,7 +412,9 @@ class _HelpandfedbackState extends State<Helpandfedback> with SingleTickerProvid
                 if (value == null || value.isEmpty) {
                   return 'Please enter your email'.tr;
                 }
-                if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+                if (!RegExp(
+                  r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                ).hasMatch(value)) {
                   return 'Please enter a valid email'.tr;
                 }
                 return null;
@@ -361,43 +461,12 @@ class _HelpandfedbackState extends State<Helpandfedback> with SingleTickerProvid
     );
   }
 
-  Widget _buildTextField({
-    required TextEditingController controller,
-    required String label,
-    required String hint,
-    required IconData icon,
-    int maxLines = 1,
-    TextInputType keyboardType = TextInputType.text,
-    String? Function(String?)? validator,
-  }) {
-    return TextFormField(
-      controller: controller,
-      decoration: InputDecoration(
-        labelText: label,
-        hintText: hint,
-        prefixIcon: Icon(icon, color: kmaincolor),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: kmaincolor, width: 2),
-        ),
-      ),
-      maxLines: maxLines,
-      keyboardType: keyboardType,
-      validator: validator,
-    );
-  }
-
   Widget _buildDropdown() {
     return DropdownButtonFormField<String>(
       decoration: InputDecoration(
         labelText: 'Feedback Type'.tr,
         prefixIcon: Icon(Icons.category, color: kmaincolor),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(color: kmaincolor, width: 2),
@@ -428,7 +497,7 @@ class _HelpandfedbackState extends State<Helpandfedback> with SingleTickerProvid
           backgroundColor: Colors.green,
         ),
       );
-      
+
       // Clear form fields
       _nameController.clear();
       _emailController.clear();
