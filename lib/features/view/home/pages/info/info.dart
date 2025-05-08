@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/core/Utils/constants.dart';
-import 'package:intl/intl.dart';
+// import 'package:intl/intl.dart';
 
 class Info extends StatelessWidget {
   const Info({super.key});
