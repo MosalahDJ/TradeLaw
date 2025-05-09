@@ -118,7 +118,7 @@ class ReportInformationsPage extends StatelessWidget {
                     color: reportType['color'],
                   ),
                   filled: true,
-                  fillColor: reportType['color'].withValues(alpha: 0.05),
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -149,7 +149,7 @@ class ReportInformationsPage extends StatelessWidget {
                   hintText: 'enter_town_district_name'.tr,
                   prefixIcon: Icon(Icons.apartment, color: reportType['color']),
                   filled: true,
-                  fillColor: reportType['color'].withValues(alpha: 0.05),
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -174,7 +174,7 @@ class ReportInformationsPage extends StatelessWidget {
                   hintText: 'enter_village_neighborhood_name'.tr,
                   prefixIcon: Icon(Icons.home, color: reportType['color']),
                   filled: true,
-                  fillColor: reportType['color'].withValues(alpha: 0.05),
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -206,7 +206,7 @@ class ReportInformationsPage extends StatelessWidget {
                     color: reportType['color'],
                   ),
                   filled: true,
-                  fillColor: reportType['color'].withValues(alpha: 0.05),
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -237,7 +237,7 @@ class ReportInformationsPage extends StatelessWidget {
                   hintText: 'enter_market_store_number'.tr,
                   prefixIcon: Icon(Icons.tag, color: reportType['color']),
                   filled: true,
-                  fillColor: reportType['color'].withValues(alpha: 0.05),
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -267,7 +267,7 @@ class ReportInformationsPage extends StatelessWidget {
                   hintText: 'provide_violation_details'.tr,
                   alignLabelWithHint: true,
                   filled: true,
-                  fillColor: reportType['color'].withValues(alpha: 0.05),
+                  fillColor: Colors.white,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
