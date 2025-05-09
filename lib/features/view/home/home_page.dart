@@ -5,12 +5,19 @@ import 'package:tradelaw/core/Utils/size_config.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/language_controller.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
 import 'package:tradelaw/features/view/auth/login%20page/loginpage.dart';
+import 'package:tradelaw/features/view/home/pages/help%20and%20fedback/help_and_fedback.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final ThemeController themectrl = Get.find();
   final LanguageController langctrl = Get.find();
+  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +33,8 @@ class HomePage extends StatelessWidget {
                   ? kmaincolor3dark
                   : kmaincolor,
           title: Text(
-            'Dashboard'.tr,
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            _currentIndex == 0 ? 'Dashboard'.tr : 'help&fedback'.tr,
+            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           actions: [
             IconButton(
@@ -46,7 +53,7 @@ class HomePage extends StatelessWidget {
               },
             ),
             PopupMenuButton<String>(
-              icon: Icon(Icons.language_rounded, color: Colors.white),
+              icon: const Icon(Icons.language_rounded, color: Colors.white),
               onSelected: (String value) {
                 langctrl.changeLanguage(value);
               },
@@ -66,7 +73,7 @@ class HomePage extends StatelessWidget {
                                         : kmaincolor)
                                     : Colors.transparent,
                           ),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           Text('english'.tr),
                         ],
                       ),
@@ -85,7 +92,7 @@ class HomePage extends StatelessWidget {
                                         : kmaincolor)
                                     : Colors.transparent,
                           ),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           Text('arabic'.tr),
                         ],
                       ),
@@ -104,7 +111,7 @@ class HomePage extends StatelessWidget {
                                         : kmaincolor)
                                     : Colors.transparent,
                           ),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           Text('french'.tr),
                         ],
                       ),
@@ -112,117 +119,225 @@ class HomePage extends StatelessWidget {
                   ],
             ),
             IconButton(
-              icon: Icon(Icons.logout_rounded, color: Colors.white),
+              icon: const Icon(Icons.logout_rounded, color: Colors.white),
               onPressed: () {
                 // Handle profile
                 Get.offAll(
                   () => LoginPage(),
-                  duration: Duration(milliseconds: 500),
+                  duration: const Duration(milliseconds: 500),
                   transition: Transition.leftToRight,
                 );
               },
             ),
           ],
         ),
-        body: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+        body: _currentIndex == 0 ? _buildHomeTab() : const Helpandfedback(),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+          selectedItemColor: themectrl.selectedTheme.value == AppTheme.dark
+              ? kmaincolor4dark
+              : kmaincolor,
+          unselectedItemColor: Colors.grey,
+          backgroundColor: themectrl.selectedTheme.value == AppTheme.dark
+              ? Colors.grey.shade900
+              : Colors.white,
+          elevation: 8,
+          items: [
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.home),
+              label: 'Home'.tr,
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.help_outline),
+              label: 'Help & Feedback'.tr,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHomeTab() {
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Welcome'.tr,
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color:
+                      themectrl.selectedTheme.value == AppTheme.dark
+                          ? Colors.white
+                          : Colors.black87,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Explore our services'.tr,
+                style: TextStyle(
+                  fontSize: 16,
+                  color:
+                      themectrl.selectedTheme.value == AppTheme.dark
+                          ? Colors.white70
+                          : Colors.black54,
+                ),
+              ),
+              const SizedBox(height: 24),
+              
+              // Professional Products Card
+              _buildProductsCard(),
+              
+              const SizedBox(height: 24),
+              
+              // Grid of other services (excluding help & feedback)
+              GridView.count(
+                crossAxisCount: 2,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                children: [
+                  _buildGridItem(
+                    icon: Icons.report_outlined,
+                    title: 'reporting'.tr,
+                    color: Colors.green.shade700,
+                    onTap: () {
+                      Get.toNamed("reporting");
+                    },
+                  ),
+                  _buildGridItem(
+                    icon: Icons.track_changes,
+                    title: 'report_tracking'.tr,
+                    color: Colors.orange.shade700,
+                    onTap: () {
+                      Get.toNamed("tracking");
+                    },
+                  ),
+                  _buildGridItem(
+                    icon: Icons.balance,
+                    title: 'law_info'.tr,
+                    color: Colors.purple.shade700,
+                    onTap: () {
+                      Get.toNamed("law_info");
+                    },
+                  ),
+                  _buildGridItem(
+                    icon: Icons.info_outline,
+                    title: 'info'.tr,
+                    color: Colors.red.shade700,
+                    onTap: () {
+                      Get.toNamed("info");
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildProductsCard() {
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: themectrl.selectedTheme.value == AppTheme.dark
+            ? Colors.grey.shade800
+            : Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Header with gradient
+          Container(
+            height: 120,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.blue.shade700,
+                  Colors.blue.shade500,
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(16),
+                topRight: Radius.circular(16),
+              ),
+            ),
+            child: Stack(
               children: [
-                Text(
-                  'Welcome'.tr,
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color:
-                        themectrl.selectedTheme.value == AppTheme.dark
-                            ? Colors.white
-                            : Colors.black87,
+                // Background pattern
+                Positioned.fill(
+                  child: Opacity(
+                    opacity: 0.1,
+                    child: Image.asset(
+                      'lib/core/assets/images/app_logo/pnglogo1.png',
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-                SizedBox(height: 8),
-                Text(
-                  'Explore our services'.tr,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color:
-                        themectrl.selectedTheme.value == AppTheme.dark
-                            ? Colors.white70
-                            : Colors.black54,
-                  ),
-                ),
-                SizedBox(height: 24),
-                Expanded(
-                  child: GridView.count(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 16,
-                    mainAxisSpacing: 16,
+                // Content
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Row(
                     children: [
-                      _buildGridItem(
-                        icon:
-                            Icons
-                                .shopping_bag_outlined, // Changed from gavel to shopping_bag_outlined
-                        title: 'products'.tr,
-                        color: Colors.blue.shade700,
-                        onTap: () {
-                          Get.toNamed("products");
-                        },
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Our Products'.tr,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              'Explore our professional services and products'.tr,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      _buildGridItem(
-                        icon:
-                            Icons
-                                .report_outlined, // Changed from description_outlined to report_outlined
-                        title: 'reporting'.tr,
-                        color: Colors.green.shade700,
-                        onTap: () {
-                          // Navigate to documents screen
-                          Get.toNamed("reporting");
-                        },
-                      ),
-                      _buildGridItem(
-                        icon:
-                            Icons
-                                .track_changes, // Changed from people_outline to track_changes
-                        title: 'report_tracking'.tr,
-                        color: Colors.orange.shade700,
-                        onTap: () {
-                          // Navigate to consultants screen
-                          Get.toNamed("tracking");
-                        },
-                      ),
-                      _buildGridItem(
-                        icon:
-                            Icons
-                                .balance, // Fixed syntax error and changed to balance
-                        title: 'law_info'.tr,
-                        color: Colors.purple.shade700,
-                        onTap: () {
-                          // Navigate to appointments screen
-                          Get.toNamed("law_info");
-                        },
-                      ),
-                      _buildGridItem(
-                        icon:
-                            Icons
-                                .info_outline, // Changed from info to info_outline
-                        title: 'info'.tr,
-                        color: Colors.red.shade700,
-                        onTap: () {
-                          // Navigate to articles screen
-                          Get.toNamed("info");
-                        },
-                      ),
-                      _buildGridItem(
-                        icon:
-                            Icons
-                                .support_agent, // Changed from help to support_agent
-                        title: 'help&fedback'.tr,
-                        color: const Color(0xFF616161),
-                        onTap: () {
-                          // Navigate to settings screen
-                          Get.toNamed("help");
-                        },
+                      Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.2),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(
+                          Icons.shopping_bag_outlined,
+                          color: Colors.white,
+                          size: 30,
+                        ),
                       ),
                     ],
                   ),
@@ -230,7 +345,58 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
-        ),
+          // Content
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Professional Legal Services'.tr,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: themectrl.selectedTheme.value == AppTheme.dark
+                        ? Colors.white
+                        : Colors.black87,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  'Access our comprehensive suite of legal products and services designed for businesses and individuals.'.tr,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: themectrl.selectedTheme.value == AppTheme.dark
+                        ? Colors.white70
+                        : Colors.black54,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    Get.toNamed("products");
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue.shade700,
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text('Explore Products'.tr),
+                      const SizedBox(width: 8),
+                      const Icon(Icons.arrow_forward, size: 16),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -254,9 +420,9 @@ class HomePage extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.05),
+                color: Colors.black.withOpacity(0.05),
                 blurRadius: 10,
-                offset: Offset(0, 4),
+                offset: const Offset(0, 4),
               ),
             ],
           ),
@@ -264,14 +430,14 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: color.withValues(alpha: 0.1),
+                  color: color.withOpacity(0.1),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(icon, size: 40, color: color),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               Text(
                 title,
                 style: TextStyle(
