@@ -34,7 +34,10 @@ class _HomePageState extends State<HomePage> {
                   : kmaincolor,
           title: Text(
             _currentIndex == 0 ? 'Dashboard'.tr : 'help&fedback'.tr,
-            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           actions: [
             IconButton(
@@ -139,13 +142,15 @@ class _HomePageState extends State<HomePage> {
               _currentIndex = index;
             });
           },
-          selectedItemColor: themectrl.selectedTheme.value == AppTheme.dark
-              ? kmaincolor4dark
-              : kmaincolor,
+          selectedItemColor:
+              themectrl.selectedTheme.value == AppTheme.dark
+                  ? kmaincolor4dark
+                  : kmaincolor,
           unselectedItemColor: Colors.grey,
-          backgroundColor: themectrl.selectedTheme.value == AppTheme.dark
-              ? Colors.grey.shade900
-              : Colors.white,
+          backgroundColor:
+              themectrl.selectedTheme.value == AppTheme.dark
+                  ? Colors.grey.shade900
+                  : Colors.white,
           elevation: 8,
           items: [
             BottomNavigationBarItem(
@@ -193,12 +198,12 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               const SizedBox(height: 24),
-              
+
               // Professional Products Card
               _buildProductsCard(),
-              
+
               const SizedBox(height: 24),
-              
+
               // Grid of other services (excluding help & feedback)
               GridView.count(
                 crossAxisCount: 2,
@@ -252,9 +257,10 @@ class _HomePageState extends State<HomePage> {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: themectrl.selectedTheme.value == AppTheme.dark
-            ? Colors.grey.shade800
-            : Colors.white,
+        color:
+            themectrl.selectedTheme.value == AppTheme.dark
+                ? Colors.grey.shade800
+                : Colors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -273,10 +279,7 @@ class _HomePageState extends State<HomePage> {
             width: double.infinity,
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [
-                  Colors.blue.shade700,
-                  Colors.blue.shade500,
-                ],
+                colors: [Colors.blue.shade700, Colors.blue.shade500],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
@@ -317,7 +320,8 @@ class _HomePageState extends State<HomePage> {
                             ),
                             const SizedBox(height: 8),
                             Text(
-                              'Explore our professional services and products'.tr,
+                              'Explore our professional services and products'
+                                  .tr,
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 14,
@@ -356,19 +360,22 @@ class _HomePageState extends State<HomePage> {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: themectrl.selectedTheme.value == AppTheme.dark
-                        ? Colors.white
-                        : Colors.black87,
+                    color:
+                        themectrl.selectedTheme.value == AppTheme.dark
+                            ? Colors.white
+                            : Colors.black87,
                   ),
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  'Access our comprehensive suite of legal products and services designed for businesses and individuals.'.tr,
+                  'Access our comprehensive suite of legal products and services designed for businesses and individuals.'
+                      .tr,
                   style: TextStyle(
                     fontSize: 14,
-                    color: themectrl.selectedTheme.value == AppTheme.dark
-                        ? Colors.white70
-                        : Colors.black54,
+                    color:
+                        themectrl.selectedTheme.value == AppTheme.dark
+                            ? Colors.white70
+                            : Colors.black54,
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -379,7 +386,10 @@ class _HomePageState extends State<HomePage> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue.shade700,
                     foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 12,
+                    ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
