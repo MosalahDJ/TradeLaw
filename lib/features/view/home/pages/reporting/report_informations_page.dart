@@ -45,7 +45,7 @@ class ReportInformationsPage extends StatelessWidget {
             fit: BoxFit.fitWidth,
             opacity: 0.5,
             colorFilter: ColorFilter.mode(
-              reportType['color'].withOpacity(0.01),
+              reportType['color'].withValues(alpha: 0.01),
               BlendMode.srcOver,
             ),
           ),
@@ -59,10 +59,10 @@ class ReportInformationsPage extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: reportType['color'].withOpacity(0.1),
+                  color: reportType['color'].withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
-                    color: reportType['color'].withOpacity(0.3),
+                    color: reportType['color'].withValues(alpha: 0.3),
                     width: 1,
                   ),
                 ),
@@ -118,7 +118,7 @@ class ReportInformationsPage extends StatelessWidget {
                     color: reportType['color'],
                   ),
                   filled: true,
-                  fillColor: reportType['color'].withOpacity(0.05),
+                  fillColor: reportType['color'].withValues(alpha: 0.05),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -149,7 +149,7 @@ class ReportInformationsPage extends StatelessWidget {
                   hintText: 'enter_town_district_name'.tr,
                   prefixIcon: Icon(Icons.apartment, color: reportType['color']),
                   filled: true,
-                  fillColor: reportType['color'].withOpacity(0.05),
+                  fillColor: reportType['color'].withValues(alpha: 0.05),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -174,7 +174,7 @@ class ReportInformationsPage extends StatelessWidget {
                   hintText: 'enter_village_neighborhood_name'.tr,
                   prefixIcon: Icon(Icons.home, color: reportType['color']),
                   filled: true,
-                  fillColor: reportType['color'].withOpacity(0.05),
+                  fillColor: reportType['color'].withValues(alpha: 0.05),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -206,7 +206,7 @@ class ReportInformationsPage extends StatelessWidget {
                     color: reportType['color'],
                   ),
                   filled: true,
-                  fillColor: reportType['color'].withOpacity(0.05),
+                  fillColor: reportType['color'].withValues(alpha: 0.05),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -237,7 +237,7 @@ class ReportInformationsPage extends StatelessWidget {
                   hintText: 'enter_market_store_number'.tr,
                   prefixIcon: Icon(Icons.tag, color: reportType['color']),
                   filled: true,
-                  fillColor: reportType['color'].withOpacity(0.05),
+                  fillColor: reportType['color'].withValues(alpha: 0.05),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -267,7 +267,7 @@ class ReportInformationsPage extends StatelessWidget {
                   hintText: 'provide_violation_details'.tr,
                   alignLabelWithHint: true,
                   filled: true,
-                  fillColor: reportType['color'].withOpacity(0.05),
+                  fillColor: reportType['color'].withValues(alpha: 0.05),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),

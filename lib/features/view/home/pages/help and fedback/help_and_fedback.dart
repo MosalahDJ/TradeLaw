@@ -242,47 +242,6 @@ class _HelpandfedbackState extends State<Helpandfedback>
             ),
           ),
         ),
-        const SizedBox(height: 20),
-        Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          elevation: 2,
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'developer_social'.tr,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: kmaincolor,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                _buildSocialMediaItem(
-                  Icons.facebook,
-                  'facebook'.tr,
-                  'Djehel Mohamed Salah',
-                ),
-                const Divider(),
-                _buildSocialMediaItem(
-                  Icons.telegram,
-                  'telegram'.tr,
-                  'https://t.me/Mohamed_Salah_Djehel',
-                ),
-                const Divider(),
-                _buildSocialMediaItem(
-                  Icons.camera_alt,
-                  'instagram'.tr,
-                  'moh.medsalah',
-                ),
-              ],
-            ),
-          ),
-        ),
       ],
     );
   }

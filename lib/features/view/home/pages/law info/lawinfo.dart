@@ -128,9 +128,9 @@ class Lawinfo extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
       margin: const EdgeInsets.only(bottom: 8),
       decoration: BoxDecoration(
-        color: kmaincolor.withOpacity(0.1),
+        color: kmaincolor.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: kmaincolor.withOpacity(0.3), width: 1),
+        border: Border.all(color: kmaincolor.withValues(alpha: 0.3), width: 1),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -165,7 +165,7 @@ class Lawinfo extends StatelessWidget {
         leading: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: color.withOpacity(0.1),
+            color: color.withValues(alpha: 0.1),
             shape: BoxShape.circle,
           ),
           child: Icon(icon, color: color),
@@ -183,7 +183,7 @@ class Lawinfo extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: color.withOpacity(0.05),
+              color: color.withValues(alpha: 0.05),
               borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(12),
                 bottomRight: Radius.circular(12),
@@ -209,9 +209,12 @@ class Lawinfo extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             decoration: BoxDecoration(
-              color: kmaincolor.withOpacity(0.1),
+              color: kmaincolor.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: kmaincolor.withOpacity(0.3), width: 1),
+              border: Border.all(
+                color: kmaincolor.withValues(alpha: 0.3),
+                width: 1,
+              ),
             ),
             child: Text(
               articleNumber,

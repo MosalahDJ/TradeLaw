@@ -16,7 +16,7 @@ Color textcolor3 = const Color(0xFF000000);
 // Color kmaincolor2 = const Color(0xFFF2A484); // softer coral for dark background
 // Color kmaincolor3 = const Color(0xFF2B2B2B); // dark neutral background alternative
 // Color kmaincolor4 = const Color(0xFF3C7F6B); // brighter green for contrast
-// Color hintcolor = const Color(0xFFC3B48A).withOpacity(0.5); // warm hint text
+// Color hintcolor = const Color(0xFFC3B48A).withValues(alpha: 0.5); // warm hint text
 
 // Color textcolor1 = const Color(0xFFE1D7BC); // light beige for readable body text
 // Color textcolor2 = const Color(0xFFFFFFFF); // pure white
