@@ -135,7 +135,28 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         body: _currentIndex == 0 ? _buildHomeTab() : const Helpandfedback(),
-        bottomNavigationBar: BottomNavigationBar(
+        bottomNavigationBar: _buildBottomNavigationBar(),
+      ),
+    );
+  }
+
+  Widget _buildBottomNavigationBar() {
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 10,
+            offset: const Offset(0, -2),
+          ),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+        child: BottomNavigationBar(
           currentIndex: _currentIndex,
           onTap: (index) {
             setState(() {
@@ -146,19 +167,60 @@ class _HomePageState extends State<HomePage> {
               themectrl.selectedTheme.value == AppTheme.dark
                   ? kmaincolor4dark
                   : kmaincolor,
-          unselectedItemColor: Colors.grey,
+          unselectedItemColor: Colors.grey.shade500,
           backgroundColor:
               themectrl.selectedTheme.value == AppTheme.dark
                   ? Colors.grey.shade900
                   : Colors.white,
-          elevation: 8,
+          elevation: 0,
+          type: BottomNavigationBarType.fixed,
+          selectedLabelStyle: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 12,
+          ),
+          unselectedLabelStyle: const TextStyle(
+            fontWeight: FontWeight.normal,
+            fontSize: 11,
+          ),
           items: [
             BottomNavigationBarItem(
-              icon: const Icon(Icons.home),
+              icon: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color:
+                      _currentIndex == 0
+                          ? (themectrl.selectedTheme.value == AppTheme.dark
+                              ? kmaincolor4dark.withOpacity(0.2)
+                              : kmaincolor.withOpacity(0.1))
+                          : Colors.transparent,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Icon(
+                  Icons.home_rounded,
+                  size: _currentIndex == 0 ? 26 : 22,
+                ),
+              ),
               label: 'Home'.tr,
             ),
             BottomNavigationBarItem(
-              icon: const Icon(Icons.help_outline),
+              icon: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color:
+                      _currentIndex == 1
+                          ? (themectrl.selectedTheme.value == AppTheme.dark
+                              ? kmaincolor4dark.withOpacity(0.2)
+                              : kmaincolor.withOpacity(0.1))
+                          : Colors.transparent,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Icon(
+                  Icons.help_outline_rounded,
+                  size: _currentIndex == 1 ? 26 : 22,
+                ),
+              ),
               label: 'Help & Feedback'.tr,
             ),
           ],
