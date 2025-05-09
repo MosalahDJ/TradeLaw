@@ -332,7 +332,7 @@ class _HomePageState extends State<HomePage> {
             width: double.infinity,
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.blue.shade700, Colors.blue.shade500],
+                colors: [kmaincolor, const Color.fromARGB(255, 172, 19, 57)],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               ),
@@ -437,7 +437,7 @@ class _HomePageState extends State<HomePage> {
                     Get.toNamed("products");
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue.shade700,
+                    backgroundColor: kmaincolor.withValues(alpha: 0.8),
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 24,
