@@ -145,7 +145,7 @@ class _HomePageState extends State<HomePage> {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 10,
             offset: const Offset(0, -2),
           ),
@@ -191,8 +191,8 @@ class _HomePageState extends State<HomePage> {
                   color:
                       _currentIndex == 0
                           ? (themectrl.selectedTheme.value == AppTheme.dark
-                              ? kmaincolor4dark.withOpacity(0.2)
-                              : kmaincolor.withOpacity(0.1))
+                              ? kmaincolor4dark.withValues(alpha: 0.2)
+                              : kmaincolor.withValues(alpha: 0.1))
                           : Colors.transparent,
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -211,8 +211,8 @@ class _HomePageState extends State<HomePage> {
                   color:
                       _currentIndex == 1
                           ? (themectrl.selectedTheme.value == AppTheme.dark
-                              ? kmaincolor4dark.withOpacity(0.2)
-                              : kmaincolor.withOpacity(0.1))
+                              ? kmaincolor4dark.withValues(alpha: 0.2)
+                              : kmaincolor.withValues(alpha: 0.1))
                           : Colors.transparent,
                   borderRadius: BorderRadius.circular(12),
                 ),
