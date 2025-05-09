@@ -237,29 +237,29 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Welcome'.tr,
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color:
-                      themectrl.selectedTheme.value == AppTheme.dark
-                          ? Colors.white
-                          : Colors.black87,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Explore our services'.tr,
-                style: TextStyle(
-                  fontSize: 16,
-                  color:
-                      themectrl.selectedTheme.value == AppTheme.dark
-                          ? Colors.white70
-                          : Colors.black54,
-                ),
-              ),
-              const SizedBox(height: 24),
+              // Text(
+              //   'Welcome'.tr,
+              //   style: TextStyle(
+              //     fontSize: 24,
+              //     fontWeight: FontWeight.bold,
+              //     color:
+              //         themectrl.selectedTheme.value == AppTheme.dark
+              //             ? Colors.white
+              //             : Colors.black87,
+              //   ),
+              // ),
+              // const SizedBox(height: 8),
+              // Text(
+              //   'Explore our services'.tr,
+              //   style: TextStyle(
+              //     fontSize: 16,
+              //     color:
+              //         themectrl.selectedTheme.value == AppTheme.dark
+              //             ? Colors.white70
+              //             : Colors.black54,
+              //   ),
+              // ),
+              // const SizedBox(height: 24),
 
               // Professional Products Card
               _buildProductsCard(),
