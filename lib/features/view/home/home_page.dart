@@ -215,7 +215,7 @@ class _HomePageState extends State<HomePage> {
                   size: _currentIndex == 1 ? 26 : 22,
                 ),
               ),
-              label: 'help&feedback'.tr,
+              label: 'help&fedback'.tr,
             ),
           ],
         ),

@@ -69,32 +69,32 @@ class _HelpandfedbackState extends State<Helpandfedback>
       padding: const EdgeInsets.all(16),
       children: [
         _buildFAQItem(
-          'What is TradeLaw app?',
-          'TradeLaw is an application designed to help users understand and navigate Algerian trade laws, regulations, and procedures. It provides information about consumer rights, business regulations, and legal resources.',
+          'faq_what_is'.tr,
+          'faq_what_is_answer'.tr,
         ),
         _buildFAQItem(
-          'How do I report a trade law violation?',
-          'You can report violations through the "Report" section in the app. Fill out the required information including the type of violation, location, and any evidence you may have. Your report will be submitted to the relevant authorities.',
+          'faq_report_how'.tr,
+          'faq_report_how_answer'.tr,
         ),
         _buildFAQItem(
-          'How can I track my submitted reports?',
-          'Go to the "My Reports" section where you can view all your submitted reports and their current status. Each report has a unique tracking number that you can use to follow up on its progress.',
+          'faq_track_how'.tr,
+          'faq_track_how_answer'.tr,
         ),
         _buildFAQItem(
-          'What types of trade violations can I report?',
-          'You can report various violations including price manipulation, counterfeit products, misleading advertising, consumer rights violations, and unfair business practices.',
+          'faq_violations'.tr,
+          'faq_violations_answer'.tr,
         ),
         _buildFAQItem(
-          'Is my personal information secure?',
-          'Yes, we take data privacy seriously. Your personal information is protected according to Algerian Law No. 18-07 on personal data protection. We only share necessary information with relevant authorities for investigation purposes.',
+          'faq_privacy'.tr,
+          'faq_privacy_answer'.tr,
         ),
         _buildFAQItem(
-          'How do I update my account information?',
-          'Go to the "Profile" section in the app where you can edit your personal information, change your password, and manage your notification preferences.',
+          'faq_update_info'.tr,
+          'faq_update_info_answer'.tr,
         ),
         _buildFAQItem(
-          'Can I use the app offline?',
-          'Some features of the app are available offline, such as viewing previously loaded laws and regulations. However, submitting reports and accessing real-time updates requires an internet connection.',
+          'faq_offline'.tr,
+          'faq_offline_answer'.tr,
         ),
       ],
     );
@@ -298,33 +298,6 @@ class _HelpandfedbackState extends State<Helpandfedback>
     );
   }
 
-  Widget _buildTextField({
-    required TextEditingController controller,
-    required String label,
-    required String hint,
-    required IconData icon,
-    int maxLines = 1,
-    TextInputType keyboardType = TextInputType.text,
-    String? Function(String?)? validator,
-  }) {
-    return TextFormField(
-      controller: controller,
-      decoration: InputDecoration(
-        labelText: label,
-        hintText: hint,
-        prefixIcon: Icon(icon, color: kmaincolor),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: kmaincolor, width: 2),
-        ),
-      ),
-      maxLines: maxLines,
-      keyboardType: keyboardType,
-      validator: validator,
-    );
-  }
-
   Widget _buildFeedbackTab() {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
@@ -334,28 +307,32 @@ class _HelpandfedbackState extends State<Helpandfedback>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'We Value Your Feedback'.tr,
+              'feedback_title'.tr,
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 24,
                 fontWeight: FontWeight.bold,
                 color: kmaincolor,
+                fontFamily: 'Cairo',
               ),
             ),
             const SizedBox(height: 8),
             Text(
-              'Please share your thoughts, suggestions, or report any issues you encountered while using our app.'
-                  .tr,
-              style: const TextStyle(fontSize: 14, color: Colors.grey),
+              'feedback_subtitle'.tr,
+              style: const TextStyle(
+                fontSize: 16,
+                color: Colors.grey,
+                fontFamily: 'Cairo',
+              ),
             ),
             const SizedBox(height: 24),
             _buildTextField(
               controller: _nameController,
-              label: 'Name'.tr,
-              hint: 'Enter your name'.tr,
+              label: 'full_name'.tr,
+              hint: 'enter_full_name'.tr,
               icon: Icons.person,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter your name'.tr;
+                  return 'please_enter_full_name'.tr;
                 }
                 return null;
               },
@@ -363,37 +340,61 @@ class _HelpandfedbackState extends State<Helpandfedback>
             const SizedBox(height: 16),
             _buildTextField(
               controller: _emailController,
-              label: 'Email'.tr,
-              hint: 'Enter your email'.tr,
+              label: 'email'.tr,
+              hint: 'enter_email'.tr,
               icon: Icons.email,
               keyboardType: TextInputType.emailAddress,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter your email'.tr;
+                  return 'please_enter_email'.tr;
                 }
-                if (!RegExp(
-                  r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
-                ).hasMatch(value)) {
-                  return 'Please enter a valid email'.tr;
+                if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+                  return 'valid_email'.tr;
                 }
                 return null;
               },
             ),
             const SizedBox(height: 16),
-            _buildDropdown(),
+            DropdownButtonFormField<String>(
+              decoration: InputDecoration(
+                labelText: 'feedback_type'.tr,
+                labelStyle: const TextStyle(fontFamily: 'Cairo'),
+                prefixIcon: Icon(Icons.category, color: kmaincolor),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: kmaincolor, width: 2),
+                ),
+                filled: true,
+                fillColor: Colors.white,
+              ),
+              items: [
+                DropdownMenuItem(value: 'suggestion', child: Text('suggestion'.tr, style: const TextStyle(fontFamily: 'Cairo'))),
+                DropdownMenuItem(value: 'bug', child: Text('bug_report'.tr, style: const TextStyle(fontFamily: 'Cairo'))),
+                DropdownMenuItem(value: 'content', child: Text('content_issue'.tr, style: const TextStyle(fontFamily: 'Cairo'))),
+                DropdownMenuItem(value: 'other', child: Text('other'.tr, style: const TextStyle(fontFamily: 'Cairo'))),
+              ],
+              onChanged: (value) {},
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'select_feedback_type'.tr;
+                }
+                return null;
+              },
+            ),
             const SizedBox(height: 16),
             _buildTextField(
               controller: _messageController,
-              label: 'Message'.tr,
-              hint: 'Enter your message'.tr,
+              label: 'feedback_message'.tr,
+              hint: 'enter_feedback_message'.tr,
               icon: Icons.message,
               maxLines: 5,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter your message'.tr;
+                  return 'please_enter_message'.tr;
                 }
                 if (value.length < 10) {
-                  return 'Message should be at least 10 characters'.tr;
+                  return 'min_message_length'.tr;
                 }
                 return null;
               },
@@ -411,7 +412,14 @@ class _HelpandfedbackState extends State<Helpandfedback>
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: Text('Submit Feedback'.tr),
+                child: Text(
+                  'submit_feedback'.tr,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Cairo',
+                  ),
+                ),
               ),
             ),
           ],
@@ -420,44 +428,55 @@ class _HelpandfedbackState extends State<Helpandfedback>
     );
   }
 
-  Widget _buildDropdown() {
-    return DropdownButtonFormField<String>(
+  // Update the _buildTextField widget to include Cairo font
+  Widget _buildTextField({
+    required TextEditingController controller,
+    required String label,
+    required String hint,
+    required IconData icon,
+    int maxLines = 1,
+    TextInputType keyboardType = TextInputType.text,
+    String? Function(String?)? validator,
+  }) {
+    return TextFormField(
+      controller: controller,
       decoration: InputDecoration(
-        labelText: 'Feedback Type'.tr,
-        prefixIcon: Icon(Icons.category, color: kmaincolor),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+        filled: true,
+        fillColor: Colors.white,
+        labelText: label,
+        labelStyle: const TextStyle(fontFamily: 'Cairo'),
+        hintText: hint,
+        hintStyle: const TextStyle(fontFamily: 'Cairo'),
+        prefixIcon: Icon(icon, color: kmaincolor),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: kmaincolor),
+        ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(color: kmaincolor, width: 2),
         ),
       ),
-      items: [
-        DropdownMenuItem(value: 'suggestion', child: Text('Suggestion'.tr)),
-        DropdownMenuItem(value: 'bug', child: Text('Bug Report'.tr)),
-        DropdownMenuItem(value: 'content', child: Text('Content Issue'.tr)),
-        DropdownMenuItem(value: 'other', child: Text('Other'.tr)),
-      ],
-      onChanged: (value) {},
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please select a feedback type'.tr;
-        }
-        return null;
-      },
+      style: const TextStyle(fontFamily: 'Cairo'),
+      maxLines: maxLines,
+      keyboardType: keyboardType,
+      validator: validator,
     );
   }
 
+  // Update the _submitFeedback method
   void _submitFeedback() {
     if (_formKey.currentState!.validate()) {
-      // TODO: Implement feedback submission logic
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Thank you for your feedback!'.tr),
+          content: Text(
+            'feedback_submitted'.tr,
+            style: const TextStyle(fontFamily: 'Cairo'),
+          ),
           backgroundColor: Colors.green,
         ),
       );
 
-      // Clear form fields
       _nameController.clear();
       _emailController.clear();
       _messageController.clear();

@@ -123,6 +123,11 @@ class Messages extends Translations {
           'Please provide details about the violation',
       'submitting': 'Submitting...',
       'submit_report': 'Submit Report',
+      'economic_reports_magazines': 'Economic Reports & Magazines',
+      'investment_climate_report': 'Investment Climate Statement 2024',
+      'algeria_stable_economy': 'Algeria: A Stable Rent Economy',
+      'world_bank_report': 'World Bank Economic Report',
+      'view_full_report': 'View Full Report',
 
       // Report Tracking
       'tracking_detail': 'Report Details',
@@ -236,6 +241,47 @@ class Messages extends Translations {
           'Establishes temporary duties between 30% and 200% applicable to certain import operations.',
       'import_article_8_desc':
           'Implements phyto-sanitary and sanitary control regulations for imported products.',
+      // Feedback Form
+      'feedback_title': 'Share Your Feedback',
+      'feedback_subtitle':
+          'Help us improve your experience by sharing your thoughts and suggestions',
+      'full_name': 'Full Name',
+      'enter_full_name': 'Enter your full name',
+      'please_enter_full_name': 'Please enter your full name',
+      'feedback_type': 'Feedback Type',
+      'select_feedback_type': 'Select feedback type',
+      'suggestion': 'Suggestion',
+      'bug_report': 'Bug Report',
+      'content_issue': 'Content Issue',
+      'other': 'Other',
+      'feedback_message': 'Your Message',
+      'enter_feedback_message': 'Enter your feedback message',
+      'min_message_length': 'Message should be at least 10 characters',
+      'submit_feedback': 'Submit Feedback',
+      'feedback_submitted': 'Thank you for your feedback!',
+
+      // FAQ Section
+      'faq_what_is': 'What is TradeLaw app?',
+      'faq_what_is_answer':
+          'TradeLaw is an application designed to help users understand and navigate Algerian trade laws, regulations, and procedures. It provides information about consumer rights, business regulations, and legal resources.',
+      'faq_report_how': 'How do I report a trade law violation?',
+      'faq_report_how_answer':
+          'You can report violations through the "Report" section in the app. Fill out the required information including the type of violation, location, and any evidence you may have. Your report will be submitted to the relevant authorities.',
+      'faq_track_how': 'How can I track my submitted reports?',
+      'faq_track_how_answer':
+          'Go to the "My Reports" section where you can view all your submitted reports and their current status. Each report has a unique tracking number that you can use to follow up on its progress.',
+      'faq_violations': 'What types of trade violations can I report?',
+      'faq_violations_answer':
+          'You can report various violations including price manipulation, counterfeit products, misleading advertising, consumer rights violations, and unfair business practices.',
+      'faq_privacy': 'Is my personal information secure?',
+      'faq_privacy_answer':
+          'Yes, we take data privacy seriously. Your personal information is protected according to Algerian Law No. 18-07 on personal data protection. We only share necessary information with relevant authorities for investigation purposes.',
+      'faq_update_info': 'How do I update my account information?',
+      'faq_update_info_answer':
+          'Go to the "Profile" section in the app where you can edit your personal information, change your password, and manage your notification preferences.',
+      'faq_offline': 'Can I use the app offline?',
+      'faq_offline_answer':
+          'Some features of the app are available offline, such as viewing previously loaded laws and regulations. However, submitting reports and accessing real-time updates requires an internet connection.',
     },
     'ar': {
       // Authentication - Old Words
@@ -387,6 +433,11 @@ class Messages extends Translations {
           'تعمل الحكومة الجزائرية على صياغة تشريع جديد بشأن التزوير والملكية الفكرية لتحسين التنفيذ والتنسيق بين الوكالات. منذ مارس 2023، عملت الحكومة أيضًا مع المنظمة العالمية للملكية الفكرية لصياغة استراتيجية وطنية للملكية الفكرية، من المتوقع أن تكتمل بحلول نهاية عام 2024.',
       'digital_strategy_content':
           'أعدت الجزائر استراتيجية رقمية جديدة تمتد حتى عام 2029، مبنية على تحسين قانون الرقمنة المرتقب وتعزيز الأمن السيبراني. من المتوقع أن تخلق هذه الاستراتيجية بيئة مواتية للابتكار والنمو الاقتصادي. تشرف المفوضية العليا للرقمنة في الجزائر على تنفيذ السياسات الرقمية.',
+      'economic_reports_magazines': 'التقارير والمجلات الاقتصادية',
+      'investment_climate_report': 'تقرير مناخ الاستثمار 2024',
+      'algeria_stable_economy': 'الجزائر: اقتصاد ريعي مستقر',
+      'world_bank_report': 'تقرير البنك الدولي الاقتصادي',
+      'view_full_report': 'عرض التقرير الكامل',
 
       // Help and Feedback Page
       'contact_information': 'معلومات الاتصال',
@@ -467,6 +518,48 @@ class Messages extends Translations {
           'يضع رسومًا مؤقتة بين 30٪ و 200٪ تنطبق على عمليات استيراد معينة.',
       'import_article_8_desc':
           'ينفذ لوائح الرقابة الصحية النباتية والصحية للمنتجات المستوردة.',
+      // Feedback Form
+      'feedback_title': 'شارك ملاحظاتك',
+      'feedback_subtitle':
+          'ساعدنا في تحسين تجربتك من خلال مشاركة أفكارك واقتراحاتك',
+      'full_name': 'الاسم الكامل',
+      'enter_full_name': 'أدخل اسمك الكامل',
+      'please_enter_full_name': 'الرجاء إدخال اسمك الكامل',
+      'feedback_type': 'نوع الملاحظات',
+      'select_feedback_type': 'اختر نوع الملاحظات',
+      'suggestion': 'اقتراح',
+      'bug_report': 'تقرير خطأ',
+      'content_issue': 'مشكلة في المحتوى',
+      'other': 'أخرى',
+      'feedback_message': 'رسالتك',
+      'enter_feedback_message': 'أدخل رسالة ملاحظاتك',
+      'min_message_length': 'يجب أن تكون الرسالة 10 أحرف على الأقل',
+      'submit_feedback': 'إرسال الملاحظات',
+      'feedback_submitted': 'شكراً على ملاحظاتك!',
+
+      // FAQ Section
+      'faq_what_is': 'ما هو تطبيق TradeLaw؟',
+      'faq_what_is_answer':
+          'TradeLaw هو تطبيق مصمم لمساعدة المستخدمين على فهم وتصفح قوانين التجارة الجزائرية واللوائح والإجراءات. يوفر معلومات حول حقوق المستهلك واللوائح التجارية والموارد القانونية.',
+      'faq_report_how': 'كيف يمكنني الإبلاغ عن مخالفة تجارية؟',
+      'faq_report_how_answer':
+          'يمكنك الإبلاغ عن المخالفات من خلال قسم "البلاغات" في التطبيق. املأ المعلومات المطلوبة بما في ذلك نوع المخالفة والموقع وأي دليل قد يكون لديك. سيتم تقديم بلاغك إلى السلطات المختصة.',
+      'faq_track_how': 'كيف يمكنني تتبع بلاغاتي المقدمة؟',
+      'faq_track_how_answer':
+          'اذهب إلى قسم "بلاغاتي" حيث يمكنك عرض جميع بلاغاتك المقدمة وحالتها الحالية. لكل بلاغ رقم تتبع فريد يمكنك استخدامه لمتابعة تقدمه.',
+      'faq_violations':
+          'ما هي أنواع المخالفات التجارية التي يمكنني الإبلاغ عنها؟',
+      'faq_violations_answer':
+          'يمكنك الإبلاغ عن مخالفات متنوعة تشمل التلاعب بالأسعار والمنتجات المقلدة والإعلانات المضللة وانتهاكات حقوق المستهلك والممارسات التجارية غير العادلة.',
+      'faq_privacy': 'هل معلوماتي الشخصية آمنة؟',
+      'faq_privacy_answer':
+          'نعم، نحن نأخذ خصوصية البيانات على محمل الجد. معلوماتك الشخصية محمية وفقاً للقانون الجزائري رقم 18-07 لحماية البيانات الشخصية. نحن نشارك فقط المعلومات الضرورية مع السلطات المختصة لأغراض التحقيق.',
+      'faq_update_info': 'كيف يمكنني تحديث معلومات حسابي؟',
+      'faq_update_info_answer':
+          'اذهب إلى قسم "الملف الشخصي" حيث يمكنك تعديل معلوماتك الشخصية وتغيير كلمة المرور وإدارة تفضيلات الإشعارات.',
+      'faq_offline': 'هل يمكنني استخدام التطبيق بدون إنترنت؟',
+      'faq_offline_answer':
+          'بعض ميزات التطبيق متاحة بدون إنترنت، مثل عرض القوانين واللوائح المحملة مسبقاً. ومع ذلك، يتطلب تقديم البلاغات والوصول إلى التحديثات الفورية اتصالاً بالإنترنت.',
     },
     'fr': {
       // Authentication - Old Words
@@ -607,7 +700,7 @@ class Messages extends Translations {
       'Resolved': 'Résolu',
       'Closed': 'Fermé',
       'Submitted': 'Soumis',
-      'Under Investigation': 'Sous enquête',
+      'Under Investigation': 'En cours d\'enquête',
       'Rejected': 'Rejeté',
 
       // Info Page
@@ -624,7 +717,12 @@ class Messages extends Translations {
           'Le gouvernement algérien élabore une nouvelle législation sur la contrefaçon et la propriété intellectuelle pour améliorer l\'application et la coordination interagences. Depuis mars 2023, le gouvernement a également travaillé avec l\'OMPI pour élaborer une stratégie nationale de PI, qui devrait être achevée d\'ici fin 2024.',
       'digital_strategy_content':
           'L\'Algérie a préparé une nouvelle stratégie numérique s\'étendant jusqu\'en 2029, basée sur l\'amélioration de la future loi sur la numérisation et le renforcement de la cybersécurité. Cette stratégie devrait créer un environnement propice à l\'innovation et à la croissance économique. La Haute Commission de la Numérisation de l\'Algérie supervise la mise en œuvre des politiques numériques.',
-
+      'economic_reports_magazines': 'Rapports et Magazines Économiques',
+      'investment_climate_report':
+          'Rapport sur le Climat d\'Investissement 2024',
+      'algeria_stable_economy': 'Algérie : Une Économie de Rente Stable',
+      'world_bank_report': 'Rapport Économique de la Banque Mondiale',
+      'view_full_report': 'Voir le Rapport Complet',
       // Help and Feedback Page
       'contact_information': 'Informations de Contact',
       'phone': 'Téléphone',
@@ -706,6 +804,49 @@ class Messages extends Translations {
           'Establishes temporary duties between 30% and 200% applicable to certain import operations.',
       'import_article_8_desc':
           'Implements phyto-sanitary and sanitary control regulations for imported products.',
+      // Feedback Form
+      'feedback_title': 'Partagez Vos Commentaires',
+      'feedback_subtitle':
+          'Aidez-nous à améliorer votre expérience en partageant vos pensées et suggestions',
+      'full_name': 'Nom Complet',
+      'enter_full_name': 'Entrez votre nom complet',
+      'please_enter_full_name': 'Veuillez entrer votre nom complet',
+      'feedback_type': 'Type de Commentaire',
+      'select_feedback_type': 'Sélectionnez le type de commentaire',
+      'suggestion': 'Suggestion',
+      'bug_report': 'Rapport de Bug',
+      'content_issue': 'Problème de Contenu',
+      'other': 'Autre',
+      'feedback_message': 'Votre Message',
+      'enter_feedback_message': 'Entrez votre message',
+      'min_message_length': 'Le message doit contenir au moins 10 caractères',
+      'submit_feedback': 'Envoyer le Commentaire',
+      'feedback_submitted': 'Merci pour vos commentaires !',
+      // FAQ Section
+      'faq_what_is': 'Qu\'est-ce que l\'application TradeLaw ?',
+      'faq_what_is_answer':
+          'TradeLaw est une application conçue pour aider les utilisateurs à comprendre et à naviguer dans les lois, réglementations et procédures commerciales algériennes. Elle fournit des informations sur les droits des consommateurs, les réglementations commerciales et les ressources juridiques.',
+      'faq_report_how':
+          'Comment signaler une violation de la loi commerciale ?',
+      'faq_report_how_answer':
+          'Vous pouvez signaler des violations via la section "Signalement" de l\'application. Remplissez les informations requises, y compris le type de violation, l\'emplacement et toute preuve que vous pourriez avoir. Votre signalement sera soumis aux autorités compétentes.',
+      'faq_track_how': 'Comment puis-je suivre mes signalements soumis ?',
+      'faq_track_how_answer':
+          'Accédez à la section "Mes Signalements" où vous pouvez voir tous vos signalements soumis et leur statut actuel. Chaque signalement a un numéro de suivi unique que vous pouvez utiliser pour suivre sa progression.',
+      'faq_violations':
+          'Quels types de violations commerciales puis-je signaler ?',
+      'faq_violations_answer':
+          'Vous pouvez signaler diverses violations, notamment la manipulation des prix, les produits contrefaits, la publicité trompeuse, les violations des droits des consommateurs et les pratiques commerciales déloyales.',
+      'faq_privacy': 'Mes informations personnelles sont-elles sécurisées ?',
+      'faq_privacy_answer':
+          'Oui, nous prenons la confidentialité des données au sérieux. Vos informations personnelles sont protégées conformément à la loi algérienne n° 18-07 sur la protection des données personnelles. Nous ne partageons que les informations nécessaires avec les autorités compétentes à des fins d\'enquête.',
+      'faq_update_info':
+          'Comment mettre à jour les informations de mon compte ?',
+      'faq_update_info_answer':
+          'Accédez à la section "Profil" où vous pouvez modifier vos informations personnelles, changer votre mot de passe et gérer vos préférences de notification.',
+      'faq_offline': 'Puis-je utiliser l\'application hors ligne ?',
+      'faq_offline_answer':
+          'Certaines fonctionnalités de l\'application sont disponibles hors ligne, comme la consultation des lois et réglementations précédemment chargées. Cependant, la soumission de signalements et l\'accès aux mises à jour en temps réel nécessitent une connexion Internet.',
     },
   };
 }

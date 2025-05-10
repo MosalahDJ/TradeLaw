@@ -49,10 +49,10 @@ class Info extends StatelessWidget {
             imageUrl: 'https://example.com/digital_strategy.jpg',
           ),
           const SizedBox(height: 24),
-          _buildHeader(context, 'Economic Reports & Magazines'),
+          _buildHeader(context, 'economic_reports_magazines'.tr),
           const SizedBox(height: 16),
           _buildMagazineReport(
-            title: 'Investment Climate Statement 2024',
+            title: 'investment_climate_report'.tr,
             publisher: 'U.S. Department of State',
             date: 'January 2024',
             summary:
@@ -61,7 +61,7 @@ class Info extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           _buildMagazineReport(
-            title: 'Algeria: A Stable Rent Economy',
+            title: 'algeria_stable_economy'.tr,
             publisher: 'Allianz Trade',
             date: 'April 2024',
             summary:
@@ -70,7 +70,7 @@ class Info extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           _buildMagazineReport(
-            title: 'World Bank Economic Report',
+            title: 'world_bank_report'.tr,
             publisher: 'World Bank',
             date: 'December 2023',
             summary:
