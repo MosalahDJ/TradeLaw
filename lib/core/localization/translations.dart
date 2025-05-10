@@ -60,6 +60,14 @@ class Messages extends Translations {
       'english': 'English',
       'arabic': 'Arabic',
       'french': 'French',
+      // Products Card Translations
+      'our_products': 'Our Products',
+      'explore_services_products':
+          'Explore our professional services and products',
+      'professional_legal_services': 'Professional Legal Services',
+      'access_legal_suite':
+          'Access our comprehensive suite of legal products and services designed for businesses and individuals.',
+      'explore_products': 'Explore Products',
 
       //pages
       'products': 'Products',
@@ -285,6 +293,13 @@ class Messages extends Translations {
       'english': 'الإنجليزية',
       'arabic': 'العربية',
       'french': 'الفرنسية',
+      // Products Card Translations
+      'our_products': 'منتجاتنا',
+      'explore_services_products': 'استكشف خدماتنا ومنتجاتنا المهنية',
+      'professional_legal_services': 'الخدمات القانونية المهنية',
+      'access_legal_suite':
+          'الوصول إلى مجموعتنا الشاملة من المنتجات والخدمات القانونية المصممة للشركات والأفراد.',
+      'explore_products': 'استكشف المنتجات',
 
       //pages
       'products': 'المنتجات',
@@ -507,6 +522,14 @@ class Messages extends Translations {
       'english': 'Anglais',
       'arabic': 'Arabe',
       'french': 'Francais',
+      // Products Card Translations
+      'our_products': 'Nos Produits',
+      'explore_services_products':
+          'Explorez nos services et produits professionnels',
+      'professional_legal_services': 'Services Juridiques Professionnels',
+      'access_legal_suite':
+          'Accédez à notre gamme complète de produits et services juridiques conçus pour les entreprises et les particuliers.',
+      'explore_products': 'Explorer les Produits',
 
       //pages
       'products': 'Produits',

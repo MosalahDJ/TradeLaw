@@ -358,7 +358,7 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Our Products'.tr,
+                              'our_products'.tr,
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 22,
@@ -367,8 +367,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             const SizedBox(height: 8),
                             Text(
-                              'Explore our professional services and products'
-                                  .tr,
+                              'explore_services_products'.tr,
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 14,
@@ -403,7 +402,7 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Professional Legal Services'.tr,
+                  'professional_legal_services'.tr,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -415,8 +414,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  'Access our comprehensive suite of legal products and services designed for businesses and individuals.'
-                      .tr,
+                  'access_legal_suite'.tr,
                   style: TextStyle(
                     fontSize: 14,
                     color:
@@ -444,7 +442,7 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text('Explore Products'.tr),
+                      Text('explore_products'.tr),
                       const SizedBox(width: 8),
                       const Icon(Icons.arrow_forward, size: 16),
                     ],
