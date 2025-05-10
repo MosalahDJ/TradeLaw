@@ -60,13 +60,14 @@ class Messages extends Translations {
       'english': 'English',
       'arabic': 'Arabic',
       'french': 'French',
+      'our_services': 'Our Services',
+      'home': 'Home',
       // Products Card Translations
-      'our_products': 'Our Products',
-      'explore_services_products':
-          'Explore our professional services and products',
-      'professional_legal_services': 'Professional Legal Services',
-      'access_legal_suite':
-          'Access our comprehensive suite of legal products and services designed for businesses and individuals.',
+      'supported_product': 'Supported Products',
+      'explore_supported_products': 'Explore our supported products',
+      'what_are_the_supported_product': 'What are the supported products?',
+      'supported_product_introduction':
+          'Subsidezed products are goods for which the government cover part of the cost or Price for the end consummer',
       'explore_products': 'Explore Products',
 
       //pages
@@ -293,13 +294,15 @@ class Messages extends Translations {
       'english': 'الإنجليزية',
       'arabic': 'العربية',
       'french': 'الفرنسية',
+      'our_services': 'خدماتنا',
+      'home': 'الرئيسية',
       // Products Card Translations
-      'our_products': 'منتجاتنا',
-      'explore_services_products': 'استكشف خدماتنا ومنتجاتنا المهنية',
-      'professional_legal_services': 'الخدمات القانونية المهنية',
-      'access_legal_suite':
-          'الوصول إلى مجموعتنا الشاملة من المنتجات والخدمات القانونية المصممة للشركات والأفراد.',
-      'explore_products': 'استكشف المنتجات',
+      'supported_product': 'المنتجات المدعمة',
+      'explore_supported_products': 'استكشف المنتجات المدعمة ',
+      'what_are_the_supported_product': 'ما هي المنتجات المدعمة ؟',
+      'supported_product_introduction':
+          'المنتجات المدعمة هي السلع التي تتحمل الدولة جزء من تكلفتها بهدف تخفيض سعر بيعها للمستهلك النهائي',
+      'explore_products': 'استكشف المتجات',
 
       //pages
       'products': 'المنتجات',
@@ -515,6 +518,7 @@ class Messages extends Translations {
       'register': 'S\'inscrire',
       'have_account': 'Vous avez déjà un compte?',
       'log_in': 'Se connecter',
+
       // Home Page
       'Dashboard': 'Tableau de bord',
       'Welcome': 'Bienvenue',
@@ -522,21 +526,22 @@ class Messages extends Translations {
       'english': 'Anglais',
       'arabic': 'Arabe',
       'french': 'Francais',
+      'our_services': 'Nos Services',
+      'home': 'Accueil',
       // Products Card Translations
-      'our_products': 'Nos Produits',
-      'explore_services_products':
-          'Explorez nos services et produits professionnels',
-      'professional_legal_services': 'Services Juridiques Professionnels',
-      'access_legal_suite':
-          'Accédez à notre gamme complète de produits et services juridiques conçus pour les entreprises et les particuliers.',
-      'explore_products': 'Explorer les Produits',
+      'supported_product': 'Produits supportés',
+      'explore_supported_products': 'Explorer nos produits supportés',
+      'what_are_the_supported_product': 'Que sont les produits supportés?',
+      'supported_product_introduction':
+          'Les produits supportés sont les produits qui sont pris en charge par la région pour réduire le coût de vente à la finale du consommateur',
+      'explore_products': 'Explorer les produits',
 
       //pages
       'products': 'Produits',
       'reporting': 'Rapports',
-      'report_tracking': 'Mes Rapports',
-      'law_info': 'Lois',
-      'info': 'Info',
+      'report_tracking': 'Suivre mes rapports',
+      'law_info': 'Informations sur les lois',
+      'info': 'Informations',
       'help&fedback': 'Aide',
 
       // Report Types
@@ -668,7 +673,7 @@ class Messages extends Translations {
       'consumer_protection_article_17_desc':
           'Interdit la vente de biens et services contrefaits qui violent les normes commerciales et les règles d\'équité.',
       'consumer_protection_article_18_desc':
-          'Exige que les produits soient conformes aux normes définies dans le Codex Alimentarius pour les produits alimentaires.',
+          'Mandates que les produits soient conformes aux normes définies dans le Codex Alimentarius pour les produits alimentaires.',
       'price_regulation_article_1_desc':
           'Permet au gouvernement de fixer des contrôles de prix sur les biens et services de consommation pour freiner l\'inflation et protéger le pouvoir d\'achat.',
       'price_regulation_article_2_desc':
@@ -682,25 +687,25 @@ class Messages extends Translations {
       'ecommerce_article_6_desc':
           'Exige que les fournisseurs électroniques envoient aux consommateurs une copie électronique du contrat et de la facture conformément à la loi algérienne.',
       'ecommerce_article_10_desc':
-          'Exige l\'obtention du consentement du consommateur avant de collecter des données personnelles et garantit la sécurité du système et la confidentialité des données.',
+          'Mandates obtaining consumer consent before collecting personal data and guaranteeing system security and data confidentiality.',
       'ecommerce_article_12_desc':
-          'Réglemente la publicité électronique et interdit la prospection commerciale par e-mail sans consentement préalable.',
+          'Regulates electronic advertising and prohibits commercial prospection by email without prior consent.',
       'ipr_article_1_desc':
-          'Établit le cadre juridique de la protection des droits de propriété intellectuelle en Algérie.',
+          'Establishes the legal framework for intellectual property rights protection in Algeria.',
       'ipr_article_4_desc':
-          'Exige que les titulaires de droits de PI enregistrent et demandent l\'application de leurs droits en vertu des lois locales, car les enregistrements étrangers ne sont pas automatiquement reconnus.',
+          'Requires IP rights holders to register and seek enforcement of their rights under local laws, as foreign registrations are not automatically recognized.',
       'ipr_article_7_desc':
-          'Interdit la contrefaçon de produits, notamment dans les cosmétiques, les vêtements, les chaussures, les appareils électriques, et les produits de consommation et alimentaires.',
+          'Prohibits counterfeiting of products, especially in cosmetics, clothing, shoes, electrical appliances, and consumer and food products.',
       'ipr_article_11_desc':
-          'Prévoit une coordination entre les autorités douanières et les forces de l\'ordre pour lutter contre les marchandises contrefaites.',
+          'Provides for coordination between customs authorities and law enforcement to combat counterfeit merchandise.',
       'import_article_1_desc':
-          'Interdit l\'importation d\'armes à feu, d\'explosifs, de stupéfiants, de certains produits pharmaceutiques, d\'équipements usagés, de semences OGM et de produits à base de porc.',
+          'Bans the import of firearms, explosives, narcotics, certain pharmaceutical products, used equipment, GMO seeds, and pork products.',
       'import_article_3_desc':
-          'Exige que les produits alimentaires importés aient au moins 80% de leur durée de conservation restante à leur arrivée en Algérie.',
+          'Requires that imported food products must have at least 80% of their remaining shelf life upon arrival in Algeria.',
       'import_article_5_desc':
-          'Établit des droits temporaires entre 30% et 200% applicables à certaines opérations d\'importation.',
+          'Establishes temporary duties between 30% and 200% applicable to certain import operations.',
       'import_article_8_desc':
-          'Met en œuvre des réglementations de contrôle phytosanitaire et sanitaire pour les produits importés.',
+          'Implements phyto-sanitary and sanitary control regulations for imported products.',
     },
   };
 }

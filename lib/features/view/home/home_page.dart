@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
                   ? kmaincolor3dark
                   : kmaincolor,
           title: Text(
-            _currentIndex == 0 ? 'Dashboard'.tr : 'help&fedback'.tr,
+            _currentIndex == 0 ? 'home'.tr : 'help&fedback'.tr,
             style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
@@ -195,7 +195,7 @@ class _HomePageState extends State<HomePage> {
                   size: _currentIndex == 0 ? 26 : 22,
                 ),
               ),
-              label: 'Home'.tr,
+              label: 'home'.tr,
             ),
             BottomNavigationBarItem(
               icon: AnimatedContainer(
@@ -215,7 +215,7 @@ class _HomePageState extends State<HomePage> {
                   size: _currentIndex == 1 ? 26 : 22,
                 ),
               ),
-              label: 'Help & Feedback'.tr,
+              label: 'help&feedback'.tr,
             ),
           ],
         ),
@@ -232,15 +232,13 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Professional Products Card
-              _buildProductsCard(),
-
-              const SizedBox(height: 24),
+              const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12.0),
                 child: Text(
-                  'Our Servicces'.tr,
+                  'Dashboard'.tr,
                   style: TextStyle(
-                    fontSize: 28,
+                    fontSize: 24,
                     fontWeight: FontWeight.bold,
                     color:
                         themectrl.selectedTheme.value == AppTheme.dark
@@ -249,7 +247,26 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 20),
+
+              _buildProductsCard(),
+
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: Text(
+                  'our_services'.tr,
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color:
+                        themectrl.selectedTheme.value == AppTheme.dark
+                            ? Colors.white
+                            : Colors.black87,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
 
               // Grid of other services (excluding help & feedback)
               GridView.count(
@@ -358,7 +375,7 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'our_products'.tr,
+                              'supported_product'.tr,
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 22,
@@ -367,7 +384,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             const SizedBox(height: 8),
                             Text(
-                              'explore_services_products'.tr,
+                              'explore_supported_products'.tr,
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 14,
@@ -402,7 +419,7 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'professional_legal_services'.tr,
+                  'what_are_the_supported_product'.tr,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -414,7 +431,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  'access_legal_suite'.tr,
+                  'supported_product_introduction'.tr,
                   style: TextStyle(
                     fontSize: 14,
                     color:
