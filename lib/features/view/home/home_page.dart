@@ -153,8 +153,8 @@ class _HomePageState extends State<HomePage> {
       ),
       child: ClipRRect(
         borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
+          topLeft: Radius.circular(12),
+          topRight: Radius.circular(12),
         ),
         child: BottomNavigationBar(
           currentIndex: _currentIndex,
@@ -163,15 +163,9 @@ class _HomePageState extends State<HomePage> {
               _currentIndex = index;
             });
           },
-          selectedItemColor:
-              themectrl.selectedTheme.value == AppTheme.dark
-                  ? kmaincolor4dark
-                  : kmaincolor,
-          unselectedItemColor: Colors.grey.shade500,
-          backgroundColor:
-              themectrl.selectedTheme.value == AppTheme.dark
-                  ? Colors.grey.shade900
-                  : Colors.white,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.grey,
+          backgroundColor: kmaincolor,
           elevation: 0,
           type: BottomNavigationBarType.fixed,
           selectedLabelStyle: const TextStyle(
@@ -437,7 +431,7 @@ class _HomePageState extends State<HomePage> {
                     Get.toNamed("products");
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: kmaincolor.withValues(alpha: 0.8),
+                    backgroundColor: const Color.fromARGB(255, 172, 19, 57),
                     foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 24,
