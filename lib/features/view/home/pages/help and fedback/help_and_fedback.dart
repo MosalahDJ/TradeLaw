@@ -286,6 +286,8 @@ class _HelpandfedbackState extends State<Helpandfedback>
   }
 
   Widget _buildFeedbackTab() {
+    final ThemeController themectrl = Get.find();
+
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Form(
@@ -298,7 +300,10 @@ class _HelpandfedbackState extends State<Helpandfedback>
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: kmaincolor,
+                color:
+                    themectrl.selectedTheme.value == AppTheme.dark
+                        ? Colors.white
+                        : kmaincolor,
                 fontFamily: 'Cairo',
               ),
             ),
