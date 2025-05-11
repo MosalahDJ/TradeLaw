@@ -75,16 +75,26 @@ class ProductTranslationFr {
   };
 
   static Map<String, String> productDescriptions = {
-    'Government subsidized wheat flour for bread making': 'Farine de blé subventionnée par le gouvernement pour la fabrication du pain',
-    'Essential for couscous and traditional Algerian dishes': 'Essentiel pour le couscous et les plats traditionnels algériens',
-    'Imported rice with government price controls': 'Riz importé avec contrôle des prix par le gouvernement',
-    'Pasteurized milk with government price controls': 'Lait pasteurisé avec contrôle des prix par le gouvernement',
-    'Local yogurt production with partial subsidies': 'Production locale de yaourt avec subventions partielles',
-    'Cooking oil with strict price controls': 'Huile de cuisson avec contrôle strict des prix',
-    'Premium Algerian olive oil with partial price support': 'Huile d\'olive algérienne premium avec soutien partiel des prix',
-    'Refined sugar with government price controls': 'Sucre raffiné avec contrôle des prix par le gouvernement',
-    'Imported lentils with price controls': 'Lentilles importées avec contrôle des prix',
-    'Essential legume for Algerian cuisine': 'Légumineuse essentielle pour la cuisine algérienne',
+    'Government subsidized wheat flour for bread making':
+        'Farine de blé subventionnée par le gouvernement pour la fabrication du pain',
+    'Essential for couscous and traditional Algerian dishes':
+        'Essentiel pour le couscous et les plats traditionnels algériens',
+    'Imported rice with government price controls':
+        'Riz importé avec contrôle des prix par le gouvernement',
+    'Pasteurized milk with government price controls':
+        'Lait pasteurisé avec contrôle des prix par le gouvernement',
+    'Local yogurt production with partial subsidies':
+        'Production locale de yaourt avec subventions partielles',
+    'Cooking oil with strict price controls':
+        'Huile de cuisson avec contrôle strict des prix',
+    'Premium Algerian olive oil with partial price support':
+        'Huile d\'olive algérienne premium avec soutien partiel des prix',
+    'Refined sugar with government price controls':
+        'Sucre raffiné avec contrôle des prix par le gouvernement',
+    'Imported lentils with price controls':
+        'Lentilles importées avec contrôle des prix',
+    'Essential legume for Algerian cuisine':
+        'Légumineuse essentielle pour la cuisine algérienne',
   };
 
   static String getProductName(String englishName) {
@@ -112,14 +122,22 @@ class ProductTranslationAr {
   };
 
   static Map<String, String> productDescriptions = {
-    'Government subsidized wheat flour for bread making': 'دقيق القمح المدعوم من الحكومة لصناعة الخبز',
-    'Essential for couscous and traditional Algerian dishes': 'ضروري للكسكس والأطباق الجزائرية التقليدية',
-    'Imported rice with government price controls': 'أرز مستورد مع ضوابط حكومية للأسعار',
-    'Pasteurized milk with government price controls': 'حليب مبستر مع ضوابط حكومية للأسعار',
-    'Local yogurt production with partial subsidies': 'إنتاج محلي للزبادي مع دعم جزئي',
-    'Cooking oil with strict price controls': 'زيت الطهي مع ضوابط صارمة للأسعار',
-    'Premium Algerian olive oil with partial price support': 'زيت زيتون جزائري ممتاز مع دعم جزئي للأسعار',
-    'Refined sugar with government price controls': 'سكر مكرر مع ضوابط حكومية للأسعار',
+    'Government subsidized wheat flour for bread making':
+        'دقيق القمح المدعوم من الحكومة لصناعة الخبز',
+    'Essential for couscous and traditional Algerian dishes':
+        'ضروري للكسكس والأطباق الجزائرية التقليدية',
+    'Imported rice with government price controls':
+        'أرز مستورد مع ضوابط حكومية للأسعار',
+    'Pasteurized milk with government price controls':
+        'حليب مبستر مع ضوابط حكومية للأسعار',
+    'Local yogurt production with partial subsidies':
+        'إنتاج محلي للزبادي مع دعم جزئي',
+    'Cooking oil with strict price controls':
+        'زيت الطهي مع ضوابط صارمة للأسعار',
+    'Premium Algerian olive oil with partial price support':
+        'زيت زيتون جزائري ممتاز مع دعم جزئي للأسعار',
+    'Refined sugar with government price controls':
+        'سكر مكرر مع ضوابط حكومية للأسعار',
     'Imported lentils with price controls': 'عدس مستورد مع ضوابط للأسعار',
     'Essential legume for Algerian cuisine': 'بقوليات أساسية للمطبخ الجزائري',
   };
@@ -151,7 +169,7 @@ class CategoryTranslationFr {
 // Arabic translations for product categories
 class CategoryTranslationAr {
   static Map<String, String> categoryNames = {
-    'Grains & Cereals': 'الحبوب والحبوب',
+    'Grains & Cereals': 'الحبوب',
     'Dairy Products': 'منتجات الألبان',
     'Oils & Fats': 'الزيوت والدهون',
     'Sugar & Sweeteners': 'السكر والمحليات',
@@ -271,7 +289,7 @@ class ProductList {
       ],
     ),
   ];
-  
+
   // Helper method to get translated product based on language code
   static Product getTranslatedProduct(Product product, String languageCode) {
     if (languageCode == 'fr') {
@@ -279,7 +297,9 @@ class ProductList {
         name: ProductTranslationFr.getProductName(product.name),
         price: product.price,
         subsidized: product.subsidized,
-        description: ProductTranslationFr.getProductDescription(product.description),
+        description: ProductTranslationFr.getProductDescription(
+          product.description,
+        ),
         image: product.image,
       );
     } else if (languageCode == 'ar') {
@@ -287,15 +307,20 @@ class ProductList {
         name: ProductTranslationAr.getProductName(product.name),
         price: product.price,
         subsidized: product.subsidized,
-        description: ProductTranslationAr.getProductDescription(product.description),
+        description: ProductTranslationAr.getProductDescription(
+          product.description,
+        ),
         image: product.image,
       );
     }
     return product; // Return original product for English or unsupported languages
   }
-  
+
   // Helper method to get translated category based on language code
-  static String getTranslatedCategoryName(String categoryName, String languageCode) {
+  static String getTranslatedCategoryName(
+    String categoryName,
+    String languageCode,
+  ) {
     if (languageCode == 'fr') {
       return CategoryTranslationFr.getCategoryName(categoryName);
     } else if (languageCode == 'ar') {
@@ -303,7 +328,7 @@ class ProductList {
     }
     return categoryName; // Return original name for English or unsupported languages
   }
-  
+
   // Get translated product categories based on language code
   static List<ProductCategory> getTranslatedCategories(String languageCode) {
     return productCategories.map((category) {
@@ -311,9 +336,10 @@ class ProductList {
         name: getTranslatedCategoryName(category.name, languageCode),
         icon: category.icon,
         color: category.color,
-        products: category.products.map((product) => 
-          getTranslatedProduct(product, languageCode)
-        ).toList(),
+        products:
+            category.products
+                .map((product) => getTranslatedProduct(product, languageCode))
+                .toList(),
       );
     }).toList();
   }
