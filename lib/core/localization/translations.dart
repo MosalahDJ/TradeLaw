@@ -348,7 +348,7 @@ class Messages extends Translations {
       'what_are_the_supported_product': 'ما هي المنتجات المدعمة ؟',
       'supported_product_introduction':
           'المنتجات المدعمة هي السلع التي تتحمل الدولة جزء من تكلفتها بهدف تخفيض سعر بيعها للمستهلك النهائي',
-      'explore_products': 'استكشف المتجات',
+      'explore_products': 'استكشف المنتجات',
 
       //pages
       'products': 'المنتجات',
