@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/core/Utils/constants.dart';
+import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
 
 class Helpandfedback extends StatefulWidget {
   const Helpandfedback({super.key});
@@ -68,39 +69,19 @@ class _HelpandfedbackState extends State<Helpandfedback>
     return ListView(
       padding: const EdgeInsets.all(16),
       children: [
-        _buildFAQItem(
-          'faq_what_is'.tr,
-          'faq_what_is_answer'.tr,
-        ),
-        _buildFAQItem(
-          'faq_report_how'.tr,
-          'faq_report_how_answer'.tr,
-        ),
-        _buildFAQItem(
-          'faq_track_how'.tr,
-          'faq_track_how_answer'.tr,
-        ),
-        _buildFAQItem(
-          'faq_violations'.tr,
-          'faq_violations_answer'.tr,
-        ),
-        _buildFAQItem(
-          'faq_privacy'.tr,
-          'faq_privacy_answer'.tr,
-        ),
-        _buildFAQItem(
-          'faq_update_info'.tr,
-          'faq_update_info_answer'.tr,
-        ),
-        _buildFAQItem(
-          'faq_offline'.tr,
-          'faq_offline_answer'.tr,
-        ),
+        _buildFAQItem('faq_what_is'.tr, 'faq_what_is_answer'.tr),
+        _buildFAQItem('faq_report_how'.tr, 'faq_report_how_answer'.tr),
+        _buildFAQItem('faq_track_how'.tr, 'faq_track_how_answer'.tr),
+        _buildFAQItem('faq_violations'.tr, 'faq_violations_answer'.tr),
+        _buildFAQItem('faq_privacy'.tr, 'faq_privacy_answer'.tr),
+        _buildFAQItem('faq_update_info'.tr, 'faq_update_info_answer'.tr),
+        _buildFAQItem('faq_offline'.tr, 'faq_offline_answer'.tr),
       ],
     );
   }
 
   Widget _buildFAQItem(String question, String answer) {
+    final ThemeController themectrl = Get.find();
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -108,7 +89,13 @@ class _HelpandfedbackState extends State<Helpandfedback>
       child: ExpansionTile(
         title: Text(
           question,
-          style: TextStyle(fontWeight: FontWeight.bold, color: kmaincolor),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color:
+                themectrl.selectedTheme.value == AppTheme.dark
+                    ? Colors.white
+                    : kmaincolor,
+          ),
         ),
         children: [
           Padding(
@@ -348,7 +335,9 @@ class _HelpandfedbackState extends State<Helpandfedback>
                 if (value == null || value.isEmpty) {
                   return 'please_enter_email'.tr;
                 }
-                if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+                if (!RegExp(
+                  r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                ).hasMatch(value)) {
                   return 'valid_email'.tr;
                 }
                 return null;
@@ -360,7 +349,9 @@ class _HelpandfedbackState extends State<Helpandfedback>
                 labelText: 'feedback_type'.tr,
                 labelStyle: const TextStyle(fontFamily: 'Cairo'),
                 prefixIcon: Icon(Icons.category, color: kmaincolor),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(color: kmaincolor, width: 2),
@@ -369,10 +360,34 @@ class _HelpandfedbackState extends State<Helpandfedback>
                 fillColor: Colors.white,
               ),
               items: [
-                DropdownMenuItem(value: 'suggestion', child: Text('suggestion'.tr, style: const TextStyle(fontFamily: 'Cairo'))),
-                DropdownMenuItem(value: 'bug', child: Text('bug_report'.tr, style: const TextStyle(fontFamily: 'Cairo'))),
-                DropdownMenuItem(value: 'content', child: Text('content_issue'.tr, style: const TextStyle(fontFamily: 'Cairo'))),
-                DropdownMenuItem(value: 'other', child: Text('other'.tr, style: const TextStyle(fontFamily: 'Cairo'))),
+                DropdownMenuItem(
+                  value: 'suggestion',
+                  child: Text(
+                    'suggestion'.tr,
+                    style: const TextStyle(fontFamily: 'Cairo'),
+                  ),
+                ),
+                DropdownMenuItem(
+                  value: 'bug',
+                  child: Text(
+                    'bug_report'.tr,
+                    style: const TextStyle(fontFamily: 'Cairo'),
+                  ),
+                ),
+                DropdownMenuItem(
+                  value: 'content',
+                  child: Text(
+                    'content_issue'.tr,
+                    style: const TextStyle(fontFamily: 'Cairo'),
+                  ),
+                ),
+                DropdownMenuItem(
+                  value: 'other',
+                  child: Text(
+                    'other'.tr,
+                    style: const TextStyle(fontFamily: 'Cairo'),
+                  ),
+                ),
               ],
               onChanged: (value) {},
               validator: (value) {
