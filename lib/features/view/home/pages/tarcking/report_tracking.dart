@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/core/Utils/constants.dart';
 import 'package:intl/intl.dart';
-import 'package:tradelaw/features/model/reports_list.dart'; // Import the reports list model
+import 'package:tradelaw/features/model/reports_list.dart';
+import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart'; // Import the reports list model
 
 class ReportTracking extends StatelessWidget {
   const ReportTracking({super.key});
@@ -12,6 +13,7 @@ class ReportTracking extends StatelessWidget {
     // Get reports from the model
     final List<Map<String, dynamic>> reports =
         ReportsList.getAllReportsSorted();
+    final ThemeController themectrl = Get.find();
 
     return Scaffold(
       appBar: AppBar(
@@ -149,7 +151,13 @@ class ReportTracking extends StatelessWidget {
                                 },
                                 child: Text(
                                   'view_details'.tr,
-                                  style: TextStyle(color: kmaincolor),
+                                  style: TextStyle(
+                                    color:
+                                        themectrl.selectedTheme.value ==
+                                                AppTheme.dark
+                                            ? Colors.white
+                                            : kmaincolor,
+                                  ),
                                 ),
                               ),
                             ],
