@@ -506,7 +506,7 @@ class _HelpandfedbackState extends State<Helpandfedback>
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
-            color: isDark ? Colors.white38 : kmaincolor.withOpacity(0.5),
+            color: isDark ? Colors.white38 : kmaincolor.withValues(alpha: 0.5),
           ),
         ),
       ),
