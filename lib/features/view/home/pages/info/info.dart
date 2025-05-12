@@ -109,7 +109,7 @@ class Info extends StatelessWidget {
     required String date,
     required String source,
     required String content,
-    String? imagepath,
+    required String imagepath,
   }) {
     final ThemeController themectrl = Get.find();
 
@@ -135,29 +135,24 @@ class Info extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (imagepath != null) ...[
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.asset(
-                      imagepath,
-                      height: 180,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Container(
-                          height: 180,
-                          width: double.infinity,
-                          color: Colors.grey[300],
-                          child: const Icon(
-                            Icons.image_not_supported,
-                            size: 50,
-                          ),
-                        );
-                      },
-                    ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.asset(
+                    imagepath,
+                    height: 180,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        height: 180,
+                        width: double.infinity,
+                        color: Colors.grey[300],
+                        child: const Icon(Icons.image_not_supported, size: 50),
+                      );
+                    },
                   ),
-                  const SizedBox(height: 16),
-                ],
+                ),
+                const SizedBox(height: 16),
                 Text(content, style: const TextStyle(fontSize: 14)),
                 const SizedBox(height: 8),
                 Align(
@@ -190,7 +185,7 @@ class Info extends StatelessWidget {
     required String publisher,
     required String date,
     required String summary,
-    String? imagepath,
+    required String imagepath,
   }) {
     final ThemeController themectrl = Get.find();
 
@@ -202,26 +197,24 @@ class Info extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (imagepath != null) ...[
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.asset(
-                  imagepath,
-                  height: 120,
-                  width: 80,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Container(
-                      height: 120,
-                      width: 80,
-                      color: Colors.grey[300],
-                      child: const Icon(Icons.book, size: 30),
-                    );
-                  },
-                ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset(
+                imagepath,
+                height: 120,
+                width: 80,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    height: 120,
+                    width: 80,
+                    color: Colors.grey[300],
+                    child: const Icon(Icons.book, size: 30),
+                  );
+                },
               ),
-              const SizedBox(width: 16),
-            ],
+            ),
+            const SizedBox(width: 16),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
