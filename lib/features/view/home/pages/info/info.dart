@@ -116,7 +116,7 @@ class Info extends StatelessWidget {
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ExpansionTile(
-        
+        shape: Border.all(color: Colors.transparent, width: 1),
         title: Text(
           title,
           style: TextStyle(
