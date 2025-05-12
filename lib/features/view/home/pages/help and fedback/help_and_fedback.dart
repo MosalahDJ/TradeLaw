@@ -289,6 +289,7 @@ class _HelpandfedbackState extends State<Helpandfedback>
 
   Widget _buildFeedbackTab() {
     final ThemeController themectrl = Get.find();
+    final bool isDark = themectrl.selectedTheme.value == AppTheme.dark;
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
@@ -302,19 +303,16 @@ class _HelpandfedbackState extends State<Helpandfedback>
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color:
-                    themectrl.selectedTheme.value == AppTheme.dark
-                        ? Colors.white
-                        : kmaincolor,
+                color: isDark ? Colors.white : kmaincolor,
                 fontFamily: 'Cairo',
               ),
             ),
             const SizedBox(height: 8),
             Text(
               'feedback_subtitle'.tr,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
-                color: Colors.grey,
+                color: isDark ? Colors.grey[300] : Colors.grey,
                 fontFamily: 'Cairo',
               ),
             ),
@@ -336,6 +334,7 @@ class _HelpandfedbackState extends State<Helpandfedback>
               controller: _emailController,
               label: 'email'.tr,
               hint: 'enter_email'.tr,
+
               icon: Icons.email,
               keyboardType: TextInputType.emailAddress,
               validator: (value) {
@@ -354,17 +353,32 @@ class _HelpandfedbackState extends State<Helpandfedback>
             DropdownButtonFormField<String>(
               decoration: InputDecoration(
                 labelText: 'feedback_type'.tr,
-                labelStyle: const TextStyle(fontFamily: 'Cairo'),
-                prefixIcon: Icon(Icons.category, color: kmaincolor),
+                labelStyle: TextStyle(
+                  fontSize: 16,
+                  fontFamily: 'Cairo',
+                  color: isDark ? Colors.white : Colors.black87,
+                ),
+                prefixIcon: Icon(
+                  Icons.category,
+                  color: isDark ? Colors.white70 : kmaincolor,
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: kmaincolor, width: 2),
+                  borderSide: BorderSide(
+                    color: isDark ? Colors.white70 : kmaincolor,
+                    width: 2,
+                  ),
                 ),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: isDark ? Color(0xFF424242) : Colors.white,
+              ),
+              dropdownColor: isDark ? Color(0xFF424242) : Colors.white,
+              style: TextStyle(
+                fontFamily: 'Cairo',
+                color: isDark ? Colors.white : Colors.black87,
               ),
               items: [
                 DropdownMenuItem(
@@ -450,7 +464,6 @@ class _HelpandfedbackState extends State<Helpandfedback>
     );
   }
 
-  // Update the _buildTextField widget to include Cairo font
   Widget _buildTextField({
     required TextEditingController controller,
     required String label,
@@ -460,26 +473,47 @@ class _HelpandfedbackState extends State<Helpandfedback>
     TextInputType keyboardType = TextInputType.text,
     String? Function(String?)? validator,
   }) {
+    final ThemeController themectrl = Get.find();
+    final bool isDark = themectrl.selectedTheme.value == AppTheme.dark;
+
     return TextFormField(
       controller: controller,
       decoration: InputDecoration(
         filled: true,
-        fillColor: Colors.white,
+        fillColor: isDark ? Color(0xFF424242) : Colors.white,
         labelText: label,
-        labelStyle: const TextStyle(fontFamily: 'Cairo'),
+        labelStyle: TextStyle(
+          fontFamily: 'Cairo',
+          color: isDark ? Colors.white70 : Colors.black87,
+        ),
         hintText: hint,
-        hintStyle: const TextStyle(fontFamily: 'Cairo'),
-        prefixIcon: Icon(icon, color: kmaincolor),
+        hintStyle: TextStyle(
+          fontFamily: 'Cairo',
+          color: isDark ? Colors.grey[400] : Colors.grey[600],
+        ),
+        prefixIcon: Icon(icon, color: isDark ? Colors.white70 : kmaincolor),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: kmaincolor),
+          borderSide: BorderSide(color: isDark ? Colors.white70 : kmaincolor),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: kmaincolor, width: 2),
+          borderSide: BorderSide(
+            color: isDark ? Colors.white : kmaincolor,
+            width: 2,
+          ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(
+            color: isDark ? Colors.white38 : kmaincolor.withOpacity(0.5),
+          ),
         ),
       ),
-      style: const TextStyle(fontFamily: 'Cairo'),
+      style: TextStyle(
+        fontFamily: 'Cairo',
+        color: isDark ? Colors.white : Colors.black87,
+      ),
       maxLines: maxLines,
       keyboardType: keyboardType,
       validator: validator,
