@@ -162,6 +162,8 @@ class Lawinfo extends StatelessWidget {
       elevation: 3,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ExpansionTile(
+        shape: Border.all(color: Colors.transparent, width: 1),
+
         leading: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(

@@ -87,6 +87,8 @@ class _HelpandfedbackState extends State<Helpandfedback>
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       elevation: 2,
       child: ExpansionTile(
+        shape: Border.all(color: Colors.transparent, width: 1),
+
         title: Text(
           question,
           style: TextStyle(
