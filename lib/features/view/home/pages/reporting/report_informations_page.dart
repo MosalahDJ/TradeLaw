@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/features/view model/home controller/reports_controller.dart';
+import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
 
 class ReportInformationsPage extends StatelessWidget {
   final int reportId;
@@ -12,6 +13,7 @@ class ReportInformationsPage extends StatelessWidget {
     // Get the controller
     final ReportsController controller = Get.find<ReportsController>();
     final formKey = GlobalKey<FormState>();
+    final ThemeController themectrl = Get.find();
 
     // Find the report type in the controller's list by ID
     final reportType = controller.reportTypes.firstWhere(
@@ -80,7 +82,10 @@ class ReportInformationsPage extends StatelessWidget {
                         Text(
                           reportType['description'],
                           style: TextStyle(
-                            color: Colors.grey.shade700,
+                            color:
+                                themectrl.selectedTheme.value == AppTheme.dark
+                                    ? Colors.white
+                                    : Colors.grey.shade700,
                             fontSize: 15,
                             fontFamily: 'Cairo',
                             height: 1.3,
@@ -121,7 +126,10 @@ class ReportInformationsPage extends StatelessWidget {
                   color: reportType['color'],
                 ),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor:
+                    themectrl.selectedTheme.value == AppTheme.dark
+                        ? Colors.white70
+                        : Colors.white,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -163,7 +171,10 @@ class ReportInformationsPage extends StatelessWidget {
                 ),
                 prefixIcon: Icon(Icons.apartment, color: reportType['color']),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor:
+                    themectrl.selectedTheme.value == AppTheme.dark
+                        ? Colors.white70
+                        : Colors.white,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -199,7 +210,10 @@ class ReportInformationsPage extends StatelessWidget {
                 ),
                 prefixIcon: Icon(Icons.home, color: reportType['color']),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor:
+                    themectrl.selectedTheme.value == AppTheme.dark
+                        ? Colors.white70
+                        : Colors.white,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -239,7 +253,10 @@ class ReportInformationsPage extends StatelessWidget {
                 ),
                 prefixIcon: Icon(Icons.storefront, color: reportType['color']),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor:
+                    themectrl.selectedTheme.value == AppTheme.dark
+                        ? Colors.white70
+                        : Colors.white,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -281,7 +298,10 @@ class ReportInformationsPage extends StatelessWidget {
                 ),
                 prefixIcon: Icon(Icons.tag, color: reportType['color']),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor:
+                    themectrl.selectedTheme.value == AppTheme.dark
+                        ? Colors.white70
+                        : Colors.white,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -326,7 +346,10 @@ class ReportInformationsPage extends StatelessWidget {
                 ),
                 alignLabelWithHint: true,
                 filled: true,
-                fillColor: Colors.white,
+                fillColor:
+                    themectrl.selectedTheme.value == AppTheme.dark
+                        ? Colors.white70
+                        : Colors.white,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
