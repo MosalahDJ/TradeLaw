@@ -165,7 +165,7 @@ class Lawinfo extends StatelessWidget {
         leading: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(color: kmaincolor, shape: BoxShape.circle),
-          child: Icon(icon, color: isDark ? Colors.white : kmaincolor),
+          child: Icon(icon, color: Colors.white),
         ),
         title: Text(
           title,
