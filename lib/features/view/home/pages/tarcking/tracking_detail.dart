@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/core/Utils/constants.dart';
 import 'package:intl/intl.dart';
-import 'package:tradelaw/features/model/reports_list.dart'; // Import the reports list model
+import 'package:tradelaw/features/model/reports_list.dart';
+import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart'; // Import the reports list model
 
 class TrackingDetail extends StatelessWidget {
   final int reportId;
@@ -13,6 +14,7 @@ class TrackingDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     // Get the report from the model using the ID
     final Map<String, dynamic>? report = ReportsList.getReportById(reportId);
+    final ThemeController themectrl = Get.find();
 
     // If report not found, show error
     if (report == null) {
@@ -58,11 +60,17 @@ class TrackingDetail extends StatelessWidget {
               width: double.infinity,
               margin: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color:
+                    themectrl.selectedTheme.value == AppTheme.dark
+                        ? Colors.black38
+                        : Colors.white,
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withValues(alpha: 0.2),
+                    color:
+                        themectrl.selectedTheme.value == AppTheme.dark
+                            ? Colors.black.withValues(alpha: 0.2)
+                            : Colors.grey.withValues(alpha: 0.2),
                     spreadRadius: 1,
                     blurRadius: 6,
                     offset: const Offset(0, 3),
@@ -182,11 +190,17 @@ class TrackingDetail extends StatelessWidget {
             Container(
               margin: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color:
+                    themectrl.selectedTheme.value == AppTheme.dark
+                        ? Colors.black38
+                        : Colors.white,
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withValues(alpha: 0.2),
+                    color:
+                        themectrl.selectedTheme.value == AppTheme.dark
+                            ? Colors.black.withValues(alpha: 0.2)
+                            : Colors.grey.withValues(alpha: 0.2),
                     spreadRadius: 1,
                     blurRadius: 6,
                     offset: const Offset(0, 3),
@@ -208,10 +222,19 @@ class TrackingDetail extends StatelessWidget {
 
   // Helper method to build info rows
   Widget _buildInfoRow(IconData icon, String label, String value) {
+    final ThemeController themectrl = Get.find();
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(icon, size: 18, color: Colors.grey[600]),
+        Icon(
+          icon,
+          size: 18,
+          color:
+              themectrl.selectedTheme.value == AppTheme.dark
+                  ? Colors.white
+                  : Colors.grey[600],
+        ),
         const SizedBox(width: 8),
         Expanded(
           child: Column(
@@ -221,7 +244,10 @@ class TrackingDetail extends StatelessWidget {
                 label,
                 style: TextStyle(
                   fontSize: 12,
-                  color: Colors.grey[600],
+                  color:
+                      themectrl.selectedTheme.value == AppTheme.dark
+                          ? Colors.white
+                          : Colors.grey[600],
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -237,6 +263,7 @@ class TrackingDetail extends StatelessWidget {
   // Helper method to build the tracking timeline
   List<Widget> _buildTrackingTimeline(List<dynamic> trackingSteps) {
     final List<Widget> timelineItems = [];
+    final ThemeController themectrl = Get.find();
 
     for (int i = 0; i < trackingSteps.length; i++) {
       final step = trackingSteps[i];
@@ -283,7 +310,10 @@ class TrackingDetail extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           color:
                               step['completed']
-                                  ? Colors.black
+                                  ? themectrl.selectedTheme.value ==
+                                          AppTheme.dark
+                                      ? Colors.white
+                                      : Colors.grey[600]
                                   : Colors.grey[600],
                         ),
                       ),
@@ -303,7 +333,11 @@ class TrackingDetail extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       color:
-                          step['completed'] ? Colors.black87 : Colors.grey[500],
+                          step['completed']
+                              ? themectrl.selectedTheme.value == AppTheme.dark
+                                  ? Colors.white
+                                  : Colors.grey[600]
+                              : Colors.grey[600],
                     ),
                   ),
                   const SizedBox(height: 16),
