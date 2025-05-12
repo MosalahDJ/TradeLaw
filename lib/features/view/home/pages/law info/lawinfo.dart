@@ -164,10 +164,7 @@ class Lawinfo extends StatelessWidget {
 
         leading: Container(
           padding: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            color: isDark ? Colors.white : kmaincolor,
-            shape: BoxShape.circle,
-          ),
+          decoration: BoxDecoration(color: kmaincolor, shape: BoxShape.circle),
           child: Icon(icon, color: isDark ? Colors.white : kmaincolor),
         ),
         title: Text(
@@ -196,6 +193,8 @@ class Lawinfo extends StatelessWidget {
   }
 
   Widget _buildArticle(String articleNumber, String description) {
+    final ThemeController themectrl = Get.find();
+    final bool isDark = themectrl.selectedTheme.value == AppTheme.dark;
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: Column(
@@ -216,7 +215,7 @@ class Lawinfo extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
-                color: kmaincolor,
+                color: isDark ? Colors.white : kmaincolor,
               ),
             ),
           ),
