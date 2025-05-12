@@ -59,7 +59,7 @@ class Info extends StatelessWidget {
             summary:
                 'The report highlights that Algeria permits the inclusion of international arbitration clauses in contracts. Investment disputes can be settled informally through negotiations between the parties or via the domestic court system. For disputes with foreign investors, cases can also be decided through international arbitration. In 2023, the government created an inter-ministerial committee to audit companies\' financial records and impose fines for illegal activities.',
             imagepath:
-                'lib/core/assets/images/laws_mages/investment_report.avif',
+                'lib/core/assets/images/laws_mages/investment_report.jpg',
           ),
           const SizedBox(height: 12),
           _buildMagazineReport(
@@ -68,7 +68,7 @@ class Info extends StatelessWidget {
             date: 'April 2024',
             summary:
                 'Algeria\'s GDP growth is expected to slow to +2.7% in 2025 from +3.0% in 2024. The downward trend in global natural gas prices is causing a gradual decline of Algerian growth from the +4% averaged between 2021-2023. Inflation is projected to slightly pick up in 2025 to 5.5% following a downward shift in the first half of 2024 from the 9% recorded in late 2023.',
-            imagepath: 'lib/core/assets/images/laws_mages/alianz_report.avif',
+            imagepath: 'lib/core/assets/images/laws_mages/alianz_report.jpg',
           ),
           const SizedBox(height: 12),
           _buildMagazineReport(

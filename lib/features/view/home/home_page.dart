@@ -28,10 +28,7 @@ class _HomePageState extends State<HomePage> {
       () => Scaffold(
         appBar: AppBar(
           elevation: 0,
-          backgroundColor:
-              themectrl.selectedTheme.value == AppTheme.dark
-                  ? kmaincolor3dark
-                  : kmaincolor,
+          backgroundColor: kmaincolor,
           title: Text(
             _currentIndex == 0 ? 'home'.tr : 'help&fedback'.tr,
             style: const TextStyle(
