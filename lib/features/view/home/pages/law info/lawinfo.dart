@@ -30,7 +30,6 @@ class Lawinfo extends StatelessWidget {
           const SizedBox(height: 16),
           _buildLawSection(
             title: 'consumer_protection_law'.tr,
-            color: Colors.red.shade700,
             icon: Icons.security,
             content: [
               _buildArticle(
@@ -58,7 +57,6 @@ class Lawinfo extends StatelessWidget {
           const SizedBox(height: 16),
           _buildLawSection(
             title: 'price_regulation_law'.tr,
-            color: Colors.blue.shade700,
             icon: Icons.attach_money,
             content: [
               _buildArticle(
@@ -82,7 +80,6 @@ class Lawinfo extends StatelessWidget {
           const SizedBox(height: 16),
           _buildLawSection(
             title: 'ecommerce_law'.tr,
-            color: Colors.green.shade700,
             icon: Icons.shopping_cart,
             content: [
               _buildArticle('article_1'.tr, 'ecommerce_article_1_desc'.tr),
@@ -94,7 +91,6 @@ class Lawinfo extends StatelessWidget {
           const SizedBox(height: 16),
           _buildLawSection(
             title: 'intellectual_property_protection'.tr,
-            color: Colors.purple.shade700,
             icon: Icons.copyright,
             content: [
               _buildArticle('article_1_ipr'.tr, 'ipr_article_1_desc'.tr),
@@ -106,7 +102,6 @@ class Lawinfo extends StatelessWidget {
           const SizedBox(height: 16),
           _buildLawSection(
             title: 'import_regulations'.tr,
-            color: Colors.orange.shade700,
             icon: Icons.inventory,
             content: [
               _buildArticle('article_1_import'.tr, 'import_article_1_desc'.tr),
@@ -156,9 +151,11 @@ class Lawinfo extends StatelessWidget {
   Widget _buildLawSection({
     required String title,
     required List<Widget> content,
-    required Color color,
     required IconData icon,
   }) {
+    final ThemeController themectrl = Get.find();
+    final bool isDark = themectrl.selectedTheme.value == AppTheme.dark;
+
     return Card(
       elevation: 3,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -168,25 +165,20 @@ class Lawinfo extends StatelessWidget {
         leading: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: color.withValues(alpha: 0.1),
+            color: isDark ? Colors.white : kmaincolor,
             shape: BoxShape.circle,
           ),
-          child: Icon(icon, color: color),
+          child: Icon(icon, color: isDark ? Colors.white : kmaincolor),
         ),
         title: Text(
           title,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: color,
-            fontSize: 16,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         ),
         childrenPadding: EdgeInsets.zero,
         expandedCrossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             decoration: BoxDecoration(
-              color: color.withValues(alpha: 0.05),
               borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(12),
                 bottomRight: Radius.circular(12),
