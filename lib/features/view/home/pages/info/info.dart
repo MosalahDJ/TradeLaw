@@ -31,7 +31,7 @@ class Info extends StatelessWidget {
             date: '10 August 2023',
             source: 'Trade.gov',
             content: 'data_privacy_content'.tr,
-            imageUrl: 'https://example.com/data_privacy.jpg',
+            imagepath: 'lib/core/assets/images/laws_mages/dataprotection.webp',
           ),
           const SizedBox(height: 12),
           _buildNewsArticle(
@@ -39,7 +39,7 @@ class Info extends StatelessWidget {
             date: '15 March 2023',
             source: 'U.S. Department of State',
             content: 'ip_legislation_content'.tr,
-            imageUrl: 'https://example.com/ip_law.jpg',
+            imagepath: 'lib/core/assets/images/laws_mages/ip_law.jpg',
           ),
           const SizedBox(height: 12),
           _buildNewsArticle(
@@ -47,7 +47,7 @@ class Info extends StatelessWidget {
             date: '20 January 2024',
             source: 'Trade.gov',
             content: 'digital_strategy_content'.tr,
-            imageUrl: 'https://example.com/digital_strategy.jpg',
+            imagepath: 'lib/core/assets/images/laws_mages/digital_strategy.jpg',
           ),
           const SizedBox(height: 24),
           _buildHeader(context, 'economic_reports_magazines'.tr),
@@ -58,7 +58,8 @@ class Info extends StatelessWidget {
             date: 'January 2024',
             summary:
                 'The report highlights that Algeria permits the inclusion of international arbitration clauses in contracts. Investment disputes can be settled informally through negotiations between the parties or via the domestic court system. For disputes with foreign investors, cases can also be decided through international arbitration. In 2023, the government created an inter-ministerial committee to audit companies\' financial records and impose fines for illegal activities.',
-            coverImageUrl: 'https://example.com/investment_report.jpg',
+            imagepath:
+                'lib/core/assets/images/laws_mages/investment_report.avif',
           ),
           const SizedBox(height: 12),
           _buildMagazineReport(
@@ -67,7 +68,7 @@ class Info extends StatelessWidget {
             date: 'April 2024',
             summary:
                 'Algeria\'s GDP growth is expected to slow to +2.7% in 2025 from +3.0% in 2024. The downward trend in global natural gas prices is causing a gradual decline of Algerian growth from the +4% averaged between 2021-2023. Inflation is projected to slightly pick up in 2025 to 5.5% following a downward shift in the first half of 2024 from the 9% recorded in late 2023.',
-            coverImageUrl: 'https://example.com/allianz_report.jpg',
+            imagepath: 'lib/core/assets/images/laws_mages/alianz_report.avif',
           ),
           const SizedBox(height: 12),
           _buildMagazineReport(
@@ -76,7 +77,7 @@ class Info extends StatelessWidget {
             date: 'December 2023',
             summary:
                 'The World Bank\'s report on the Algerian economy calls for the acceleration of institutional and micro-economic reforms. The report notes that the promulgation in 2022 of the new investment law and the publication of its implementing regulations, the abolition in 2020 of the 51/49 rule for non-strategic sectors, and the publication of the new hydrocarbons law in 2019 are positive steps, but must tackle the ecosystem, including paralyzing bureaucracy.',
-            coverImageUrl: 'https://example.com/world_bank_report.jpg',
+            imagepath: 'lib/core/assets/images/laws_mages/WorldBank.jpg',
           ),
         ],
       ),
@@ -108,7 +109,7 @@ class Info extends StatelessWidget {
     required String date,
     required String source,
     required String content,
-    String? imageUrl,
+    String? imagepath,
   }) {
     final ThemeController themectrl = Get.find();
 
@@ -134,11 +135,11 @@ class Info extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (imageUrl != null) ...[
+                if (imagepath != null) ...[
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
-                    child: Image.network(
-                      imageUrl,
+                    child: Image.asset(
+                      imagepath,
                       height: 180,
                       width: double.infinity,
                       fit: BoxFit.cover,
@@ -189,7 +190,7 @@ class Info extends StatelessWidget {
     required String publisher,
     required String date,
     required String summary,
-    String? coverImageUrl,
+    String? imagepath,
   }) {
     final ThemeController themectrl = Get.find();
 
@@ -201,11 +202,11 @@ class Info extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (coverImageUrl != null) ...[
+            if (imagepath != null) ...[
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
-                child: Image.network(
-                  coverImageUrl,
+                child: Image.asset(
+                  imagepath,
                   height: 120,
                   width: 80,
                   fit: BoxFit.cover,
