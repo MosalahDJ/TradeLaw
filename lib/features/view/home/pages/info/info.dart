@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/core/Utils/constants.dart';
+import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
 // import 'package:intl/intl.dart';
 
 class Info extends StatelessWidget {
@@ -83,6 +84,8 @@ class Info extends StatelessWidget {
   }
 
   Widget _buildHeader(BuildContext context, String title) {
+    final ThemeController themectrl = Get.find();
+
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Text(
@@ -90,7 +93,10 @@ class Info extends StatelessWidget {
         style: TextStyle(
           fontSize: 22,
           fontWeight: FontWeight.bold,
-          color: kmaincolor,
+          color:
+              themectrl.selectedTheme.value == AppTheme.dark
+                  ? Colors.white
+                  : kmaincolor,
         ),
         textAlign: TextAlign.center,
       ),
@@ -104,13 +110,22 @@ class Info extends StatelessWidget {
     required String content,
     String? imageUrl,
   }) {
+    final ThemeController themectrl = Get.find();
+
     return Card(
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ExpansionTile(
+        
         title: Text(
           title,
-          style: TextStyle(fontWeight: FontWeight.bold, color: kmaincolor),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color:
+                themectrl.selectedTheme.value == AppTheme.dark
+                    ? Colors.white
+                    : kmaincolor,
+          ),
         ),
         subtitle: Text('$source • $date'),
         children: [
@@ -152,7 +167,12 @@ class Info extends StatelessWidget {
                     },
                     child: Text(
                       'read_more'.tr,
-                      style: TextStyle(color: kmaincolor),
+                      style: TextStyle(
+                        color:
+                            themectrl.selectedTheme.value == AppTheme.dark
+                                ? Colors.white
+                                : kmaincolor,
+                      ),
                     ),
                   ),
                 ),
@@ -171,6 +191,8 @@ class Info extends StatelessWidget {
     required String summary,
     String? coverImageUrl,
   }) {
+    final ThemeController themectrl = Get.find();
+
     return Card(
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -208,7 +230,10 @@ class Info extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
-                      color: kmaincolor,
+                      color:
+                          themectrl.selectedTheme.value == AppTheme.dark
+                              ? Colors.white
+                              : kmaincolor,
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -231,7 +256,12 @@ class Info extends StatelessWidget {
                       },
                       child: Text(
                         'view_report'.tr,
-                        style: TextStyle(color: kmaincolor),
+                        style: TextStyle(
+                          color:
+                              themectrl.selectedTheme.value == AppTheme.dark
+                                  ? Colors.white
+                                  : kmaincolor,
+                        ),
                       ),
                     ),
                   ),
