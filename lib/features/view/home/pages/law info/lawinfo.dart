@@ -153,8 +153,7 @@ class Lawinfo extends StatelessWidget {
     required List<Widget> content,
     required IconData icon,
   }) {
-    final ThemeController themectrl = Get.find();
-    final bool isDark = themectrl.selectedTheme.value == AppTheme.dark;
+    Get.find();
 
     return Card(
       elevation: 3,
