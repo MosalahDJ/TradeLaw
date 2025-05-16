@@ -155,6 +155,7 @@ class Lawinfo extends StatelessWidget {
   }) {
     Get.find();
 
+
     return Card(
       elevation: 3,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
