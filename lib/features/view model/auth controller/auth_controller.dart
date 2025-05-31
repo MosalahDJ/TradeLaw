@@ -11,11 +11,6 @@ class AuthController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   
-  // Add focus nodes if you need them
-  final emailFocusNode = FocusNode();
-  final passwordFocusNode = FocusNode();
-
-  
   // Observable states
   final isLoading = false.obs;
   final isAuthenticated = false.obs;
@@ -31,6 +26,21 @@ class AuthController extends GetxController {
     update(); // Notify GetX to update the UI
   }
 
+  // Add focus nodes for sign-in form fields
+  final firstNameFocusNode = FocusNode();
+  final lastNameFocusNode = FocusNode();
+  final genderFocusNode = FocusNode();
+  final emailFocusNode = FocusNode();
+  final passwordFocusNode = FocusNode();
+
+  // Add the unfocuskeyboardsignin method
+  void unfocuskeyboardsignin() {
+    firstNameFocusNode.unfocus();
+    lastNameFocusNode.unfocus();
+    genderFocusNode.unfocus();
+    emailFocusNode.unfocus();
+    passwordFocusNode.unfocus();
+  }
   void unfocusKeyboard() {
     // This will remove focus from any text field and dismiss the keyboard
     emailFocusNode.unfocus();
@@ -46,16 +56,6 @@ class AuthController extends GetxController {
       user.value = event.session?.user;
       isAuthenticated.value = user.value != null;
     });
-  }
-
-  @override
-  void onClose() {
-    // Clean up controllers when the controller is closed
-    emailController.dispose();
-    passwordController.dispose();
-    emailFocusNode.dispose();
-    passwordFocusNode.dispose();
-    super.onClose();
   }
 
   // Email & Password Login
@@ -168,5 +168,16 @@ class AuthController extends GetxController {
       Get.snackbar('Error', e.toString(),
           snackPosition: SnackPosition.BOTTOM);
     }
+  }
+
+    @override
+  void onClose() {
+    // Clean up focus nodes
+    firstNameFocusNode.dispose();
+    lastNameFocusNode.dispose();
+    genderFocusNode.dispose();
+    emailFocusNode.dispose();
+    passwordFocusNode.dispose();
+    super.onClose();
   }
 }
