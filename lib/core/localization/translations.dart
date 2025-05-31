@@ -177,70 +177,71 @@ class Messages extends Translations {
       'developer_social': 'Developer Social',
       'instagram': 'Instagram',
 
-      // Law Info Page
-      'algerian_trade_laws': 'Algerian Trade Laws',
-      'consumer_protection_law': 'Consumer Protection Law 09-03',
-      'price_regulation_law': 'Price Regulation Law 10-06',
-      'ecommerce_law': 'E-Commerce Law 18-05',
-      'intellectual_property_protection': 'Intellectual Property Protection',
-      'import_regulations': 'Import Regulations',
-      'article_1': 'Article 1',
-      'article_2': 'Article 2',
-      'article_3': 'Article 3',
-      'article_4': 'Article 4',
-      'article_5': 'Article 5',
-      'article_6': 'Article 6',
-      'article_7': 'Article 7',
-      'article_8': 'Article 8',
-      'article_10': 'Article 10',
-      'article_11': 'Article 11',
-      'article_12': 'Article 12',
-      'article_17': 'Article 17',
-      'article_18': 'Article 18',
-      'article_1_ipr': 'Article 1 (IPR Framework)',
-      'article_1_import': 'Article 1 (Import Control)',
-      'consumer_protection_article_1_desc':
-          'Establishes general rules for consumer protection and fraud suppression in goods and services.',
-      'consumer_protection_article_2_desc':
-          'Defines a consumer as any natural or legal person who acquires or uses goods or services for non-professional purposes.',
-      'consumer_protection_article_3_desc':
-          'Requires that all products must be safe for consumer health and safety under normal or reasonably foreseeable conditions of use.',
-      'consumer_protection_article_17_desc':
-          'Prohibits the sale of counterfeit goods and services that violate commercial norms and rules of fairness.',
-      'consumer_protection_article_18_desc':
-          'Mandates that products must conform to the standards defined in the Codex Alimentarius for food products.',
-      'price_regulation_article_1_desc':
-          'Allows the government to set price controls on consumer goods and services to curb inflation and protect purchasing power.',
-      'price_regulation_article_2_desc':
-          'Establishes mechanisms for monitoring and regulating market prices of essential goods.',
-      'price_regulation_article_5_desc':
-          'Provides for subsidies on several consumer items including sugar, milk, water, petrol, diesel, and flour.',
-      'price_regulation_article_8_desc':
-          'Prohibits unjustified price increases and speculative practices that affect consumer purchasing power.',
-      'ecommerce_article_1_desc':
-          'Organizes e-commerce activity with a focus on protecting consumers in electronic transactions.',
-      'ecommerce_article_6_desc':
-          'Requires e-suppliers to send consumers an electronic copy of the contract and invoice in accordance with Algerian law.',
-      'ecommerce_article_10_desc':
-          'Mandates obtaining consumer consent before collecting personal data and guaranteeing system security and data confidentiality.',
-      'ecommerce_article_12_desc':
-          'Regulates electronic advertising and prohibits commercial prospection by email without prior consent.',
-      'ipr_article_1_desc':
-          'Establishes the legal framework for intellectual property rights protection in Algeria.',
-      'ipr_article_4_desc':
-          'Requires IP rights holders to register and seek enforcement of their rights under local laws, as foreign registrations are not automatically recognized.',
-      'ipr_article_7_desc':
-          'Prohibits counterfeiting of products, especially in cosmetics, clothing, shoes, electrical appliances, and consumer and food products.',
-      'ipr_article_11_desc':
-          'Provides for coordination between customs authorities and law enforcement to combat counterfeit merchandise.',
-      'import_article_1_desc':
-          'Bans the import of firearms, explosives, narcotics, certain pharmaceutical products, used equipment, GMO seeds, and pork products.',
-      'import_article_3_desc':
-          'Requires that imported food products must have at least 80% of their remaining shelf life upon arrival in Algeria.',
-      'import_article_5_desc':
-          'Establishes temporary duties between 30% and 200% applicable to certain import operations.',
-      'import_article_8_desc':
-          'Implements phyto-sanitary and sanitary control regulations for imported products.',
+      // // Law Info Page
+      // 'algerian_trade_laws': 'Algerian Trade Laws',
+      // 'consumer_protection_law': 'Consumer Protection Law 09-03',
+      // 'price_regulation_law': 'Price Regulation Law 10-06',
+      // 'ecommerce_law': 'E-Commerce Law 18-05',
+      // 'intellectual_property_protection': 'Intellectual Property Protection',
+      // 'import_regulations': 'Import Regulations',
+      // 'article_1': 'Article 1',
+      // 'article_2': 'Article 2',
+      // 'article_3': 'Article 3',
+      // 'article_4': 'Article 4',
+      // 'article_5': 'Article 5',
+      // 'article_6': 'Article 6',
+      // 'article_7': 'Article 7',
+      // 'article_8': 'Article 8',
+      // 'article_10': 'Article 10',
+      // 'article_11': 'Article 11',
+      // 'article_12': 'Article 12',
+      // 'article_17': 'Article 17',
+      // 'article_18': 'Article 18',
+      // 'article_1_ipr': 'Article 1 (IPR Framework)',
+      // 'article_1_import': 'Article 1 (Import Control)',
+      // 'consumer_protection_article_1_desc':
+      //     'Establishes general rules for consumer protection and fraud suppression in goods and services.',
+      // 'consumer_protection_article_2_desc':
+      //     'Defines a consumer as any natural or legal person who acquires or uses goods or services for non-professional purposes.',
+      // 'consumer_protection_article_3_desc':
+      //     'Requires that all products must be safe for consumer health and safety under normal or reasonably foreseeable conditions of use.',
+      // 'consumer_protection_article_17_desc':
+      //     'Prohibits the sale of counterfeit goods and services that violate commercial norms and rules of fairness.',
+      // 'consumer_protection_article_18_desc':
+      //     'Mandates that products must conform to the standards defined in the Codex Alimentarius for food products.',
+      // 'price_regulation_article_1_desc':
+      //     'Allows the government to set price controls on consumer goods and services to curb inflation and protect purchasing power.',
+      // 'price_regulation_article_2_desc':
+      //     'Establishes mechanisms for monitoring and regulating market prices of essential goods.',
+      // 'price_regulation_article_5_desc':
+      //     'Provides for subsidies on several consumer items including sugar, milk, water, petrol, diesel, and flour.',
+      // 'price_regulation_article_8_desc':
+      //     'Prohibits unjustified price increases and speculative practices that affect consumer purchasing power.',
+      // 'ecommerce_article_1_desc':
+      //     'Organizes e-commerce activity with a focus on protecting consumers in electronic transactions.',
+      // 'ecommerce_article_6_desc':
+      //     'Requires e-suppliers to send consumers an electronic copy of the contract and invoice in accordance with Algerian law.',
+      // 'ecommerce_article_10_desc':
+      //     'Mandates obtaining consumer consent before collecting personal data and guaranteeing system security and data confidentiality.',
+      // 'ecommerce_article_12_desc':
+      //     'Regulates electronic advertising and prohibits commercial prospection by email without prior consent.',
+      // 'ipr_article_1_desc':
+      //     'Establishes the legal framework for intellectual property rights protection in Algeria.',
+      // 'ipr_article_4_desc':
+      //     'Requires IP rights holders to register and seek enforcement of their rights under local laws, as foreign registrations are not automatically recognized.',
+      // 'ipr_article_7_desc':
+      //     'Prohibits counterfeiting of products, especially in cosmetics, clothing, shoes, electrical appliances, and consumer and food products.',
+      // 'ipr_article_11_desc':
+      //     'Provides for coordination between customs authorities and law enforcement to combat counterfeit merchandise.',
+      // 'import_article_1_desc':
+      //     'Bans the import of firearms, explosives, narcotics, certain pharmaceutical products, used equipment, GMO seeds, and pork products.',
+      // 'import_article_3_desc':
+      //     'Requires that imported food products must have at least 80% of their remaining shelf life upon arrival in Algeria.',
+      // 'import_article_5_desc':
+      //     'Establishes temporary duties between 30% and 200% applicable to certain import operations.',
+      // 'import_article_8_desc':
+      //     'Implements phyto-sanitary and sanitary control regulations for imported products.',
+      
       // Feedback Form
       'feedback_title': 'Share Your Feedback',
       'feedback_subtitle':
