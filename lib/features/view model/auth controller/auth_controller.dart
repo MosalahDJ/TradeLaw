@@ -72,7 +72,7 @@ class AuthController extends GetxController {
           await googleUser.authentication;
 
       final response = await _supabase.auth.signInWithIdToken(
-        provider: Provider.google,
+        provider: OAuthProvider.google,
         idToken: googleAuth.idToken!,
       );
 
