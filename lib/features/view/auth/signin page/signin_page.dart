@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/signincontroller.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/auth_controller.dart';
 import 'package:tradelaw/features/view/auth/signin%20page/widgets/signin_body.dart';
 
 class SigninPage extends StatelessWidget {
   SigninPage({super.key});
-  final SignInController signinctrl = Get.put<SignInController>(
-    SignInController(),
+  final AuthController signinctrl = Get.put<AuthController>(
+    AuthController(),
   );
   @override
   Widget build(BuildContext context) {
