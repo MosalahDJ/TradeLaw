@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/core/widgets/information_form.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/signincontroller.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/auth_controller.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
 
 // Helper class for sign-in form widgets
 class SignInFormHelpers {
-  final SignInController signinnctrl = Get.find();
+  final AuthController signinnctrl = Get.find();
   final Txtvalcontroller txtvalctrl = Get.put<Txtvalcontroller>(
     Txtvalcontroller(),
   );
@@ -47,6 +47,7 @@ class SignInFormHelpers {
       ),
     );
   }
+
   // Creates a password field with visibility toggle and validation
   Widget buildPasswordField(
     BuildContext context, {
@@ -63,8 +64,8 @@ class SignInFormHelpers {
       child: InformationsForm(
         focusnode:
             isConfirmation
-                ? signinnctrl.passwordfnodesign2
-                : signinnctrl.passwordfnodesign,
+                ? signinnctrl.passwordfnode2
+                : signinnctrl.passwordfnode,
         lines: 1,
         validator: (val) {
           if (val == null || val.isEmpty) {
@@ -72,9 +73,6 @@ class SignInFormHelpers {
                 ? 'Please ${"confirm_password".tr}'
                 : 'field_required'.tr;
           }
-          // if (!isConfirmation && val.length < 6) {
-          //   return 'Password must be at least 6 characters';
-          // }
           if (isConfirmation && val != signinnctrl.password.text) {
             return 'not_match'.tr;
           }
@@ -83,14 +81,14 @@ class SignInFormHelpers {
         suffixbutton: IconButton(
           onPressed:
               isConfirmation
-                  ? signinnctrl.visibilityfunc2
-                  : signinnctrl.visibilityfunc,
+                  ? signinnctrl.togglePasswordVisibility2
+                  : signinnctrl.togglePasswordVisibility,
           icon: Icon(
             isConfirmation
-                ? (signinnctrl.visibility2
+                ? (signinnctrl.isPasswordVisible2
                     ? Icons.visibility_off
                     : Icons.visibility)
-                : (signinnctrl.visibility
+                : (signinnctrl.isPasswordVisible
                     ? Icons.visibility_off
                     : Icons.visibility),
             color: Get.isDarkMode ? Colors.white : const Color(0xFF3D3825),
