@@ -83,7 +83,7 @@ class LoginBody extends StatelessWidget {
                   child: _buildTextField(
                     controller: loginctrl.emailController,
                     hintText: "enter_email".tr,
-                    focusNode: loginctrl.emailFocusNode,
+                    focusNode: loginctrl.emailfnode,
                     keyboardType: TextInputType.emailAddress,
                     validator:
                         (val) =>
@@ -101,7 +101,7 @@ class LoginBody extends StatelessWidget {
                         (controller) => _buildTextField(
                           controller: loginctrl.passwordController,
                           hintText: "enter_password".tr,
-                          focusNode: loginctrl.passwordFocusNode,
+                          focusNode: loginctrl.passwordfnode,
                           obscureText: loginctrl.isPasswordVisible,
                           validator:
                               (val) =>

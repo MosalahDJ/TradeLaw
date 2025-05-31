@@ -6,11 +6,11 @@ import 'package:google_sign_in/google_sign_in.dart';
 class AuthController extends GetxController {
   final _supabase = Supabase.instance.client;
   final _googleSignIn = GoogleSignIn();
-  
+
   // Add these controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  
+
   // Observable states
   final isLoading = false.obs;
   final isAuthenticated = false.obs;
@@ -26,27 +26,48 @@ class AuthController extends GetxController {
     update(); // Notify GetX to update the UI
   }
 
-  // Add focus nodes for sign-in form fields
-  final firstNameFocusNode = FocusNode();
-  final lastNameFocusNode = FocusNode();
-  final genderFocusNode = FocusNode();
-  final emailFocusNode = FocusNode();
-  final passwordFocusNode = FocusNode();
+  
+  // Add observable for password visibility
+  final RxBool _isPasswordVisible2 = false.obs;
+  bool get isPasswordVisible2 => _isPasswordVisible.value;
+
+  // Add toggle function
+  void togglePasswordVisibility2() {
+    _isPasswordVisible2.value = !_isPasswordVisible.value;
+    update(); // Notify GetX to update the UI
+  }
+
+  // Text Controllers for sign-in form
+  final name = TextEditingController();
+  final lastName = TextEditingController();
+  final email = TextEditingController();
+  final password = TextEditingController();
+  final password2 = TextEditingController();
+  final gender = TextEditingController();
+
+  // Focus Nodes for sign-in form
+  final namefnode = FocusNode();
+  final lastNamefnode = FocusNode();
+  final genderfnode = FocusNode();
+  final emailfnode = FocusNode();
+  final passwordfnode = FocusNode();
+  final passwordfnode2 = FocusNode();
 
   // Add the unfocuskeyboardsignin method
   void unfocuskeyboardsignin() {
-    firstNameFocusNode.unfocus();
-    lastNameFocusNode.unfocus();
-    genderFocusNode.unfocus();
-    emailFocusNode.unfocus();
-    passwordFocusNode.unfocus();
-  }
-  void unfocusKeyboard() {
-    // This will remove focus from any text field and dismiss the keyboard
-    emailFocusNode.unfocus();
-    passwordFocusNode.unfocus();
+    namefnode.unfocus();
+    lastNamefnode.unfocus();
+    genderfnode.unfocus();
+    emailfnode.unfocus();
+    passwordfnode.unfocus();
+    passwordfnode2.unfocus();
   }
 
+  void unfocusKeyboard() {
+    // This will remove focus from any text field and dismiss the keyboard
+    emailfnode.unfocus();
+    passwordfnode.unfocus();
+  }
 
   @override
   void onInit() {
@@ -70,8 +91,7 @@ class AuthController extends GetxController {
         Get.offAllNamed('/home'); // Navigate to home screen
       }
     } catch (e) {
-      Get.snackbar('Error', e.toString(),
-          snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
     } finally {
       isLoading.value = false;
     }
@@ -86,13 +106,15 @@ class AuthController extends GetxController {
         password: password,
       );
       if (response.user != null) {
-        Get.snackbar('Success', 'Please verify your email',
-            snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar(
+          'Success',
+          'Please verify your email',
+          snackPosition: SnackPosition.BOTTOM,
+        );
         Get.offAllNamed('/login');
       }
     } catch (e) {
-      Get.snackbar('Error', e.toString(),
-          snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
     } finally {
       isLoading.value = false;
     }
@@ -105,7 +127,7 @@ class AuthController extends GetxController {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
       if (googleUser == null) return;
 
-      final GoogleSignInAuthentication googleAuth = 
+      final GoogleSignInAuthentication googleAuth =
           await googleUser.authentication;
 
       final response = await _supabase.auth.signInWithIdToken(
@@ -117,8 +139,7 @@ class AuthController extends GetxController {
         Get.offAllNamed('/home');
       }
     } catch (e) {
-      Get.snackbar('Error', e.toString(),
-          snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
     } finally {
       isLoading.value = false;
     }
@@ -133,8 +154,7 @@ class AuthController extends GetxController {
         Get.offAllNamed('/home');
       }
     } catch (e) {
-      Get.snackbar('Error', e.toString(),
-          snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
     } finally {
       isLoading.value = false;
     }
@@ -146,13 +166,12 @@ class AuthController extends GetxController {
       isLoading.value = true;
       await _supabase.auth.resetPasswordForEmail(email);
       Get.snackbar(
-        'Success', 
+        'Success',
         'Password reset link sent to your email',
-        snackPosition: SnackPosition.BOTTOM
+        snackPosition: SnackPosition.BOTTOM,
       );
     } catch (e) {
-      Get.snackbar('Error', e.toString(),
-          snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
     } finally {
       isLoading.value = false;
     }
@@ -165,19 +184,18 @@ class AuthController extends GetxController {
       await _googleSignIn.signOut();
       Get.offAllNamed('/login');
     } catch (e) {
-      Get.snackbar('Error', e.toString(),
-          snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
     }
   }
 
-    @override
+  @override
   void onClose() {
     // Clean up focus nodes
-    firstNameFocusNode.dispose();
-    lastNameFocusNode.dispose();
-    genderFocusNode.dispose();
-    emailFocusNode.dispose();
-    passwordFocusNode.dispose();
+    namefnode.dispose();
+    lastNamefnode.dispose();
+    genderfnode.dispose();
+    emailfnode.dispose();
+    passwordfnode.dispose();
     super.onClose();
   }
 }

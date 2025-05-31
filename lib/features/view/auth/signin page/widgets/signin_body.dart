@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/core/Utils/constants.dart';
 import 'package:tradelaw/core/Utils/size_config.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/signincontroller.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/auth_controller.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
 import 'package:tradelaw/features/view/auth/login%20page/loginpage.dart';
 
 class SigneinPageBody extends StatelessWidget {
   SigneinPageBody({super.key});
 
-  final SignInController signinctrl = Get.find();
+  final AuthController signinctrl = Get.find();
   final Txtvalcontroller txtvalctrl = Get.find();
 
   @override
@@ -97,9 +97,9 @@ class SigneinPageBody extends StatelessWidget {
                 Form(
                   key: txtvalctrl.signinemailstate,
                   child: _buildTextField(
-                    controller: signinctrl.emailcontroller,
+                    controller: signinctrl.email,
                     hintText: "email".tr,
-                    focusNode: signinctrl.emailfnodesign,
+                    focusNode: signinctrl.emailfnode,
                     keyboardType: TextInputType.emailAddress,
                     validator:
                         (val) => val!.isEmpty ? "enter_email".tr : null,
@@ -111,22 +111,22 @@ class SigneinPageBody extends StatelessWidget {
                 // Password Field
                 Form(
                   key: txtvalctrl.signinpasswordstate,
-                  child: GetBuilder<SignInController>(
+                  child: GetBuilder<AuthController>(
                     builder:
                         (controller) => _buildTextField(
                           controller: signinctrl.password,
                           hintText: "password".tr,
-                          focusNode: signinctrl.passwordfnodesign,
-                          obscureText: signinctrl.visibility,
+                          focusNode: signinctrl.passwordfnode,
+                          obscureText: signinctrl.isPasswordVisible,
                           validator:
                               (val) =>
                                   val!.isEmpty
                                       ? "enter_password".tr
                                       : null,
                           suffixIcon: IconButton(
-                            onPressed: signinctrl.visibilityfunc,
+                            onPressed: signinctrl.togglePasswordVisibility,
                             icon: Icon(
-                              signinctrl.visibility
+                              signinctrl.isPasswordVisible
                                   ? Icons.visibility_off
                                   : Icons.visibility,
                               color: Get.isDarkMode ? kmaincolor4 : kmaincolor,
@@ -141,22 +141,22 @@ class SigneinPageBody extends StatelessWidget {
                 // Confirm Password Field
                 Form(
                   key: txtvalctrl.signinpasswordstate2,
-                  child: GetBuilder<SignInController>(
+                  child: GetBuilder<AuthController>(
                     builder:
                         (controller) => _buildTextField(
                           controller: signinctrl.password2,
                           hintText: "confirm_password".tr,
-                          focusNode: signinctrl.passwordfnodesign2,
-                          obscureText: signinctrl.visibility2,
+                          focusNode: signinctrl.passwordfnode2,
+                          obscureText: signinctrl.isPasswordVisible2,
                           validator:
                               (val) =>
                                   val!.isEmpty
                                       ? "enter_confirm_password".tr
                                       : null,
                           suffixIcon: IconButton(
-                            onPressed: signinctrl.visibilityfunc2,
+                            onPressed: signinctrl.togglePasswordVisibility2,
                             icon: Icon(
-                              signinctrl.visibility2
+                              signinctrl.isPasswordVisible2
                                   ? Icons.visibility_off
                                   : Icons.visibility,
                               color: Get.isDarkMode ? kmaincolor4 : kmaincolor,
@@ -186,7 +186,10 @@ class SigneinPageBody extends StatelessWidget {
                       if (validateForms()) {
                         signinctrl.isLoading.value
                             ? null
-                            : signinctrl.signin(context);
+                            : signinctrl.signUpWithEmail(
+                                signinctrl.email.text,
+                                signinctrl.password.text,
+                              );
                       }
                     },
                     child: Obx(
@@ -254,21 +257,14 @@ class SigneinPageBody extends StatelessWidget {
                     _buildSocialLoginButton(
                       icon: "lib/core/assets/images/login_images/google.png",
                       onTap: () {
-                        signinctrl.signwithsocial(context);
+                        signinctrl.signInWithGoogle();
                       },
                     ),
                     SizedBox(width: 20),
                     _buildSocialLoginButton(
                       icon: "lib/core/assets/images/login_images/Guest.png",
                       onTap: () {
-                        signinctrl.signwithsocial(context);
-                      },
-                    ),
-                    SizedBox(width: 20),
-                    _buildSocialLoginButton(
-                      icon: "lib/core/assets/images/login_images/apple.png",
-                      onTap: () {
-                        signinctrl.signwithsocial(context);
+                        signinctrl.signInAnonymously();
                       },
                     ),
                   ],
