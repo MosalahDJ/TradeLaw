@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/core/Utils/constants.dart';
 import 'package:tradelaw/core/Utils/size_config.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/logincontroller.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/auth_controller.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
 import 'package:tradelaw/features/view/auth/signin%20page/signin_page.dart';
@@ -10,13 +10,17 @@ import 'package:tradelaw/features/view/auth/signin%20page/signin_page.dart';
 class LoginBody extends StatelessWidget {
   final ThemeController themeController;
   LoginBody({super.key, required this.themeController});
-  final LogInController loginctrl = Get.find();
+  final AuthController loginctrl = Get.find();
   final Txtvalcontroller txtvalctrl = Get.find();
 
   @override
   Widget build(BuildContext context) {
     // استخدم themeController.isDarkMode بدلاً من Get.isDarkMode
     bool isDark = themeController.isDarkMode;
+    
+  String? email = loginctrl.emailController.text;
+  String? password = loginctrl.passwordController.text;
+
 
     return Scaffold(
       body: SafeArea(
@@ -92,7 +96,7 @@ class LoginBody extends StatelessWidget {
                 // Password Field
                 Form(
                   key: txtvalctrl.loginpasswordstate,
-                  child: GetBuilder<LogInController>(
+                  child: GetBuilder<AuthController>(
                     builder:
                         (controller) => _buildTextField(
                           controller: loginctrl.passwordController,
@@ -157,7 +161,7 @@ class LoginBody extends StatelessWidget {
                             : loginctrl.unfocusKeyboard();
                         loginctrl.isLoading.value
                             ? null
-                            : loginctrl.login(context);
+                            : loginctrl.signInWithEmail(email, password);
                       }
                     },
                     child: Obx(
@@ -215,22 +219,13 @@ class LoginBody extends StatelessWidget {
                   children: [
                     _buildSocialLoginButton(
                       icon: "lib/core/assets/images/login_images/google.png",
-                      onTap: () => loginctrl.logwithsocial(context),
+                      onTap: () => loginctrl.signInWithGoogle(),
                     ),
                     SizedBox(width: 20),
                     _buildSocialLoginButton(
                       icon: "lib/core/assets/images/login_images/Guest.png",
                       iconcolor: isDark ? Colors.white : Colors.black,
-                      onTap: () => loginctrl.logwithsocial(context),
-                    ),
-                    SizedBox(width: 20),
-                    _buildSocialLoginButton(
-                      icon:
-                          "lib/core/assets/images/login_images/apple.png", // Asegúrate de tener este archivo
-                      iconcolor: isDark ? Colors.white : Colors.black,
-                      onTap: () {
-                        loginctrl.logwithsocial(context);
-                      },
+                      onTap: () => loginctrl.signInAnonymously(),
                     ),
                   ],
                 ),

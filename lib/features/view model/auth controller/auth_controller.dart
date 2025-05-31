@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -6,10 +7,36 @@ class AuthController extends GetxController {
   final _supabase = Supabase.instance.client;
   final _googleSignIn = GoogleSignIn();
   
+  // Add these controllers
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  
+  // Add focus nodes if you need them
+  final emailFocusNode = FocusNode();
+  final passwordFocusNode = FocusNode();
+
+  
   // Observable states
   final isLoading = false.obs;
   final isAuthenticated = false.obs;
   final user = Rxn<User>();
+
+  // Add observable for password visibility
+  final RxBool _isPasswordVisible = false.obs;
+  bool get isPasswordVisible => _isPasswordVisible.value;
+
+  // Add toggle function
+  void togglePasswordVisibility() {
+    _isPasswordVisible.value = !_isPasswordVisible.value;
+    update(); // Notify GetX to update the UI
+  }
+
+  void unfocusKeyboard() {
+    // This will remove focus from any text field and dismiss the keyboard
+    emailFocusNode.unfocus();
+    passwordFocusNode.unfocus();
+  }
+
 
   @override
   void onInit() {
@@ -19,6 +46,16 @@ class AuthController extends GetxController {
       user.value = event.session?.user;
       isAuthenticated.value = user.value != null;
     });
+  }
+
+  @override
+  void onClose() {
+    // Clean up controllers when the controller is closed
+    emailController.dispose();
+    passwordController.dispose();
+    emailFocusNode.dispose();
+    passwordFocusNode.dispose();
+    super.onClose();
   }
 
   // Email & Password Login
