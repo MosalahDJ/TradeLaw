@@ -26,7 +26,6 @@ class AuthController extends GetxController {
     update(); // Notify GetX to update the UI
   }
 
-  
   // Add observable for password visibility
   final RxBool _isPasswordVisible2 = false.obs;
   bool get isPasswordVisible2 => _isPasswordVisible.value;
@@ -40,7 +39,7 @@ class AuthController extends GetxController {
   // Text Controllers for sign-in form
   final name = TextEditingController();
   final lastName = TextEditingController();
-  final email = TextEditingController();
+  final myemail = TextEditingController();
   final password = TextEditingController();
   final password2 = TextEditingController();
   final gender = TextEditingController();
@@ -97,24 +96,59 @@ class AuthController extends GetxController {
     }
   }
 
-  // Email & Password Signup
   Future<void> signUpWithEmail(String email, String password) async {
     try {
       isLoading.value = true;
-      final response = await _supabase.auth.signUp(
+
+      // Sign up the user
+      final AuthResponse response = await _supabase.auth.signUp(
         email: email,
         password: password,
+        emailRedirectTo:
+            'io.supabase.flutterquickstart://login-callback/', // Add your redirect URL
+        data: {
+          'name': name.text,
+          'lastName': lastName.text,
+          'gender': gender.text,
+        },
       );
+
       if (response.user != null) {
-        Get.snackbar(
-          'Success',
-          'Please verify your email',
-          snackPosition: SnackPosition.BOTTOM,
-        );
-        Get.offAllNamed('/login');
+        if (response.session == null) {
+          // Email confirmation was sent
+          Get.snackbar(
+            'Success',
+            'Please check your email for verification link',
+            snackPosition: SnackPosition.BOTTOM,
+            duration: const Duration(seconds: 5),
+          );
+
+          // Clear form fields
+          name.clear();
+          lastName.clear();
+          myemail.clear();
+          passwordController.clear();
+          gender.clear();
+
+          Get.offAllNamed('/login');
+        } else {
+          // User doesn't need email confirmation
+          Get.snackbar(
+            'Success',
+            'Account created successfully',
+            snackPosition: SnackPosition.BOTTOM,
+          );
+          Get.offAllNamed('/home');
+        }
       }
     } catch (e) {
-      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(
+        'Error',
+        e.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red.withValues(alpha: 0.1),
+        colorText: Colors.red,
+      );
     } finally {
       isLoading.value = false;
     }

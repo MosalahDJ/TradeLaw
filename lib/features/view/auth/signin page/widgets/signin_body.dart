@@ -97,7 +97,7 @@ class SigneinPageBody extends StatelessWidget {
                 Form(
                   key: txtvalctrl.signinemailstate,
                   child: _buildTextField(
-                    controller: signinctrl.email,
+                    controller: signinctrl.myemail,
                     hintText: "email".tr,
                     focusNode: signinctrl.emailfnode,
                     keyboardType: TextInputType.emailAddress,
@@ -187,7 +187,7 @@ class SigneinPageBody extends StatelessWidget {
                         signinctrl.isLoading.value
                             ? null
                             : signinctrl.signUpWithEmail(
-                                signinctrl.email.text,
+                                signinctrl.myemail.text,
                                 signinctrl.password.text,
                               );
                       }
