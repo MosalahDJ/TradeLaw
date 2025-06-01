@@ -5,7 +5,6 @@ import 'package:tradelaw/core/Utils/size_config.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/auth_controller.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/language_controller.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
-import 'package:tradelaw/features/view/auth/login%20page/loginpage.dart';
 import 'package:tradelaw/features/view/home/pages/help%20and%20fedback/help_and_fedback.dart';
 
 class HomePage extends StatefulWidget {
