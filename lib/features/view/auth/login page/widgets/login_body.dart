@@ -17,10 +17,9 @@ class LoginBody extends StatelessWidget {
   Widget build(BuildContext context) {
     // استخدم themeController.isDarkMode بدلاً من Get.isDarkMode
     bool isDark = themeController.isDarkMode;
-    
-  String? email = loginctrl.emailController.text;
-  String? password = loginctrl.passwordController.text;
 
+    String? email = loginctrl.emailController.text;
+    String? password = loginctrl.passwordController.text;
 
     return Scaffold(
       body: SafeArea(
@@ -127,7 +126,7 @@ class LoginBody extends StatelessWidget {
                   child: TextButton(
                     onPressed: () {
                       loginctrl.unfocusKeyboard();
-                      // Forgot password function
+                      loginctrl.resetPassword(email);
                     },
                     child: Text(
                       "forgot_password".tr,
