@@ -135,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                         )
                         : Icon(Icons.logout_rounded, color: Colors.white),
               ),
-              onPressed: authctrl.signOut,
+              onPressed: authctrl.isLoading.value ? null : authctrl.signOut,
             ),
           ],
         ),

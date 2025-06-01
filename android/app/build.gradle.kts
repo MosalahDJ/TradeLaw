@@ -28,6 +28,7 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        resValue("string", "server_client_id", "524401420622-5dad9sm5m1qj53i03i7qker5vi6m1h7s.apps.googleusercontent.com")
     }
 
     buildTypes {
@@ -37,6 +38,12 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
+}
+
+
+dependencies {
+    // Add Google Sign In dependency
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
 }
 
 flutter {
