@@ -28,11 +28,11 @@ class AuthController extends GetxController {
 
   // Add observable for password visibility
   final RxBool _isPasswordVisible2 = false.obs;
-  bool get isPasswordVisible2 => _isPasswordVisible.value;
+  bool get isPasswordVisible2 => _isPasswordVisible2.value;
 
   // Add toggle function
   void togglePasswordVisibility2() {
-    _isPasswordVisible2.value = !_isPasswordVisible.value;
+    _isPasswordVisible2.value = !_isPasswordVisible2.value;
     update(); // Notify GetX to update the UI
   }
 
@@ -90,6 +90,7 @@ class AuthController extends GetxController {
         Get.offAllNamed('/home'); // Navigate to home screen
       }
     } catch (e) {
+      print(e.toString());
       Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
     } finally {
       isLoading.value = false;
@@ -142,6 +143,8 @@ class AuthController extends GetxController {
         }
       }
     } catch (e) {
+      print(e.toString());
+
       Get.snackbar(
         'Error',
         e.toString(),
@@ -173,6 +176,8 @@ class AuthController extends GetxController {
         Get.offAllNamed('/home');
       }
     } catch (e) {
+      print(e.toString());
+
       Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
     } finally {
       isLoading.value = false;
@@ -188,6 +193,8 @@ class AuthController extends GetxController {
         Get.offAllNamed('/home');
       }
     } catch (e) {
+      print(e.toString());
+
       Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
     } finally {
       isLoading.value = false;
@@ -205,6 +212,8 @@ class AuthController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
       );
     } catch (e) {
+      print(e.toString());
+
       Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
     } finally {
       isLoading.value = false;
@@ -218,6 +227,8 @@ class AuthController extends GetxController {
       await _googleSignIn.signOut();
       Get.offAllNamed('/login');
     } catch (e) {
+      print(e.toString());
+
       Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
     }
   }

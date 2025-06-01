@@ -101,8 +101,19 @@ class SigneinPageBody extends StatelessWidget {
                     hintText: "email".tr,
                     focusNode: signinctrl.emailfnode,
                     keyboardType: TextInputType.emailAddress,
-                    validator:
-                        (val) => val!.isEmpty ? "enter_email".tr : null,
+                    validator: (val) {
+                      if (val!.isEmpty) {
+                        return "enter_email".tr;
+                      }
+                      // Email format validation
+                      final emailRegex = RegExp(
+                        r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                      );
+                      if (!emailRegex.hasMatch(val)) {
+                        return "invalid_email_format".tr;
+                      }
+                      return null;
+                    },
                   ),
                 ),
 
@@ -120,9 +131,7 @@ class SigneinPageBody extends StatelessWidget {
                           obscureText: signinctrl.isPasswordVisible,
                           validator:
                               (val) =>
-                                  val!.isEmpty
-                                      ? "enter_password".tr
-                                      : null,
+                                  val!.isEmpty ? "enter_password".tr : null,
                           suffixIcon: IconButton(
                             onPressed: signinctrl.togglePasswordVisibility,
                             icon: Icon(
@@ -187,9 +196,9 @@ class SigneinPageBody extends StatelessWidget {
                         signinctrl.isLoading.value
                             ? null
                             : signinctrl.signUpWithEmail(
-                                signinctrl.myemail.text,
-                                signinctrl.password.text,
-                              );
+                              signinctrl.myemail.text,
+                              signinctrl.password.text,
+                            );
                       }
                     },
                     child: Obx(
