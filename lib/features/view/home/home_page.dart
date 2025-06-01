@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/core/Utils/constants.dart';
 import 'package:tradelaw/core/Utils/size_config.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/auth_controller.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/language_controller.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
 import 'package:tradelaw/features/view/auth/login%20page/loginpage.dart';
@@ -16,6 +17,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final ThemeController themectrl = Get.find();
+  final AuthController authctrl = Get.find();
   final LanguageController langctrl = Get.find();
   int _currentIndex = 0;
 
@@ -23,6 +25,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     // Initialize Sizeconfig to avoid null errors
     Sizeconfig().init(context);
+    bool isDark = themectrl.isDarkMode;
 
     return Obx(
       () => Scaffold(
@@ -119,15 +122,20 @@ class _HomePageState extends State<HomePage> {
                   ],
             ),
             IconButton(
-              icon: const Icon(Icons.logout_rounded, color: Colors.white),
-              onPressed: () {
-                // Handle profile
-                Get.offAll(
-                  () => LoginPage(),
-                  duration: const Duration(milliseconds: 500),
-                  transition: Transition.leftToRight,
-                );
-              },
+              icon: Obx(
+                () =>
+                    authctrl.isLoading.value
+                        ? CircularProgressIndicator(
+                          strokeAlign: 0.7,
+                          strokeCap: StrokeCap.round,
+                          strokeWidth: 2,
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            isDark ? kmaincolor : kmaincolor4,
+                          ),
+                        )
+                        : Icon(Icons.logout_rounded, color: Colors.white),
+              ),
+              onPressed: authctrl.signOut,
             ),
           ],
         ),

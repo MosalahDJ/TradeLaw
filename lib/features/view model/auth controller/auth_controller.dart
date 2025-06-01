@@ -188,14 +188,32 @@ class AuthController extends GetxController {
   Future<void> signInAnonymously() async {
     try {
       isLoading.value = true;
+
+      // Sign in anonymously
       final response = await _supabase.auth.signInAnonymously();
+
       if (response.user != null) {
+        // Create profile entry for anonymous user
+        await _supabase.from('profiles').upsert({
+          'id': response.user!.id,
+          'user_type': 'anonymous', // Changed from 'role' to 'user_type'
+          'anonymous': true, // Added explicit flag
+          'created_at': DateTime.now().toIso8601String(),
+        });
+
+        // Then update the signOut check to use these new fields
         Get.offAllNamed('/home');
       }
     } catch (e) {
-      print(e.toString());
-
-      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
+      print('Anonymous login error: ${e.toString()}');
+      Get.snackbar(
+        'Error',
+        'Failed to sign in anonymously: ${e.toString()}',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red.withOpacity(0.1),
+        colorText: Colors.red,
+        duration: const Duration(seconds: 3),
+      );
     } finally {
       isLoading.value = false;
     }
@@ -223,13 +241,37 @@ class AuthController extends GetxController {
   // Sign Out
   Future<void> signOut() async {
     try {
-      await _supabase.auth.signOut();
-      await _googleSignIn.signOut();
+      isLoading.value = true;
+
+      // Check if current user is anonymous
+      final currentUser = _supabase.auth.currentUser;
+      if (currentUser != null && currentUser.role == 'anon') {
+        // Changed condition
+        print("Anonymous user detected - deleting user...");
+
+        // Delete anonymous user data from any tables first
+        await _supabase.from('profiles').delete().eq('id', currentUser.id);
+
+        // Then sign out
+        await _supabase.auth.signOut();
+      } else {
+        // Regular user sign out
+        await _supabase.auth.signOut();
+        await _googleSignIn.signOut();
+      }
+
       Get.offAllNamed('/login');
     } catch (e) {
-      print(e.toString());
-
-      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
+      print('Sign out error: ${e.toString()}');
+      Get.snackbar(
+        'Error',
+        e.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red.withOpacity(0.1),
+        colorText: Colors.red,
+      );
+    } finally {
+      isLoading.value = false;
     }
   }
 
