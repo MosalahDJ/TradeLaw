@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:tradelaw/core/Utils/constants.dart';
 import 'package:tradelaw/core/Utils/size_config.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/auth_controller.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/login_controller.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/language_controller.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
 import 'package:tradelaw/features/view/home/pages/help%20and%20fedback/help_and_fedback.dart';
@@ -16,7 +17,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final ThemeController themectrl = Get.find();
-  final AuthController authctrl = Get.put<AuthController>(AuthController());
+  final LoginController loginctrl = Get.find<LoginController>();
   final LanguageController langctrl = Get.find();
   int _currentIndex = 0;
 
@@ -123,7 +124,7 @@ class _HomePageState extends State<HomePage> {
             IconButton(
               icon: Obx(
                 () =>
-                    authctrl.isLoading.value
+                    loginctrl.isLoading.value
                         ? CircularProgressIndicator(
                           strokeAlign: 0.7,
                           strokeCap: StrokeCap.round,
@@ -134,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                         )
                         : Icon(Icons.logout_rounded, color: Colors.white),
               ),
-              onPressed: authctrl.isLoading.value ? null : authctrl.signOut,
+              onPressed: loginctrl.isLoading.value ? null : loginctrl.signOut,
             ),
           ],
         ),

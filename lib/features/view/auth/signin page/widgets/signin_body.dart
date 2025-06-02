@@ -2,15 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/core/Utils/constants.dart';
 import 'package:tradelaw/core/Utils/size_config.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/auth_controller.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/anonymous_login.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/google_login_cntroller.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/signup_controller.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
 import 'package:tradelaw/features/view/auth/login%20page/loginpage.dart';
 
 class SigneinPageBody extends StatelessWidget {
   SigneinPageBody({super.key});
 
-  final AuthController signinctrl = Get.find();
+  final SignupController signinctrl = Get.find();
   final Txtvalcontroller txtvalctrl = Get.find();
+
+  final GoogleLoginCntroller _googleLoginCntroller = Get.put(
+    GoogleLoginCntroller(),
+  );
+  final AnonymousLoginController _anonymousLoginCntroller = Get.put(
+    AnonymousLoginController(),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -122,10 +131,10 @@ class SigneinPageBody extends StatelessWidget {
                 // Password Field
                 Form(
                   key: txtvalctrl.signinpasswordstate,
-                  child: GetBuilder<AuthController>(
+                  child: GetBuilder<SignupController>(
                     builder:
                         (controller) => _buildTextField(
-                          controller: signinctrl.password,
+                          controller: signinctrl.password1,
                           hintText: "password".tr,
                           focusNode: signinctrl.passwordfnode,
                           obscureText: signinctrl.isPasswordVisible,
@@ -150,7 +159,7 @@ class SigneinPageBody extends StatelessWidget {
                 // Confirm Password Field
                 Form(
                   key: txtvalctrl.signinpasswordstate2,
-                  child: GetBuilder<AuthController>(
+                  child: GetBuilder<SignupController>(
                     builder:
                         (controller) => _buildTextField(
                           controller: signinctrl.password2,
@@ -197,7 +206,7 @@ class SigneinPageBody extends StatelessWidget {
                             ? null
                             : signinctrl.signUpWithEmail(
                               signinctrl.myemail.text,
-                              signinctrl.password.text,
+                              signinctrl.password1.text,
                             );
                       }
                     },
@@ -266,14 +275,14 @@ class SigneinPageBody extends StatelessWidget {
                     _buildSocialLoginButton(
                       icon: "lib/core/assets/images/login_images/google.png",
                       onTap: () {
-                        signinctrl.signInWithGoogle();
+                        _googleLoginCntroller.signInWithGoogle();
                       },
                     ),
                     SizedBox(width: 20),
                     _buildSocialLoginButton(
                       icon: "lib/core/assets/images/login_images/Guest.png",
                       onTap: () {
-                        signinctrl.signInAnonymously();
+                        _anonymousLoginCntroller.signInAnonymously();
                       },
                     ),
                   ],

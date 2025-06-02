@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/core/widgets/information_form.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/auth_controller.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/signup_controller.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
 
 // Helper class for sign-in form widgets
 class SignInFormHelpers {
-  final AuthController signinnctrl = Get.find();
+  final SignupController signinnctrl = Get.find();
   final Txtvalcontroller txtvalctrl = Get.put<Txtvalcontroller>(
     Txtvalcontroller(),
   );
@@ -73,7 +73,7 @@ class SignInFormHelpers {
                 ? 'Please ${"confirm_password".tr}'
                 : 'field_required'.tr;
           }
-          if (isConfirmation && val != signinnctrl.password.text) {
+          if (isConfirmation && val != signinnctrl.password1.text) {
             return 'not_match'.tr;
           }
           return null;
