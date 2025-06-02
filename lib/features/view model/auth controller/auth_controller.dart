@@ -105,8 +105,7 @@ class AuthController extends GetxController {
       final AuthResponse response = await _supabase.auth.signUp(
         email: email,
         password: password,
-        emailRedirectTo:
-            'io.supabase.flutterquickstart://login-callback/', // Add your redirect URL
+        emailRedirectTo: 'com.trade.lawe://auth-callback/',
         data: {
           'name': name.text,
           'lastName': lastName.text,
