@@ -16,7 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final ThemeController themectrl = Get.find();
-  final AuthController authctrl = Get.find();
+  final AuthController authctrl = Get.put<AuthController>(AuthController());
   final LanguageController langctrl = Get.find();
   int _currentIndex = 0;
 

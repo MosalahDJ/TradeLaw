@@ -10,6 +10,7 @@ import 'package:tradelaw/core/theme/thems.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/language_controller.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
 import 'package:tradelaw/features/view/auth/login%20page/loginpage.dart';
+import 'package:tradelaw/features/view/home/home_page.dart';
 import 'package:tradelaw/myrouts.dart';
 // messaging background handler
 
@@ -19,7 +20,8 @@ void main() async {
   // Initialize Supabase
   await Supabase.initialize(
     url: 'https://juktdohsepycmmgtmddf.supabase.co',
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp1a3Rkb2hzZXB5Y21tZ3RtZGRmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg3MDcxOTUsImV4cCI6MjA2NDI4MzE5NX0.n-AceFZf2IwAy8gq5-xawOjJ6KFVcC-AoY6lyIE69Yw',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp1a3Rkb2hzZXB5Y21tZ3RtZGRmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg3MDcxOTUsImV4cCI6MjA2NDI4MzE5NX0.n-AceFZf2IwAy8gq5-xawOjJ6KFVcC-AoY6lyIE69Yw',
   );
 
   final prefs = await SharedPreferences.getInstance();
@@ -29,7 +31,6 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-
 
   runApp(TradeLaw(prefs: prefs));
 }
@@ -49,6 +50,8 @@ class TradeLaw extends StatelessWidget {
       permanent: true,
     );
 
+    final supabase = Supabase.instance.client;
+
     return GetMaterialApp(
       title: 'TradeLaw',
 
@@ -63,7 +66,8 @@ class TradeLaw extends StatelessWidget {
               : ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       initialBinding: Mybinding(),
-      home: LoginPage(),
+      home:
+          supabase.auth.currentSession == null ? LoginPage() : const HomePage(),
       getPages: Myrouts.getpages,
       translations: Messages(),
       locale: Locale(languageController.language.value), // Use stored language
