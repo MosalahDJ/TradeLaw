@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/core/Utils/constants.dart';
 import 'package:tradelaw/core/Utils/size_config.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/auth_controller.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/anonymous_login.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/google_login_cntroller.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/login_controller.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
 import 'package:tradelaw/features/view/auth/signin%20page/signin_page.dart';
@@ -10,16 +12,18 @@ import 'package:tradelaw/features/view/auth/signin%20page/signin_page.dart';
 class LoginBody extends StatelessWidget {
   final ThemeController themeController;
   LoginBody({super.key, required this.themeController});
-  // final AuthController loginctrl = Get.find();
-  final Txtvalcontroller txtvalctrl = Get.find();
+  final LoginController _loginctrl = Get.find();
+  final GoogleLoginCntroller _googleLoginCntroller = Get.put(GoogleLoginCntroller());
+  final AnonymousLoginController _anonymousLoginCntroller = Get.put(AnonymousLoginController());
+  final Txtvalcontroller _txtvalctrl = Get.find();
 
   @override
   Widget build(BuildContext context) {
     // استخدم themeController.isDarkMode بدلاً من Get.isDarkMode
     bool isDark = themeController.isDarkMode;
 
-    String? email = loginctrl.emailController.text;
-    String? password = loginctrl.passwordController.text;
+    String? email = _loginctrl.emailController.text;
+    String? password = _loginctrl.passwordController.text;
 
     return Scaffold(
       body: SafeArea(
@@ -78,11 +82,11 @@ class LoginBody extends StatelessWidget {
 
                 // Email Field
                 Form(
-                  key: txtvalctrl.loginemailstate,
+                  key: _txtvalctrl.loginemailstate,
                   child: _buildTextField(
-                    controller: loginctrl.emailController,
+                    controller: _loginctrl.emailController,
                     hintText: "enter_email".tr,
-                    focusNode: loginctrl.emailfnode,
+                    focusNode: _loginctrl.emailfnode,
                     keyboardType: TextInputType.emailAddress,
                     validator:
                         (val) =>
@@ -94,23 +98,23 @@ class LoginBody extends StatelessWidget {
 
                 // Password Field
                 Form(
-                  key: txtvalctrl.loginpasswordstate,
-                  child: GetBuilder<AuthController>(
+                  key: _txtvalctrl.loginpasswordstate,
+                  child: GetBuilder<LoginController>(
                     builder:
                         (controller) => _buildTextField(
-                          controller: loginctrl.passwordController,
+                          controller: _loginctrl.passwordController,
                           hintText: "enter_password".tr,
-                          focusNode: loginctrl.passwordfnode,
-                          obscureText: loginctrl.isPasswordVisible,
+                          focusNode: _loginctrl.passwordfnode,
+                          obscureText: _loginctrl.isPasswordVisible,
                           validator:
                               (val) =>
                                   val!.isEmpty
                                       ? "Please ${"enter_password".tr}"
                                       : null,
                           suffixIcon: IconButton(
-                            onPressed: loginctrl.togglePasswordVisibility,
+                            onPressed: _loginctrl.togglePasswordVisibility,
                             icon: Icon(
-                              loginctrl.isPasswordVisible
+                              _loginctrl.isPasswordVisible
                                   ? Icons.visibility_off
                                   : Icons.visibility,
                               color: isDark ? kmaincolor4 : kmaincolor,
@@ -125,8 +129,8 @@ class LoginBody extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: TextButton(
                     onPressed: () {
-                      loginctrl.unfocusKeyboard();
-                      loginctrl.resetPassword(email);
+                      _loginctrl.unfocusKeyboard();
+                      _loginctrl.resetPassword(email);
                     },
                     child: Text(
                       "forgot_password".tr,
@@ -152,20 +156,20 @@ class LoginBody extends StatelessWidget {
                       elevation: 0,
                     ),
                     onPressed: () {
-                      if (txtvalctrl.loginemailstate.currentState!.validate() &&
-                          txtvalctrl.loginpasswordstate.currentState!
+                      if (_txtvalctrl.loginemailstate.currentState!.validate() &&
+                          _txtvalctrl.loginpasswordstate.currentState!
                               .validate()) {
-                        loginctrl.isLoading.value
+                        _loginctrl.isLoading.value
                             ? null
-                            : loginctrl.unfocusKeyboard();
-                        loginctrl.isLoading.value
+                            : _loginctrl.unfocusKeyboard();
+                        _loginctrl.isLoading.value
                             ? null
-                            : loginctrl.signInWithEmail(email, password);
+                            : _loginctrl.signInWithEmail(email, password);
                       }
                     },
                     child: Obx(
                       () =>
-                          loginctrl.isLoading.value
+                          _loginctrl.isLoading.value
                               ? CircularProgressIndicator(
                                 valueColor: AlwaysStoppedAnimation<Color>(
                                   isDark ? kmaincolor : kmaincolor4,
@@ -218,13 +222,13 @@ class LoginBody extends StatelessWidget {
                   children: [
                     _buildSocialLoginButton(
                       icon: "lib/core/assets/images/login_images/google.png",
-                      onTap: () => loginctrl.signInWithGoogle(),
+                      onTap: () => _googleLoginCntroller.signInWithGoogle(),
                     ),
                     SizedBox(width: 20),
                     _buildSocialLoginButton(
                       icon: "lib/core/assets/images/login_images/Guest.png",
                       iconcolor: isDark ? Colors.white : Colors.black,
-                      onTap: () => loginctrl.signInAnonymously(),
+                      onTap: () => _anonymousLoginCntroller.signInAnonymously(),
                     ),
                   ],
                 ),
@@ -243,7 +247,7 @@ class LoginBody extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        loginctrl.unfocusKeyboard();
+                        _loginctrl.unfocusKeyboard();
                         Get.offAll(
                           () => SigninPage(),
                           duration: const Duration(milliseconds: 500),

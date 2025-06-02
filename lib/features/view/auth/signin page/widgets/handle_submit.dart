@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/auth_controller.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/login_controller.dart';
+import 'package:tradelaw/features/view%20model/auth%20controller/signup_controller.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
 
 class SignInSubmitHandler {
-  final AuthController signinctrl = Get.put<AuthController>(
-    AuthController(),
-  );
-
+  SignupController signinctrl = Get.put<SignupController>(SignupController());
+LoginController loginctrl = Get.find<LoginController>();
   final Txtvalcontroller txtvalctrl = Get.put<Txtvalcontroller>(
     Txtvalcontroller(),
   );
@@ -26,8 +25,8 @@ class SignInSubmitHandler {
 
     if (isValid) {
       signinctrl.signUpWithEmail(
-        signinctrl.emailController.text,
-        signinctrl.passwordController.text,
+        loginctrl.emailController.text,
+        loginctrl.passwordController.text,
       );
     }
   }

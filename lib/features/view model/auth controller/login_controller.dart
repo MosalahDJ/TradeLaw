@@ -3,8 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class LoginController extends GetxController{
-
+class LoginController extends GetxController {
   final _googleSignIn = GoogleSignIn();
   final _supabase = Supabase.instance.client;
 
@@ -12,23 +11,20 @@ class LoginController extends GetxController{
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  
   final emailfnode = FocusNode();
   final passwordfnode = FocusNode();
 
-    void unfocusKeyboard() {
+  void unfocusKeyboard() {
     // This will remove focus from any text field and dismiss the keyboard
     emailfnode.unfocus();
     passwordfnode.unfocus();
   }
-
 
   // Observable states
   final isLoading = false.obs;
   final isAuthenticated = false.obs;
   final user = Rxn<User>();
 
-  
   @override
   void onInit() {
     super.onInit();
@@ -39,16 +35,15 @@ class LoginController extends GetxController{
     });
   }
 
-
   // Add observable for password visibility
   final RxBool _isPasswordVisible = false.obs;
   bool get isPasswordVisible => _isPasswordVisible.value;
-// Add toggle function
+  // Add toggle function
   void togglePasswordVisibility() {
     _isPasswordVisible.value = !_isPasswordVisible.value;
     update(); // Notify GetX to update the UI
   }
-  
+
   // Email & Password Login
   Future<void> signInWithEmail(String email, String password) async {
     try {
@@ -58,6 +53,8 @@ class LoginController extends GetxController{
         password: password,
       );
       if (response.user != null) {
+        emailController.clear();
+        passwordController.clear();
         Get.offAllNamed('/home'); // Navigate to home screen
       }
     } catch (e) {
@@ -68,7 +65,6 @@ class LoginController extends GetxController{
     }
   }
 
-  
   // Reset Password
   Future<void> resetPassword(String email) async {
     try {
@@ -88,8 +84,6 @@ class LoginController extends GetxController{
     }
   }
 
-
-  
   // Sign Out
   Future<void> signOut() async {
     try {
@@ -104,7 +98,7 @@ class LoginController extends GetxController{
       Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
     }
   }
-  
+
   @override
   void onClose() {
     // Clean up focus nodes
@@ -114,5 +108,4 @@ class LoginController extends GetxController{
     passwordfnode.dispose();
     super.onClose();
   }
-
 }
