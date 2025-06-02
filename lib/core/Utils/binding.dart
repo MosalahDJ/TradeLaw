@@ -10,6 +10,6 @@ class Mybinding implements Bindings {
     Get.put<ThemeController>(ThemeController(), permanent: true);
     final prefs = await SharedPreferences.getInstance();
     Get.put(LanguageController(prefs), permanent: true);
-    Get.put<LoginController>(LoginController(), permanent: true);
+    Get.put<LoginController>(LoginController());
   }
 }
