@@ -10,7 +10,7 @@ import 'package:tradelaw/features/view/auth/signin%20page/signin_page.dart';
 class LoginBody extends StatelessWidget {
   final ThemeController themeController;
   LoginBody({super.key, required this.themeController});
-  final AuthController loginctrl = Get.find();
+  // final AuthController loginctrl = Get.find();
   final Txtvalcontroller txtvalctrl = Get.find();
 
   @override

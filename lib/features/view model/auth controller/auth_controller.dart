@@ -1,261 +1,135 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import 'package:supabase_flutter/supabase_flutter.dart';
 
-class AuthController extends GetxController {
-  final _supabase = Supabase.instance.client;
-  final _googleSignIn = GoogleSignIn();
+// class AuthController extends GetxController {
+//   final _supabase = Supabase.instance.client;
 
-  // Add these controllers
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+//   // Observable states
+//   final isLoading = false.obs;
+//   final isAuthenticated = false.obs;
+//   final user = Rxn<User>();
 
-  // Observable states
-  final isLoading = false.obs;
-  final isAuthenticated = false.obs;
-  final user = Rxn<User>();
+//   // Add observable for password visibility
+//   final RxBool _isPasswordVisible = false.obs;
+//   bool get isPasswordVisible => _isPasswordVisible.value;
 
-  // Add observable for password visibility
-  final RxBool _isPasswordVisible = false.obs;
-  bool get isPasswordVisible => _isPasswordVisible.value;
+//   // Add toggle function
+//   void togglePasswordVisibility() {
+//     _isPasswordVisible.value = !_isPasswordVisible.value;
+//     update(); // Notify GetX to update the UI
+//   }
 
-  // Add toggle function
-  void togglePasswordVisibility() {
-    _isPasswordVisible.value = !_isPasswordVisible.value;
-    update(); // Notify GetX to update the UI
-  }
+//   // Add observable for password visibility
+//   final RxBool _isPasswordVisible2 = false.obs;
+//   bool get isPasswordVisible2 => _isPasswordVisible2.value;
 
-  // Add observable for password visibility
-  final RxBool _isPasswordVisible2 = false.obs;
-  bool get isPasswordVisible2 => _isPasswordVisible2.value;
+//   // Add toggle function
+//   void togglePasswordVisibility2() {
+//     _isPasswordVisible2.value = !_isPasswordVisible2.value;
+//     update(); // Notify GetX to update the UI
+//   }
 
-  // Add toggle function
-  void togglePasswordVisibility2() {
-    _isPasswordVisible2.value = !_isPasswordVisible2.value;
-    update(); // Notify GetX to update the UI
-  }
+//   // Text Controllers for sign-in form
+//   final name = TextEditingController();
+//   final lastName = TextEditingController();
+//   final myemail = TextEditingController();
+//   final password1 = TextEditingController();
+//   final password2 = TextEditingController();
+//   final gender = TextEditingController();
 
-  // Text Controllers for sign-in form
-  final name = TextEditingController();
-  final lastName = TextEditingController();
-  final myemail = TextEditingController();
-  final password = TextEditingController();
-  final password2 = TextEditingController();
-  final gender = TextEditingController();
+//   // Focus Nodes for sign-in form
+//   final namefnode = FocusNode();
+//   final lastNamefnode = FocusNode();
+//   final genderfnode = FocusNode();
+//   final emailfnode = FocusNode();
+//   final passwordfnode = FocusNode();
+//   final passwordfnode2 = FocusNode();
 
-  // Focus Nodes for sign-in form
-  final namefnode = FocusNode();
-  final lastNamefnode = FocusNode();
-  final genderfnode = FocusNode();
-  final emailfnode = FocusNode();
-  final passwordfnode = FocusNode();
-  final passwordfnode2 = FocusNode();
+//   // Add the unfocuskeyboardsignin method
+//   void unfocuskeyboardsignin() {
+//     namefnode.unfocus();
+//     lastNamefnode.unfocus();
+//     genderfnode.unfocus();
+//     emailfnode.unfocus();
+//     passwordfnode.unfocus();
+//     passwordfnode2.unfocus();
+//   }
 
-  // Add the unfocuskeyboardsignin method
-  void unfocuskeyboardsignin() {
-    namefnode.unfocus();
-    lastNamefnode.unfocus();
-    genderfnode.unfocus();
-    emailfnode.unfocus();
-    passwordfnode.unfocus();
-    passwordfnode2.unfocus();
-  }
+//   Future<void> signUpWithEmail(String email, String password) async {
+//     try {
+//       isLoading.value = true;
 
-  void unfocusKeyboard() {
-    // This will remove focus from any text field and dismiss the keyboard
-    emailfnode.unfocus();
-    passwordfnode.unfocus();
-  }
+//       // Sign up the user
+//       final AuthResponse response = await _supabase.auth.signUp(
+//         email: email,
+//         password: password,
+//         emailRedirectTo: 'com.trade.lawe://auth-callback/',
+//         data: {
+//           'name': name.text,
+//           'lastName': lastName.text,
+//           'gender': gender.text,
+//         },
+//       );
 
-  @override
-  void onInit() {
-    super.onInit();
-    // Listen to auth state changes
-    _supabase.auth.onAuthStateChange.listen((event) {
-      user.value = event.session?.user;
-      isAuthenticated.value = user.value != null;
-    });
-  }
+//       if (response.user != null) {
+//         if (response.session == null) {
+//           // Email confirmation was sent
+//           Get.snackbar(
+//             'Success',
+//             'Please check your email for verification link',
+//             snackPosition: SnackPosition.BOTTOM,
+//             duration: const Duration(seconds: 5),
+//           );
 
-  // Email & Password Login
-  Future<void> signInWithEmail(String email, String password) async {
-    try {
-      isLoading.value = true;
-      final response = await _supabase.auth.signInWithPassword(
-        email: email,
-        password: password,
-      );
-      if (response.user != null) {
-        Get.offAllNamed('/home'); // Navigate to home screen
-      }
-    } catch (e) {
-      print(e.toString());
-      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
-    } finally {
-      isLoading.value = false;
-    }
-  }
+//           // Clear form fields
+//           name.clear();
+//           lastName.clear();
+//           myemail.clear();
+//           password1.clear();
+//           password2.clear();
+//           gender.clear();
 
-  Future<void> signUpWithEmail(String email, String password) async {
-    try {
-      isLoading.value = true;
+//           Get.offAllNamed('/login');
+//         } else {
+//           // User doesn't need email confirmation
+//           Get.snackbar(
+//             'Success',
+//             'Account created successfully',
+//             snackPosition: SnackPosition.BOTTOM,
+//           );
+//           Get.offAllNamed('/home');
+//         }
+//       }
+//     } catch (e) {
+//       print(e.toString());
 
-      // Sign up the user
-      final AuthResponse response = await _supabase.auth.signUp(
-        email: email,
-        password: password,
-        emailRedirectTo: 'com.trade.lawe://auth-callback/',
-        data: {
-          'name': name.text,
-          'lastName': lastName.text,
-          'gender': gender.text,
-        },
-      );
+//       Get.snackbar(
+//         'Error',
+//         e.toString(),
+//         snackPosition: SnackPosition.BOTTOM,
+//         backgroundColor: Colors.red.withValues(alpha: 0.1),
+//         colorText: Colors.red,
+//       );
+//     } finally {
+//       isLoading.value = false;
+//     }
+//   }
 
-      if (response.user != null) {
-        if (response.session == null) {
-          // Email confirmation was sent
-          Get.snackbar(
-            'Success',
-            'Please check your email for verification link',
-            snackPosition: SnackPosition.BOTTOM,
-            duration: const Duration(seconds: 5),
-          );
-
-          // Clear form fields
-          name.clear();
-          lastName.clear();
-          myemail.clear();
-          passwordController.clear();
-          gender.clear();
-
-          Get.offAllNamed('/login');
-        } else {
-          // User doesn't need email confirmation
-          Get.snackbar(
-            'Success',
-            'Account created successfully',
-            snackPosition: SnackPosition.BOTTOM,
-          );
-          Get.offAllNamed('/home');
-        }
-      }
-    } catch (e) {
-      print(e.toString());
-
-      Get.snackbar(
-        'Error',
-        e.toString(),
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.withValues(alpha: 0.1),
-        colorText: Colors.red,
-      );
-    } finally {
-      isLoading.value = false;
-    }
-  }
-
-  // // Google Sign-In
-  // Future<void> signInWithGoogle() async {
-  //   try {
-  //     isLoading.value = true;
-
-  //     // Configure Google Sign In with your web client ID
-  //     final GoogleSignIn googleSignIn = GoogleSignIn(
-  //       clientId:
-  //           '524401420622-bslevq000brf9705snlk0v1sso8nk6ot.apps.googleusercontent.com', // Add your web client ID here
-  //       scopes: ['email', 'profile'],
-  //     );
-
-  //     final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
-  //     if (googleUser == null) return;
-
-  //     final GoogleSignInAuthentication googleAuth =
-  //         await googleUser.authentication;
-
-  //     final response = await _supabase.auth.signInWithIdToken(
-  //       provider: OAuthProvider.google,
-  //       idToken: googleAuth.idToken!,
-  //       accessToken: googleAuth.accessToken,
-  //     );
-
-  //     if (response.user != null) {
-  //       Get.offAllNamed('/home');
-  //     }
-  //   } catch (e) {
-  //     print('Google sign in error: ${e.toString()}');
-  //     Get.snackbar(
-  //       'Error',
-  //       'Failed to sign in with Google: ${e.toString()}',
-  //       snackPosition: SnackPosition.BOTTOM,
-  //       backgroundColor: Colors.red.withOpacity(0.1),
-  //       colorText: Colors.red,
-  //     );
-  //   } finally {
-  //     isLoading.value = false;
-  //   }
-  // }
-
-  // // Anonymous Login
-  // Future<void> signInAnonymously() async {
-  //   try {
-  //     isLoading.value = true;
-  //     final response = await _supabase.auth.signInAnonymously();
-  //     if (response.user != null) {
-  //       Get.offAllNamed('/home');
-  //     }
-  //   } catch (e) {
-  //     print(e.toString());
-
-  //     Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
-  //   } finally {
-  //     isLoading.value = false;
-  //   }
-  // }
-
-  // Reset Password
-  Future<void> resetPassword(String email) async {
-    try {
-      isLoading.value = true;
-      await _supabase.auth.resetPasswordForEmail(email);
-      Get.snackbar(
-        'Success',
-        'Password reset link sent to your email',
-        snackPosition: SnackPosition.BOTTOM,
-      );
-    } catch (e) {
-      print(e.toString());
-
-      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
-    } finally {
-      isLoading.value = false;
-    }
-  }
-
-  // Sign Out
-  Future<void> signOut() async {
-    try {
-      isLoading.value = true;
-      await _supabase.auth.signOut();
-      await _googleSignIn.signOut();
-      Get.offAllNamed('/login');
-      isLoading.value = false;
-    } catch (e) {
-      print(e.toString());
-
-      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
-    }
-  }
-
-  @override
-  void onClose() {
-    // Clean up focus nodes
-    namefnode.dispose();
-    lastNamefnode.dispose();
-    genderfnode.dispose();
-    emailfnode.dispose();
-    passwordfnode.dispose();
-    super.onClose();
-  }
-}
+//   @override
+//   void onClose() {
+//     // Dispose text controllers
+//     name.dispose();
+//     lastName.dispose();
+//     myemail.dispose();
+//     password1.dispose();
+//     password2.dispose();
+//     // Clean up focus nodes
+//     namefnode.dispose();
+//     lastNamefnode.dispose();
+//     genderfnode.dispose();
+//     emailfnode.dispose();
+//     passwordfnode.dispose();
+//     super.onClose();
+//   }
+// }

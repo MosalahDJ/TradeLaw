@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/auth_controller.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
 import 'package:tradelaw/features/view/auth/login%20page/widgets/login_body.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
-  final AuthController loginctrl = Get.put<AuthController>(AuthController());
   final Txtvalcontroller txtvalctrl = Get.put<Txtvalcontroller>(
     Txtvalcontroller(),
   );
