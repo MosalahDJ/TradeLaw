@@ -156,63 +156,63 @@ class AuthController extends GetxController {
     }
   }
 
-  // Google Sign-In
-  Future<void> signInWithGoogle() async {
-    try {
-      isLoading.value = true;
+  // // Google Sign-In
+  // Future<void> signInWithGoogle() async {
+  //   try {
+  //     isLoading.value = true;
 
-      // Configure Google Sign In with your web client ID
-      final GoogleSignIn googleSignIn = GoogleSignIn(
-        clientId:
-            '524401420622-bslevq000brf9705snlk0v1sso8nk6ot.apps.googleusercontent.com', // Add your web client ID here
-        scopes: ['email', 'profile'],
-      );
+  //     // Configure Google Sign In with your web client ID
+  //     final GoogleSignIn googleSignIn = GoogleSignIn(
+  //       clientId:
+  //           '524401420622-bslevq000brf9705snlk0v1sso8nk6ot.apps.googleusercontent.com', // Add your web client ID here
+  //       scopes: ['email', 'profile'],
+  //     );
 
-      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
-      if (googleUser == null) return;
+  //     final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+  //     if (googleUser == null) return;
 
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
+  //     final GoogleSignInAuthentication googleAuth =
+  //         await googleUser.authentication;
 
-      final response = await _supabase.auth.signInWithIdToken(
-        provider: OAuthProvider.google,
-        idToken: googleAuth.idToken!,
-        accessToken: googleAuth.accessToken,
-      );
+  //     final response = await _supabase.auth.signInWithIdToken(
+  //       provider: OAuthProvider.google,
+  //       idToken: googleAuth.idToken!,
+  //       accessToken: googleAuth.accessToken,
+  //     );
 
-      if (response.user != null) {
-        Get.offAllNamed('/home');
-      }
-    } catch (e) {
-      print('Google sign in error: ${e.toString()}');
-      Get.snackbar(
-        'Error',
-        'Failed to sign in with Google: ${e.toString()}',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.withOpacity(0.1),
-        colorText: Colors.red,
-      );
-    } finally {
-      isLoading.value = false;
-    }
-  }
+  //     if (response.user != null) {
+  //       Get.offAllNamed('/home');
+  //     }
+  //   } catch (e) {
+  //     print('Google sign in error: ${e.toString()}');
+  //     Get.snackbar(
+  //       'Error',
+  //       'Failed to sign in with Google: ${e.toString()}',
+  //       snackPosition: SnackPosition.BOTTOM,
+  //       backgroundColor: Colors.red.withOpacity(0.1),
+  //       colorText: Colors.red,
+  //     );
+  //   } finally {
+  //     isLoading.value = false;
+  //   }
+  // }
 
-  // Anonymous Login
-  Future<void> signInAnonymously() async {
-    try {
-      isLoading.value = true;
-      final response = await _supabase.auth.signInAnonymously();
-      if (response.user != null) {
-        Get.offAllNamed('/home');
-      }
-    } catch (e) {
-      print(e.toString());
+  // // Anonymous Login
+  // Future<void> signInAnonymously() async {
+  //   try {
+  //     isLoading.value = true;
+  //     final response = await _supabase.auth.signInAnonymously();
+  //     if (response.user != null) {
+  //       Get.offAllNamed('/home');
+  //     }
+  //   } catch (e) {
+  //     print(e.toString());
 
-      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
-    } finally {
-      isLoading.value = false;
-    }
-  }
+  //     Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
+  //   } finally {
+  //     isLoading.value = false;
+  //   }
+  // }
 
   // Reset Password
   Future<void> resetPassword(String email) async {
