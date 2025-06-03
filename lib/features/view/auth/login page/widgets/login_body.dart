@@ -164,7 +164,7 @@ class LoginBody extends StatelessWidget {
                             : _loginctrl.unfocusKeyboard();
                         _loginctrl.isLoading.value
                             ? null
-                            : _loginctrl.signInWithEmail(email, password);
+                            : _loginctrl.signIn();
                       }
                     },
                     child: Obx(

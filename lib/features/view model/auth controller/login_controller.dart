@@ -45,21 +45,56 @@ class LoginController extends GetxController {
   }
 
   // Email & Password Login
-  Future<void> signInWithEmail(String email, String password) async {
+  Future<void> signIn() async {
     try {
+      // Basic validation
+      final email = emailController.text.trim();
+      final password = passwordController.text.trim();
+
+      if (email.isEmpty || password.isEmpty) {
+        throw 'Please enter both email and password';
+      }
+
+      // Email format validation
+      final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+      if (!emailRegex.hasMatch(email)) {
+        throw 'Please enter a valid email address';
+      }
+
       isLoading.value = true;
+
       final response = await _supabase.auth.signInWithPassword(
         email: email,
         password: password,
       );
+
       if (response.user != null) {
-        emailController.clear();
-        passwordController.clear();
-        Get.offAllNamed('/home'); // Navigate to home screen
+        Get.offAllNamed('/home');
+      } else {
+        throw 'Login failed. Please try again.';
       }
     } catch (e) {
-      print(e.toString());
-      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
+      String errorMessage;
+
+      // Handle specific error cases
+      if (e.toString().contains('Invalid login credentials')) {
+        errorMessage = 'Incorrect email or password';
+      } else if (e.toString().contains('not confirmed')) {
+        errorMessage = 'Please verify your email first';
+      } else {
+        errorMessage = e.toString();
+      }
+
+      print('Login error details: $e');
+
+      Get.snackbar(
+        'Login Failed',
+        errorMessage,
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red.withOpacity(0.1),
+        colorText: Colors.red,
+        duration: const Duration(seconds: 3),
+      );
     } finally {
       isLoading.value = false;
     }
