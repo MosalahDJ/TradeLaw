@@ -7,9 +7,9 @@ import 'package:tradelaw/features/view%20model/settings%20controllers/theme_cont
 class Mybinding implements Bindings {
   @override
   void dependencies() async {
+    Get.put<LoginController>(LoginController());
     Get.put<ThemeController>(ThemeController(), permanent: true);
     final prefs = await SharedPreferences.getInstance();
     Get.put(LanguageController(prefs), permanent: true);
-    Get.put<LoginController>(LoginController());
   }
 }
