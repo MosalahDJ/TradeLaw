@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:uni_links/uni_links.dart';
 import 'dart:async';
 import 'package:tradelaw/core/Utils/binding.dart';
 import 'package:tradelaw/core/Utils/size_config.dart';
@@ -14,6 +13,7 @@ import 'package:tradelaw/features/view%20model/settings%20controllers/theme_cont
 import 'package:tradelaw/features/view/auth/login%20page/loginpage.dart';
 import 'package:tradelaw/features/view/home/home_page.dart';
 import 'package:tradelaw/myrouts.dart';
+import 'package:app_links/app_links.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,6 +45,7 @@ class TradeLaw extends StatefulWidget {
 }
 
 class _TradeLawState extends State<TradeLaw> {
+  late AppLinks _appLinks;
   StreamSubscription? _linkSubscription;
 
   @override
@@ -54,20 +55,21 @@ class _TradeLawState extends State<TradeLaw> {
   }
 
   void _initDeepLinks() async {
+    // Initialize AppLinks
+    _appLinks = AppLinks();
+    
     // Handle deep links when app is already running
-    _linkSubscription = linkStream.listen((String? link) {
-      if (link != null) {
-        _handleDeepLink(link);
-      }
+    _linkSubscription = _appLinks.allUriLinkStream.listen((uri) {
+      _handleDeepLink(uri.toString());
     }, onError: (err) {
       print('Deep link error: $err');
     });
   
     // Handle deep link when app is launched from terminated state
     try {
-      final initialLink = await getInitialLink();
-      if (initialLink != null) {
-        _handleDeepLink(initialLink);
+      final initialUri = await _appLinks.getInitialAppLink();
+      if (initialUri != null) {
+        _handleDeepLink(initialUri.toString());
       }
     } catch (e) {
       print('Initial link error: $e');
