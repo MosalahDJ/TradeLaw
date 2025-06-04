@@ -45,12 +45,9 @@ class LoginController extends GetxController {
   }
 
   // Email & Password Login
-  Future<void> signIn() async {
+  Future<void> signIn(String email, String password) async {
     try {
       // Basic validation
-      final email = emailController.text.trim();
-      final password = passwordController.text.trim();
-
       if (email.isEmpty || password.isEmpty) {
         throw 'Please enter both email and password';
       }
@@ -62,13 +59,14 @@ class LoginController extends GetxController {
       }
 
       isLoading.value = true;
-
       final response = await _supabase.auth.signInWithPassword(
         email: email,
         password: password,
       );
 
       if (response.user != null) {
+        emailController.clear();
+        passwordController.clear();
         Get.offAllNamed('/home');
       } else {
         throw 'Login failed. Please try again.';
@@ -101,19 +99,55 @@ class LoginController extends GetxController {
   }
 
   // Reset Password
+  // Reset Password
   Future<void> resetPassword(String email) async {
     try {
+      // Add validation
+      if (email.isEmpty) {
+        Get.snackbar(
+          'Error',
+          'Please enter your email address',
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red.withOpacity(0.1),
+          colorText: Colors.red,
+        );
+        return;
+      }
+  
+      // Email format validation
+      final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+      if (!emailRegex.hasMatch(email)) {
+        Get.snackbar(
+          'Error',
+          'Please enter a valid email address',
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red.withOpacity(0.1),
+          colorText: Colors.red,
+        );
+        return;
+      }
+  
       isLoading.value = true;
-      await _supabase.auth.resetPasswordForEmail(email);
+      await _supabase.auth.resetPasswordForEmail(
+        email,
+        redirectTo: 'com.trade.lawe://auth-callback/reset-password',
+      );
       Get.snackbar(
         'Success',
         'Password reset link sent to your email',
         snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.green.withOpacity(0.1),
+        colorText: Colors.green,
       );
     } catch (e) {
       print(e.toString());
-
-      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(
+        'Error', 
+        e.toString(), 
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red.withOpacity(0.1),
+        colorText: Colors.red,
+      );
     } finally {
       isLoading.value = false;
     }

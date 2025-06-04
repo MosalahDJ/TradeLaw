@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:uni_links/uni_links.dart';
+import 'dart:async';
 import 'package:tradelaw/core/Utils/binding.dart';
 import 'package:tradelaw/core/Utils/size_config.dart';
 import 'package:tradelaw/core/localization/translations.dart';
@@ -35,9 +37,71 @@ void main() async {
   runApp(TradeLaw(prefs: prefs));
 }
 
-class TradeLaw extends StatelessWidget {
+class TradeLaw extends StatefulWidget {
   const TradeLaw({super.key, required this.prefs});
   final SharedPreferences prefs;
+
+  @override
+  State<TradeLaw> createState() => _TradeLawState();
+}
+
+class _TradeLawState extends State<TradeLaw> {
+  StreamSubscription? _linkSubscription;
+
+  @override
+  void initState() {
+    super.initState();
+    _initDeepLinks();
+  }
+
+  void _initDeepLinks() async {
+    // Handle deep links when app is already running
+    _linkSubscription = linkStream.listen((String link) {
+      _handleDeepLink(link);
+    }, onError: (err) {
+      print('Deep link error: $err');
+    });
+
+    // Handle deep link when app is launched from terminated state
+    try {
+      final initialLink = await getInitialLink();
+      if (initialLink != null) {
+        _handleDeepLink(initialLink);
+      }
+    } catch (e) {
+      print('Initial link error: $e');
+    }
+  }
+
+  void _handleDeepLink(String link) {
+    print('Received deep link: $link');
+    
+    final uri = Uri.parse(link);
+    
+    if (uri.path.contains('/reset-password')) {
+      // Extract tokens from the URL fragment
+      final fragment = uri.fragment;
+      if (fragment.isNotEmpty) {
+        final params = Uri.splitQueryString(fragment);
+        final accessToken = params['access_token'];
+        final refreshToken = params['refresh_token'];
+        
+        if (accessToken != null && refreshToken != null) {
+          // Set the session with the tokens
+          Supabase.instance.client.auth.setSession(accessToken, refreshToken);
+          
+          // Navigate to reset password page
+          Get.toNamed('/reset-password');
+        }
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    _linkSubscription?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +110,7 @@ class TradeLaw extends StatelessWidget {
       permanent: true,
     );
     final languageController = Get.put<LanguageController>(
-      LanguageController(prefs),
+      LanguageController(widget.prefs),
       permanent: true,
     );
 
@@ -54,10 +118,8 @@ class TradeLaw extends StatelessWidget {
 
     return GetMaterialApp(
       title: 'TradeLaw',
-
       theme: Themes().lightmode,
       darkTheme: Themes().darkmode,
-      //using thememode for changing theme whene user change selected theme value
       themeMode:
           themeController.selectedTheme.value == AppTheme.system
               ? ThemeMode.system
@@ -70,10 +132,9 @@ class TradeLaw extends StatelessWidget {
           supabase.auth.currentSession == null ? LoginPage() : const HomePage(),
       getPages: Myrouts.getpages,
       translations: Messages(),
-      locale: Locale(languageController.language.value), // Use stored language
+      locale: Locale(languageController.language.value),
       fallbackLocale: const Locale('en', 'US'),
       builder: (context, child) {
-        // Initialize Sizeconfig here
         Sizeconfig().init(context);
         return child!;
       },

@@ -13,8 +13,12 @@ class LoginBody extends StatelessWidget {
   final ThemeController themeController;
   LoginBody({super.key, required this.themeController});
   final LoginController _loginctrl = Get.find();
-  final GoogleLoginCntroller _googleLoginCntroller = Get.put(GoogleLoginCntroller());
-  final AnonymousLoginController _anonymousLoginCntroller = Get.put(AnonymousLoginController());
+  final GoogleLoginCntroller _googleLoginCntroller = Get.put(
+    GoogleLoginCntroller(),
+  );
+  final AnonymousLoginController _anonymousLoginCntroller = Get.put(
+    AnonymousLoginController(),
+  );
   final Txtvalcontroller _txtvalctrl = Get.find();
 
   @override
@@ -130,7 +134,9 @@ class LoginBody extends StatelessWidget {
                   child: TextButton(
                     onPressed: () {
                       _loginctrl.unfocusKeyboard();
-                      _loginctrl.resetPassword(email);
+                      // Get the current email value from the controller
+                      String currentEmail = _loginctrl.emailController.text.trim();
+                      _loginctrl.resetPassword(currentEmail);
                     },
                     child: Text(
                       "forgot_password".tr,
@@ -156,15 +162,17 @@ class LoginBody extends StatelessWidget {
                       elevation: 0,
                     ),
                     onPressed: () {
-                      if (_txtvalctrl.loginemailstate.currentState!.validate() &&
-                          _txtvalctrl.loginpasswordstate.currentState!
-                              .validate()) {
-                        _loginctrl.isLoading.value
-                            ? null
-                            : _loginctrl.unfocusKeyboard();
-                        _loginctrl.isLoading.value
-                            ? null
-                            : _loginctrl.signIn();
+                      String email = _loginctrl.emailController.text.trim();
+                      String password = _loginctrl.passwordController.text.trim();
+                      bool ispassvalidate = _txtvalctrl.loginpasswordstate.currentState!.validate();
+                      bool isemailvalidate = _txtvalctrl.loginemailstate.currentState!.validate();
+                      bool isloading = _loginctrl.isLoading.value;
+
+                      if (isemailvalidate && ispassvalidate) {
+                        print('Email: $email'); // Add this line to debug
+                        print('Password: $password'); // Add this line to debug
+                        isloading ? null : _loginctrl.unfocusKeyboard();
+                        isloading ? null : _loginctrl.signIn(email, password);
                       }
                     },
                     child: Obx(

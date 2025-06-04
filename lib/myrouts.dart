@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:tradelaw/features/view/auth/login%20page/loginpage.dart';
 import 'package:tradelaw/features/view/auth/signin%20page/signin_page.dart';
+import 'package:tradelaw/features/view/auth/reset_password/reset_password_page.dart';
 import 'package:tradelaw/features/view/home/home_page.dart';
 import 'package:tradelaw/features/view/home/pages/help%20and%20fedback/help_and_fedback.dart';
 import 'package:tradelaw/features/view/home/pages/info/info.dart';
@@ -16,6 +17,7 @@ class Myrouts {
     return [
       GetPage(name: "/login", page: () => LoginPage()),
       GetPage(name: "/signin", page: () => SigninPage()),
+      GetPage(name: "/reset-password", page: () => const ResetPasswordPage()),
       GetPage(name: "/home", page: () => HomePage()),
       GetPage(name: "/products", page: () => Products()),
       GetPage(name: "/reporting", page: () => Reporting()),
@@ -24,10 +26,11 @@ class Myrouts {
       GetPage(name: "/info", page: () => Info()),
       GetPage(name: "/help", page: () => Helpandfedback()),
       GetPage(
-        name: "/report_information", 
-        page: () => ReportInformationsPage(reportId: Get.arguments),),
+        name: "/report_information",
+        page: () => ReportInformationsPage(reportId: Get.arguments),
+      ),
       GetPage(
-        name: "/report_details", 
+        name: "/report_details",
         page: () => TrackingDetail(reportId: Get.arguments),
       ),
     ];
