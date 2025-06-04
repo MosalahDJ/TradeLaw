@@ -134,9 +134,8 @@ class LoginBody extends StatelessWidget {
                   child: TextButton(
                     onPressed: () {
                       _loginctrl.unfocusKeyboard();
-                      // Get the current email value from the controller
-                      String currentEmail = _loginctrl.emailController.text.trim();
-                      _loginctrl.resetPassword(currentEmail);
+                      // Remove the parameter since resetPassword() doesn't accept any
+                      _loginctrl.resetPassword();
                     },
                     child: Text(
                       "forgot_password".tr,
