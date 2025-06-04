@@ -14,7 +14,6 @@ import 'package:tradelaw/features/view%20model/settings%20controllers/theme_cont
 import 'package:tradelaw/features/view/auth/login%20page/loginpage.dart';
 import 'package:tradelaw/features/view/home/home_page.dart';
 import 'package:tradelaw/myrouts.dart';
-// messaging background handler
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,12 +55,14 @@ class _TradeLawState extends State<TradeLaw> {
 
   void _initDeepLinks() async {
     // Handle deep links when app is already running
-    _linkSubscription = linkStream.listen((String link) {
-      _handleDeepLink(link);
+    _linkSubscription = linkStream.listen((String? link) {
+      if (link != null) {
+        _handleDeepLink(link);
+      }
     }, onError: (err) {
       print('Deep link error: $err');
     });
-
+  
     // Handle deep link when app is launched from terminated state
     try {
       final initialLink = await getInitialLink();
@@ -76,24 +77,30 @@ class _TradeLawState extends State<TradeLaw> {
   void _handleDeepLink(String link) {
     print('Received deep link: $link');
     
-    final uri = Uri.parse(link);
-    
-    if (uri.path.contains('/reset-password')) {
-      // Extract tokens from the URL fragment
-      final fragment = uri.fragment;
-      if (fragment.isNotEmpty) {
-        final params = Uri.splitQueryString(fragment);
-        final accessToken = params['access_token'];
-        final refreshToken = params['refresh_token'];
-        
-        if (accessToken != null && refreshToken != null) {
-          // Set the session with the tokens
-          Supabase.instance.client.auth.setSession(accessToken, refreshToken);
+    try {
+      final uri = Uri.parse(link);
+      
+      if (uri.path.contains('/reset-password')) {
+        // Extract tokens from the URL fragment
+        final fragment = uri.fragment;
+        if (fragment.isNotEmpty) {
+          final params = Uri.splitQueryString(fragment);
+          final accessToken = params['access_token'];
+          final refreshToken = params['refresh_token'];
           
-          // Navigate to reset password page
-          Get.toNamed('/reset-password');
+          if (accessToken != null && refreshToken != null) {
+            // Use the correct method to recover session
+            Supabase.instance.client.auth.recoverSession(accessToken);
+            
+            // Navigate to reset password page with a delay to ensure context is ready
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              Get.toNamed('/reset-password');
+            });
+          }
         }
       }
+    } catch (e) {
+      print('Error handling deep link: $e');
     }
   }
 
@@ -120,6 +127,7 @@ class _TradeLawState extends State<TradeLaw> {
       title: 'TradeLaw',
       theme: Themes().lightmode,
       darkTheme: Themes().darkmode,
+      // Fixed the theme mode logic with proper AppTheme enum usage
       themeMode:
           themeController.selectedTheme.value == AppTheme.system
               ? ThemeMode.system
