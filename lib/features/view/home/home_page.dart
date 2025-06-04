@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/core/Utils/constants.dart';
 import 'package:tradelaw/core/Utils/size_config.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/auth_controller.dart';
 import 'package:tradelaw/features/view%20model/auth%20controller/login_controller.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/language_controller.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
