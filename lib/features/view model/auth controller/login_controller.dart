@@ -100,7 +100,7 @@ class LoginController extends GetxController {
 
   // Reset Password
   // Reset Password
-  Future<void> resetPassword(String email) async {
+  Future<void> resetPassword() async {
     try {
       // Add validation
       if (email.isEmpty) {
@@ -129,27 +129,12 @@ class LoginController extends GetxController {
   
       isLoading.value = true;
       await _supabase.auth.resetPasswordForEmail(
-        email,
-        redirectTo: 'com.trade.lawe://auth-callback/reset-password',
+        emailController.text,
+        redirectTo: 'com.example.tradelaw://auth-callback/reset-password', // Updated scheme
       );
-      Get.snackbar(
-        'Success',
-        'Password reset link sent to your email',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.green.withOpacity(0.1),
-        colorText: Colors.green,
-      );
-    } catch (e) {
-      print(e.toString());
-      Get.snackbar(
-        'Error', 
-        e.toString(), 
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.withOpacity(0.1),
-        colorText: Colors.red,
-      );
-    } finally {
-      isLoading.value = false;
+      Get.snackbar('Success', 'Password reset email sent!');
+    } catch (error) {
+      Get.snackbar('Error', error.toString());
     }
   }
 
