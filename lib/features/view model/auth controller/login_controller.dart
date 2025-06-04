@@ -97,8 +97,7 @@ class LoginController extends GetxController {
       isLoading.value = false;
     }
   }
-
-  // Reset Password
+  
   // Reset Password
   Future<void> resetPassword() async {
     try {
