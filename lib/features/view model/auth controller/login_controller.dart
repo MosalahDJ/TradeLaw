@@ -102,7 +102,7 @@ class LoginController extends GetxController {
   Future<void> resetPassword() async {
     try {
       // Add validation
-      if (email.isEmpty) {
+      if (emailController.text.isEmpty) {
         Get.snackbar(
           'Error',
           'Please enter your email address',
@@ -115,7 +115,7 @@ class LoginController extends GetxController {
   
       // Email format validation
       final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-      if (!emailRegex.hasMatch(email)) {
+      if (!emailRegex.hasMatch(emailController.text)) {
         Get.snackbar(
           'Error',
           'Please enter a valid email address',
@@ -134,6 +134,8 @@ class LoginController extends GetxController {
       Get.snackbar('Success', 'Password reset email sent!');
     } catch (error) {
       Get.snackbar('Error', error.toString());
+    } finally {
+      isLoading.value = false;
     }
   }
 
