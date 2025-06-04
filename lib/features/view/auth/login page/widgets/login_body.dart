@@ -26,8 +26,8 @@ class LoginBody extends StatelessWidget {
     // استخدم themeController.isDarkMode بدلاً من Get.isDarkMode
     bool isDark = themeController.isDarkMode;
 
-    String? email = _loginctrl.emailController.text;
-    String? password = _loginctrl.passwordController.text;
+    // String? email = _loginctrl.emailController.text;
+    // String? password = _loginctrl.passwordController.text;
 
     return Scaffold(
       body: SafeArea(
