@@ -45,3 +45,27 @@
         </intent>
     </queries>
 </manifest>
+
+
+<activity
+    android:name=".MainActivity"
+    android:exported="true"
+    android:launchMode="singleTop"
+    android:theme="@style/LaunchTheme"
+    android:windowSoftInputMode="adjustResize">
+    
+    <!-- Existing intent filter -->
+    <intent-filter android:autoVerify="true">
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+    </intent-filter>
+    
+    <!-- Add this intent filter for deep links -->
+    <intent-filter android:autoVerify="true">
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="com.trade.lawe" />
+    </intent-filter>
+    
+</activity>

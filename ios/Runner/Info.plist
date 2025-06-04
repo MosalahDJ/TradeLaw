@@ -47,5 +47,16 @@
 		<true/>
 		<key>UIStatusBarHidden</key>
 		<false/>
+		<key>CFBundleURLTypes</key>
+		<array>
+			<dict>
+				<key>CFBundleURLName</key>
+				<string>com.trade.lawe</string>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<string>com.trade.lawe</string>
+				</array>
+			</dict>
+		</array>
 	</dict>
 </plist>
