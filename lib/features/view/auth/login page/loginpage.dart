@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
 import 'package:tradelaw/features/view/auth/login%20page/widgets/login_body.dart';
 
 class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
-  final Txtvalcontroller txtvalctrl = Get.put<Txtvalcontroller>(
-    Txtvalcontroller(),
-  );
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Use Get.find() instead of Get.put() to get existing instance
+    // or Get.lazyPut() to create only if doesn't exist
+    // final Txtvalcontroller txtvalctrl = Get.find<Txtvalcontroller>();
+    
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) async {

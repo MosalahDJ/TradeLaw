@@ -7,27 +7,25 @@ import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecon
 class SignInSubmitHandler {
   SignupController signinctrl = Get.put<SignupController>(SignupController());
 LoginController loginctrl = Get.find<LoginController>();
-  final Txtvalcontroller txtvalctrl = Get.put<Txtvalcontroller>(
-    Txtvalcontroller(),
-  );
+  Txtvalcontroller txtvalctrl = Get.find<Txtvalcontroller>();
 
-  void handleSubmit(BuildContext context) {
-    signinctrl.unfocuskeyboardsignin();
-
-    // Validate all forms
-    bool isValid =
-        txtvalctrl.signinnamestate.currentState!.validate() &&
-        txtvalctrl.signinlastnamestate.currentState!.validate() &&
-        txtvalctrl.signingendrestate.currentState!.validate() &&
-        txtvalctrl.signinemailstate.currentState!.validate() &&
-        txtvalctrl.signinpasswordstate.currentState!.validate() &&
-        txtvalctrl.signinpasswordstate2.currentState!.validate();
-
-    if (isValid) {
-      signinctrl.signUpWithEmail(
-        loginctrl.emailController.text,
-        loginctrl.passwordController.text,
-      );
+    void handleSubmit(BuildContext context) {
+      signinctrl.unfocuskeyboardsignin();
+  
+      // Validate all forms
+      bool isValid =
+          txtvalctrl.signinnamestate.currentState!.validate() &&
+          txtvalctrl.signinlastnamestate.currentState!.validate() &&
+          txtvalctrl.signingendrestate.currentState!.validate() &&
+          txtvalctrl.signinemailstate.currentState!.validate() &&
+          txtvalctrl.signinpasswordstate.currentState!.validate() &&
+          txtvalctrl.signinpasswordstate2.currentState!.validate();
+  
+      if (isValid) {
+        signinctrl.signUpWithEmail(
+          loginctrl.emailController.text,
+          loginctrl.passwordController.text,
+        );
+      }
     }
   }
-}

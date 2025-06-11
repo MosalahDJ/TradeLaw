@@ -5,11 +5,13 @@ import 'package:tradelaw/features/view%20model/auth%20controller/signup_controll
 import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
 
 // Helper class for sign-in form widgets
-class SignInFormHelpers {
+class SigninFormHelper {
+  // Use Get.find() instead of Get.put()
+  final Txtvalcontroller txtvalctrl = Get.find<Txtvalcontroller>();
   final SignupController signinnctrl = Get.find();
-  final Txtvalcontroller txtvalctrl = Get.put<Txtvalcontroller>(
-    Txtvalcontroller(),
-  );
+  // final Txtvalcontroller txtvalctrl = Get.put<Txtvalcontroller>(
+  //   Txtvalcontroller(),
+  // );
 
   // Creates a standard form field with validation
   Widget buildFormField(
