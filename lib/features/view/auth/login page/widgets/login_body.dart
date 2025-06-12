@@ -162,9 +162,13 @@ class LoginBody extends StatelessWidget {
                     ),
                     onPressed: () {
                       String email = _loginctrl.emailController.text.trim();
-                      String password = _loginctrl.passwordController.text.trim();
-                      bool ispassvalidate = _txtvalctrl.loginpasswordstate.currentState!.validate();
-                      bool isemailvalidate = _txtvalctrl.loginemailstate.currentState!.validate();
+                      String password =
+                          _loginctrl.passwordController.text.trim();
+                      bool ispassvalidate =
+                          _txtvalctrl.loginpasswordstate.currentState!
+                              .validate();
+                      bool isemailvalidate =
+                          _txtvalctrl.loginemailstate.currentState!.validate();
                       bool isloading = _loginctrl.isLoading.value;
 
                       if (isemailvalidate && ispassvalidate) {

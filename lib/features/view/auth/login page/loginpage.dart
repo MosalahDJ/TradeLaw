@@ -12,7 +12,7 @@ class LoginPage extends StatelessWidget {
     // Use Get.find() instead of Get.put() to get existing instance
     // or Get.lazyPut() to create only if doesn't exist
     // final Txtvalcontroller txtvalctrl = Get.find<Txtvalcontroller>();
-    
+
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) async {
@@ -44,7 +44,8 @@ class LoginPage extends StatelessWidget {
       },
       child: Scaffold(
         body: GetBuilder<ThemeController>(
-          builder: (themeController) => LoginBody(themeController: themeController),
+          builder:
+              (themeController) => LoginBody(themeController: themeController),
         ),
       ),
     );

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:app_links/app_links.dart';
 import 'dart:async';
 import 'package:tradelaw/core/Utils/binding.dart';
 import 'package:tradelaw/core/Utils/size_config.dart';
@@ -57,14 +58,17 @@ class _TradeLawState extends State<TradeLaw> {
   void _initDeepLinks() async {
     // Initialize AppLinks
     _appLinks = AppLinks();
-    
+
     // Handle deep links when app is already running
-    _linkSubscription = _appLinks.allUriLinkStream.listen((uri) {
-      _handleDeepLink(uri.toString());
-    }, onError: (err) {
-      print('Deep link error: $err');
-    });
-  
+    _linkSubscription = _appLinks.allUriLinkStream.listen(
+      (uri) {
+        _handleDeepLink(uri.toString());
+      },
+      onError: (err) {
+        print('Deep link error: $err');
+      },
+    );
+
     // Handle deep link when app is launched from terminated state
     try {
       final initialUri = await _appLinks.getInitialAppLink();
@@ -76,34 +80,74 @@ class _TradeLawState extends State<TradeLaw> {
     }
   }
 
-  void _handleDeepLink(String link) {
+  void _handleDeepLink(String link) async {
     print('Received deep link: $link');
-    
+
     try {
       final uri = Uri.parse(link);
       
-      if (uri.path.contains('/reset-password')) {
-        // Extract tokens from the URL fragment
-        final fragment = uri.fragment;
-        if (fragment.isNotEmpty) {
-          final params = Uri.splitQueryString(fragment);
-          final accessToken = params['access_token'];
-          final refreshToken = params['refresh_token'];
-          
-          if (accessToken != null && refreshToken != null) {
-            // Use the correct method to recover session
-            Supabase.instance.client.auth.recoverSession(accessToken);
-            
-            // Navigate to reset password page with a delay to ensure context is ready
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              Get.toNamed('/reset-password');
-            });
-          }
-        }
+      // Check if this is an auth callback
+      if (uri.host == 'auth-callback' && uri.scheme == 'com.trade.lawe') {
+        await _handleAuthCallback(uri);
       }
     } catch (e) {
       print('Error handling deep link: $e');
+      _handleDeepLinkError('Failed to process authentication link');
     }
+  }
+
+  Future<void> _handleAuthCallback(Uri uri) async {
+    try {
+      // Use Supabase's built-in method to handle the URL
+      final response = await Supabase.instance.client.auth.getSessionFromUrl(uri);
+      
+      print('Session recovered successfully');
+      
+      // Extract the type parameter to determine the action
+      final fragment = uri.fragment;
+      final params = Uri.splitQueryString(fragment);
+      final type = params['type'];
+      
+      // Navigate based on the type
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (type == 'recovery') {
+          Get.offAllNamed('/reset-password');
+        } else {
+          Get.offAllNamed('/login');
+        }
+      });
+        } on AuthException catch (authError) {
+      print('Auth error during session recovery: ${authError.message}');
+      
+      // Handle specific auth errors
+      if (authError.message.contains('Code verifier') || 
+          authError.message.contains('expired')) {
+        _handleDeepLinkError(
+          'Reset password link has expired. Please request a new one.',
+        );
+      } else {
+        _handleDeepLinkError('Authentication failed: ${authError.message}');
+      }
+    } catch (e) {
+      print('Unexpected error during session recovery: $e');
+      _handleDeepLinkError('An unexpected error occurred. Please try again.');
+    }
+  }
+
+  void _handleDeepLinkError(String message) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Get.snackbar(
+        'Error',
+        message,
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Colors.red.withOpacity(0.1),
+        colorText: Colors.red,
+        duration: const Duration(seconds: 5),
+      );
+
+      // Navigate back to login page
+      Get.offAllNamed('/login');
+    });
   }
 
   @override
@@ -122,14 +166,12 @@ class _TradeLawState extends State<TradeLaw> {
       LanguageController(widget.prefs),
       permanent: true,
     );
-
     final supabase = Supabase.instance.client;
 
     return GetMaterialApp(
       title: 'TradeLaw',
       theme: Themes().lightmode,
       darkTheme: Themes().darkmode,
-      // Fixed the theme mode logic with proper AppTheme enum usage
       themeMode:
           themeController.selectedTheme.value == AppTheme.system
               ? ThemeMode.system

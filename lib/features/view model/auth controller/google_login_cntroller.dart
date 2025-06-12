@@ -1,18 +1,15 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class GoogleLoginCntroller extends GetxController{
+class GoogleLoginCntroller extends GetxController {
   // Add your Google login logic here
   // For example, you can use the GoogleSignIn package to handle Google authentication
   final isLoading = false.obs;
   final _supabase = Supabase.instance.client;
   // Example method to initiate Google sign-in
-  
+
   // Google Sign-In
   Future<void> signInWithGoogle() async {
     try {
@@ -54,4 +51,3 @@ class GoogleLoginCntroller extends GetxController{
     }
   }
 }
-

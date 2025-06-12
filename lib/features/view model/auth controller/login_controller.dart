@@ -97,41 +97,21 @@ class LoginController extends GetxController {
       isLoading.value = false;
     }
   }
-  
+
   // Reset Password
   Future<void> resetPassword() async {
+    if (emailController.text.isEmpty) {
+      Get.snackbar('Error', 'Please enter your email');
+      return;
+    }
+
+    isLoading.value = true;
     try {
-      // Add validation
-      if (emailController.text.isEmpty) {
-        Get.snackbar(
-          'Error',
-          'Please enter your email address',
-          snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.red.withOpacity(0.1),
-          colorText: Colors.red,
-        );
-        return;
-      }
-  
-      // Email format validation
-      final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-      if (!emailRegex.hasMatch(emailController.text)) {
-        Get.snackbar(
-          'Error',
-          'Please enter a valid email address',
-          snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.red.withOpacity(0.1),
-          colorText: Colors.red,
-        );
-        return;
-      }
-  
-      isLoading.value = true;
       await _supabase.auth.resetPasswordForEmail(
         emailController.text,
-        redirectTo: 'com.example.tradelaw://auth-callback/reset-password', // Updated scheme
+        redirectTo: 'com.trade.lawe://auth-callback/#type=recovery',
       );
-      Get.snackbar('Success', 'Password reset email sent!');
+      Get.snackbar('Success', 'Password reset email sent! Check your inbox.');
     } catch (error) {
       Get.snackbar('Error', error.toString());
     } finally {
