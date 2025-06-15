@@ -14,7 +14,6 @@ import 'package:tradelaw/features/view%20model/settings%20controllers/theme_cont
 import 'package:tradelaw/features/view/auth/login%20page/loginpage.dart';
 import 'package:tradelaw/features/view/home/home_page.dart';
 import 'package:tradelaw/myrouts.dart';
-import 'package:app_links/app_links.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -85,7 +84,7 @@ class _TradeLawState extends State<TradeLaw> {
 
     try {
       final uri = Uri.parse(link);
-      
+
       // Check if this is an auth callback
       if (uri.host == 'auth-callback' && uri.scheme == 'com.trade.lawe') {
         await _handleAuthCallback(uri);
@@ -98,39 +97,84 @@ class _TradeLawState extends State<TradeLaw> {
 
   Future<void> _handleAuthCallback(Uri uri) async {
     try {
-      // Use Supabase's built-in method to handle the URL
-      final response = await Supabase.instance.client.auth.getSessionFromUrl(uri);
-      
-      print('Session recovered successfully');
-      
-      // Extract the type parameter to determine the action
+      print('Processing auth callback: $uri');
+      print('URI fragment: ${uri.fragment}');
+
+      // Extract the type parameter first to understand the intent
       final fragment = uri.fragment;
       final params = Uri.splitQueryString(fragment);
       final type = params['type'];
-      
-      // Navigate based on the type
+
+      print('Extracted type: $type');
+      print('All params: $params');
+
+      // Use Supabase's built-in method to handle the URL
+      final response = await Supabase.instance.client.auth.getSessionFromUrl(
+        uri,
+      );
+
+      print('Session recovered successfully');
+      print('User: ${response.session.user?.email}'); // Using the response here
+      print('Session expires at: ${response.session?.expiresAt}'); // And here
+
+      // Navigate based on the type with more specific checking
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (type == 'recovery') {
+        if (type == 'recovery' || uri.path.contains('reset-password')) {
+          print('Navigating to reset-password page');
           Get.offAllNamed('/reset-password');
+        } else if (type == 'signup' || type == 'invite') {
+          print('Navigating to login page for signup/invite');
+          Get.offAllNamed('/login');
         } else {
+          print('Unknown type, navigating to login page');
           Get.offAllNamed('/login');
         }
       });
-        } on AuthException catch (authError) {
+    } on AuthException catch (authError) {
       print('Auth error during session recovery: ${authError.message}');
-      
-      // Handle specific auth errors
-      if (authError.message.contains('Code verifier') || 
-          authError.message.contains('expired')) {
-        _handleDeepLinkError(
-          'Reset password link has expired. Please request a new one.',
+
+      // Check if this is a password reset link even if session recovery failed
+      final fragment = uri.fragment;
+      final params = Uri.splitQueryString(fragment);
+      final type = params['type'];
+
+      if (type == 'recovery' || uri.path.contains('reset-password')) {
+        // For password reset, we might not need a valid session initially
+        print(
+          'Password reset detected, navigating to reset-password page despite auth error',
         );
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          Get.offAllNamed('/reset-password');
+        });
       } else {
-        _handleDeepLinkError('Authentication failed: ${authError.message}');
+        // Handle other auth errors
+        if (authError.message.contains('Code verifier') ||
+            authError.message.contains('expired')) {
+          _handleDeepLinkError(
+            'Reset password link has expired. Please request a new one.',
+          );
+        } else {
+          _handleDeepLinkError('Authentication failed: ${authError.message}');
+        }
       }
     } catch (e) {
       print('Unexpected error during session recovery: $e');
-      _handleDeepLinkError('An unexpected error occurred. Please try again.');
+
+      // Check if this is a password reset link even if there's an unexpected error
+      final fragment = uri.fragment;
+      final params = Uri.splitQueryString(fragment);
+      final type = params['type'];
+
+      if (type == 'recovery' || uri.path.contains('reset-password')) {
+        print(
+          'Password reset detected, navigating to reset-password page despite error',
+        );
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          Get.offAllNamed('/reset-password');
+        });
+      } else {
+        _handleDeepLinkError('An unexpected error occurred. Please try again.');
+      }
     }
   }
 
