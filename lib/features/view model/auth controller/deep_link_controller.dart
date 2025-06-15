@@ -59,7 +59,18 @@ class DeepLinkController extends GetxController {
       final type = params['type'];
 
       // Use Supabase's built-in method to handle the URL
-      final response = await Supabase.instance.client.auth.getSessionFromUrl(uri);
+      final response = await Supabase.instance.client.auth.getSessionFromUrl(
+        uri,
+      );
+
+      // Log successful session recovery (optional - for debugging)
+      final sessionExpiry = response.session.expiresAt;
+
+      // Verify session is not expired
+      if (sessionExpiry != null &&
+          DateTime.now().millisecondsSinceEpoch > sessionExpiry * 1000) {
+        throw AuthException('Session has expired');
+      }
 
       // Navigate based on the type with specific checking
       WidgetsBinding.instance.addPostFrameCallback((_) {
