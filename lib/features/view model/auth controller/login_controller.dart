@@ -83,13 +83,11 @@ class LoginController extends GetxController {
         errorMessage = e.toString();
       }
 
-      print('Login error details: $e');
-
       Get.snackbar(
         'Login Failed',
         errorMessage,
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.withOpacity(0.1),
+        backgroundColor: Colors.red.withValues(alpha: 0.1),
         colorText: Colors.red,
         duration: const Duration(seconds: 3),
       );
@@ -128,8 +126,6 @@ class LoginController extends GetxController {
       Get.offAllNamed('/login');
       isLoading.value = false;
     } catch (e) {
-      print(e.toString());
-
       Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
     }
   }

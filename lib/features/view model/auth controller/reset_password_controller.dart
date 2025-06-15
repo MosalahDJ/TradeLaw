@@ -35,7 +35,7 @@ class ResetPasswordController extends GetxController {
           'Error',
           'Please fill in all fields',
           snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.red.withOpacity(0.1),
+          backgroundColor: Colors.red.withValues(alpha: 0.1),
           colorText: Colors.red,
         );
         return;
@@ -46,7 +46,7 @@ class ResetPasswordController extends GetxController {
           'Error',
           'Password must be at least 6 characters long',
           snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.red.withOpacity(0.1),
+          backgroundColor: Colors.red.withValues(alpha: 0.1),
           colorText: Colors.red,
         );
         return;
@@ -57,7 +57,7 @@ class ResetPasswordController extends GetxController {
           'Error',
           'Passwords do not match',
           snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.red.withOpacity(0.1),
+          backgroundColor: Colors.red.withValues(alpha: 0.1),
           colorText: Colors.red,
         );
         return;
@@ -72,7 +72,7 @@ class ResetPasswordController extends GetxController {
         'Success',
         'Password updated successfully',
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.green.withOpacity(0.1),
+        backgroundColor: Colors.green.withValues(alpha: 0.1),
         colorText: Colors.green,
       );
 
@@ -80,12 +80,11 @@ class ResetPasswordController extends GetxController {
       await Future.delayed(const Duration(seconds: 1));
       Get.offAllNamed('/login');
     } catch (e) {
-      print('Password update error: $e');
       Get.snackbar(
         'Error',
         'Failed to update password: ${e.toString()}',
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.withOpacity(0.1),
+        backgroundColor: Colors.red.withValues(alpha: 0.1),
         colorText: Colors.red,
       );
     } finally {

@@ -17,7 +17,6 @@ class AnonymousLoginController extends GetxController {
         Get.offAllNamed('/home');
       }
     } catch (e) {
-      print(e.toString());
       isLoading.value = false;
 
       Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);

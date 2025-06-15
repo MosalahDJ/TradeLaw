@@ -172,8 +172,6 @@ class LoginBody extends StatelessWidget {
                       bool isloading = _loginctrl.isLoading.value;
 
                       if (isemailvalidate && ispassvalidate) {
-                        print('Email: $email'); // Add this line to debug
-                        print('Password: $password'); // Add this line to debug
                         isloading ? null : _loginctrl.unfocusKeyboard();
                         isloading ? null : _loginctrl.signIn(email, password);
                       }

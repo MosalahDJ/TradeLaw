@@ -49,10 +49,10 @@ class ReportInformationsPage extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: reportType['color'].withOpacity(0.1),
+                color: reportType['color'].withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                  color: reportType['color'].withOpacity(0.3),
+                  color: reportType['color'].withValues(alpha: 0.3),
                   width: 1,
                 ),
               ),
@@ -113,7 +113,7 @@ class ReportInformationsPage extends StatelessWidget {
                 labelStyle: TextStyle(
                   fontFamily: 'Cairo',
                   fontWeight: FontWeight.w600,
-                  color: reportType['color'].withOpacity(0.8),
+                  color: reportType['color'].withValues(alpha: 0.8),
                 ),
                 hintText: 'enter_city_name'.tr,
                 hintStyle: TextStyle(
@@ -161,7 +161,7 @@ class ReportInformationsPage extends StatelessWidget {
                 labelStyle: TextStyle(
                   fontFamily: 'Cairo',
                   fontWeight: FontWeight.w600,
-                  color: reportType['color'].withOpacity(0.8),
+                  color: reportType['color'].withValues(alpha: 0.8),
                 ),
                 hintText: 'enter_town_district_name'.tr,
                 hintStyle: TextStyle(
@@ -200,7 +200,7 @@ class ReportInformationsPage extends StatelessWidget {
                 labelStyle: TextStyle(
                   fontFamily: 'Cairo',
                   fontWeight: FontWeight.w600,
-                  color: reportType['color'].withOpacity(0.8),
+                  color: reportType['color'].withValues(alpha: 0.8),
                 ),
                 hintText: 'enter_village_neighborhood_name'.tr,
                 hintStyle: TextStyle(
@@ -243,7 +243,7 @@ class ReportInformationsPage extends StatelessWidget {
                 labelStyle: TextStyle(
                   fontFamily: 'Cairo',
                   fontWeight: FontWeight.w600,
-                  color: reportType['color'].withOpacity(0.8),
+                  color: reportType['color'].withValues(alpha: 0.8),
                 ),
                 hintText: 'enter_market_store_name'.tr,
                 hintStyle: TextStyle(
@@ -288,7 +288,7 @@ class ReportInformationsPage extends StatelessWidget {
                 labelStyle: TextStyle(
                   fontFamily: 'Cairo',
                   fontWeight: FontWeight.w600,
-                  color: reportType['color'].withOpacity(0.8),
+                  color: reportType['color'].withValues(alpha: 0.8),
                 ),
                 hintText: 'enter_market_store_number'.tr,
                 hintStyle: TextStyle(
@@ -336,7 +336,7 @@ class ReportInformationsPage extends StatelessWidget {
                 labelStyle: TextStyle(
                   fontFamily: 'Cairo',
                   fontWeight: FontWeight.w600,
-                  color: reportType['color'].withOpacity(0.8),
+                  color: reportType['color'].withValues(alpha: 0.8),
                 ),
                 hintText: 'provide_violation_details'.tr,
                 hintStyle: TextStyle(

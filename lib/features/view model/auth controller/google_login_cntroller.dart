@@ -38,7 +38,6 @@ class GoogleLoginCntroller extends GetxController {
         Get.offAllNamed('/home');
       }
     } catch (e) {
-      print('Google sign in error: ${e.toString()}');
       Get.snackbar(
         'Error',
         'Failed to sign in with Google: ${e.toString()}',
