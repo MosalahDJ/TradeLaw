@@ -284,4 +284,144 @@ Map<String, dynamic> getTranslatedReportType(Map<String, dynamic> reportType) {
     }
   }
 
+  // Progress status definitions
+  static const List<Map<String, dynamic>> progressSteps = [
+    {
+      'step': 1,
+      'status': 'submitted',
+      'title': 'Report Submitted',
+      'description': 'Your report has been successfully submitted to our system.',
+      'icon': Icons.assignment_turned_in,
+    },
+    {
+      'step': 2,
+      'status': 'initial_review',
+      'title': 'Initial Review',
+      'description': 'Our team has reviewed your report and determined it requires further investigation.',
+      'icon': Icons.find_in_page,
+    },
+    {
+      'step': 3,
+      'status': 'under_investigation',
+      'title': 'Under Investigation',
+      'description': 'Field agents have been assigned to investigate the reported issue.',
+      'icon': Icons.search,
+    },
+    {
+      'step': 4,
+      'status': 'evidence_collection',
+      'title': 'Evidence Collection',
+      'description': 'Our team is collecting evidence and documenting findings.',
+      'icon': Icons.photo_camera,
+    },
+    {
+      'step': 5,
+      'status': 'legal_assessment',
+      'title': 'Legal Assessment',
+      'description': 'Legal team is reviewing the evidence and determining appropriate actions.',
+      'icon': Icons.gavel,
+    },
+    {
+      'step': 6,
+      'status': 'action_taken',
+      'title': 'Action Taken',
+      'description': 'Enforcement actions will be taken based on investigation findings.',
+      'icon': Icons.policy,
+    },
+    {
+      'step': 7,
+      'status': 'case_closed',
+      'title': 'Case Closed',
+      'description': 'The case has been resolved and appropriate measures have been implemented.',
+      'icon': Icons.task_alt,
+    },
+  ];
+
+  // Generate tracking steps based on current progress status
+  List<Map<String, dynamic>> generateTrackingSteps(String currentStatus, DateTime? createdAt) {
+    final List<Map<String, dynamic>> trackingSteps = [];
+    
+    for (int i = 0; i < progressSteps.length; i++) {
+      final step = Map<String, dynamic>.from(progressSteps[i]);
+      
+      // Determine if this step is completed
+      final currentStepIndex = progressSteps.indexWhere((s) => s['status'] == currentStatus);
+      final isCompleted = i <= currentStepIndex;
+      
+      step['completed'] = isCompleted;
+      
+      // Add timestamp for completed steps
+      if (isCompleted && createdAt != null) {
+        // For demo purposes, add timestamps based on step progression
+        step['timestamp'] = createdAt.add(Duration(days: i));
+      } else {
+        step['timestamp'] = null;
+      }
+      
+      trackingSteps.add(step);
+    }
+    
+    return trackingSteps;
+  }
+
+  // Get report with tracking data
+  Future<Map<String, dynamic>?> getReportWithTracking(int reportId) async {
+    try {
+      final response = await _supabase
+          .from('reports')
+          .select('*')
+          .eq('id', reportId)
+          .single();
+      
+      // Generate tracking steps based on current progress status
+      final trackingSteps = generateTrackingSteps(
+        response['progress_status'] ?? 'submitted',
+        DateTime.parse(response['created_at']),
+      );
+      
+      response['tracking'] = trackingSteps;
+      return response;
+    } catch (e) {
+      Get.snackbar(
+        'Error',
+        'Failed to fetch report: ${e.toString()}',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+      return null;
+    }
+  }
+
+  // Update report progress status (for admin use)
+  Future<void> updateReportProgress(int reportId, String newStatus) async {
+    try {
+      await _supabase
+          .from('reports')
+          .update({
+            'progress_status': newStatus,
+            'updated_at': DateTime.now().toIso8601String(),
+          })
+          .eq('id', reportId);
+      
+      Get.snackbar(
+        'Success',
+        'Report progress updated successfully',
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+      );
+      
+      // Refresh reports list
+      await fetchUserReports();
+    } catch (e) {
+      Get.snackbar(
+        'Error',
+        'Failed to update progress: ${e.toString()}',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+    }
+  }
 }

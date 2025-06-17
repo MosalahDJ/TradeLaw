@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tradelaw/core/Utils/constants.dart';
 import 'package:intl/intl.dart';
-import 'package:tradelaw/features/model/reports_list.dart';
+import 'package:tradelaw/features/view%20model/home%20controller/reports_controller.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart'; // Import the reports list model
 
 class TrackingDetail extends StatelessWidget {
@@ -12,32 +12,8 @@ class TrackingDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Get the report from the model using the ID
-    final Map<String, dynamic>? report = ReportsList.getReportById(reportId);
+    final ReportsController reportsController = Get.find();
     final ThemeController themectrl = Get.find();
-
-    // If report not found, show error
-    if (report == null) {
-      return Scaffold(
-        appBar: AppBar(
-          foregroundColor: Colors.white,
-          backgroundColor: kmaincolor,
-          title: Text(
-            'tracking_detail'.tr,
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        body: Center(
-          child: Text(
-            'report_not_found'.tr,
-            style: const TextStyle(fontSize: 18),
-          ),
-        ),
-      );
-    }
 
     return Scaffold(
       appBar: AppBar(
@@ -51,173 +27,216 @@ class TrackingDetail extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Report Summary Card
-            Container(
-              width: double.infinity,
-              margin: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color:
-                    themectrl.selectedTheme.value == AppTheme.dark
+      body: FutureBuilder<Map<String, dynamic>?>(
+        future: reportsController.getReportWithTracking(reportId),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          
+          if (snapshot.hasError || snapshot.data == null) {
+            return Center(
+              child: Text(
+                'report_not_found'.tr,
+                style: const TextStyle(fontSize: 18),
+              ),
+            );
+          }
+          
+          final report = snapshot.data!;
+          
+          return SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Report Information Card
+                Container(
+                  margin: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: themectrl.selectedTheme.value == AppTheme.dark
                         ? Colors.black38
                         : Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color:
-                        themectrl.selectedTheme.value == AppTheme.dark
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: themectrl.selectedTheme.value == AppTheme.dark
                             ? Colors.black.withValues(alpha: 0.2)
                             : Colors.grey.withValues(alpha: 0.2),
-                    spreadRadius: 1,
-                    blurRadius: 6,
-                    offset: const Offset(0, 3),
+                        spreadRadius: 1,
+                        blurRadius: 6,
+                        offset: const Offset(0, 3),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: kmaincolor.withValues(alpha: 0.1),
-                            shape: BoxShape.circle,
-                          ),
-                          child: Icon(Icons.assignment, color: kmaincolor),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                report['title'],
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    report['report_type_title'] ?? 'Unknown Report',
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    'ID: #${report['id'].toString().padLeft(6, '0')}',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.grey[600],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 6,
+                              ),
+                              decoration: BoxDecoration(
+                                color: _getStatusColor(report['progress_status'] ?? 'submitted').withValues(alpha: 0.1),
+                                borderRadius: BorderRadius.circular(20),
+                                border: Border.all(
+                                  color: _getStatusColor(report['progress_status'] ?? 'submitted'),
+                                  width: 1,
                                 ),
                               ),
-                              const SizedBox(height: 4),
-                              Text(
-                                'ID: #${report['id'].toString().padLeft(6, '0')}',
+                              child: Text(
+                                _getStatusDisplayName(report['progress_status'] ?? 'submitted'),
                                 style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.grey[600],
+                                  color: _getStatusColor(report['progress_status'] ?? 'submitted'),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12,
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 6,
-                          ),
-                          decoration: BoxDecoration(
-                            color: _getStatusColor(
-                              report['status'],
-                            ).withValues(alpha: 0.1),
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              color: _getStatusColor(report['status']),
-                              width: 1,
-                            ),
-                          ),
-                          child: Text(
-                            report['status'],
-                            style: TextStyle(
-                              color: _getStatusColor(report['status']),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12,
-                            ),
+                        const SizedBox(height: 16),
+                        const Divider(),
+                        const SizedBox(height: 8),
+                        _buildInfoRow(
+                          Icons.description,
+                          'description'.tr,
+                          report['description'] ?? 'No description',
+                        ),
+                        const SizedBox(height: 8),
+                        _buildInfoRow(
+                          Icons.location_on,
+                          'location'.tr,
+                          '${report['city']}, ${report['market_name']}',
+                        ),
+                        const SizedBox(height: 8),
+                        _buildInfoRow(
+                          Icons.calendar_today,
+                          'submitted_on'.tr,
+                          DateFormat('MMMM dd, yyyy - HH:mm').format(
+                            DateTime.parse(report['created_at']),
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 16),
-                    const Divider(),
-                    const SizedBox(height: 8),
-                    _buildInfoRow(
-                      Icons.description,
-                      'description'.tr,
-                      report['description'],
-                    ),
-                    const SizedBox(height: 8),
-                    _buildInfoRow(
-                      Icons.location_on,
-                      'location'.tr,
-                      report['location'],
-                    ),
-                    const SizedBox(height: 8),
-                    _buildInfoRow(
-                      Icons.calendar_today,
-                      'submitted_on'.tr,
-                      DateFormat(
-                        'MMMM dd, yyyy - HH:mm',
-                      ).format(report['timestamp']),
-                    ),
-                    const SizedBox(height: 8),
-                    _buildInfoRow(
-                      Icons.person,
-                      'reported_by'.tr,
-                      report['reporter'],
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
 
-            // Tracking Timeline Section Title
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: Text(
-                'tracking_progress'.tr,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+                // Tracking Timeline Section Title
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Text(
+                    'tracking_progress'.tr,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
-              ),
-            ),
 
-            // Tracking Timeline
-            Container(
-              margin: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color:
-                    themectrl.selectedTheme.value == AppTheme.dark
+                // Tracking Timeline
+                Container(
+                  margin: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: themectrl.selectedTheme.value == AppTheme.dark
                         ? Colors.black38
                         : Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color:
-                        themectrl.selectedTheme.value == AppTheme.dark
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: themectrl.selectedTheme.value == AppTheme.dark
                             ? Colors.black.withValues(alpha: 0.2)
                             : Colors.grey.withValues(alpha: 0.2),
-                    spreadRadius: 1,
-                    blurRadius: 6,
-                    offset: const Offset(0, 3),
+                        spreadRadius: 1,
+                        blurRadius: 6,
+                        offset: const Offset(0, 3),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  children: _buildTrackingTimeline(report['tracking']),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      children: _buildTrackingTimeline(report['tracking']),
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
+  }
+
+  // Helper method to get status color
+  Color _getStatusColor(String status) {
+    switch (status) {
+      case 'submitted':
+        return Colors.blue;
+      case 'initial_review':
+        return Colors.orange;
+      case 'under_investigation':
+        return Colors.purple;
+      case 'evidence_collection':
+        return Colors.indigo;
+      case 'legal_assessment':
+        return Colors.amber;
+      case 'action_taken':
+        return Colors.green;
+      case 'case_closed':
+        return Colors.grey;
+      default:
+        return Colors.grey;
+    }
+  }
+
+  // Helper method to get status display name
+  String _getStatusDisplayName(String status) {
+    switch (status) {
+      case 'submitted':
+        return 'Submitted';
+      case 'initial_review':
+        return 'Under Review';
+      case 'under_investigation':
+        return 'Investigating';
+      case 'evidence_collection':
+        return 'Collecting Evidence';
+      case 'legal_assessment':
+        return 'Legal Review';
+      case 'action_taken':
+        return 'Action Taken';
+      case 'case_closed':
+        return 'Closed';
+      default:
+        return 'Unknown';
+    }
   }
 
   // Helper method to build info rows
@@ -350,27 +369,5 @@ class TrackingDetail extends StatelessWidget {
     }
 
     return timelineItems;
-  }
-
-  // Helper method to get status color
-  Color _getStatusColor(String status) {
-    switch (status) {
-      case 'Submitted':
-        return Colors.blue;
-      case 'Under Review':
-        return Colors.orange;
-      case 'Under Investigation':
-        return Colors.purple;
-      case 'Investigating':
-        return Colors.blue;
-      case 'Resolved':
-        return Colors.green;
-      case 'Closed':
-        return Colors.red;
-      case 'Rejected':
-        return Colors.red;
-      default:
-        return Colors.grey;
-    }
   }
 }
