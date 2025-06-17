@@ -153,9 +153,6 @@ class Lawinfo extends StatelessWidget {
     required List<Widget> content,
     required IconData icon,
   }) {
-    Get.find();
-
-
     return Card(
       elevation: 3,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
