@@ -6,7 +6,7 @@ import 'package:tradelaw/core/Utils/constants.dart';
 class ReportsController extends GetxController {
   // Get Supabase client instance
   final _supabase = Supabase.instance.client;
-  
+
   // Report types data
   final List<Map<String, dynamic>> reportTypes = [
     {
@@ -126,22 +126,31 @@ class ReportsController extends GetxController {
           'report_type_id': selectedReportType.value!['id'],
           'report_type_title': selectedReportType.value!['title'],
           'city': cityController.text.trim(),
-          'town': townController.text.trim().isEmpty ? null : townController.text.trim(),
-          'village': villageController.text.trim().isEmpty ? null : villageController.text.trim(),
+          'town':
+              townController.text.trim().isEmpty
+                  ? null
+                  : townController.text.trim(),
+          'village':
+              villageController.text.trim().isEmpty
+                  ? null
+                  : villageController.text.trim(),
           'market_name': marketNameController.text.trim(),
-          'market_number': marketNumberController.text.trim().isEmpty ? null : marketNumberController.text.trim(),
+          'market_number':
+              marketNumberController.text.trim().isEmpty
+                  ? null
+                  : marketNumberController.text.trim(),
           'description': descriptionController.text.trim(),
-          'status': 'pending',
           'created_at': DateTime.now().toIso8601String(),
           'updated_at': DateTime.now().toIso8601String(),
         };
 
         // Insert report into Supabase
-        final response = await _supabase
-            .from('reports')
-            .insert(reportData)
-            .select()
-            .single();
+        final response =
+            await _supabase
+                .from('reports')
+                .insert(reportData)
+                .select()
+                .single();
 
         // Show success dialog
         // ignore: use_build_context_synchronously
@@ -156,7 +165,6 @@ class ReportsController extends GetxController {
           colorText: Colors.white,
           duration: const Duration(seconds: 3),
         );
-
       } on PostgrestException catch (e) {
         // Handle Supabase-specific errors
         Get.snackbar(
@@ -240,15 +248,17 @@ class ReportsController extends GetxController {
     marketNumberController.clear();
     descriptionController.clear();
   }
-  
-// Add these translation methods to the ReportsController class
-Map<String, dynamic> getTranslatedReportType(Map<String, dynamic> reportType) {
-  // Create a copy of the report type to avoid modifying the original
-  final translatedType = Map<String, dynamic>.from(reportType);
 
-  // The title and description will be translated in the UI using .tr
-  return translatedType;
-}
+  // Add these translation methods to the ReportsController class
+  Map<String, dynamic> getTranslatedReportType(
+    Map<String, dynamic> reportType,
+  ) {
+    // Create a copy of the report type to avoid modifying the original
+    final translatedType = Map<String, dynamic>.from(reportType);
+
+    // The title and description will be translated in the UI using .tr
+    return translatedType;
+  }
 
   // Observable list for user reports
   final RxList<Map<String, dynamic>> userReports = <Map<String, dynamic>>[].obs;
@@ -258,7 +268,7 @@ Map<String, dynamic> getTranslatedReportType(Map<String, dynamic> reportType) {
   Future<void> fetchUserReports() async {
     try {
       isLoadingReports.value = true;
-      
+
       final user = _supabase.auth.currentUser;
       if (user == null) {
         throw Exception('User not authenticated');
@@ -290,66 +300,78 @@ Map<String, dynamic> getTranslatedReportType(Map<String, dynamic> reportType) {
       'step': 1,
       'status': 'submitted',
       'title': 'Report Submitted',
-      'description': 'Your report has been successfully submitted to our system.',
+      'description':
+          'Your report has been successfully submitted to our system.',
       'icon': Icons.assignment_turned_in,
     },
     {
       'step': 2,
       'status': 'initial_review',
       'title': 'Initial Review',
-      'description': 'Our team has reviewed your report and determined it requires further investigation.',
+      'description':
+          'Our team has reviewed your report and determined it requires further investigation.',
       'icon': Icons.find_in_page,
     },
     {
       'step': 3,
       'status': 'under_investigation',
       'title': 'Under Investigation',
-      'description': 'Field agents have been assigned to investigate the reported issue.',
+      'description':
+          'Field agents have been assigned to investigate the reported issue.',
       'icon': Icons.search,
     },
     {
       'step': 4,
       'status': 'evidence_collection',
       'title': 'Evidence Collection',
-      'description': 'Our team is collecting evidence and documenting findings.',
+      'description':
+          'Our team is collecting evidence and documenting findings.',
       'icon': Icons.photo_camera,
     },
     {
       'step': 5,
       'status': 'legal_assessment',
       'title': 'Legal Assessment',
-      'description': 'Legal team is reviewing the evidence and determining appropriate actions.',
+      'description':
+          'Legal team is reviewing the evidence and determining appropriate actions.',
       'icon': Icons.gavel,
     },
     {
       'step': 6,
       'status': 'action_taken',
       'title': 'Action Taken',
-      'description': 'Enforcement actions will be taken based on investigation findings.',
+      'description':
+          'Enforcement actions will be taken based on investigation findings.',
       'icon': Icons.policy,
     },
     {
       'step': 7,
       'status': 'case_closed',
       'title': 'Case Closed',
-      'description': 'The case has been resolved and appropriate measures have been implemented.',
+      'description':
+          'The case has been resolved and appropriate measures have been implemented.',
       'icon': Icons.task_alt,
     },
   ];
 
   // Generate tracking steps based on current progress status
-  List<Map<String, dynamic>> generateTrackingSteps(String currentStatus, DateTime? createdAt) {
+  List<Map<String, dynamic>> generateTrackingSteps(
+    String currentStatus,
+    DateTime? createdAt,
+  ) {
     final List<Map<String, dynamic>> trackingSteps = [];
-    
+
     for (int i = 0; i < progressSteps.length; i++) {
       final step = Map<String, dynamic>.from(progressSteps[i]);
-      
+
       // Determine if this step is completed
-      final currentStepIndex = progressSteps.indexWhere((s) => s['status'] == currentStatus);
+      final currentStepIndex = progressSteps.indexWhere(
+        (s) => s['status'] == currentStatus,
+      );
       final isCompleted = i <= currentStepIndex;
-      
+
       step['completed'] = isCompleted;
-      
+
       // Add timestamp for completed steps
       if (isCompleted && createdAt != null) {
         // For demo purposes, add timestamps based on step progression
@@ -357,28 +379,29 @@ Map<String, dynamic> getTranslatedReportType(Map<String, dynamic> reportType) {
       } else {
         step['timestamp'] = null;
       }
-      
+
       trackingSteps.add(step);
     }
-    
+
     return trackingSteps;
   }
 
   // Get report with tracking data
   Future<Map<String, dynamic>?> getReportWithTracking(int reportId) async {
     try {
-      final response = await _supabase
-          .from('reports')
-          .select('*')
-          .eq('id', reportId)
-          .single();
-      
+      final response =
+          await _supabase
+              .from('reports')
+              .select('*')
+              .eq('id', reportId)
+              .single();
+
       // Generate tracking steps based on current progress status
       final trackingSteps = generateTrackingSteps(
         response['progress_status'] ?? 'submitted',
         DateTime.parse(response['created_at']),
       );
-      
+
       response['tracking'] = trackingSteps;
       return response;
     } catch (e) {
@@ -403,7 +426,7 @@ Map<String, dynamic> getTranslatedReportType(Map<String, dynamic> reportType) {
             'updated_at': DateTime.now().toIso8601String(),
           })
           .eq('id', reportId);
-      
+
       Get.snackbar(
         'Success',
         'Report progress updated successfully',
@@ -411,7 +434,7 @@ Map<String, dynamic> getTranslatedReportType(Map<String, dynamic> reportType) {
         backgroundColor: Colors.green,
         colorText: Colors.white,
       );
-      
+
       // Refresh reports list
       await fetchUserReports();
     } catch (e) {
