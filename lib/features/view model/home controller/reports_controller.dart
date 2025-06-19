@@ -192,6 +192,7 @@ class ReportsController extends GetxController {
   // Show success dialog
   void showSuccessDialog(BuildContext context) {
     showDialog(
+      barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
