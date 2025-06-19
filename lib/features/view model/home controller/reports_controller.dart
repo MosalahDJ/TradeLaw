@@ -157,15 +157,6 @@ class ReportsController extends GetxController {
         // ignore: use_build_context_synchronously
         showSuccessDialog(context);
 
-        // // Optional: Show success message with report ID
-        // Get.snackbar(
-        //   'Success',
-        //   'Report submitted successfully! Report ID: ${response['id']}',
-        //   snackPosition: SnackPosition.TOP,
-        //   backgroundColor: Colors.green,
-        //   colorText: Colors.white,
-        //   duration: const Duration(seconds: 3),
-        // );
       } on PostgrestException catch (e) {
         // Handle Supabase-specific errors
         Get.snackbar(
