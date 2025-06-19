@@ -146,7 +146,6 @@ class ReportsController extends GetxController {
         };
 
         // Insert report into Supabase
-        final response =
             await _supabase
                 .from('reports')
                 .insert(reportData)
@@ -156,7 +155,6 @@ class ReportsController extends GetxController {
         // Show success dialog
         // ignore: use_build_context_synchronously
         showSuccessDialog(context);
-
       } on PostgrestException catch (e) {
         // Handle Supabase-specific errors
         Get.snackbar(
