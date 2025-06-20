@@ -77,9 +77,9 @@ class DeepLinkController extends GetxController {
         if (type == 'recovery' || uri.path.contains('reset-password')) {
           Get.offAllNamed('/reset-password');
         } else if (type == 'signup' || type == 'invite') {
-          Get.offAllNamed('/login');
+          Get.toNamed('/login');
         } else {
-          Get.offAllNamed('/login');
+          Get.toNamed('/login');
         }
       });
     } on AuthException catch (authError) {
