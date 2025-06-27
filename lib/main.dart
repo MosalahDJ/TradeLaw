@@ -87,3 +87,4 @@ class _TradeLawState extends State<TradeLaw> {
   }
 }
 
+// nothing in this file should be private, as it is the entry point of the application
