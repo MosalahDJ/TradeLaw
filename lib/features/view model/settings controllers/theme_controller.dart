@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tradelaw/core/theme/thems.dart';
+import '../../../core/theme/thems.dart';
 
 enum AppTheme { light, dark, system }
 

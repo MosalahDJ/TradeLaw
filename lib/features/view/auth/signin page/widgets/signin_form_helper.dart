@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tradelaw/core/widgets/information_form.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/signup_controller.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
+import '../../../../../core/widgets/information_form.dart';
+import '../../../../view%20model/auth%20controller/signup_controller.dart';
+import '../../../../view%20model/auth%20controller/textvalidatecontroller.dart';
 
 // Helper class for sign-in form widgets
 class SigninFormHelper {

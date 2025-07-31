@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/login_controller.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/signup_controller.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
+import '../../../../view%20model/auth%20controller/login_controller.dart';
+import '../../../../view%20model/auth%20controller/signup_controller.dart';
+import '../../../../view%20model/auth%20controller/textvalidatecontroller.dart';
 
 class SignInSubmitHandler {
   SignupController signinctrl = Get.put<SignupController>(SignupController());

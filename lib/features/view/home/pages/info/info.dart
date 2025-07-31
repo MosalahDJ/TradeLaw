@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tradelaw/core/Utils/constants.dart';
-import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
+import '../../../../../core/Utils/constants.dart';
+import '../../../../view%20model/settings%20controllers/theme_controller.dart';
 // import 'package:intl/intl.dart';
 
 class Info extends StatelessWidget {

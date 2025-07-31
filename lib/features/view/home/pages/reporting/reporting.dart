@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tradelaw/core/Utils/constants.dart';
-import 'package:tradelaw/features/view model/home controller/reports_controller.dart';
+import '../../../../../core/Utils/constants.dart';
+import '../../../../view model/home controller/reports_controller.dart';
 
 class Reporting extends StatelessWidget {
   const Reporting({super.key});

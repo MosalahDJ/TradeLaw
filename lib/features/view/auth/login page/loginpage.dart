@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
-import 'package:tradelaw/features/view/auth/login%20page/widgets/login_body.dart';
+import '../../../view%20model/settings%20controllers/theme_controller.dart';
+import '../login%20page/widgets/login_body.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});

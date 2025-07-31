@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tradelaw/features/view model/home controller/reports_controller.dart';
-import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
+import '../../../../view model/home controller/reports_controller.dart';
+import '../../../../view%20model/settings%20controllers/theme_controller.dart';
 
 class ReportInformationsPage extends StatelessWidget {
   final int reportId;

@@ -1,16 +1,16 @@
 import 'package:get/get.dart';
-import 'package:tradelaw/features/view/auth/login%20page/loginpage.dart';
-import 'package:tradelaw/features/view/auth/signin%20page/signin_page.dart';
-import 'package:tradelaw/features/view/auth/reset_password/reset_password_page.dart';
-import 'package:tradelaw/features/view/home/home_page.dart';
-import 'package:tradelaw/features/view/home/pages/help%20and%20fedback/help_and_fedback.dart';
-import 'package:tradelaw/features/view/home/pages/info/info.dart';
-import 'package:tradelaw/features/view/home/pages/law%20info/lawinfo.dart';
-import 'package:tradelaw/features/view/home/pages/products/products.dart';
-import 'package:tradelaw/features/view/home/pages/tarcking/report_tracking.dart';
-import 'package:tradelaw/features/view/home/pages/reporting/report_informations_page.dart';
-import 'package:tradelaw/features/view/home/pages/reporting/reporting.dart';
-import 'package:tradelaw/features/view/home/pages/tarcking/tracking_detail.dart';
+import 'features/view/auth/login%20page/loginpage.dart';
+import 'features/view/auth/signin%20page/signin_page.dart';
+import 'features/view/auth/reset_password/reset_password_page.dart';
+import 'features/view/home/home_page.dart';
+import 'features/view/home/pages/help%20and%20fedback/help_and_fedback.dart';
+import 'features/view/home/pages/info/info.dart';
+import 'features/view/home/pages/law%20info/lawinfo.dart';
+import 'features/view/home/pages/products/products.dart';
+import 'features/view/home/pages/tarcking/report_tracking.dart';
+import 'features/view/home/pages/reporting/report_informations_page.dart';
+import 'features/view/home/pages/reporting/reporting.dart';
+import 'features/view/home/pages/tarcking/tracking_detail.dart';
 
 class Myrouts {
   static List<GetPage<dynamic>> get getpages {

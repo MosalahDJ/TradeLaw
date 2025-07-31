@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tradelaw/features/model/product_list.dart';
-import 'package:tradelaw/features/view%20model/settings%20controllers/language_controller.dart';
+import '../../model/product_list.dart';
+import '../../view%20model/settings%20controllers/language_controller.dart';
 
 class ProductsController extends GetxController
     with GetSingleTickerProviderStateMixin {

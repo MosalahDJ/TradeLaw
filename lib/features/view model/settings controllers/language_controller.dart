@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
+import '../../view%20model/settings%20controllers/theme_controller.dart';
 
 class LanguageController extends GetxController {
   final language = 'en'.obs;

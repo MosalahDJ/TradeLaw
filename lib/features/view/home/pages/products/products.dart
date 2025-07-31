@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tradelaw/features/view%20model/home%20controller/products_controller.dart';
-import 'package:tradelaw/features/model/product_list.dart';
+import '../../../../view%20model/home%20controller/products_controller.dart';
+import '../../../../model/product_list.dart';
 
 class Products extends StatelessWidget {
   const Products({super.key});

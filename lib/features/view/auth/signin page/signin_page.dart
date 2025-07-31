@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/signup_controller.dart';
-import 'package:tradelaw/features/view/auth/signin%20page/widgets/signin_body.dart';
+import '../../../view%20model/auth%20controller/signup_controller.dart';
+import '../signin%20page/widgets/signin_body.dart';
 
 class SigninPage extends StatelessWidget {
   SigninPage({super.key});

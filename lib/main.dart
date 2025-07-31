@@ -3,16 +3,16 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:tradelaw/core/Utils/binding.dart';
-import 'package:tradelaw/core/Utils/size_config.dart';
-import 'package:tradelaw/core/localization/translations.dart';
-import 'package:tradelaw/core/theme/thems.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/deep_link_controller.dart';
-import 'package:tradelaw/features/view%20model/settings%20controllers/language_controller.dart';
-import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
-import 'package:tradelaw/features/view/auth/login%20page/loginpage.dart';
-import 'package:tradelaw/features/view/home/home_page.dart';
-import 'package:tradelaw/myrouts.dart';
+import 'core/Utils/binding.dart';
+import 'core/Utils/size_config.dart';
+import 'core/localization/translations.dart';
+import 'core/theme/thems.dart';
+import 'features/view%20model/auth%20controller/deep_link_controller.dart';
+import 'features/view%20model/settings%20controllers/language_controller.dart';
+import 'features/view%20model/settings%20controllers/theme_controller.dart';
+import 'features/view/auth/login%20page/loginpage.dart';
+import 'features/view/home/home_page.dart';
+import 'myrouts.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

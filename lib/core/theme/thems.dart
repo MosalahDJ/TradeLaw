@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tradelaw/core/Utils/constants.dart';
+import '../Utils/constants.dart';
 
 String get _fontFamily => 'Cairo';
 

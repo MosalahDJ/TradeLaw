@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:tradelaw/core/Utils/constants.dart';
+import '../../../core/Utils/constants.dart';
 
 class ReportsController extends GetxController {
   // Get Supabase client instance

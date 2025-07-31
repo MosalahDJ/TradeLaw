@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tradelaw/core/Utils/constants.dart';
-import 'package:tradelaw/core/Utils/size_config.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/anonymous_login.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/google_login_cntroller.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/login_controller.dart';
-import 'package:tradelaw/features/view%20model/auth%20controller/textvalidatecontroller.dart';
-import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart';
-import 'package:tradelaw/features/view/auth/signin%20page/signin_page.dart';
+import '../../../../../core/Utils/constants.dart';
+import '../../../../../core/Utils/size_config.dart';
+import '../../../../view%20model/auth%20controller/anonymous_login.dart';
+import '../../../../view%20model/auth%20controller/google_login_cntroller.dart';
+import '../../../../view%20model/auth%20controller/login_controller.dart';
+import '../../../../view%20model/auth%20controller/textvalidatecontroller.dart';
+import '../../../../view%20model/settings%20controllers/theme_controller.dart';
+import '../../signin%20page/signin_page.dart';
 
 class LoginBody extends StatelessWidget {
   final ThemeController themeController;

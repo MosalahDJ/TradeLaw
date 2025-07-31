@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tradelaw/core/Utils/constants.dart';
+import '../../../../../core/Utils/constants.dart';
 import 'package:intl/intl.dart';
-import 'package:tradelaw/features/view%20model/home%20controller/reports_controller.dart';
+import '../../../../view%20model/home%20controller/reports_controller.dart';
 import 'package:tradelaw/features/view%20model/settings%20controllers/theme_controller.dart'; // Import the reports list model
 
 class TrackingDetail extends StatelessWidget {
