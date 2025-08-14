@@ -15,7 +15,7 @@ class GoogleLoginCntroller extends GetxController {
     try {
       isLoading.value = true;
 
-      // Configure Google Sign In with your web client ID
+      // Configure Google Sign In with web client ID
       final GoogleSignIn googleSignIn = GoogleSignIn(
         clientId:
             '524401420622-bslevq000brf9705snlk0v1sso8nk6ot.apps.googleusercontent.com', // Add your web client ID here
